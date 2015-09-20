@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovementMouseMobile : MonoBehaviour
 {
-	const float EDGEBUFFER = 0.10f; // Percentage of screen to validate mouse click/mobile tap
+	public const float EDGEBUFFER = 0.10f; // Percentage of screen to validate mouse click/mobile tap
 	const float PLAYERSPEED = 1; // Just a placeholder until we get something more finalized
 	
 	// for edge detection
@@ -16,17 +16,16 @@ public class MovementMouseMobile : MonoBehaviour
 	
 	// for references to player
 	Animator animator;
-	Rigidbody playerRigidbody;
+	Rigidbody2D playerRigidbody;
 
 	// Use this for initialization
 	void Awake()
 	{
-		screenWidth.Set((float)(Screen.width), 0f, 0f);
-		edgeLeft.Set(screenWidth.x * EDGEBUFFER, 0f, 0f);
-		edgeRight.Set(screenWidth.x - edgeLeft.x, 0f, 0f);
+		screenWidth = new Vector3((float)Screen.width, 0f, 0f);
+		edgeLeft = new Vector3(screenWidth.x * EDGEBUFFER, 0f, 0f);
+		edgeRight = new Vector3(screenWidth.x - edgeLeft.x, 0f, 0f);
 
-		animator = GetComponent<Animator> ();
-		playerRigidbody = GetComponent<Rigidbody> ();
+		playerRigidbody = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Using FixedUpdate instead of Update, meaning this is done before rendering
