@@ -7,8 +7,8 @@ public class MovementMouseMobile : MonoBehaviour
 	const float PLAYERSPEED = 1; // Just a placeholder until we get something more finalized
 	
 	// for edge detection
-	int edgeLeft;
-	int edgeRight;
+	Vector3 edgeLeft;
+	Vector3 edgeRight;
 
 	// for player movement
 	Vector3 movement;
@@ -20,8 +20,8 @@ public class MovementMouseMobile : MonoBehaviour
 	// Use this for initialization
 	void Awake()
 	{
-		edgeLeft = (int)(Screen.width * EDGEBUFFER);
-		edgeRight = Screen.width - edgeLeft;
+		edgeLeft.set((int)(Screen.width * EDGEBUFFER), 0f, 0f);
+		edgeRight.set(Screen.width - edgeLeft, 0f, 0f);
 
 		animator = GetComponent<Animator> ();
 		playerRigidbody = GetComponent<Rigidbody> ();
