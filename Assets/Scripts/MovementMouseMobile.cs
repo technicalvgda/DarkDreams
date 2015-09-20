@@ -30,24 +30,28 @@ public class MovementMouseMobile : MonoBehaviour
 	// Using FixedUpdate instead of Update, meaning this is done before rendering
 	void FixedUpdate ()
 	{
-		if (Input.GetMouseButtonDown (0) || Input.GetMouseButton (0))
+		if (Input.GetMouseButton (0))
 		{
 			if (Input.mousePosition.x < edgeLeft.x)
-				Move (-PLAYERSPEED);
-			if (Input.mousePosition.x > edgeRight.x)
-				Move (PLAYERSPEED);
-		} 
+				Move (-PLAYERSPEED, 0f);
+			else if (Input.mousePosition.x > edgeRight.x)
+				Move (PLAYERSPEED, 0f);
+			else
+				Move (0f, 0f);
+		}
 		else
 		{
-			Move (0);
+			Move (0f, 0f);
 		}
 	}
 
-	void Move (float h)
+	void Move (float h, float v)
 	{
 		// Set movement and normalize in terms of time passed from previous frame
 		// (Assuming we will be frame rate dependent)
-		movement.Set (h, 0f);
+		movement.x = h;
+		movement.y = v;
+
 		movement *= Time.deltaTime;
 
 		// Transform is a Vector3, adjusting data so RigidBody2D can accept it
