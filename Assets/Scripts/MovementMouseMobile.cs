@@ -4,7 +4,7 @@ using System.Collections;
 public class MovementMouseMobile : MonoBehaviour
 {
 	public const float EDGEBUFFER = 0.10f; // Percentage of screen to validate mouse click/mobile tap
-	const float PLAYERSPEED = 1; // Just a placeholder until we get something more finalized
+	const float PLAYERSPEED = 5; // Just a placeholder until we get something more finalized
 	
 	// for edge detection
 	Vector3 edgeLeft;
@@ -31,7 +31,7 @@ public class MovementMouseMobile : MonoBehaviour
 	// Using FixedUpdate instead of Update, meaning this is done before rendering
 	void FixedUpdate ()
 	{
-		if (Input.GetMouseButtonDown (0))
+		if (Input.GetMouseButtonDown (0) || Input.GetMouseButton (0))
 		{
 			if (Input.mousePosition.x < edgeLeft.x)
 				Move (-PLAYERSPEED);
