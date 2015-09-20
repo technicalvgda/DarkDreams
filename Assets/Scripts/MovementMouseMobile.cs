@@ -3,27 +3,26 @@ using System.Collections;
 
 public class MovementMouseMobile : MonoBehaviour
 {
-	public const float EDGEBUFFER = 0.10f; // Percentage of screen to validate mouse click/mobile tap
+	public const float EDGEBUFFER = 0.05f; // Percentage of screen to validate mouse click/mobile tap
 	const float PLAYERSPEED = 5; // Just a placeholder until we get something more finalized
 	
 	// for edge detection
-	Vector3 edgeLeft;
-	Vector3 edgeRight;
-	Vector3 screenWidth;
+	Vector2 edgeLeft;
+	Vector2 edgeRight;
+	Vector2 screenWidth;
 
 	// for player movement
-	Vector3 movement;
+	Vector2 movement;
 	
 	// for references to player
-	Animator animator;
 	Rigidbody2D playerRigidbody;
 
 	// Use this for initialization
 	void Awake()
 	{
-		screenWidth = new Vector3((float)Screen.width, 0f, 0f);
-		edgeLeft = new Vector3(screenWidth.x * EDGEBUFFER, 0f, 0f);
-		edgeRight = new Vector3(screenWidth.x - edgeLeft.x, 0f, 0f);
+		screenWidth = new Vector2((float)Screen.width, 0f);
+		edgeLeft = new Vector2(screenWidth.x * EDGEBUFFER, 0f);
+		edgeRight = new Vector2(screenWidth.x - edgeLeft.x, 0f);
 
 		playerRigidbody = GetComponent<Rigidbody2D> ();
 	}
@@ -48,10 +47,14 @@ public class MovementMouseMobile : MonoBehaviour
 	{
 		// Set movement and normalize in terms of time passed from previous frame
 		// (Assuming we will be frame rate dependent)
-		movement.Set (h, 0f, 0f);
+		movement.Set (h, 0f);
 		movement *= Time.deltaTime;
 
+		// Transform is a Vector3, adjusting data so RigidBody2D can accept it
+		movement.x += transform.position.x;
+		movement.y += transform.position.y;
+
 		// apply movement to player
-		playerRigidbody.MovePosition (transform.position + movement);
+		playerRigidbody.MovePosition (movement);
 	}
 }
