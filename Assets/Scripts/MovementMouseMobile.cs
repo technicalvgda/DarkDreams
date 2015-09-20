@@ -3,12 +3,13 @@ using System.Collections;
 
 public class MovementMouseMobile : MonoBehaviour
 {
-	const double EDGEBUFFER = 0.10; // Percentage of screen to validate mouse click/mobile tap
+	const float EDGEBUFFER = 0.10f; // Percentage of screen to validate mouse click/mobile tap
 	const float PLAYERSPEED = 1; // Just a placeholder until we get something more finalized
 	
 	// for edge detection
 	Vector3 edgeLeft;
 	Vector3 edgeRight;
+	Vector3 screenWidth;
 
 	// for player movement
 	Vector3 movement;
@@ -20,8 +21,9 @@ public class MovementMouseMobile : MonoBehaviour
 	// Use this for initialization
 	void Awake()
 	{
-		edgeLeft.set((int)(Screen.width * EDGEBUFFER), 0f, 0f);
-		edgeRight.set(Screen.width - edgeLeft, 0f, 0f);
+		screenWidth.Set((float)(Screen.width), 0f, 0f);
+		edgeLeft.Set(screenWidth.x * EDGEBUFFER, 0f, 0f);
+		edgeRight.Set(screenWidth.x - edgeLeft.x, 0f, 0f);
 
 		animator = GetComponent<Animator> ();
 		playerRigidbody = GetComponent<Rigidbody> ();
@@ -32,9 +34,9 @@ public class MovementMouseMobile : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown (0))
 		{
-			if (Input.mousePosition < edgeLeft)
+			if (Input.mousePosition.x < edgeLeft.x)
 				Move (-PLAYERSPEED);
-			if (Input.mousePosition > edgeRight)
+			if (Input.mousePosition.x > edgeRight.x)
 				Move (PLAYERSPEED);
 		} 
 		else
