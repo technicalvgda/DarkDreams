@@ -9,9 +9,6 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
-
-
-
     }
 
     // Update is called once per frame
