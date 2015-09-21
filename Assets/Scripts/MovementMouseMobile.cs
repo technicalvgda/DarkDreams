@@ -28,7 +28,7 @@ public class MovementMouseMobile : MonoBehaviour
 	}
 	
 	// Using FixedUpdate instead of Update, meaning this is done before rendering
-	void FixedUpdate ()
+	void LateUpdate ()
 	{
 		if (Input.GetMouseButton (0))
 		{
@@ -36,12 +36,6 @@ public class MovementMouseMobile : MonoBehaviour
 				Move (-PLAYERSPEED, 0f);
 			else if (Input.mousePosition.x > edgeRight.x)
 				Move (PLAYERSPEED, 0f);
-			else
-				Move (0f, 0f);
-		}
-		else
-		{
-			Move (0f, 0f);
 		}
 	}
 
