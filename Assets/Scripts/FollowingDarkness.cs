@@ -1,52 +1,49 @@
-﻿/* AI_FollowingDarkness moves to the right or left depending on the position
- * of the player. Does not contain the algorithm to determine the path to
- * traverse if the player is above or below the current position of Darkness.
- */
-
+﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 
-public class AI_FollowingDarkness : MonoBehaviour
-{
-	Transform target;			//the player
-	Transform darkness;			//the darkness
-	float moveSpeed;			//move speed
-	float spriteDirection;		//sprite face direction
-	
-	void Awake()
-    {
-        darkness = transform;                      //set darkness data
-        spriteDirection = transform.localScale.x;  //set sprite flip axis
-           }
+public class FollowingDarkness : MonoBehaviour {
 
-	void Start()
-    {
-               //objected tag with 'Player' becomes the target
-        target = GameObject.FindWithTag("Player").transform;
-           }
 
-	void UpdateFixed()
-    {
-        Debug.DrawLine(target.position, darkness.position, Color.magenta);
-           }
 
-	void Update()
+
+
+    Transform player;
+    public float moveSpeed;
+
+    private Transform myTransform;
+
+
+    void Awake()
     {
-               if (target.position.x > darkness.position.x)
+        myTransform = transform;
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void FixedUpdate()
+    {
+        Debug.DrawLine(player.position, myTransform.position, Color.blue);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (player.position.x < myTransform.position.x)
         {
-                        //sets the sprite to face to the right
-            transform.localScale = new Vector2(spriteDirection, transform.localScale.y);
-            
-                        //move to the right of the player
-            darkness.position += darkness.right * moveSpeed * Time.deltaTime;
-                   }
-              if (target.position.x < darkness.position.x)
+            myTransform.position -= myTransform.right * moveSpeed * Time.deltaTime;
+        }
+        else
+            if (player.position.x > myTransform.position.x)
         {
-                        //sets the sprite to face to the left
-            transform.localScale = new Vector2(-spriteDirection, transform.localScale.y);
-            
-                        //move to the left of the player
-            darkness.position -= darkness.right * moveSpeed * Time.deltaTime;
-                   }
-           }
+            myTransform.position += myTransform.right * moveSpeed * Time.deltaTime;
+        }
+
+    }
 }
+
+

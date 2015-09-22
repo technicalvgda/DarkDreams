@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PatrolingMonster : MonoBehaviour {
+public class PatrollingMonster : MonoBehaviour {
 
     Vector3 startPos;
     private bool facingRight = true;
@@ -18,10 +18,14 @@ public class PatrolingMonster : MonoBehaviour {
     //Variable to set distance of the monster's vision
     public float lineCastDistance = 0f;
 
+    PlayerControl player;
+
 
     // Use this for initialization
-    void Start () { 
+    void Start ()
+    { 
 	    startPos = gameObject.transform.position;
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     }
 
 	// Update is called once per frame
@@ -70,14 +74,17 @@ public class PatrolingMonster : MonoBehaviour {
         //check if the collider exists and if the collider is the player
         if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player")
         {
-            //Currently set to flip the monster to see that the line cast does 
-            //reverse when the patrolling monster flips and moves the other way. 
-            //When content team decides what would happen when the the 
-            //patrolling monster sees the player add the code in this if block
+            if (player.hide == false)
+            {
+                //Currently set to flip the monster to see that the line cast does 
+                //reverse when the patrolling monster flips and moves the other way. 
+                //When content team decides what would happen when the the 
+                //patrolling monster sees the player add the code in this if block
 
-            //FlipEnemy();
-            Debug.Log("You have been seen!");
-            //CODE TO BE ADDED IN THE FUTURE
+                //FlipEnemy();
+                Debug.Log("You have been seen!");
+                //CODE TO BE ADDED IN THE FUTURE
+            }
 
         }
 

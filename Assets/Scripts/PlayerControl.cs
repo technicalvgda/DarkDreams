@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     Vector2 screenWidth;
 
     // for references to player
-    Rigidbody2D playerRigidbody;
+ 
     private SpriteRenderer sprite;
     // for player movement
     Vector2 movement;
@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
     public float slowMoSpeed = 5.0f;        //speed magnitude when slowMo is activaed
 
     //hiding variables
-    private bool hide = false;
+    public bool hide = false;
     int sortingOrder = 0;
 
 
@@ -35,8 +35,6 @@ public class PlayerControl : MonoBehaviour
         screenWidth = new Vector2((float)Screen.width, 0f);
         edgeLeft = new Vector2(screenWidth.x * EDGEBUFFER, 0f);
         edgeRight = new Vector2(screenWidth.x - edgeLeft.x, 0f);
-
-        playerRigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
     // Use this for initialization
