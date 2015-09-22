@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class PlayerMovement : MonoBehaviour 
+public class PlayerControl : MonoBehaviour 
 {
     public const float EDGEBUFFER = 0.05f; // Percentage of screen to validate mouse click/mobile tap
     // for edge detection
@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     // for references to player
     Rigidbody2D playerRigidbody;
-
+    private SpriteRenderer sprite;
     // for player movement
     Vector2 movement;
 
@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public bool slowMo;                     //boolean that toggles slow motion
     public float normalSpeed = 10.0f;       //normal speed magnitude
     public float slowMoSpeed = 5.0f;        //speed magnitude when slowMo is activaed
+
+    //hiding variables
+    private bool hide = false;
+    int sortingOrder = 0;
 
 
 
@@ -33,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         edgeRight = new Vector2(screenWidth.x - edgeLeft.x, 0f);
 
         playerRigidbody = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
     // Use this for initialization
     void Start() //what happens as soon as player is created
@@ -78,13 +83,45 @@ public class PlayerMovement : MonoBehaviour
    
     void Move(float h)
     {
-        // Set movement and normalize in terms of time passed from previous frame
-        // (Assuming we will be frame rate dependent)
-        movement.x = h;
-        movement *= Time.deltaTime;
+        //prevent player from moving when hidden
+        if (!hide)
+        {
+            // Set movement and normalize in terms of time passed from previous frame
+            // (Assuming we will be frame rate dependent)
+            movement.x = h;
+            movement *= Time.deltaTime;
 
-        // apply movement to player
-        transform.Translate(movement);
+            // apply movement to player
+            transform.Translate(movement);
+        }
         
+    }
+    //allows actions when staying within collision area
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Cover")
+        {
+            //Toggle Hide/Unhide
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                hide = !hide;
+                Debug.Log("Hide: " + hide);
+                //if player is hidden
+                if(hide)
+                {
+                    sprite.sortingOrder = sortingOrder;   
+                }
+                else
+                {
+                    sprite.sortingOrder = 1;
+                }
+
+            }
+
+            
+            
+                
+        }
+       
     }
 }
