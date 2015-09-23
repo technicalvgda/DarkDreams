@@ -24,7 +24,8 @@ public class PlayerControl : MonoBehaviour
 
     //hiding variables
     public bool hide = false;
-    int sortingOrder = 0;
+    int hidingOrder = 0;//sorting layer when hidden
+    int sortingOrder = 2;//sorting layer normally
 
     //panels
     public GameObject gameOverPanel;
@@ -43,6 +44,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
+        gameOverPanel.SetActive(false);
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
         
 
@@ -98,10 +100,10 @@ public class PlayerControl : MonoBehaviour
         
     }
     //handle collisions with level objects
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        //if player colliders with an enemy
-        if (coll.gameObject.tag == "Enemy")
+        //if player colliders with an enemy and is not hidden
+        if (col.gameObject.tag == "Enemy" && hide == false)
         {
             //activate game over panel
             gameOverPanel.SetActive(true);
@@ -118,23 +120,26 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 hide = !hide;
-                Debug.Log("Hide: " + hide);
                 //if player is hidden
-                if(hide)
+                if (hide)
                 {
-                    sprite.sortingOrder = sortingOrder;   
+                    sprite.sortingOrder = hidingOrder;
                 }
                 else
                 {
-                    sprite.sortingOrder = 1;
+                    sprite.sortingOrder = sortingOrder;
                 }
-
-            }
-
-            
-            
-                
+                Debug.Log("Hide: " + hide);
+            }     
         }
-       
+        //if player colliders with an enemy and is not hidden
+        if (col.gameObject.tag == "Enemy" && hide == false)
+        {
+            //activate game over panel
+            gameOverPanel.SetActive(true);
+            //prevent player from moving
+            normalSpeed = 0f;
+        }
+
     }
 }
