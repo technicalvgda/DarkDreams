@@ -26,6 +26,9 @@ public class PlayerControl : MonoBehaviour
     public bool hide = false;
     int sortingOrder = 0;
 
+    //panels
+    public GameObject gameOverPanel;
+
 
 
 
@@ -93,6 +96,18 @@ public class PlayerControl : MonoBehaviour
             transform.Translate(movement);
         }
         
+    }
+    //handle collisions with level objects
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        //if player colliders with an enemy
+        if (coll.gameObject.tag == "Enemy")
+        {
+            //activate game over panel
+            gameOverPanel.SetActive(true);
+            //prevent player from moving
+            normalSpeed = 0f;
+        }
     }
     //allows actions when staying within collision area
     void OnTriggerStay2D(Collider2D col)

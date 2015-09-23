@@ -76,6 +76,7 @@ MonoBehaviour:
   normalSpeed: 10
   slowMoSpeed: 5
   hide: 0
+  gameOverPanel: {fileID: 0}
 --- !u!212 &21281236
 SpriteRenderer:
   m_ObjectHideFlags: 1
