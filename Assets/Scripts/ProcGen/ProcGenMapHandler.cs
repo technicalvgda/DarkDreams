@@ -3,7 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ProcGenMapHandler : MonoBehaviour {
+public class ProcGenMapHandler : MonoBehaviour
+{
 
     //Declarations
     public ProcGenMap procGenMap;
@@ -14,8 +15,8 @@ public class ProcGenMapHandler : MonoBehaviour {
     public int noOfTiles;
 
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start()
     {
         //Makes sure we know how tiles we have (Set from Unity)
         tiles = new GameObject[13];
@@ -29,11 +30,29 @@ public class ProcGenMapHandler : MonoBehaviour {
         {
             Debug.Log(AvailableTiles[i]);
         }
-	}
-	
-	// Update is called once per frame
-	void Update () 
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-	
-	}
+
+    }
+
+    public void CreateMap()
+    {
+        if (AvailableTiles.Count > 0)
+        {
+            //Get a random number
+            System.Random rnd = new System.Random();
+            //Set this random number to our index
+            int indexToRemove = rnd.Next(0, AvailableTiles.Count);
+            //Sets the tile which will be used/removed
+            int tileNumber = AvailableTiles[indexToRemove];
+
+            //Test this random
+            Debug.Log("Removing " + tileNumber);
+
+            GameObject Tile = tiles[tileNumber];
+        }
+    }
 }
