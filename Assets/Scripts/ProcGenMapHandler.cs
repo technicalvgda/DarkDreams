@@ -36,4 +36,22 @@ public class ProcGenMapHandler : MonoBehaviour {
     {
 	
 	}
+
+    public void CreateMap()
+    {
+        if (AvailableTiles.Count > 0)
+        {
+            //Get a random number
+            System.Random rnd = new System.Random();
+            //Set this random number to our index
+            int indexToRemove = rnd.Next(0, AvailableTiles.Count);
+            //Sets the tile which will be used/removed
+            int tileNumber = AvailableTiles[indexToRemove];
+
+            //Test this random
+            Debug.Log("Removing " + tileNumber);
+
+            GameObject Tile = tiles[tileNumber];
+        }
+    }
 }
