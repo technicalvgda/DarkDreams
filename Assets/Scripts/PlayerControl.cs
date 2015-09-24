@@ -133,13 +133,14 @@ public class PlayerControl : MonoBehaviour
             }     
         }
         //if player colliders with an enemy and is not hidden
-        if (col.gameObject.tag == "Enemy" && hide == false)
+        if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
             //activate game over panel
             gameOverPanel.SetActive(true);
             //prevent player from moving
             normalSpeed = 0f;
         }
+       ///gameover for stationary enemies handled in their own code
 
     }
 }
