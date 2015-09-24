@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
     private SpriteRenderer sprite;
     // for player movement
     Vector2 movement;
-
+    private bool facingRight = true;
     //speed variables
     public float playerSpeed;               // final magnitude of speed, the player's speed
     public bool slowMo;                     //boolean that toggles slow motion
@@ -96,8 +96,18 @@ public class PlayerControl : MonoBehaviour
 
             // apply movement to player
             transform.Translate(movement);
+            //this checks which direction the player is moving and flips the player based upon that
+            if (movement.x > 0 && facingRight == false)
+            {
+                FlipPlayer();
+            }
+            if (movement.x < 0 && facingRight == true)
+            {
+                FlipPlayer();
+            }
+
         }
-        
+
     }
     //handle collisions with level objects
     void OnTriggerEnter2D(Collider2D col)
@@ -141,6 +151,12 @@ public class PlayerControl : MonoBehaviour
             normalSpeed = 0f;
         }
        ///gameover for stationary enemies handled in their own code
-
+    }
+    void FlipPlayer()
+    {
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
