@@ -7,6 +7,7 @@ public class PlayerPickMechanics : MonoBehaviour {
 	void Start () {
 	
 	}
+
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.name == "Item") {
             Destroy(col.gameObject);
