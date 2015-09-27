@@ -444,7 +444,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 131818, guid: c0af72616afd76647a62314789eddcb0, type: 2}
       propertyPath: m_Name
@@ -828,6 +828,14 @@ Prefab:
     - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
       propertyPath: m_RootOrder
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480814, guid: c0af72616afd76647a62314789eddcb0, type: 2}
+      propertyPath: lineCastDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 12059324, guid: c0af72616afd76647a62314789eddcb0, type: 2}
+      propertyPath: m_Positions.Array.data[1].x
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0af72616afd76647a62314789eddcb0, type: 2}
