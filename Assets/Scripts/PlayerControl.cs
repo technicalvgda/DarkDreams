@@ -29,6 +29,7 @@ public class PlayerControl : MonoBehaviour
 
     //panels
     public GameObject gameOverPanel;
+    public CanvasGroup darkness;
 
 
 
@@ -134,10 +135,12 @@ public class PlayerControl : MonoBehaviour
                 if (hide)
                 {
                     sprite.sortingOrder = hidingOrder;
+                    darkness.GetComponent<FadingDarknessMechanic>().playerHidden = true;
                 }
                 else
                 {
                     sprite.sortingOrder = sortingOrder;
+                    darkness.GetComponent<FadingDarknessMechanic>().playerHidden = false;
                 }
                 Debug.Log("Hide: " + hide);
             }     
