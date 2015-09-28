@@ -22,6 +22,9 @@ public class PlayerControl : MonoBehaviour
     public float normalSpeed = 10.0f;       //normal speed magnitude
     public float slowMoSpeed = 5.0f;        //speed magnitude when slowMo is activaed
 
+    //point variables
+    public static int itemCounter;//to count item pickups
+
     //hiding variables
     public bool hide = false;
     int hidingOrder = 0;//sorting layer when hidden
@@ -158,5 +161,11 @@ public class PlayerControl : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+    // adds points in  the Player Script
+    public static void AddPoints(int itemAdd)
+    {
+        itemCounter += itemAdd; //adds amount to current score
+        Debug.Log("Score: " + itemCounter); //confirms the player has picked up the object (track amount). this is removeable.
     }
 }

@@ -18,6 +18,8 @@ public class PatrollingMonster : MonoBehaviour {
     private Vector2 endCast;
     //Variable to set distance of the monster's vision
     public float lineCastDistance = 0f;
+    //LineRenderer to display line of sight to player
+    public LineRenderer lineOfSight;
 
     PlayerControl player;
 
@@ -26,7 +28,12 @@ public class PatrollingMonster : MonoBehaviour {
     void Start ()
     { 
 	    startPos = gameObject.transform.position;
+        //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        //set lineOfSight to this objects LineRenderer component
+        lineOfSight = GetComponent<LineRenderer>();
+        //set position of end node of line renderer to the same distance as its line cast
+        lineOfSight.SetPosition(1, new Vector3(lineCastDistance, 0, 0));
     }
 
 	// Update is called once per frame
