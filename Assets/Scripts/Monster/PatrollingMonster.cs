@@ -82,14 +82,10 @@ public class PatrollingMonster : MonoBehaviour {
         //check if the collider exists and if the collider is the player
         if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player") {
 
+            ///this code runs when player is seen
 			if (player.hide == false) {
-				//Currently set to flip the monster to see that the line cast does 
-				//reverse when the patrolling monster flips and moves the other way. 
-				//When content team decides what would happen when the the 
-				//patrolling monster sees the player add the code in this if block
+				
 
-				//FlipEnemy();
-				Debug.Log ("You have been seen!");
 				//Tests which direction the monster is facing
 				if (!facingRight) 
 				{
