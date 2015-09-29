@@ -22,7 +22,7 @@ public class PatrollingMonster : MonoBehaviour {
     public LineRenderer lineOfSight;
 
     PlayerControl player;
-
+    public GameObject spottedCue;
 
     // Use this for initialization
     void Start ()
@@ -34,6 +34,8 @@ public class PatrollingMonster : MonoBehaviour {
         lineOfSight = GetComponent<LineRenderer>();
         //set position of end node of line renderer to the same distance as its line cast
         lineOfSight.SetPosition(1, new Vector3(lineCastDistance, 0, 0));
+
+        
     }
 
 	// Update is called once per frame
@@ -82,9 +84,9 @@ public class PatrollingMonster : MonoBehaviour {
         //check if the collider exists and if the collider is the player
         if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player") {
 
+            spottedCue.SetActive(true);
             ///this code runs when player is seen
 			if (player.hide == false) {
-				
 
 				//Tests which direction the monster is facing
 				if (!facingRight) 
@@ -98,12 +100,16 @@ public class PatrollingMonster : MonoBehaviour {
 					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
 				}
 			}
+               
 		}
+        
+        
     }
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
     void FlipEnemy()
     {
+        spottedCue.SetActive(false);
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
