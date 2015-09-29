@@ -17,19 +17,27 @@ using System.Collections;
  */
 
 public class FlashingDarkness : MonoBehaviour {
+    CanvasGroup cGroup;
+    public float waitTime = 0.0001f;
+    
+    void Start()
+    {
+        //create a Canvas group object, needed to change the alpha value
+        cGroup = gameObject.GetComponent<CanvasGroup>();
+     
+        InvokeRepeating("Flash", 0f, waitTime);
+    }
 
-	// Update is called once per frame, creates a new alpha vale every frame
-	void Update () {
+	
 
-		//create a Canvas group object, needed to change the alpha value
-		CanvasGroup cGroup = gameObject.GetComponent<CanvasGroup>();
+    void Flash()
+    {
+        //generate a random float number from 0.0 to 1.0
+        float alphaValue = Random.Range(0.0f, 1.0f);
 
-		//generate a random float number from 0.0 to 1.0
-		float alphaValue = Random.Range(0.0f,1.0f);
+        //set the random generated number to the alpha value of the Canvas Group
+        cGroup.alpha = alphaValue;
 
-		//set the random generated number to the alpha value of the Canvas Group
-		cGroup.alpha = alphaValue;
-
-		Debug.Log ("Random #: " + alphaValue); //confirms and prints value of the random generated number. WARNING! This will print A LOT of values. This is removable.
-	}
+        //Debug.Log ("Random #: " + alphaValue); //confirms and prints value of the random generated number. WARNING! This will print A LOT of values. This is removable.
+    }
 }

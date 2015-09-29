@@ -17,7 +17,7 @@ public class FollowingEyes : MonoBehaviour
 
 	Vector3 pupil;					// pupil position
 
-	float maxDistance = .13f;		// max distance pupil will travel
+	float maxDistance = .2f;		// max distance pupil will travel
 	float activeDistance = 10f;		// activation distance
 	float speed = 1f;				// speed of transition
 
