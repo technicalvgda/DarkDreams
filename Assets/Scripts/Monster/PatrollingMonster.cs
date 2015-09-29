@@ -9,6 +9,7 @@ public class PatrollingMonster : MonoBehaviour {
     public float speed = 2.0f;
     public float counter = 0;
     public float distance;
+	public float visionSpeedMultiplier = 2.0f;
     public int patrolDistance = 5;
 
     //Start position for the line cast
@@ -17,6 +18,8 @@ public class PatrollingMonster : MonoBehaviour {
     private Vector2 endCast;
     //Variable to set distance of the monster's vision
     public float lineCastDistance = 0f;
+    //LineRenderer to display line of sight to player
+    public LineRenderer lineOfSight;
 
     PlayerControl player;
 
@@ -25,7 +28,12 @@ public class PatrollingMonster : MonoBehaviour {
     void Start ()
     { 
 	    startPos = gameObject.transform.position;
+        //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        //set lineOfSight to this objects LineRenderer component
+        lineOfSight = GetComponent<LineRenderer>();
+        //set position of end node of line renderer to the same distance as its line cast
+        lineOfSight.SetPosition(1, new Vector3(lineCastDistance, 0, 0));
     }
 
 	// Update is called once per frame
@@ -72,23 +80,25 @@ public class PatrollingMonster : MonoBehaviour {
         //Making the line cast
         RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
         //check if the collider exists and if the collider is the player
-        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player")
-        {
-            if (player.hide == false)
-            {
-                //Currently set to flip the monster to see that the line cast does 
-                //reverse when the patrolling monster flips and moves the other way. 
-                //When content team decides what would happen when the the 
-                //patrolling monster sees the player add the code in this if block
+        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player") {
 
-                //FlipEnemy();
-                Debug.Log("You have been seen!");
-                //CODE TO BE ADDED IN THE FUTURE
-            }
+            ///this code runs when player is seen
+			if (player.hide == false) {
+				
 
-        }
-
-
+				//Tests which direction the monster is facing
+				if (!facingRight) 
+				{
+					//Multiply the movement by the amount set in the inspector
+					transform.Translate (-movement * visionSpeedMultiplier, 0, 0);
+				}
+				else 
+				{
+					//Multiply the movement by the amount set in the inspector
+					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
+				}
+			}
+		}
     }
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
@@ -99,5 +109,4 @@ public class PatrollingMonster : MonoBehaviour {
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-
 }
