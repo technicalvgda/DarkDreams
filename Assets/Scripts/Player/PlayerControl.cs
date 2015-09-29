@@ -10,8 +10,11 @@ public class PlayerControl : MonoBehaviour
     Vector2 edgeRight;
     Vector2 screenWidth;
 
+    // For click/tap detection
+    Vector2 clickPosition;
+
     // for references to player
- 
+
     private SpriteRenderer sprite;
     // for player movement
     Vector2 movement;
@@ -39,6 +42,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        clickPosition = new Vector2(0f, 0f);
         screenWidth = new Vector2((float)Screen.width, 0f);
         edgeLeft = new Vector2(screenWidth.x * EDGEBUFFER, 0f);
         edgeRight = new Vector2(screenWidth.x - edgeLeft.x, 0f);
@@ -127,24 +131,30 @@ public class PlayerControl : MonoBehaviour
     //allows actions when staying within collision area
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Cover")
+        // OverlapPoint refers to world space instead of screen space, adjusting accordingly
+        clickPosition.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
+        clickPosition.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+       
+       
+        //Toggle Hide/Unhide
+        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)&& col.OverlapPoint(clickPosition))))
         {
-            //Toggle Hide/Unhide
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (col.gameObject.tag == "Cover")
             {
-                hide = !hide;
-                //if player is hidden
-                if (hide)
+                if (!hide)
                 {
                     sprite.sortingOrder = hidingOrder;
+                    hide = true;
                 }
-                else
+                else if (hide)
                 {
                     sprite.sortingOrder = sortingOrder;
+                    hide = false;
                 }
-                Debug.Log("Hide: " + hide);
-            }     
-        }
+            }
+               
+          }     
+        
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
