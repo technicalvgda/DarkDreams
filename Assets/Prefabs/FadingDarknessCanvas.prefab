@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8717d1b8f23d10247b6b78c0f476bcf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHidden: 0
 --- !u!114 &11498794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +134,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -765892533
   m_SortingOrder: 0
 --- !u!224 &22427218
 RectTransform:
