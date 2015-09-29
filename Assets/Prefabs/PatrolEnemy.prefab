@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.73999977, y: -1.75999999, z: 0}
+  m_LocalPosition: {x: 24.5, y: -2.20000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,6 +63,7 @@ MonoBehaviour:
   patrolDistance: 15
   lineCastDistance: 8
   lineOfSight: {fileID: 12046844}
+  spottedCue: {fileID: 0}
 --- !u!120 &12046844
 LineRenderer:
   m_ObjectHideFlags: 1
