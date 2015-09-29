@@ -1370,7 +1370,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 2084357674}
   - 212: {fileID: 2084357675}
-  - 114: {fileID: 2084357676}
   m_Layer: 0
   m_Name: SpottedIndicator
   m_TagString: Untagged
@@ -1416,14 +1415,3 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 32e805f2fd65f1a4aa92638f2580086e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &2084357676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2084357673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7591a18ba12f994cbd28cecbb528282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
