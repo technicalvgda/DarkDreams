@@ -22,8 +22,10 @@ public class PlayerControl : MonoBehaviour
     //speed variables
     public float playerSpeed;               // final magnitude of speed, the player's speed
     public bool slowMo;                     //boolean that toggles slow motion
+    public bool sprint;                     //boolean that toggles sprint
     public float normalSpeed = 10.0f;       //normal speed magnitude
-    public float slowMoSpeed = 5.0f;        //speed magnitude when slowMo is activaed
+    public float slowMoSpeed;        //speed magnitude when slowMo is activaed
+    public float sprintSpeed;
 
     //point variables
     public static int itemCounter;//to count item pickups
@@ -46,6 +48,8 @@ public class PlayerControl : MonoBehaviour
         edgeLeft = new Vector2(screenWidth.x * EDGEBUFFER, 0f);
         edgeRight = new Vector2(screenWidth.x - edgeLeft.x, 0f);
         sprite = GetComponent<SpriteRenderer>();
+        slowMoSpeed = normalSpeed / 2;
+        sprintSpeed = normalSpeed * 2;
     }
     // Use this for initialization
     void Start() //what happens as soon as player is created
@@ -61,15 +65,13 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //it shift key is hit, players speed is 2 times the speed
-            playerSpeed = normalSpeed * 2;
-            print("shift key was pressed");
-        }/* 
+            sprint = true;
+        } 
         else
         {
-            // if not then normal speed resumes
-            playerSpeed = normalSpeed;
+            sprint = false;
         }
-            */
+            
     }
     void LateUpdate()
     {
@@ -89,14 +91,14 @@ public class PlayerControl : MonoBehaviour
         }
         
         ///code for slow motion movement
-        if (Input.GetKeyDown(KeyCode.E)) //when the player presses the "e" key, it toggles slowMo
-        {
-            slowMo = !slowMo;
-            Debug.Log("toggle");  //so we can check how many times it toggles per keyhit, it is temporary
-        }
+       
         if (slowMo) //when slowMo is true, the player will move at half speed
         {
             playerSpeed = slowMoSpeed;
+        }
+        else if(sprint)
+        {
+            playerSpeed = sprintSpeed;
         }
 
         else  //when slowMo is false, the player will move normally
