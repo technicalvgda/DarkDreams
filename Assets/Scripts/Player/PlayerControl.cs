@@ -55,6 +55,21 @@ public class PlayerControl : MonoBehaviour
         
 
 	}
+    void Update()
+    {
+        //code for sprinting
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            //it shift key is hit, players speed is 2 times the speed
+            playerSpeed = normalSpeed * 2;
+            print("shift key was pressed");
+        }
+        else
+        {
+            // if not then normal speed resumes
+            playerSpeed = normalSpeed;
+        }
+    }
     void LateUpdate()
     {
         //handles player movement based upon mouse clicks (or taps)
@@ -71,7 +86,7 @@ public class PlayerControl : MonoBehaviour
            //calls move, sends a value of the speed multiplied by the axis (which will either be -1, 0, or 1)
             Move(Input.GetAxis("Horizontal")*playerSpeed);
         }
-
+        
         ///code for slow motion movement
         if (Input.GetKeyDown(KeyCode.E)) //when the player presses the "e" key, it toggles slowMo
         {
