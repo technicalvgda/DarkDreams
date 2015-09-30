@@ -21,16 +21,12 @@ public class PlayerControl : MonoBehaviour
     public bool slowMo;                     //boolean that toggles slow motion
     public float normalSpeed = 10.0f;       //normal speed magnitude
     public float slowMoSpeed = 5.0f;        //speed magnitude when slowMo is activaed
+    public bool isAlive = true;
 
     //hiding variables
     public bool hide = false;
     int hidingOrder = 0;//sorting layer when hidden
     int sortingOrder = 2;//sorting layer normally
-
-    //panels
-    public GameObject gameOverPanel;
-
-
 
 
     // Use this for initialization
@@ -44,7 +40,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
-        gameOverPanel.SetActive(false);
+        //gameOverPanel.SetActive(false);
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
         
 
@@ -116,7 +112,7 @@ public class PlayerControl : MonoBehaviour
         if (col.gameObject.tag == "Enemy" && hide == false)
         {
             //activate game over panel
-            gameOverPanel.SetActive(true);
+            //gameOverPanel.SetActive(true);
             //prevent player from moving
             normalSpeed = 0f;
         }
@@ -142,15 +138,19 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log("Hide: " + hide);
             }     
         }
+        Debug.Log(col.gameObject.tag);
         //if player colliders with an enemy and is not hidden
-        if (col.gameObject.tag == "PatrolEnemy" && hide == false)
+        if (col.gameObject.tag == "Enemy" && hide == false)
         {
             //activate game over panel
-            gameOverPanel.SetActive(true);
+            isAlive = false;
+            Debug.Log("Hide: " + hide);
+            Debug.Log(isAlive);
+            //gameOverPanel.SetActive(true);
             //prevent player from moving
             normalSpeed = 0f;
         }
-       ///gameover for stationary enemies handled in their own code
+       //gameover for stationary enemies handled in their own code
     }
     void FlipPlayer()
     {
