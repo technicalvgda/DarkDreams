@@ -95,7 +95,12 @@ public class PatrollingMonster : MonoBehaviour {
             {
                 
                 spottedCue.SetActive(true);
-               
+
+                if (!player.slowMo)// Upon player collision with linecast/monster-vision, their speed is reduced
+                {
+                    player.slowMo = true;
+                }
+
                 //Tests which direction the monster is facing
                 if (!facingRight) 
 				{
