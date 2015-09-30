@@ -30,6 +30,8 @@ public class PlayerControl : MonoBehaviour
     //panels
     public GameObject gameOverPanel;
 
+    
+
 
 
 
@@ -46,7 +48,7 @@ public class PlayerControl : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
-        
+       
 
 	}
     void LateUpdate()
@@ -159,4 +161,23 @@ public class PlayerControl : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+    void Update ()
+    {   
+        //Toggle run button
+        if (Input.GetKey(KeyCode.LeftShift))
+    
+                  
+            {
+                //it shift key is hit, players speed is 2 times the speed
+                 playerSpeed= normalSpeed *2;
+                print("shift key was pressed");
+            }
+        else
+            { 
+                // if not then normal speed resumes
+                playerSpeed = normalSpeed;
+            }
+
+    }
 }
+
