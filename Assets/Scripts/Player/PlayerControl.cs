@@ -63,12 +63,13 @@ public class PlayerControl : MonoBehaviour
             //it shift key is hit, players speed is 2 times the speed
             playerSpeed = normalSpeed * 2;
             print("shift key was pressed");
-        }
+        }/* 
         else
         {
             // if not then normal speed resumes
             playerSpeed = normalSpeed;
         }
+            */
     }
     void LateUpdate()
     {
@@ -98,7 +99,7 @@ public class PlayerControl : MonoBehaviour
             playerSpeed = slowMoSpeed;
         }
 
-        else  //when slowMo is false, the player will move normaly
+        else  //when slowMo is false, the player will move normally
         {
             playerSpeed = normalSpeed;
         }
@@ -164,6 +165,11 @@ public class PlayerControl : MonoBehaviour
                 {
                     sprite.sortingOrder = sortingOrder;
                     hide = false;
+
+                    if (slowMo) //Disables slowmotion speed upon hiding
+                    {
+                        slowMo = false;
+                    }
                 }
             }
                
