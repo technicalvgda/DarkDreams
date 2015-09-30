@@ -14,4 +14,8 @@ public class RandomMapGeneration : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void initializeRooms() {
+	}
+
 }
