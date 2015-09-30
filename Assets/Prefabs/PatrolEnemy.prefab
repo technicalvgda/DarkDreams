@@ -14,7 +14,7 @@ GameObject:
   - 120: {fileID: 12046844}
   m_Layer: 0
   m_Name: PatrolEnemy
-  m_TagString: Enemy
+  m_TagString: PatrolEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,6 @@ MonoBehaviour:
   patrolDistance: 15
   lineCastDistance: 8
   lineOfSight: {fileID: 12046844}
-  spottedCue: {fileID: 0}
 --- !u!120 &12046844
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -185,6 +184,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_UseLightProbes
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: PatrolEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

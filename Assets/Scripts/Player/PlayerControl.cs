@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     Vector2 clickPosition;
 
     // for references to player
-
+    public bool isAlive = true;
     private SpriteRenderer sprite;
     // for player movement
     Vector2 movement;
@@ -33,8 +33,7 @@ public class PlayerControl : MonoBehaviour
     int hidingOrder = 0;//sorting layer when hidden
     int sortingOrder = 2;//sorting layer normally
 
-    //panels
-    public GameObject gameOverPanel;
+    
 
 
 
@@ -51,7 +50,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
-        gameOverPanel.SetActive(false);
+        
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
         
 
@@ -120,10 +119,10 @@ public class PlayerControl : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         //if player colliders with an enemy and is not hidden
-        if (col.gameObject.tag == "Enemy" && hide == false)
+        if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
-            //activate game over panel
-            gameOverPanel.SetActive(true);
+            //player is dead
+            isAlive = false;
             //prevent player from moving
             normalSpeed = 0f;
         }
@@ -158,8 +157,8 @@ public class PlayerControl : MonoBehaviour
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
-            //activate game over panel
-            gameOverPanel.SetActive(true);
+            //player is dead
+            isAlive = false;
             //prevent player from moving
             normalSpeed = 0f;
         }
