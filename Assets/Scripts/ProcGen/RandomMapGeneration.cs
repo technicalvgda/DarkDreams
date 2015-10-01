@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 
 public class RandomMapGeneration : MonoBehaviour {
+
 	public int sizeOfMapX = 1;
 	public int sizeOfMapY = 1;
 
@@ -16,6 +17,7 @@ public class RandomMapGeneration : MonoBehaviour {
 	//create 2 linkedDoor
 	private List<int> linkedDoorRooms = new List<int>(2);
 
+	private const int NUMBER_OF_DOOR_PER_FLOOR = 2;
 	// Use this for initialization
 	void Awake() {
 		initializeRooms ();
@@ -27,17 +29,16 @@ public class RandomMapGeneration : MonoBehaviour {
 	//shuffle door and reg room.
 	void initializeRooms() {
 		//shuffle doorRooms
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < doorRoom.Length; i++)
 		{
 			int idx = Random.Range(i, doorRoom.Length);
-			
 			//swap elements
 			Transform tmp = doorRoom[i];
 			doorRoom[i] = doorRoom[idx];
 			doorRoom[idx] = tmp;
 		} 
 		//shuffle regRoom
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < regRoom.Length; i++)
 		{
 			int idx = Random.Range(i, regRoom.Length);
 			//swap elements
@@ -45,14 +46,18 @@ public class RandomMapGeneration : MonoBehaviour {
 			regRoom[i] = regRoom[idx];
 			regRoom[idx] = tmp;
 		} 
-
 		for (int i = 0; i < doorRoom.Length; i++) {
 			doorRoomUnvisited.Push (doorRoom [i]);
 		}
 		for (int i = 0; i < regRoom.Length; i++) {
 			regRoomUnvisited.Push (regRoom[i]);
 		}
-
+		if (doorRoom.Length < sizeOfMapX* NUMBER_OF_DOOR_PER_FLOOR) {
+			Debug.Log ("Door rooms size should be more than " + sizeOfMapX* NUMBER_OF_DOOR_PER_FLOOR);
+		}
+		if (regRoom.Length < (sizeOfMapX * sizeOfMapY) - (sizeOfMapX * NUMBER_OF_DOOR_PER_FLOOR)) {
+			Debug.Log ("Regular rooms size should be more than " + ((sizeOfMapX * sizeOfMapY) - (sizeOfMapX * NUMBER_OF_DOOR_PER_FLOOR)));
+		}
 	}
 
 	//Generate randomDoorRoom
