@@ -37,7 +37,7 @@ public class RandomMapGeneration : MonoBehaviour {
 	void generateRandomDoor() {
 		int randomDoor = 0;
 		int numberOfLinkedDoor = 0;
-		while (numberOfLinkedDoor < 2) {    
+		while (linkedDoorRooms.Count < 2) {    
 			randomDoor = Random.Range (0, sizeOfMapX);
 			if (!linkedDoorRooms.Contains (randomDoor)) {
 				linkedDoorRooms.Add (randomDoor);
@@ -45,8 +45,9 @@ public class RandomMapGeneration : MonoBehaviour {
 			}
 		}
 		for (int i = 0; i < linkedDoorRooms.Count; i++) {
-			Debug.Log ("LinkedDoor: " + linkedDoorRooms[i]);
+			Debug.Log ("LinkedDoorRooms: " + linkedDoorRooms[i]);
 		}
+
 
 	}
 
@@ -58,7 +59,7 @@ public class RandomMapGeneration : MonoBehaviour {
 		for (int j = 0; j < sizeOfMapY; j++) {
 			generateRandomDoor ();
 			for (int i = 0; i < sizeOfMapX; i++) {
-				if (!linkedDoorRooms.Contains (i)) {
+				if (linkedDoorRooms.Contains (i)) {
 					//Transform doorR = doorRoomUnvisited.Peek ();
 					Instantiate (doorRoom[i], transform.position + sizeOfPrefab, transform.rotation);
 					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
