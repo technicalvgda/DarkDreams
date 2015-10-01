@@ -10,20 +10,42 @@ public class RandomMapGeneration : MonoBehaviour {
 	public Transform[] doorRoom;
 	public Transform[] regRoom;
 
-	private Stack<Transform> doorRoomUnvisited;
-	private Stack<Transform> regRoomUnvisited;
+	private Stack<Transform> doorRoomUnvisited = new Stack<Transform>();
+	private Stack<Transform> regRoomUnvisited = new Stack<Transform>();
 
 	//create 2 linkedDoor
 	private List<int> linkedDoorRooms = new List<int>(2);
 
 	// Use this for initialization
 	void Awake() {
+		initializeRooms ();
 		instantiateRooms ();
+
 	}
 
 
 	//shuffle door and reg room.
 	void initializeRooms() {
+		//shuffle doorRooms
+		for (int i = 0; i < 10; i++)
+		{
+			int idx = Random.Range(i, doorRoom.Length);
+			
+			//swap elements
+			Transform tmp = doorRoom[i];
+			doorRoom[i] = doorRoom[idx];
+			doorRoom[idx] = tmp;
+		} 
+		//shuffle regRoom
+		for (int i = 0; i < 10; i++)
+		{
+			int idx = Random.Range(i, regRoom.Length);
+			//swap elements
+			Transform tmp = regRoom[i];
+			regRoom[i] = regRoom[idx];
+			regRoom[idx] = tmp;
+		} 
+
 		for (int i = 0; i < doorRoom.Length; i++) {
 			doorRoomUnvisited.Push (doorRoom [i]);
 		}
@@ -44,10 +66,6 @@ public class RandomMapGeneration : MonoBehaviour {
 				numberOfLinkedDoor++;
 			}
 		}
-		for (int i = 0; i < linkedDoorRooms.Count; i++) {
-			Debug.Log ("LinkedDoorRooms: " + linkedDoorRooms[i]);
-		}
-
 
 	}
 
@@ -60,13 +78,13 @@ public class RandomMapGeneration : MonoBehaviour {
 			generateRandomDoor ();
 			for (int i = 0; i < sizeOfMapX; i++) {
 				if (linkedDoorRooms.Contains (i)) {
-					//Transform doorR = doorRoomUnvisited.Peek ();
-					Instantiate (doorRoom[i], transform.position + sizeOfPrefab, transform.rotation);
+					Transform doorR = doorRoomUnvisited.Pop ();
+					Instantiate (doorR, transform.position + sizeOfPrefab, transform.rotation);
 					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
 						doorRoom [i].localScale.x + doorRoom [i].transform.right.x;
-				//	doorRoomUnvisited.Pop ();
 				} else {
-					Instantiate (regRoom [i], transform.position + sizeOfPrefab, transform.rotation);
+					Transform regR = regRoomUnvisited.Pop ();
+					Instantiate (regR, transform.position + sizeOfPrefab, transform.rotation);
 					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
 						doorRoom [i].localScale.x + doorRoom [i].transform.right.x;
 				}
@@ -81,9 +99,6 @@ public class RandomMapGeneration : MonoBehaviour {
 				doorRoom [j].transform.up.y;
 			sizeOfPrefab.y *= level;
 		}
-
-			                                                   
-
 
 	}
 
