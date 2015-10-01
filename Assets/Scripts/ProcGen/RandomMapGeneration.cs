@@ -20,11 +20,10 @@ public class RandomMapGeneration : MonoBehaviour {
 	void Awake() {
 		instantiateRooms ();
 	}
-	
-	//shuffle door and reg room
+
+
+	//shuffle door and reg room.
 	void initializeRooms() {
-<<<<<<< HEAD
-<<<<<<< HEAD
 		for (int i = 0; i < doorRoom.Length; i++) {
 			doorRoomUnvisited.Push (doorRoom [i]);
 		}
@@ -32,26 +31,6 @@ public class RandomMapGeneration : MonoBehaviour {
 			regRoomUnvisited.Push (regRoom[i]);
 		}
 
-=======
-=======
->>>>>>> origin/RandomMapGen
-		System.Random rnd = new System.Random ();
-		for (int i = 0; i < doorRoom.Length; i++) {
-			int randomIndex = rnd.Next(doorRoom.Length); // Gets a random int from 0 up to but not including array length
-			Transform tempCopy = doorRoom[randomIndex]; // Makes copy of room at random index
-			doorRoom[randomIndex] = doorRoom[i]; // Swap part 1
-			doorRoom[i] = tempCopy; // Swap part 2
-		}
-		for (int i = 0; i < regRoom.Length; i++) { // Same but for regRoom instead of doorRoom
-			int randomIndex = rnd.Next (regRoom.Length);
-			Transform tempCopy = regRoom [randomIndex];
-			regRoom [randomIndex] = regRoom [i];
-			regRoom [i] = tempCopy;
-		}
-<<<<<<< HEAD
->>>>>>> origin/RandomMapGen
-=======
->>>>>>> origin/RandomMapGen
 	}
 
 	//Generate randomDoorRoom
@@ -80,10 +59,11 @@ public class RandomMapGeneration : MonoBehaviour {
 			generateRandomDoor ();
 			for (int i = 0; i < sizeOfMapX; i++) {
 				if (!linkedDoorRooms.Contains (i)) {
-
-					Instantiate (doorRoom [i], transform.position + sizeOfPrefab, transform.rotation);
+					//Transform doorR = doorRoomUnvisited.Peek ();
+					Instantiate (doorRoom[i], transform.position + sizeOfPrefab, transform.rotation);
 					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
 						doorRoom [i].localScale.x + doorRoom [i].transform.right.x;
+				//	doorRoomUnvisited.Pop ();
 				} else {
 					Instantiate (regRoom [i], transform.position + sizeOfPrefab, transform.rotation);
 					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
