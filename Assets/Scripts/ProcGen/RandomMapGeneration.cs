@@ -24,6 +24,7 @@ public class RandomMapGeneration : MonoBehaviour {
 	//shuffle door and reg room
 	void initializeRooms() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for (int i = 0; i < doorRoom.Length; i++) {
 			doorRoomUnvisited.Push (doorRoom [i]);
 		}
@@ -32,6 +33,8 @@ public class RandomMapGeneration : MonoBehaviour {
 		}
 
 =======
+=======
+>>>>>>> origin/RandomMapGen
 		System.Random rnd = new System.Random ();
 		for (int i = 0; i < doorRoom.Length; i++) {
 			int randomIndex = rnd.Next(doorRoom.Length); // Gets a random int from 0 up to but not including array length
@@ -45,6 +48,9 @@ public class RandomMapGeneration : MonoBehaviour {
 			regRoom [randomIndex] = regRoom [i];
 			regRoom [i] = tempCopy;
 		}
+<<<<<<< HEAD
+>>>>>>> origin/RandomMapGen
+=======
 >>>>>>> origin/RandomMapGen
 	}
 
