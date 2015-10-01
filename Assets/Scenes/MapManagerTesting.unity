@@ -243,9 +243,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbac475e37774665a704c577575b25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeOfMapX: 4
+  sizeOfMapY: 4
   doorRoom:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  regRoom: []
+  - {fileID: 434226, guid: 0c8bcd2cc6cab44998069e2aaed10f4a, type: 2}
+  - {fileID: 434226, guid: 0c8bcd2cc6cab44998069e2aaed10f4a, type: 2}
+  - {fileID: 434226, guid: 0c8bcd2cc6cab44998069e2aaed10f4a, type: 2}
+  - {fileID: 434226, guid: 0c8bcd2cc6cab44998069e2aaed10f4a, type: 2}
+  regRoom:
+  - {fileID: 415798, guid: 943df486b5de047ebb0327212cbc773e, type: 2}
+  - {fileID: 415798, guid: 943df486b5de047ebb0327212cbc773e, type: 2}
+  - {fileID: 415798, guid: 943df486b5de047ebb0327212cbc773e, type: 2}
+  - {fileID: 415798, guid: 943df486b5de047ebb0327212cbc773e, type: 2}
