@@ -39,7 +39,16 @@ public class TeleportDoors : MonoBehaviour
                 TeleportToExit2D(col);
             
         }
-	}
+
+        if (other.tag == "Player" && Input.GetMouseButtonDown(0))
+        {
+
+            Debug.Log("Teleport Complete!"); // confirm that teleport is complete; this can be taken out
+            TeleportToExit2D(other);
+
+        }
+
+    }
 	
 	void TeleportToExit2D ( Collider2D col )
 	{
