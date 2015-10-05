@@ -17,20 +17,32 @@ using System.Collections;
 public class TeleportDoors : MonoBehaviour
 {
 	public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
-	
-	void OnTriggerStay2D ( Collider2D other)
+
+    Vector2 clickPosition;
+
+    // Use this for initialization
+    void Awake()
+    {
+        clickPosition = new Vector2(0f, 0f);
+    }
+    
+    void OnTriggerStay2D ( Collider2D col)
 	{
-        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
+        ///get position of click
+        clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+        ///currently, click must be on player
+        if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space))||(col.OverlapPoint(clickPosition) && Input.GetMouseButtonDown(0))))
         {
             
                 Debug.Log("Teleport Complete!"); // confirm that teleport is complete; this can be taken out
-                TeleportToExit2D(other);
+                TeleportToExit2D(col);
             
         }
 	}
 	
-	void TeleportToExit2D ( Collider2D other )
+	void TeleportToExit2D ( Collider2D col )
 	{
-		other.transform.position = exit.transform.position; //line that teleports player
+		col.transform.position = exit.transform.position; //line that teleports player
 	}
 }
