@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21243008}
   - 61: {fileID: 6167920}
   - 114: {fileID: 11484764}
+  - 114: {fileID: 11499594}
   m_Layer: 0
   m_Name: Door2
   m_TagString: Untagged
@@ -52,6 +53,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60a57a417da71314fbc87328f7a66570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exit: {fileID: 0}
+--- !u!114 &11499594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b74fae3855b17341a527780a2283c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   exit: {fileID: 0}
