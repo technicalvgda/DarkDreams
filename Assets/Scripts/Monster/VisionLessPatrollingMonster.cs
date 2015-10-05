@@ -6,9 +6,9 @@ public class VisionLessPatrollingMonster : MonoBehaviour {
 	
 	Vector3 startPos;
 	private bool facingRight = true;
-	public float movement;
+	float movement;
 	public float speed = 2.0f;
-	public float distance;
+	float distance;
 	public int patrolDistance = 5;
 	//to access methods and variables from the spawner
 	private VisionLessPatrollingMonsterSpawner obj;

@@ -54,12 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38418c75121245c48a0dcda9794dbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: 0
-  speed: 2
-  speed2: 0
-  counter: 0
-  distance: 0
-  patrolDistance: 15
+  speed: 8
+  patrolDistance: 36
 --- !u!212 &21261082
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -85,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d4c83c50108f6bb45ac86521458d379e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .953954637, g: .963235319, b: .290387094, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -95,11 +91,27 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: patrolDistance
-      value: 15
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: facingRight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: .953954637
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: .963235319
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: .290387094
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
