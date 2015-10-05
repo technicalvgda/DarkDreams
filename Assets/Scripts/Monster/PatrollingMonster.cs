@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PatrollingMonster : MonoBehaviour {
@@ -22,12 +23,18 @@ public class PatrollingMonster : MonoBehaviour {
     public LineRenderer lineOfSight;
 
     PlayerControl player;
+    GameObject spottedCue;
 
-
+    void Awake()
+    {
+        spottedCue = GameObject.Find("SpottedIndicator");
+    }
     // Use this for initialization
     void Start ()
-    { 
-	    startPos = gameObject.transform.position;
+    {
+
+        spottedCue.SetActive(false);
+        startPos = gameObject.transform.position;
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
         //set lineOfSight to this objects LineRenderer component
@@ -38,6 +45,7 @@ public class PatrollingMonster : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        
         Vector2 currentPos = gameObject.transform.position;
         //initialize the starting position of linecast every frame
         startCast = currentPos;
@@ -80,14 +88,21 @@ public class PatrollingMonster : MonoBehaviour {
         //Making the line cast
         RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
         //check if the collider exists and if the collider is the player
-        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player") {
-
+        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player")
+        {
             ///this code runs when player is seen
-			if (player.hide == false) {
-				
+			if (player.hide == false)
+            {
+                
+                spottedCue.SetActive(true);
 
-				//Tests which direction the monster is facing
-				if (!facingRight) 
+                if (!player.slowMo)// Upon player collision with linecast/monster-vision, their speed is reduced
+                {
+                    player.slowMo = true;
+                }
+
+                //Tests which direction the monster is facing
+                if (!facingRight) 
 				{
 					//Multiply the movement by the amount set in the inspector
 					transform.Translate (-movement * visionSpeedMultiplier, 0, 0);
@@ -98,15 +113,26 @@ public class PatrollingMonster : MonoBehaviour {
 					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
 				}
 			}
+            else
+            {
+                spottedCue.SetActive(false);
+            }
+            
 		}
+       
+       
     }
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
     void FlipEnemy()
     {
+        spottedCue.SetActive(false);
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+    
+       
+    
 }

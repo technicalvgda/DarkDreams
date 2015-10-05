@@ -10,8 +10,11 @@ public class PlayerControl : MonoBehaviour
     Vector2 edgeRight;
     Vector2 screenWidth;
 
+    // For click/tap detection
+    Vector2 clickPosition;
+
     // for references to player
- 
+    public bool isAlive = true;
     private SpriteRenderer sprite;
     // for player movement
     Vector2 movement;
@@ -19,8 +22,10 @@ public class PlayerControl : MonoBehaviour
     //speed variables
     public float playerSpeed;               // final magnitude of speed, the player's speed
     public bool slowMo;                     //boolean that toggles slow motion
+    public bool sprint;                     //boolean that toggles sprint
     public float normalSpeed = 10.0f;       //normal speed magnitude
-    public float slowMoSpeed = 5.0f;        //speed magnitude when slowMo is activaed
+    public float slowMoSpeed;        //speed magnitude when slowMo is activaed
+    public float sprintSpeed;
 
     //point variables
     public static int itemCounter;//to count item pickups
@@ -30,8 +35,7 @@ public class PlayerControl : MonoBehaviour
     int hidingOrder = 0;//sorting layer when hidden
     int sortingOrder = 2;//sorting layer normally
 
-    //panels
-    public GameObject gameOverPanel;
+    
 
 
 
@@ -39,19 +43,36 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        clickPosition = new Vector2(0f, 0f);
         screenWidth = new Vector2((float)Screen.width, 0f);
         edgeLeft = new Vector2(screenWidth.x * EDGEBUFFER, 0f);
         edgeRight = new Vector2(screenWidth.x - edgeLeft.x, 0f);
         sprite = GetComponent<SpriteRenderer>();
+        slowMoSpeed = normalSpeed / 2;
+        sprintSpeed = normalSpeed * 2;
     }
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
-        gameOverPanel.SetActive(false);
+        
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
         
 
 	}
+    void Update()
+    {
+        //code for sprinting
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            //it shift key is hit, players speed is 2 times the speed
+            sprint = true;
+        } 
+        else
+        {
+            sprint = false;
+        }
+            
+    }
     void LateUpdate()
     {
         //handles player movement based upon mouse clicks (or taps)
@@ -68,19 +89,19 @@ public class PlayerControl : MonoBehaviour
            //calls move, sends a value of the speed multiplied by the axis (which will either be -1, 0, or 1)
             Move(Input.GetAxis("Horizontal")*playerSpeed);
         }
-
+        
         ///code for slow motion movement
-        if (Input.GetKeyDown(KeyCode.E)) //when the player presses the "e" key, it toggles slowMo
-        {
-            slowMo = !slowMo;
-            Debug.Log("toggle");  //so we can check how many times it toggles per keyhit, it is temporary
-        }
+       
         if (slowMo) //when slowMo is true, the player will move at half speed
         {
             playerSpeed = slowMoSpeed;
         }
+        else if(sprint)
+        {
+            playerSpeed = sprintSpeed;
+        }
 
-        else  //when slowMo is false, the player will move normaly
+        else  //when slowMo is false, the player will move normally
         {
             playerSpeed = normalSpeed;
         }
@@ -116,10 +137,10 @@ public class PlayerControl : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         //if player colliders with an enemy and is not hidden
-        if (col.gameObject.tag == "Enemy" && hide == false)
+        if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
-            //activate game over panel
-            gameOverPanel.SetActive(true);
+            //player is dead
+            isAlive = false;
             //prevent player from moving
             normalSpeed = 0f;
         }
@@ -127,29 +148,40 @@ public class PlayerControl : MonoBehaviour
     //allows actions when staying within collision area
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Cover")
+        // OverlapPoint refers to world space instead of screen space, adjusting accordingly
+        clickPosition.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
+        clickPosition.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+       
+       
+        //Toggle Hide/Unhide
+        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)&& col.OverlapPoint(clickPosition))))
         {
-            //Toggle Hide/Unhide
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (col.gameObject.tag == "Cover")
             {
-                hide = !hide;
-                //if player is hidden
-                if (hide)
+                if (!hide)
                 {
                     sprite.sortingOrder = hidingOrder;
+                    hide = true;
                 }
-                else
+                else if (hide)
                 {
                     sprite.sortingOrder = sortingOrder;
+                    hide = false;
+
+                    if (slowMo) //Disables slowmotion speed upon hiding
+                    {
+                        slowMo = false;
+                    }
                 }
-                Debug.Log("Hide: " + hide);
-            }     
-        }
+            }
+               
+          }     
+        
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
-            //activate game over panel
-            gameOverPanel.SetActive(true);
+            //player is dead
+            isAlive = false;
             //prevent player from moving
             normalSpeed = 0f;
         }

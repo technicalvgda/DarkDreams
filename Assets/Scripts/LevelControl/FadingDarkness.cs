@@ -9,9 +9,13 @@ public class FadingDarkness : MonoBehaviour
 {
     CanvasGroup canvasGroup;
     float fadeSpeed;
+    private float hiddenFadeSpeed; //fade speed when hidden
+    public bool playerHidden = false; // bool that finds if player is hidden or not, also calls script from playerControl
+    PlayerControl playerScript;
 
     void Awake()
     {
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
@@ -21,14 +25,23 @@ public class FadingDarkness : MonoBehaviour
         canvasGroup.alpha = 0;
         // sets the fadeSpeed to 10f
         fadeSpeed = 0.05f;
+        hiddenFadeSpeed = fadeSpeed * 2; //declares the hiddenFadeSpeed
     }
 
     void Update()
     {
-        // if the CanvasGroup alpha is less than 1, increase the alpha by fadeSpeed
-        if (canvasGroup.alpha < 1)
+        if (canvasGroup.alpha <= 0.85) //stops the fade at 0.85
         {
-            canvasGroup.alpha += Time.deltaTime * fadeSpeed;
+
+            if (playerScript.hide) //when player is hidden...
+            {
+                canvasGroup.alpha += Time.deltaTime * hiddenFadeSpeed; //fade speed is multiplied
+            }
+            else
+            {
+                canvasGroup.alpha += Time.deltaTime * fadeSpeed; //default fade
+            }
+
         }
     }
 }
