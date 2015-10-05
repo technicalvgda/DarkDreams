@@ -1,41 +1,41 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &192370
+--- !u!1 &131142
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 463436}
-  - 212: {fileID: 21243008}
-  - 61: {fileID: 6167920}
-  - 114: {fileID: 11484764}
+  - 4: {fileID: 429508}
+  - 212: {fileID: 21261082}
+  - 61: {fileID: 6182434}
+  - 114: {fileID: 11426506}
   m_Layer: 0
-  m_Name: Door2
-  m_TagString: Untagged
+  m_Name: VisionLessPatrolEnemy
+  m_TagString: PatrolEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &463436
+--- !u!4 &429508
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192370}
+  m_GameObject: {fileID: 131142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59, y: 25.2999992, z: 0}
+  m_LocalPosition: {x: 24.5, y: 5.40999985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6167920
+--- !u!61 &6182434
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192370}
+  m_GameObject: {fileID: 131142}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -43,24 +43,25 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 3.19000006, y: 3.78999996}
---- !u!114 &11484764
+--- !u!114 &11426506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192370}
+  m_GameObject: {fileID: 131142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a57a417da71314fbc87328f7a66570, type: 3}
+  m_Script: {fileID: 11500000, guid: 38418c75121245c48a0dcda9794dbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exit: {fileID: 0}
---- !u!212 &21243008
+  speed: 8
+  patrolDistance: 36
+--- !u!212 &21261082
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192370}
+  m_GameObject: {fileID: 131142}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,17 +79,41 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 589999cf0ba5cbf4dac4e376f031140b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: d4c83c50108f6bb45ac86521458d379e, type: 3}
+  m_Color: {r: .953954637, g: .963235319, b: .290387094, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: patrolDistance
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: facingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: .953954637
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: .963235319
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: .290387094
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 192370}
+  m_RootGameObject: {fileID: 131142}
   m_IsPrefabParent: 1
