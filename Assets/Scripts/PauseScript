@@ -1,0 +1,33 @@
+using UnityEngine;
+ using System.Collections;
+ 
+ public class Pause : MonoBehaviour {
+     
+     public GameObject Canvas;
+     public GameObject Camera;
+     bool Pause = false;
+ 
+     void Start(){
+         Canvas.gameObject.SetActive (false);
+     }
+ 
+     void Update () {
+         if (Input.GetKeyDown("escape")) {
+             if(Pause == true){
+                 Time.timeScale = 1.0f;
+                 Canvas.gameObject.SetActive (false);
+                 Screen.showCursor = false;
+                 Screen.lockCursor = true;
+                 Pause = false;
+             } else {
+                 Time.timeScale = 0.0f;
+                 Canvas.gameObject.SetActive (true);
+                 Screen.showCursor = true;
+                 Screen.lockCursor = false;
+                 Pause = true;
+             }
+         }
+     }
+     public void Continue(){
+         Time.timeScale = 1.0f;
+         Canvas.gameObject.SetActive (false);
