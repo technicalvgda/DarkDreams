@@ -10,7 +10,11 @@ public class StationaryMonster : MonoBehaviour
     public bool canSee = false;
     private float seconds;
     private float rand;
-    
+    //
+    GameObject gameOverPanel;
+    GameObject player;
+    public bool isAlive = true;
+
     //Vision code
     private Vector2 startCast; //Start position for the line cast
     private Vector2 endCast; //End position for the line cast
@@ -31,14 +35,18 @@ public class StationaryMonster : MonoBehaviour
         //initialize the end position of linecast every frame
         endCast = currentPos;
         endCast.y -= lineCastDistance;
+
+        gameOverPanel = GameObject.Find("GameOverPanel");
+        player = GameObject.Find("Player");
     }
     void Update()
     {
         //if you are in the enemy's field of view & the enemy is active, you lose
         if(canSee && enemyActive)
         {
-            
-            Debug.Log("You lose");
+            isAlive = false;
+            gameOverPanel.SetActive(true);
+            player.GetComponent<PlayerControl>().enabled = false;
         }
         // Draws the line so that you can see it in the scene and adjust the two points
         Debug.DrawLine(startCast, endCast, Color.cyan);
