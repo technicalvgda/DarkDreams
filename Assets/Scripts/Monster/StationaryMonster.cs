@@ -10,10 +10,8 @@ public class StationaryMonster : MonoBehaviour
     public bool canSee = false;
     private float seconds;
     private float rand;
-    //
-    GameObject gameOverPanel;
-    GameObject player;
-    public bool isAlive = true;
+    //reference to player script
+    PlayerControl player;
 
     //Vision code
     private Vector2 startCast; //Start position for the line cast
@@ -26,6 +24,8 @@ public class StationaryMonster : MonoBehaviour
 
     void Start()
     {
+        //set player to the object with tag "Player"
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
         defaultColor = GetComponent<SpriteRenderer>().color;
         seconds = 10;             //Starts the timer at 10 seconds
         rand = Random.value* 10; //Generate a random number from 0 to 10 
@@ -35,18 +35,15 @@ public class StationaryMonster : MonoBehaviour
         //initialize the end position of linecast every frame
         endCast = currentPos;
         endCast.y -= lineCastDistance;
-
-        gameOverPanel = GameObject.Find("GameOverPanel");
-        player = GameObject.Find("Player");
     }
     void Update()
     {
         //if you are in the enemy's field of view & the enemy is active, you lose
         if(canSee && enemyActive)
         {
-            isAlive = false;
-            gameOverPanel.SetActive(true);
-            player.GetComponent<PlayerControl>().enabled = false;
+            //kill player (variable is in player script)
+            player.isAlive = false;
+           
         }
         // Draws the line so that you can see it in the scene and adjust the two points
         Debug.DrawLine(startCast, endCast, Color.cyan);
@@ -91,8 +88,7 @@ public class StationaryMonster : MonoBehaviour
                 //Else it will remain off
                 enemyActive = false;
             }
-            //Prints the timer
-           //Debug.Log("Current time is: " + seconds);
+           
         }
     }
   
