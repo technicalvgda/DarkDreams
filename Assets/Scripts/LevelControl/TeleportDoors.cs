@@ -20,14 +20,20 @@ public class TeleportDoors : MonoBehaviour
 	
 	void OnTriggerStay2D ( Collider2D other)
 	{
-        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
+        
+        if (other.tag == "Player"  )
         {
             
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
+            {
                 Debug.Log("Teleport Complete!"); // confirm that teleport is complete; this can be taken out
                 TeleportToExit2D(other);
+            }
             
         }
 	}
+
+
 	
 	void TeleportToExit2D ( Collider2D other )
 	{
