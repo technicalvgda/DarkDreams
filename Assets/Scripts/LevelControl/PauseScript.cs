@@ -1,39 +1,77 @@
 ﻿
+//
+// WARNING: You can still pause during the Game Over screen.
+//
+
 using UnityEngine;
 using System.Collections;
 
-public class PauseScript : MonoBehaviour
-{
+using Image = UnityEngine.UI.Image;
+using Text = UnityEngine.UI.Text;
 
-    //public GameObject Canvas;
-    bool pause = false;
+public class PauseScript : MonoBehaviour {
 
-    void Start()
-    {
-        //Canvas.gameObject.SetActive(false);
-    }
+	public GameObject panel;
+	public GameObject text;
+	bool paused;
+	bool busy;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (pause == true)
-            {
-                Time.timeScale = 1.0f;
-                //Canvas.gameObject.SetActive(false);
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                pause = false;
-            }
-            else
-            {
-                Time.timeScale = 0.0f;
-                //Canvas.gameObject.SetActive(true);
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                pause = true;
-            }
-        }
-    }
-   
+
+	// Use this for initialization
+	void Start () {
+
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (!busy && Input.GetKeyDown (KeyCode.Escape)) {
+			paused = !paused;
+
+			// Lock keys until transitioning is over
+			busy = true;
+
+			// This will spook the garbage collector after a few thousand times
+			if (paused)
+				StartCoroutine (_PauseTransition ());
+			else
+				StartCoroutine (_UnpauseTransition ());
+		}
+	}
+	
+	IEnumerator _PauseTransition() {
+		// Freeze the game
+		Time.timeScale = 0;
+
+		// The transition effect; just an example
+		// Initialize the fade color
+		panel.GetComponent<Image> ().color = new Color (0, 0, 0, 0);
+
+		// Fade in over 10 frames
+		for (int i = 0; i < 10; i++) {
+			panel.GetComponent<Image> ().color += new Color (0, 0, 0, 0.04f);
+			yield return null;
+		}
+
+		// Show the PAUSED text
+		text.GetComponent<Text> ().enabled = true;
+
+		// Transition done, accept input again
+		busy = false;
+	}
+
+	IEnumerator _UnpauseTransition() {
+		Time.timeScale = 1;
+		panel.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
+
+		// Remove the PAUSED text
+		text.GetComponent<Text> ().enabled = false;
+
+		// Fade out over 10 frames
+		for (int i = 0; i < 10; i++) {
+			panel.GetComponent<Image> ().color += new Color (0, 0, 0, -0.04f);
+			yield return null;
+		}
+
+		busy = false;
+	}
 }
