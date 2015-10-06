@@ -35,7 +35,10 @@ public class PlayerControl : MonoBehaviour
     int hidingOrder = 0;//sorting layer when hidden
     int sortingOrder = 2;//sorting layer normally
 
-    
+    //teleport walls
+    GameObject wallR;
+    GameObject wallL;
+
 
 
 
@@ -50,6 +53,8 @@ public class PlayerControl : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         slowMoSpeed = normalSpeed / 2;
         sprintSpeed = normalSpeed * 2;
+        wallR = GameObject.Find("RightWall");
+        wallL = GameObject.Find("LeftWall");
     }
     // Use this for initialization
     void Start() //what happens as soon as player is created
@@ -144,6 +149,19 @@ public class PlayerControl : MonoBehaviour
             //prevent player from moving
             normalSpeed = 0f;
         }
+        //level warp
+       
+       
+        //checks for collision
+        if (col.gameObject.name == "LeftWall")
+        {
+            transform.position = new Vector3(wallR.transform.position.x - 4, transform.position.y, transform.position.z);
+        }
+        if (col.gameObject.name == "RightWall")
+        {
+            transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
+        }
+       
     }
     //allows actions when staying within collision area
     void OnTriggerStay2D(Collider2D col)
