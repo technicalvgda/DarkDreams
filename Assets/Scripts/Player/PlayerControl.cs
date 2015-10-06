@@ -144,6 +144,40 @@ public class PlayerControl : MonoBehaviour
             //prevent player from moving
             normalSpeed = 0f;
         }
+        //level warp
+        GameObject wallR = GameObject.Find("RightWall");
+        GameObject wallL = GameObject.Find("LeftWall");
+        //second floor
+        GameObject wallR2 = GameObject.Find("RightWall2");
+        GameObject wallL2= GameObject.Find("LeftWall2");
+        //third floor
+        GameObject wallR3 = GameObject.Find("RightWall3");
+        GameObject wallL3 = GameObject.Find("LeftWall3");
+        //checks for collision
+        if (col.gameObject.name == "LeftWall")
+        {
+            transform.position = new Vector3(wallR.transform.position.x-4, transform.position.y, transform.position.z);
+        }
+        if(col.gameObject.name == "RightWall")
+        {
+            transform.position = new Vector3(wallL.transform.position.x+4, transform.position.y, transform.position.z);
+        }
+        if (col.gameObject.name == "LeftWall2")
+        {
+            transform.position = new Vector3(wallR2.transform.position.x - 4, transform.position.y, transform.position.z);
+        }
+        if (col.gameObject.name == "RightWall2")
+        {
+            transform.position = new Vector3(wallL2.transform.position.x + 4, transform.position.y, transform.position.z);
+        }
+        if (col.gameObject.name == "LeftWall3")
+        {
+            transform.position = new Vector3(wallR3.transform.position.x - 4, transform.position.y, transform.position.z);
+        }
+        if (col.gameObject.name == "RightWall3")
+        {
+            transform.position = new Vector3(wallL3.transform.position.x + 4, transform.position.y, transform.position.z);
+        }
     }
     //allows actions when staying within collision area
     void OnTriggerStay2D(Collider2D col)
