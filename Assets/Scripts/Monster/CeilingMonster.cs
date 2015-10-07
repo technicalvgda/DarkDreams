@@ -6,8 +6,9 @@ public class CeilingMonster : MonoBehaviour
     PlayerControl player;
     GameObject spottedCue;
     Vector3 startPos;
-    public float distance;
-    public float counter = 0;
+    public float movement;
+    public float speed = 20.0f;
+    private float distance = 16.14f;
     //Start position for the line cast
     private Vector2 startCast;
     //End position for the line cast
@@ -17,41 +18,63 @@ public class CeilingMonster : MonoBehaviour
     //LineRenderer to display line of sight to player
     public LineRenderer lineRenderer;
     // Use this for initialization
+    private bool stunned = false;
+    private int counter = 0;
+    public float timeRemaining = 5f;
     void Awake()
     {
         spottedCue = GameObject.Find("SpottedIndicator");
     }
     void Start()
     {
+        Vector2 currentPos = gameObject.transform.position;
+        startCast = currentPos;
+        endCast = currentPos;
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.enabled = false;
+        lineRenderer.enabled = true;
         spottedCue.SetActive(false);
         startPos = gameObject.transform.position;
         lineRenderer.SetPosition(1, new Vector3(0,-lineCastDistance, 0));
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-
+        endCast.y -= lineCastDistance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 currentPos = gameObject.transform.position;
-        //initialize the starting position of linecast every frame
-        startCast = currentPos;
-        //initialize the end position of linecast every frame
-        endCast = currentPos;
-        distance = currentPos.x - startPos.x;
-        counter *= Time.deltaTime;
+        Vector2 find = gameObject.transform.position;
         Debug.DrawLine(startCast, endCast, Color.green);
         RaycastHit2D hit = Physics2D.Linecast(endCast, startCast);
-        if (hit.collider && hit.collider.tag == "Player")
+        movement = speed * Time.deltaTime;
+        if (hit.collider && hit.collider.tag == "Player" && stunned == false)
         {
-            ///this code runs when player is seen
-                spottedCue.SetActive(true);
-                print("Seen");
+            spottedCue.SetActive(true);
+            //Multiply the movement by the amount set in the inspector
+            transform.Translate(0, -1, 0);
+            counter++;
         }
-        //Making the line cast
-        //RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
-        //check if the collider exists and if the collider is the player
+        //if (gameObject.transform.position.x >= maxXPosition)
+        else if (counter != 0)
+        {
+            stunned = true;
+            transform.Translate(0, 1, 0);
+            counter--;
+        }
+        else if (stunned) {
+            timeRemaining -= Time.deltaTime;
+            print(timeRemaining);
+            if (timeRemaining <= 0) {
+                stunned = false;
+                timeRemaining = 10;
+            }
+        }
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //if player colliders with an enemy and is not hidden
+        if (col.gameObject.tag == "Player")
+        {
+            print("Game Over");
+        }
     }
 }
