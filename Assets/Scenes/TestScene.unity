@@ -953,7 +953,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 456308, guid: c172a421d996e3741bc496caaca2c0dd, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 22504336, guid: c172a421d996e3741bc496caaca2c0dd, type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22504336, guid: c172a421d996e3741bc496caaca2c0dd, type: 2}
+      propertyPath: m_IgnoreParentGroups
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482156, guid: c172a421d996e3741bc496caaca2c0dd, type: 2}
+      propertyPath: playerHidden
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450742, guid: c172a421d996e3741bc496caaca2c0dd, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.3927e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450742, guid: c172a421d996e3741bc496caaca2c0dd, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: .189999998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c172a421d996e3741bc496caaca2c0dd, type: 2}
