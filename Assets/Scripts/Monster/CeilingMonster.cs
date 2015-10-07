@@ -42,7 +42,7 @@ public class CeilingMonster : MonoBehaviour
         endCast = currentPos;
         distance = currentPos.x - startPos.x;
         counter *= Time.deltaTime;
-        Debug.DrawLine(startCast, endCast, Color.blue);
+        Debug.DrawLine(startCast, endCast, Color.green);
         RaycastHit2D hit = Physics2D.Linecast(endCast, startCast);
         if (hit.collider && hit.collider.tag == "Player")
         {
