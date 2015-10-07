@@ -6,7 +6,7 @@ public class CeilingMonster : MonoBehaviour
     PlayerControl player;
     GameObject spottedCue;
     Vector3 startPos;
-    public float movement;
+    float movement;
     public float speed = 20.0f;
     private float distance = 16.14f;
     //Start position for the line cast
@@ -15,12 +15,11 @@ public class CeilingMonster : MonoBehaviour
     private Vector2 endCast;
     //Variable to set distance of the monster's vision
     public float lineCastDistance = 0f;
-    //LineRenderer to display line of sight to player
-    public LineRenderer lineRenderer;
     // Use this for initialization
     private bool stunned = false;
     private int counter = 0;
-    public float timeRemaining = 5f;
+    public float stunTime = 5f;
+    float timeRemaining;
     void Awake()
     {
         spottedCue = GameObject.Find("SpottedIndicator");
@@ -28,13 +27,11 @@ public class CeilingMonster : MonoBehaviour
     void Start()
     {
         Vector2 currentPos = gameObject.transform.position;
-        startCast = currentPos;
-        endCast = currentPos;
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.enabled = true;
+        timeRemaining = stunTime;
+        // set the hit linecast start and end
+        startCast = endCast = currentPos;
         spottedCue.SetActive(false);
         startPos = gameObject.transform.position;
-        lineRenderer.SetPosition(1, new Vector3(0,-lineCastDistance, 0));
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
         endCast.y -= lineCastDistance;
     }
@@ -50,22 +47,24 @@ public class CeilingMonster : MonoBehaviour
         {
             spottedCue.SetActive(true);
             //Multiply the movement by the amount set in the inspector
-            transform.Translate(0, -1, 0);
+            transform.Translate(0, -movement, 0);
             counter++;
         }
         //if (gameObject.transform.position.x >= maxXPosition)
         else if (counter != 0)
         {
             stunned = true;
-            transform.Translate(0, 1, 0);
+            transform.Translate(0, movement, 0);
             counter--;
         }
+        ///counts the amount of time before stun wears off
         else if (stunned) {
+            spottedCue.SetActive(false);
             timeRemaining -= Time.deltaTime;
-            print(timeRemaining);
+            //print(timeRemaining);
             if (timeRemaining <= 0) {
                 stunned = false;
-                timeRemaining = 10;
+                timeRemaining = stunTime;
             }
         }
     }
@@ -74,7 +73,8 @@ public class CeilingMonster : MonoBehaviour
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "Player")
         {
-            print("Game Over");
+            player.isAlive = false;
+            //print("Game Over");
         }
     }
 }
