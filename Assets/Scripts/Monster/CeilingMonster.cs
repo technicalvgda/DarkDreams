@@ -12,9 +12,9 @@ public class CeilingMonster : MonoBehaviour {
     bool isDaze = false;
     bool isClimbing = false;
 
-    float stunTime = 10f;           // stun time
-    float fallSpeed = 5f;
-    float climbSpeed = 2f;
+    public float stunTime = 10f;           // stun time
+    public float fallSpeed = 5f;
+    public float climbSpeed = 2f;
 
     Vector2 startCast;              // start position of line cast
     Vector2 endCast;                // end position of line cast
@@ -60,7 +60,7 @@ public class CeilingMonster : MonoBehaviour {
             }
             else
             {
-                Debug.Log("not active or falling");
+                //Debug.Log("not active or falling");
                 isFalling = false;
                 isActive = false;
                 isDaze = true;
@@ -75,7 +75,7 @@ public class CeilingMonster : MonoBehaviour {
             }
             else
             {
-                Debug.Log("not climbing");
+                //Debug.Log("not climbing");
                 isClimbing = false;
             }
         }
@@ -87,17 +87,18 @@ public class CeilingMonster : MonoBehaviour {
 
         // Game Over
         if (isActive == true && isCollide == true) {
-            Debug.Log("Game Over");
+            player.isAlive = false;
+            //Debug.Log("Game Over");
         }
     }
-
+    
     // daze timer
     IEnumerator DazeTimer(float x) {
-        Debug.Log(Time.time);
+       // Debug.Log(Time.time);
         isDaze = false;
         yield return new WaitForSeconds(x);
         isActive = true;
         isClimbing = true;
-        Debug.Log(Time.time);
+       // Debug.Log(Time.time);
     }
 }
