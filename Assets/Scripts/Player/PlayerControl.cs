@@ -35,7 +35,16 @@ public class PlayerControl : MonoBehaviour
     int hidingOrder = 0;//sorting layer when hidden
     int sortingOrder = 2;//sorting layer normally
 
-    
+    //bools that corresponds to the fading darkness mechanic
+    public bool fadingCanvas;
+    public bool canvas1;
+    public bool canvas2;
+    public bool canvas3;
+    public bool canvas4;
+    public bool canvas5;
+
+    public bool flashingRoom;
+
 
 
 
@@ -145,14 +154,43 @@ public class PlayerControl : MonoBehaviour
             normalSpeed = 0f;
         }
     }
+
+
     //allows actions when staying within collision area
     void OnTriggerStay2D(Collider2D col)
     {
         // OverlapPoint refers to world space instead of screen space, adjusting accordingly
         clickPosition.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         clickPosition.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-       
-       
+
+
+        //simple and repetitive that causes the canvases to be true, you can clearly see the pattern
+        if (col.gameObject.name == "RoomDetection")
+        {
+            canvas1 = true;
+        }
+        if (col.gameObject.name == "RoomDetection1")
+        {
+            canvas2 = true;
+        }
+        if (col.gameObject.name == "RoomDetection2")
+        {
+            canvas3 = true;
+        }
+        if (col.gameObject.name == "RoomDetection3")
+        {
+            flashingRoom = true;
+        }
+        if (col.gameObject.name == "RoomDetection4")
+        {
+            canvas4 = true;
+        }
+        if (col.gameObject.name == "RoomDetection5")
+        {
+            canvas5 = true;
+        }
+
+
         //Toggle Hide/Unhide
         if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)&& col.OverlapPoint(clickPosition))))
         {
@@ -178,13 +216,7 @@ public class PlayerControl : MonoBehaviour
           }     
         
         //if player colliders with an enemy and is not hidden
-        if (col.gameObject.tag == "PatrolEnemy" && hide == false)
-        {
-            //player is dead
-            isAlive = false;
-            //prevent player from moving
-            normalSpeed = 0f;
-        }
+
        ///gameover for stationary enemies handled in their own code
     }
     void FlipPlayer()
