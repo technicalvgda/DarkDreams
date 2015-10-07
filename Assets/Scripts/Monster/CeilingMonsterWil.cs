@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class CeilingMonster : MonoBehaviour {
+public class CeilingMonsterWil : MonoBehaviour {
     Transform myTransform;          // ceiling monster
     PlayerControl player;           // the player
 
