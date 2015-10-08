@@ -57,6 +57,10 @@ public class StationaryMonster : MonoBehaviour
             {
                 canSee = true;
             }
+            else
+            {
+                canSee = false;
+            }
         }
         else
         {
