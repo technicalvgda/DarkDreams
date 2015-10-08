@@ -6,13 +6,11 @@ public class CeilingMonsterWil : MonoBehaviour {
     Transform myTransform;          // ceiling monster
     PlayerControl player;           // the player
 
-    bool isActive = true;
-    bool isFalling = false;                  
-    bool isCollide = false;         // check if collision
-    bool isDaze = false;
-    bool isClimbing = false;
+    bool isActive = true;           // check if its active or dazed
+    bool isFalling = false;         // check if its falling
+    bool isClimbing = false;        // check if its rising
 
-    public float stunTime = 10f;           // stun time
+    public float stunTime = 10f;    // stun time
     public float fallSpeed = 5f;
     public float climbSpeed = 2f;
 
@@ -52,7 +50,7 @@ public class CeilingMonsterWil : MonoBehaviour {
         }
 
         // Ceiling monster is falling
-        if (isFalling == true) {
+        if (isFalling) {
             if (myTransform.position.y > endCast.y)
             {
                 // falling speed equation
@@ -63,11 +61,10 @@ public class CeilingMonsterWil : MonoBehaviour {
                 //Debug.Log("not active or falling");
                 isFalling = false;
                 isActive = false;
-                isDaze = true;
             }
         }
 
-        if (isClimbing == true) {
+        if (isClimbing) {
             if (myTransform.position.y < startCast.y)
             {
                 // falling speed equation
@@ -81,24 +78,26 @@ public class CeilingMonsterWil : MonoBehaviour {
         }
 
         // Ceiling monster is dazed for 'stunTime' seconds
-        if (isDaze == true) {
+        if (!isActive) {
             StartCoroutine(DazeTimer(stunTime));
         }
+    }
 
-        // Game Over
-        if (isActive == true && isCollide == true) {
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //if player colliders with an enemy and is active
+        if (isActive && col.gameObject.tag == "Player") {
             player.isAlive = false;
-            //Debug.Log("Game Over");
+            //print("Game Over");
         }
     }
-    
+
     // daze timer
     IEnumerator DazeTimer(float x) {
-       // Debug.Log(Time.time);
-        isDaze = false;
+        // Debug.Log(Time.time);
         yield return new WaitForSeconds(x);
         isActive = true;
         isClimbing = true;
-       // Debug.Log(Time.time);
+        // Debug.Log(Time.time);
     }
 }
