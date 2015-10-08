@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 public class RandomMapGeneration : MonoBehaviour {
 
+	//Size of the map
+	//each hallway is x
+	//each level is y
 	public int sizeOfMapX = 1;
 	public int sizeOfMapY = 1;
 
@@ -16,8 +19,16 @@ public class RandomMapGeneration : MonoBehaviour {
 
 	//DoorRoomEachFloor
 	private List<int> doorRoomEachFloor = new List<int>(2);
-
+	//number of door per floor is 2
 	private const int NUMBER_OF_DOOR_PER_FLOOR = 2;
+
+	//linkedDoor to keep track of the door to be connected on each floor
+	private List<int> linkedDoor = new List<int>();
+
+	//level is needed to keep track of each floor.
+	private int level = 0;
+	
+
 	// Use this for initialization
 	void Awake() {
 		initializeRooms ();
@@ -62,27 +73,42 @@ public class RandomMapGeneration : MonoBehaviour {
 	//Generate randomDoorRoom
 	void generateRandomDoor() {
 		int randomDoor = 0;
-		int numberOfLinkedDoor = 0;
+		int numberOfDoorEachFloor = 0;
 		while (doorRoomEachFloor.Count < 2) {    
 			randomDoor = Random.Range (0, sizeOfMapX);
 			if (!doorRoomEachFloor.Contains (randomDoor)) {
 				doorRoomEachFloor.Add (randomDoor);
-				numberOfLinkedDoor++;
+
+				//Add door to linkedDoor to link each door only 2 doors are connected
+				linkedDoor.Add (randomDoor);
+
+				numberOfDoorEachFloor++;
 			}
 		}
 	}
 
-	//Assume that each door and regular room has the same size.
+	//set linkedDoorPrefab
+	void setLinkedDoorPrefab () {
+		//ignore the first and the last door. linkedDoor[0] and linkedDoor[linkedDoor.Count-1]
+		//set linkedDoor[1] to connect to linkedDoor[2] and linkedDoor [2] to linkedDoor[1];
+		//set linkedDoor[3] to connect to linkedDoor[4] and linkedDoor[4] to linkedDoor[3];
+		//Use Transform door1 = GameObject.Find("Door1"*).transform; for each doorRoom on map
+		//door1.GetComponent<TeleportDoors().exit = doorRoom[0]*;
+		//Note: * means the door can be any door from the prefab.
+	
+	}
+
+
+	//Assume that each door and regular room has the same s	ize.
 
 	void instantiateRooms() {
-		//level is needed to keep track of each floor.
-		int level = 0;
+
 		Vector3 sizeOfPrefab = new Vector3 (0,0,0);
 		for (int j = 0; j < sizeOfMapY; j++) {
 			generateRandomDoor ();
 			for (int i = 0; i < sizeOfMapX; i++) {
 				if (doorRoomEachFloor.Contains (i)) {
-					//Get each room out of the stack
+					//Get each room out of the stack doorRoomUnvisited
 					Transform doorR = doorRoomUnvisited.Pop ();
 					Instantiate (doorR, transform.position + sizeOfPrefab, transform.rotation);
 					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
@@ -94,7 +120,7 @@ public class RandomMapGeneration : MonoBehaviour {
 						doorRoom [i].localScale.x + doorRoom [i].transform.right.x;
 				}
 			}
-			//Clear the linkedDoor
+			//Clear the doorRoomEachFloor
 			doorRoomEachFloor.Clear ();
 			sizeOfPrefab.x = 0;
 			sizeOfPrefab.y = 0;
@@ -106,5 +132,6 @@ public class RandomMapGeneration : MonoBehaviour {
 		}
 
 	}
+	
 
 }
