@@ -2,6 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * NOTE:
+ * TempRoomDoor has to start from 0 and name it with space 
+ * Ex: TempRoomDoor 0
+ * The Door has to be a child (to be connected to the room) of TempDoor and the name it without space
+ * Ex: Door0
+ * In the Hierchy :
+ * Ex.
+ * TempRoomDoor 0
+ *     Platform
+ *     Door0
+*/
 
 public class RandomMapGeneration : MonoBehaviour {
 	
@@ -92,7 +104,7 @@ public class RandomMapGeneration : MonoBehaviour {
 			if (i == 0) {
 				continue;
 			}
-			//if it is the last room, skip the last door since it will be connected to the top room
+			//if it is the last room, skip the last door since it will be connected to the rooftopRoom
 			if (i == linkedDoor.Count-1) {
 				break;
 			}
