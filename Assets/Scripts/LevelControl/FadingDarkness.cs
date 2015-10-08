@@ -37,8 +37,6 @@ public class FadingDarkness : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerPos = player.transform.position;
-      
         if (fade)
         {
             //Debug.Log("fading");
