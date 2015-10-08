@@ -43,6 +43,13 @@ public class TeleportDoors : MonoBehaviour
 	
 	void TeleportToExit2D ( Collider2D col )
 	{
-		col.transform.position = exit.transform.position; //line that teleports player
+        if (exit != null)
+        {
+            col.transform.position = exit.transform.position; //line that teleports player
+        }
+        else
+        {
+            Debug.Log("no exit assigned");
+        }
 	}
 }

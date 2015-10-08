@@ -33,7 +33,7 @@ public class PatrollingMonster : MonoBehaviour {
     void Start ()
     {
 
-        spottedCue.SetActive(false);
+        //spottedCue.SetActive(false);
         startPos = gameObject.transform.position;
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
