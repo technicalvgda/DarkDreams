@@ -111,13 +111,14 @@ public class RandomMapGeneration : MonoBehaviour {
 					//Get each room out of the stack doorRoomUnvisited
 					Transform doorR = doorRoomUnvisited.Pop ();
 					Instantiate (doorR, transform.position + sizeOfPrefab, transform.rotation);
-					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
-						doorRoom [i].localScale.x + doorRoom [i].transform.right.x;
+					//Size/Gap between each hallway
+					sizeOfPrefab.x += 50;
 				} else {
 					Transform regR = regRoomUnvisited.Pop ();
 					Instantiate (regR, transform.position + sizeOfPrefab, transform.rotation);
-					sizeOfPrefab.x += doorRoom [i].localScale.x + doorRoom [i].localScale.x + 
-						doorRoom [i].localScale.x + doorRoom [i].transform.right.x;
+
+					//Size/Gap between each hallway
+					sizeOfPrefab.x += 50;
 				}
 			}
 			//Clear the doorRoomEachFloor
@@ -126,8 +127,9 @@ public class RandomMapGeneration : MonoBehaviour {
 			sizeOfPrefab.y = 0;
 			sizeOfPrefab.z = 0;
 			level++;
-			sizeOfPrefab.y += doorRoom [j].localScale.y + doorRoom [j].localScale.y + doorRoom [j].localScale.y + 
-				doorRoom [j].transform.up.y;
+
+			//Size/Gap between each level
+			sizeOfPrefab.y += 25;
 			sizeOfPrefab.y *= level;
 		}
 
