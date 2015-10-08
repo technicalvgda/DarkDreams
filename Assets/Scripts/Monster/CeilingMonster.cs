@@ -1,103 +1,80 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
-public class CeilingMonster : MonoBehaviour {
-    Transform myTransform;          // ceiling monster
-    PlayerControl player;           // the player
-
-    bool isActive = true;
-    bool isFalling = false;                  
-    bool isCollide = false;         // check if collision
-    bool isDaze = false;
-    bool isClimbing = false;
-
-    float stunTime = 10f;           // stun time
-    float fallSpeed = 5f;
-    float climbSpeed = 2f;
-
-    Vector2 startCast;              // start position of line cast
-    Vector2 endCast;                // end position of line cast
-
-    float lineCastDistance = 18.5f;   // length of the line cast
-
-    void Awake() {
-        myTransform = transform;
+public class CeilingMonster : MonoBehaviour
+{
+    PlayerControl player;
+    GameObject spottedCue;
+    Vector3 startPos;
+    float movement;
+    public float speed = 20.0f;
+    private float distance = 16.14f;
+    //Start position for the line cast
+    private Vector2 startCast;
+    //End position for the line cast
+    private Vector2 endCast;
+    //Variable to set distance of the monster's vision
+    public float lineCastDistance = 0f;
+    // Use this for initialization
+    private bool stunned = false;
+    private int counter = 0;
+    public float stunTime = 5f;
+    float timeRemaining;
+    void Awake()
+    {
+        spottedCue = GameObject.Find("SpottedIndicator");
     }
-
-    void Start() {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-
+    void Start()
+    {
+        Vector2 currentPos = gameObject.transform.position;
+        timeRemaining = stunTime;
         // set the hit linecast start and end
-        startCast = endCast = myTransform.position;
+        startCast = endCast = currentPos;
+        spottedCue.SetActive(false);
+        startPos = gameObject.transform.position;
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
         endCast.y -= lineCastDistance;
     }
 
-    void FixedUpdate()
-    {
-        Debug.DrawLine(startCast, endCast, Color.yellow);
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        // Vision of Ceiling Monster
-        RaycastHit2D trigger = Physics2D.Linecast(endCast, startCast);
-
-        // Trigger for Dropping the Ceiling Monster
-        if (trigger.collider && trigger.collider.tag == "Player")
+        Vector2 find = gameObject.transform.position;
+        Debug.DrawLine(startCast, endCast, Color.green);
+        RaycastHit2D hit = Physics2D.Linecast(endCast, startCast);
+        movement = speed * Time.deltaTime;
+        if (hit.collider && hit.collider.tag == "Player" && stunned == false)
         {
-            isFalling = true;
-            isClimbing = false;
-
+            spottedCue.SetActive(true);
+            //Multiply the movement by the amount set in the inspector
+            transform.Translate(0, -movement, 0);
+            counter++;
         }
-
-        // Ceiling monster is falling
-        if (isFalling == true) {
-            if (myTransform.position.y > endCast.y)
-            {
-                // falling speed equation
-                myTransform.position -= myTransform.up * fallSpeed * Time.deltaTime;
-            }
-            else
-            {
-                Debug.Log("not active or falling");
-                isFalling = false;
-                isActive = false;
-                isDaze = true;
-            }
+        //if (gameObject.transform.position.x >= maxXPosition)
+        else if (counter != 0)
+        {
+            stunned = true;
+            transform.Translate(0, movement, 0);
+            counter--;
         }
-
-        if (isClimbing == true) {
-            if (myTransform.position.y < startCast.y)
-            {
-                // falling speed equation
-                myTransform.position += myTransform.up * climbSpeed * Time.deltaTime;
+        ///counts the amount of time before stun wears off
+        else if (stunned) {
+            spottedCue.SetActive(false);
+            timeRemaining -= Time.deltaTime;
+            //print(timeRemaining);
+            if (timeRemaining <= 0) {
+                stunned = false;
+                timeRemaining = stunTime;
             }
-            else
-            {
-                Debug.Log("not climbing");
-                isClimbing = false;
-            }
-        }
-
-        // Ceiling monster is dazed for 'stunTime' seconds
-        if (isDaze == true) {
-            StartCoroutine(DazeTimer(stunTime));
-        }
-
-        // Game Over
-        if (isActive == true && isCollide == true) {
-            Debug.Log("Game Over");
         }
     }
-
-    // daze timer
-    IEnumerator DazeTimer(float x) {
-        Debug.Log(Time.time);
-        isDaze = false;
-        yield return new WaitForSeconds(x);
-        isActive = true;
-        isClimbing = true;
-        Debug.Log(Time.time);
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //if player colliders with an enemy and is not hidden
+        if (col.gameObject.tag == "Player")
+        {
+            player.isAlive = false;
+            //print("Game Over");
+        }
     }
 }
