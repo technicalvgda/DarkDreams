@@ -12,6 +12,7 @@ public class FadingDarkness : MonoBehaviour
     private float hiddenFadeSpeed; //fade speed when hidden
     public bool playerHidden = false; // bool that finds if player is hidden or not, also calls script from playerControl
     PlayerControl playerScript;
+    private object collision;
 
     void Awake()
     {
@@ -26,13 +27,16 @@ public class FadingDarkness : MonoBehaviour
         // sets the fadeSpeed to 10f
         fadeSpeed = 0.05f;
         hiddenFadeSpeed = fadeSpeed * 2; //declares the hiddenFadeSpeed
+
     }
 
     void Update()
     {
-        if (canvasGroup.alpha <= 0.85) //stops the fade at 0.85
-        {
 
+
+        if (canvasGroup.alpha <= 0.85 && playerScript.gameObject.name == "Player") //stops the fade at 0.85
+        {
+            
             if (playerScript.hide) //when player is hidden...
             {
                 canvasGroup.alpha += Time.deltaTime * hiddenFadeSpeed; //fade speed is multiplied
@@ -41,7 +45,16 @@ public class FadingDarkness : MonoBehaviour
             {
                 canvasGroup.alpha += Time.deltaTime * fadeSpeed; //default fade
             }
+            
 
         }
+
+        else
+        {
+            canvasGroup.alpha = 0;
+        }
+
+
     }
+
 }
