@@ -116,9 +116,11 @@ public class RandomMapGeneration : MonoBehaviour {
 				string[] doorNumber2 = s2.Split (' ');
 				//Connecting the door
 				Transform gameObjLast = GameObject.Find ("Door"+doorNumber1[1]).transform;
-				gameObjLast.GetComponent<TeleportDoors>().exit = linkedDoor[i+1];
+				gameObjLast.GetComponent<TeleportDoors>().exit = GameObject.Find ("Door"+doorNumber1[1]).transform;
+				//gameObjLast.GetComponent<TeleportDoors>().exit = linkedDoor[i+1];
 				Transform gameObject2 = GameObject.Find ("Door"+doorNumber2[1]).transform;
-				gameObject2.GetComponent<TeleportDoors>().exit = linkedDoor[i];
+				gameObjLast.GetComponent<TeleportDoors>().exit = GameObject.Find ("Door"+doorNumber2[1]).transform;
+				//gameObject2.GetComponent<TeleportDoors>().exit = linkedDoor[i];
 				i++;
 				
 			}
