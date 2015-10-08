@@ -35,7 +35,7 @@ public class TeleportDoors : MonoBehaviour
         if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space))||(col.OverlapPoint(clickPosition) && Input.GetMouseButtonDown(0))))
         {
             
-                Debug.Log("Teleport Complete!"); // confirm that teleport is complete; this can be taken out
+                //Debug.Log("Teleport Complete!"); // confirm that teleport is complete; this can be taken out
                 TeleportToExit2D(col);
             
         }
