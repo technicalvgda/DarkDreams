@@ -45,7 +45,9 @@ public class TeleportDoors : MonoBehaviour
 	{
         if (exit != null)
         {
-            col.transform.position = exit.transform.position; //line that teleports player
+            col.transform.position = -exit.transform.position; //line that teleports player
+
+			//exit.transform.position = col.transform.position;
         }
         else
         {
