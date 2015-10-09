@@ -98,7 +98,7 @@ public class RandomMapGeneration : MonoBehaviour {
 	//Ex: TempRoomDoor 1 and Door1
 	//Ex: TempRoomDoor 5 and Door5
 	void setLinkedDoorPrefab () {
-		int doorR = 0;
+
 		for (int i = 0; i < linkedDoor.Count; i++) {
 			//Skip the first door since it will be connected to the basement
 			if (i == 0) {
