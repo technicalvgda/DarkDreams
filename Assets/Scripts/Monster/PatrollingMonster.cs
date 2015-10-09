@@ -132,7 +132,22 @@ public class PatrollingMonster : MonoBehaviour {
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-    
-       
-    
+	//When the player collides with the patrolling enemy
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		//If the player collides with the patrolling enemy and not hiding
+		if (col.gameObject.tag == "Player" && player.hide == false)
+		{
+			//Monster stops moving
+			speed = 0;
+			//If monster is facing left and the player is behind the monster OR monster is facing
+			//right and player is behind the monster
+			if((!facingRight && (gameObject.transform.position.x < player.transform.position.x))
+			   	|| (facingRight && (gameObject.transform.position.x > player.transform.position.x)))
+			{
+				//Flip the monster to face the player
+				FlipEnemy();
+			}
+		}
+	}    
 }
