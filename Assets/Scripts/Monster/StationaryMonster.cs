@@ -53,8 +53,9 @@ public class StationaryMonster : MonoBehaviour
         hit = Physics2D.Linecast(endCast, startCast);
         if(hit.collider!=null)
         {
-            if(hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player")
             {
+               
                 canSee = true;
             }
             else
