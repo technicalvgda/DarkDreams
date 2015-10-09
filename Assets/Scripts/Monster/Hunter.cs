@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowingDarkness : MonoBehaviour {
+public class Hunter: MonoBehaviour {
 
 
 

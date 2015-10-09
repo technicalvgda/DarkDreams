@@ -62,16 +62,27 @@ public class CeilingMonster : MonoBehaviour
         RaycastHit2D rightTrigger = Physics2D.Linecast(rightCast, startCast);
 
         // Trigger for Dropping the Ceiling Monster
-        if (leftTrigger.collider || rightTrigger.collider || centerTrigger.collider)
-        {
-            if (leftTrigger.collider.tag == "Player" || rightTrigger.collider.tag == "Player"
-                || centerTrigger.collider.tag == "Player")
-            {
+
+       
+       if (leftTrigger.collider && leftTrigger.collider.tag == "Player")
+       {
                 spottedCue.SetActive(true);
                 isFalling = true;
                 isClimbing = false;
-            }
-        }
+       }
+       else if (rightTrigger.collider && rightTrigger.collider.tag == "Player")
+       {
+                spottedCue.SetActive(true);
+                isFalling = true;
+                isClimbing = false;
+       }
+       else if (centerTrigger.collider && centerTrigger.collider.tag == "Player")
+       {
+                spottedCue.SetActive(true);
+                isFalling = true;
+                isClimbing = false;
+       }
+        
 
         // Ceiling monster is falling
         if (isFalling)
