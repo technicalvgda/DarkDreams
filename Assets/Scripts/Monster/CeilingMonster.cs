@@ -2,60 +2,80 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class CeilingMonster : MonoBehaviour {
+public class CeilingMonster : MonoBehaviour
+{
     Transform myTransform;          // ceiling monster
     PlayerControl player;           // the player
-    GameObject spottedCue;          //indicator when spotted
+    GameObject spottedCue;          // indicator when spotted
 
     bool isActive = true;           // check if its active or dazed
     bool isFalling = false;         // check if its falling
     bool isClimbing = false;        // check if its rising
 
     public float stunTime = 10f;    // stun time
-    public float fallSpeed = 5f;
-    public float climbSpeed = 2f;
+    public float fallSpeed = 5f;    // fall speed
+    public float climbSpeed = 2f;   // climb speed
+    public float detectionWidth;    // width of the ceiling monster
 
-    Vector2 startCast;              // start position of line cast
-    Vector2 endCast;                // end position of line cast
+    Vector2 startCast;              // start position of line
+    Vector2 endCast;                // end position of line
+    Vector2 leftCast;               // end position of visions
+    Vector2 rightCast;              // end position of visions
 
-    float lineCastDistance = 18.5f;   // length of the line cast
+    float lineCastDistance = 18.5f; // length of the line cast
 
-    void Awake() {
+    void Awake()
+    {
         spottedCue = GameObject.Find("SpottedIndicator");
         myTransform = transform;
     }
 
-    void Start() {
-        
+    void Start()
+    {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+
+        // grabs the width of the ceiling monster and divides by 2
+        detectionWidth = myTransform.GetComponent<Renderer>().bounds.size.x / 2;
 
         // set the hit linecast start and end
         startCast = endCast = myTransform.position;
-        endCast.y -= lineCastDistance;
+        leftCast.y = rightCast.y = endCast.y -= lineCastDistance;
+
+        // sets the width of the linecasts to detect 
+        leftCast.x = endCast.x - detectionWidth;
+        rightCast.x = endCast.x + detectionWidth;
         //spottedCue.SetActive(false);
     }
 
     void FixedUpdate()
     {
-        Debug.DrawLine(startCast, endCast, Color.yellow);
+        Debug.DrawLine(startCast, endCast, Color.green);        // center trigger
+        Debug.DrawLine(startCast, leftCast, Color.yellow);      // left trigger
+        Debug.DrawLine(startCast, rightCast, Color.yellow);     // right trigger
     }
 
     void Update()
     {
         // Vision of Ceiling Monster
-        RaycastHit2D trigger = Physics2D.Linecast(endCast, startCast);
+        RaycastHit2D centerTrigger = Physics2D.Linecast(endCast, startCast);
+        RaycastHit2D leftTrigger = Physics2D.Linecast(leftCast, startCast);
+        RaycastHit2D rightTrigger = Physics2D.Linecast(rightCast, startCast);
 
         // Trigger for Dropping the Ceiling Monster
-        if (trigger.collider && trigger.collider.tag == "Player")
+        if (leftTrigger.collider || rightTrigger.collider || centerTrigger.collider)
         {
-            spottedCue.SetActive(true);
-            isFalling = true;
-            isClimbing = false;
-
+            if (leftTrigger.collider.tag == "Player" || rightTrigger.collider.tag == "Player"
+                || centerTrigger.collider.tag == "Player")
+            {
+                spottedCue.SetActive(true);
+                isFalling = true;
+                isClimbing = false;
+            }
         }
 
         // Ceiling monster is falling
-        if (isFalling) {
+        if (isFalling)
+        {
             if (myTransform.position.y > endCast.y)
             {
                 // falling speed equation
@@ -69,7 +89,8 @@ public class CeilingMonster : MonoBehaviour {
             }
         }
 
-        if (isClimbing) {
+        if (isClimbing)
+        {
             if (myTransform.position.y < startCast.y)
             {
                 // falling speed equation
@@ -83,7 +104,8 @@ public class CeilingMonster : MonoBehaviour {
         }
 
         // Ceiling monster is dazed for 'stunTime' seconds
-        if (!isActive) {
+        if (!isActive)
+        {
             spottedCue.SetActive(false);
             StartCoroutine(DazeTimer(stunTime));
         }
@@ -92,14 +114,16 @@ public class CeilingMonster : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         //if player colliders with an enemy and is active
-        if (isActive && col.gameObject.tag == "Player") {
+        if (isActive && col.gameObject.tag == "Player")
+        {
             player.isAlive = false;
             //print("Game Over");
         }
     }
 
     // daze timer
-    IEnumerator DazeTimer(float x) {
+    IEnumerator DazeTimer(float x)
+    {
         // Debug.Log(Time.time);
         yield return new WaitForSeconds(x);
         isActive = true;
