@@ -15,8 +15,9 @@ public class FadingDarkness : MonoBehaviour
     GameObject player;
     PlayerControl playerScript;
     bool fade = false;
-   
-    
+    bool flash = false;
+
+    public float waitTime = 0.0001f;
 
     void Awake()
     {
@@ -54,6 +55,13 @@ public class FadingDarkness : MonoBehaviour
 
             }
         }
+        if(flash == true)
+        {
+           fade = false;
+           canvasGroup.alpha = 0;
+           InvokeRepeating("Flash", 0f, waitTime);
+           flash = false;
+        }
     }
     void OnTriggerStay2D(Collider2D col)
     {
@@ -77,5 +85,15 @@ public class FadingDarkness : MonoBehaviour
            
         }
 
+    }
+    void Flash()
+    {
+        //generate a random float number from 0.0 to 1.0
+        float alphaValue = Random.Range(0.0f, 1.0f);
+
+        //set the random generated number to the alpha value of the Canvas Group
+        canvasGroup.alpha = alphaValue;
+
+        //Debug.Log ("Random #: " + alphaValue); //confirms and prints value of the random generated number. WARNING! This will print A LOT of values. This is removable.
     }
 }
