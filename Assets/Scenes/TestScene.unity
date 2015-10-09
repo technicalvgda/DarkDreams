@@ -890,19 +890,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 452112, guid: f3cf35c1537f76e4f95722ed6279dd56, type: 2}
       propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 452112, guid: f3cf35c1537f76e4f95722ed6279dd56, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 452112, guid: f3cf35c1537f76e4f95722ed6279dd56, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 21279074, guid: f3cf35c1537f76e4f95722ed6279dd56, type: 2}
-      propertyPath: m_Color.b
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3cf35c1537f76e4f95722ed6279dd56, type: 2}
@@ -1918,7 +1906,7 @@ Transform:
   m_Children:
   - {fileID: 1101374178}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!114 &1964554610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1930,6 +1918,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230a5d5222dbfe14c9a038cc0de882c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionDuration: 2
+  target: {fileID: 0}
+  follow: 1
   yOffset: 7
 --- !u!114 &1964554611
 MonoBehaviour:
