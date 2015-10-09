@@ -12,7 +12,7 @@ public class VisionLessPatrollingMonster : MonoBehaviour {
 	public int patrolDistance = 5;
 	//to access methods and variables from the spawner
 	private VisionLessPatrollingMonsterSpawner obj;
-
+	PlayerControl player;
 	// Use this for initialization
 	void Start ()
 	{
@@ -20,6 +20,7 @@ public class VisionLessPatrollingMonster : MonoBehaviour {
 		startPos = gameObject.transform.position;
 		//Grab the spawner and get its script component
 		obj = GameObject.Find("VisionLessPatrolEnemySpawner").GetComponent<VisionLessPatrollingMonsterSpawner> ();
+		player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 		//If the spawner is facing left...
 		if (!obj.facingRight) 
 		{	//then flip the monsters it spawns to go left
@@ -67,4 +68,14 @@ public class VisionLessPatrollingMonster : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}	
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		//If the player collides with the patrolling enemy and not hiding
+		if (col.gameObject.tag == "Player" && player.hide == false)
+		{
+			//Monster stops moving
+			speed = 0;
+		}
+	}
 }
