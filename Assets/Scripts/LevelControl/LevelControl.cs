@@ -53,7 +53,7 @@ public class LevelControl : MonoBehaviour
     public void MainMenu()
     { //The main menu button when the game over screen pops up
         Time.timeScale = 1f;
-        Application.LoadLevel("MainMenu");
+        Application.LoadLevel("Title Screen");
         
     }
 

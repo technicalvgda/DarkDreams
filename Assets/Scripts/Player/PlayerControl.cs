@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour 
 {
-    public const float EDGEBUFFER = 0.05f; // Percentage of screen to validate mouse click/mobile tap
+    public const float EDGEBUFFER = 0.1f; // Percentage of screen to validate mouse click/mobile tap
     // for edge detection
     Vector2 edgeLeft;
     Vector2 edgeRight;
