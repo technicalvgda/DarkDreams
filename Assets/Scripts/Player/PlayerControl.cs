@@ -192,8 +192,17 @@ public class PlayerControl : MonoBehaviour
                     }
                 }
             }
-               
-          }     
+
+            if (col.gameObject.tag == "trap")
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    isAlive = false;
+                    normalSpeed = 0f;
+                }
+            }
+
+        }     
         
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "PatrolEnemy" && hide == false)
