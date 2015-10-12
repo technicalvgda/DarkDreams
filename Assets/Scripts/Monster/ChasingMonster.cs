@@ -23,6 +23,7 @@ public class ChasingMonster : MonoBehaviour {
     public LineRenderer lineOfSight;
 
     PlayerControl player;
+    Vector2 playerPos;
     GameObject spottedCue;
 
     void Awake()
@@ -45,7 +46,7 @@ public class ChasingMonster : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        
+        playerPos = player.transform.position;
         Vector2 currentPos = gameObject.transform.position;
         //initialize the starting position of linecast every frame
         startCast = currentPos;
@@ -119,18 +120,25 @@ public class ChasingMonster : MonoBehaviour {
             }
             
 		}
-       
-       
+        //if player is in this margin
+        if (playerPos.x > startCast.x && playerPos.x < endCast.x)
+        {
+            player.slowMo = false;
+        }
+
+
     }
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
     void FlipEnemy()
     {
-        spottedCue.SetActive(false);
+       
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        player.slowMo = false;
+        spottedCue.SetActive(false);
     }
 	//When the player collides with the patrolling enemy
 	void OnTriggerEnter2D(Collider2D col)
