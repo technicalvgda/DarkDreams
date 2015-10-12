@@ -2,11 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ChasingMonster : MonoBehaviour {
+public class ChasingMonster : MonoBehaviour
+{
 
     Vector3 startPos;
     private bool facingRight = true;
 	private bool isCaught = false;
+	private bool hitPlayer = false;
     public float movement;
     public float speed = 2.0f;
     public float counter = 0;
@@ -84,17 +86,18 @@ public class ChasingMonster : MonoBehaviour {
             FlipEnemy();
             startPos = gameObject.transform.position;
         }
+		// reinitialize caught detection
+		isCaught = false;
+		spottedCue.SetActive (false);
         //Visually see the line cast in scene mode, NOT GAME
         Debug.DrawLine(startCast, endCast, Color.green);
         //Making the line cast
-        RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
+		RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
         //check if the collider exists and if the collider is the player
 		//this code runs when player is seen
         if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player" && player.hide == false)
 		{
-			spottedCue.SetActive (true);
 			isCaught = true;
-
 			if (!player.slowMo)
 			{
 				// Upon player collision with linecast/monster-vision, their speed is reduced
@@ -113,22 +116,18 @@ public class ChasingMonster : MonoBehaviour {
 				transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
 			}
 		}
-		else
-		{
-			spottedCue.SetActive (false);
-		}
-
-		Debug.Log ("Spotted Cue: " + spottedCue.activeSelf);
-		Debug.Log ("Been caught: " + isCaught);
-		//Debug.Log ("Spotted Overlay: " + spottedCue.GetComponent<SpriteRenderer> ().enabled);
-       
-       
     }
+
+	void LateUpdate()
+	{
+		if (isCaught == true)
+			spottedCue.SetActive (true);
+	}
+
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
     void FlipEnemy()
     {
-        //spottedCue.SetActive(false);
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
