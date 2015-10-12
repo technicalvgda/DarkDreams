@@ -26,9 +26,11 @@ public class RandomMapGeneration : MonoBehaviour {
 	//List of doorRoom and RegularRoom
 	public Transform[] doorRoom;
 	public Transform[] regRoom;
+    public Transform[] extraRoom;
 	
 	private Stack<Transform> doorRoomUnvisited = new Stack<Transform>();
 	private Stack<Transform> regRoomUnvisited = new Stack<Transform>();
+    private Stack<Transform> extraRoomUnvisited = new Stack<Transform>();
 	
 	//DoorRoomEachFloor
 	private List<int> doorRoomEachFloor = new List<int>(2);
@@ -43,7 +45,7 @@ public class RandomMapGeneration : MonoBehaviour {
 		initializeRooms ();
 		instantiateRooms ();
 		setLinkedDoorPrefab ();
-	}
+    }
 	
 	//shuffle door and reg room.
 	void initializeRooms() {
@@ -71,6 +73,9 @@ public class RandomMapGeneration : MonoBehaviour {
 		for (int i = 0; i < regRoom.Length; i++) {
 			regRoomUnvisited.Push (regRoom[i]);
 		}
+        for (int i = 0; i < extraRoom.Length; i++) {
+            extraRoomUnvisited.Push (extraRoom[i]);
+        }
 		if (doorRoom.Length < sizeOfMapX* NUMBER_OF_DOOR_PER_FLOOR) {
 			Debug.Log ("Door rooms size should be more than " + sizeOfMapX* NUMBER_OF_DOOR_PER_FLOOR);
 		}
@@ -131,46 +136,60 @@ public class RandomMapGeneration : MonoBehaviour {
 		}
 		
 	}
-	
-	
-	//Assume that each door and regular room has the same s    ize.
-	void instantiateRooms() {
-		//level is needed to keep track of each floor.
-		int level = 0;
-		Vector3 sizeOfPrefab = new Vector3 (0,0,0);
-		for (int j = 0; j < sizeOfMapY; j++) {
-			generateRandomDoor ();
-			for (int i = 0; i < sizeOfMapX; i++) {
-				if (doorRoomEachFloor.Contains (i)) {        
-					//Get each room out of the stack doorRoomUnvisited
-					Transform doorR = doorRoomUnvisited.Pop ();
-					//Add door to linkedDoor to link each door and only 2 doors are connected
-					linkedDoor.Add(doorR);
-					Instantiate (doorR, transform.position + sizeOfPrefab, transform.rotation);
-					//Size/Gap between each hallway
-					sizeOfPrefab.x += 50;
-				} else {
-					Transform regR = regRoomUnvisited.Pop ();
-					Instantiate (regR, transform.position + sizeOfPrefab, transform.rotation);
-					
-					//Size/Gap between each hallway
-					sizeOfPrefab.x += 50;
-				}
-			}
-			//Clear the doorRoomEachFloor
-			doorRoomEachFloor.Clear ();
-			sizeOfPrefab.x = 0;
-			sizeOfPrefab.y = 0;
-			sizeOfPrefab.z = 0;
-			level++;
-			
-			//Size/Gap between each level
-			sizeOfPrefab.y += 25;
-			sizeOfPrefab.y *= level;
-		}
-		
-	}
-	
-	
+
+
+    //Assume that each door and regular room has the same s    ize.
+    void instantiateRooms()
+    {
+        //level is needed to keep track of each floor.
+        int level = 0;
+        Vector3 sizeOfPrefab = new Vector3(0, 0, 0);
+
+        //the basement
+        Transform basement = extraRoomUnvisited.Pop();
+        linkedDoor.Add(basement);
+        Instantiate(basement, new Vector3(100, -25, 0), transform.rotation);
+
+        //the attic
+        Transform attic = extraRoomUnvisited.Pop();
+        linkedDoor.Add(attic);
+        Instantiate(attic, new Vector3(100, 125, 0), transform.rotation);
+
+        for (int j = 0; j < sizeOfMapY; j++)
+        {
+            generateRandomDoor();
+            for (int i = 0; i < sizeOfMapX; i++)
+            {
+                if (doorRoomEachFloor.Contains(i))
+                {
+                    //Get each room out of the stack doorRoomUnvisited
+                    Transform doorR = doorRoomUnvisited.Pop();
+                    //Add door to linkedDoor to link each door and only 2 doors are connected
+                    linkedDoor.Add(doorR);
+                    Instantiate(doorR, transform.position + sizeOfPrefab, transform.rotation);
+                    //Size/Gap between each hallway
+                    sizeOfPrefab.x += 50;
+                }
+                else
+                {
+                    Transform regR = regRoomUnvisited.Pop();
+                    Instantiate(regR, transform.position + sizeOfPrefab, transform.rotation);
+
+                    //Size/Gap between each hallway
+                    sizeOfPrefab.x += 50;
+                }
+            }
+            //Clear the doorRoomEachFloor
+            doorRoomEachFloor.Clear();
+            sizeOfPrefab.x = 0;
+            sizeOfPrefab.y = 0;
+            sizeOfPrefab.z = 0;
+            level++;
+
+            //Size/Gap between each level
+            sizeOfPrefab.y += 25;
+            sizeOfPrefab.y *= level;
+        }
+    }
 }
 	
