@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 406318}
   - 212: {fileID: 21204442}
   m_Layer: 0
-  m_Name: TempRoomDoor 9
+  m_Name: Attic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ GameObject:
   - 61: {fileID: 6128092}
   - 114: {fileID: 11488362}
   m_Layer: 0
-  m_Name: Door9
+  m_Name: AtticDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 128606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 129.385223, y: 66.4993362, z: 0}
-  m_LocalScale: {x: 10.2008276, y: 6.3704524, z: 1}
+  m_LocalScale: {x: 30, y: 6.37045193, z: 1}
   m_Children:
   - {fileID: 408180}
   - {fileID: 445124}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHidden: 0
+  waitTime: 9.99999975e-05
 --- !u!114 &11412156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,7 +426,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: AtticDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 6.37045193
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128606}
