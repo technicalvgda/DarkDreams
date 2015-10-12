@@ -122,7 +122,7 @@ public class ChasingMonster : MonoBehaviour {
        
        
     }
-    //Function to reverse enemy movemeny position, left or right, to 
+    //Function to reverse enemy movement position, left or right, to 
     //test if line cast flips along with the monster
     void FlipEnemy()
     {
@@ -131,6 +131,7 @@ public class ChasingMonster : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        player.slowMo = false;
     }
 	//When the player collides with the patrolling enemy
 	void OnTriggerEnter2D(Collider2D col)
