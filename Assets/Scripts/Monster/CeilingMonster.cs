@@ -11,6 +11,7 @@ public class CeilingMonster : MonoBehaviour
     bool isActive = true;           // check if its active or dazed
     bool isFalling = false;         // check if its falling
     bool isClimbing = false;        // check if its rising
+	bool isCaught = false;          // check to see if player is spotted
 
     public float stunTime = 10f;    // stun time
     public float fallSpeed = 5f;    // fall speed
@@ -63,22 +64,24 @@ public class CeilingMonster : MonoBehaviour
 
         // Trigger for Dropping the Ceiling Monster
 
-       
+		isCaught = false;
+		spottedCue.SetActive (false);
+
        if (leftTrigger.collider && leftTrigger.collider.tag == "Player")
        {
-                spottedCue.SetActive(true);
+				isCaught = true;
                 isFalling = true;
                 isClimbing = false;
        }
        else if (rightTrigger.collider && rightTrigger.collider.tag == "Player")
        {
-                spottedCue.SetActive(true);
+                isCaught = true;
                 isFalling = true;
                 isClimbing = false;
        }
        else if (centerTrigger.collider && centerTrigger.collider.tag == "Player")
        {
-                spottedCue.SetActive(true);
+                isCaught = true;
                 isFalling = true;
                 isClimbing = false;
        }
@@ -117,10 +120,15 @@ public class CeilingMonster : MonoBehaviour
         // Ceiling monster is dazed for 'stunTime' seconds
         if (!isActive)
         {
-            spottedCue.SetActive(false);
             StartCoroutine(DazeTimer(stunTime));
         }
     }
+
+	void LateUpdate()
+	{
+		if (isCaught == true)
+		spottedCue.SetActive (true);
+	}
 
     void OnTriggerEnter2D(Collider2D col)
     {
