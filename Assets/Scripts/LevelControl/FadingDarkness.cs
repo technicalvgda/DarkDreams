@@ -81,7 +81,7 @@ public class FadingDarkness : MonoBehaviour
             //turn off fading
             fade = false;
             //reset darkness
-            canvasGroup.alpha = 0;
+            //canvasGroup.alpha = 0;
            
         }
 
