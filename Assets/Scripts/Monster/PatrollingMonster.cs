@@ -12,7 +12,6 @@ public class PatrollingMonster : MonoBehaviour {
     public float distance;
 	public float visionSpeedMultiplier = 2.0f;
     public int patrolDistance = 5;
-
     //Start position for the line cast
     private Vector2 startCast;
     //End position for the line cast
@@ -21,7 +20,6 @@ public class PatrollingMonster : MonoBehaviour {
     public float lineCastDistance = 0f;
     //LineRenderer to display line of sight to player
     public LineRenderer lineOfSight;
-
     PlayerControl player;
     GameObject spottedCue;
 
@@ -32,7 +30,6 @@ public class PatrollingMonster : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-
         //spottedCue.SetActive(false);
         startPos = gameObject.transform.position;
         //set player to the object with tag "Player"
@@ -41,18 +38,20 @@ public class PatrollingMonster : MonoBehaviour {
         lineOfSight = GetComponent<LineRenderer>();
         //set position of end node of line renderer to the same distance as its line cast
         lineOfSight.SetPosition(1, new Vector3(lineCastDistance, 0, 0));
+       
     }
 
 	// Update is called once per frame
 	void Update () {
-        
         Vector2 currentPos = gameObject.transform.position;
+        //finds player's position
+        var playerObject = GameObject.Find("Player");
+        Vector2 playerPos = playerObject.transform.position;
         //initialize the starting position of linecast every frame
         startCast = currentPos;
         //initialize the end position of linecast every frame
         endCast = currentPos;
         distance = currentPos.x - startPos.x;
-
         counter *= Time.deltaTime;
        
         //enemy facing left change position of line cast to follow change of enemy position
@@ -93,34 +92,35 @@ public class PatrollingMonster : MonoBehaviour {
             ///this code runs when player is seen
 			if (player.hide == false)
             {
-                
                 spottedCue.SetActive(true);
-
                 if (!player.slowMo)// Upon player collision with linecast/monster-vision, their speed is reduced
                 {
                     player.slowMo = true;
                 }
 
                 //Tests which direction the monster is facing
-                if (!facingRight) 
-				{
-					//Multiply the movement by the amount set in the inspector
-					transform.Translate (-movement * visionSpeedMultiplier, 0, 0);
-				}
-				else 
-				{
-					//Multiply the movement by the amount set in the inspector
-					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
-				}
-			}
+                if (!facingRight)
+                {
+                    //Multiply the movement by the amount set in the inspector
+                    transform.Translate(-movement * visionSpeedMultiplier, 0, 0);
+                }
+                else
+                {
+                    //Multiply the movement by the amount set in the inspector
+                    transform.Translate(movement * visionSpeedMultiplier, 0, 0);
+                }
+            }
             else
             {
                 spottedCue.SetActive(false);
             }
-            
-		}
-       
-       
+
+        }
+        //if player is in this margin
+        if (playerPos.x > startCast.x && playerPos.x < endCast.x) {
+            player.slowMo = false;
+        }
+
     }
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
