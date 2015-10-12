@@ -46,4 +46,5 @@ public class VisionLessPatrollingMonsterSpawner : MonoBehaviour {
 		//Increase amount in pool by 1
 		currentPool += 1;
 	}
+  
 }

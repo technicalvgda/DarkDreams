@@ -66,5 +66,15 @@ public class PatrollingMonster : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	}	
+	}
+    //checks the contact for contact between monsters and player
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //if enemy collides with player
+        if (col.gameObject.name == "Player")
+        {
+            //redueces the speed to zero 
+            speed = 0f;
+        }
+    }
 }
