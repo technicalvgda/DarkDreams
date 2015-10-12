@@ -348,6 +348,9 @@ MonoBehaviour:
   - {fileID: 427300, guid: 576f9523b2d994848b94a0f752999f27, type: 2}
   - {fileID: 451556, guid: f507cdbb3cbcdee4ea295d42087ca72f, type: 2}
   - {fileID: 479640, guid: 4007779cb5015fa439149994e631c7dc, type: 2}
+  extraRoom:
+  - {fileID: 406318, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
+  - {fileID: 406318, guid: 68b5e4a09cb220a4db0144627ae1257d, type: 2}
 --- !u!1001 &1709114104
 Prefab:
   m_ObjectHideFlags: 0
