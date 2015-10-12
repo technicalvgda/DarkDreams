@@ -192,6 +192,14 @@ public class PlayerControl : MonoBehaviour
                     }
                 }
             }
+            //if player is trying to hide, and the object is the trap enemy
+            else if (col.gameObject.tag == "Enemy")
+            {
+                //player dies
+                isAlive = false;
+                //prevents movement
+                normalSpeed = 0f;
+            }
                
           }     
         
