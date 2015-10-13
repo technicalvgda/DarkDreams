@@ -28,7 +28,7 @@ GameObject:
   - 61: {fileID: 6128092}
   - 114: {fileID: 11488362}
   m_Layer: 0
-  m_Name: Door9
+  m_Name: BasementDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

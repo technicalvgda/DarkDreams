@@ -214,11 +214,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 426518, guid: 506d143f33e895343b4b4b9a2f367f00, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.79999995
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 426518, guid: 506d143f33e895343b4b4b9a2f367f00, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.80000019
+      value: -34.5
       objectReference: {fileID: 0}
     - target: {fileID: 426518, guid: 506d143f33e895343b4b4b9a2f367f00, type: 2}
       propertyPath: m_LocalPosition.z
@@ -349,8 +349,8 @@ MonoBehaviour:
   - {fileID: 451556, guid: f507cdbb3cbcdee4ea295d42087ca72f, type: 2}
   - {fileID: 479640, guid: 4007779cb5015fa439149994e631c7dc, type: 2}
   extraRoom:
-  - {fileID: 406318, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
   - {fileID: 406318, guid: 68b5e4a09cb220a4db0144627ae1257d, type: 2}
+  - {fileID: 406318, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
 --- !u!1001 &1709114104
 Prefab:
   m_ObjectHideFlags: 0
