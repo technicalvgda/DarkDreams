@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21279074}
   - 114: {fileID: 11440730}
   m_Layer: 0
-  m_Name: VisionLessPatrolEnemySpawner
+  m_Name: PatrollingEnemySpawner
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

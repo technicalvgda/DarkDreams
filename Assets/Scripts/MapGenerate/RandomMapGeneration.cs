@@ -23,7 +23,8 @@ public class RandomMapGeneration : MonoBehaviour
     //each level is y
     public int sizeOfMapX = 1;
     public int sizeOfMapY = 1;
-
+    public int lengthOfRoom = 60;
+    public int heightOfRoom = 27;
     //List of doorRoom and RegularRoom
     public Transform[] doorRoom;
     public Transform[] regRoom;
@@ -180,11 +181,11 @@ public class RandomMapGeneration : MonoBehaviour
 
         //the basement
         Transform basement = extraRoomUnvisited.Pop();
-        Instantiate(basement, new Vector3(100, -25, 0), transform.rotation);
+        Instantiate(basement, new Vector3(120, -27, 0), transform.rotation);
 
         //the attic
         Transform attic = extraRoomUnvisited.Pop();
-        Instantiate(attic, new Vector3(100, 125, 0), transform.rotation);
+        Instantiate(attic, new Vector3(120, 135, 0), transform.rotation);
 
         for (int j = 0; j < sizeOfMapY; j++)
         {
@@ -198,16 +199,16 @@ public class RandomMapGeneration : MonoBehaviour
                     //Add door to linkedDoor to link each door and only 2 doors are connected
                     linkedDoor.Add(doorR);
                     Instantiate(doorR, transform.position + sizeOfPrefab, transform.rotation);
-                    //Size/Gap between each hallway
-                    sizeOfPrefab.x += 50;
+                    //Size/Gap between each hallway (length of rooms)
+                    sizeOfPrefab.x += lengthOfRoom;
                 }
                 else
                 {
                     Transform regR = regRoomUnvisited.Pop();
                     Instantiate(regR, transform.position + sizeOfPrefab, transform.rotation);
 
-                    //Size/Gap between each hallway
-                    sizeOfPrefab.x += 50;
+                    //Size/Gap between each hallway  (length of rooms)
+                    sizeOfPrefab.x += lengthOfRoom;
                 }
             }
             //Clear the doorRoomEachFloor
@@ -217,8 +218,8 @@ public class RandomMapGeneration : MonoBehaviour
             sizeOfPrefab.z = 0;
             level++;
 
-            //Size/Gap between each level
-            sizeOfPrefab.y += 25;
+            //Size/Gap between each level (height of rooms)
+            sizeOfPrefab.y += heightOfRoom;
             sizeOfPrefab.y *= level;
         }
     }

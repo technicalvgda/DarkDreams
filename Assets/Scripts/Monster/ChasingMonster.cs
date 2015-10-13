@@ -8,7 +8,6 @@ public class ChasingMonster : MonoBehaviour
     Vector3 startPos;
     private bool facingRight = true;
     private bool isCaught = false;
-	private bool hitPlayer = false;
     public float movement;
     public float speed = 2.0f;
     public float counter = 0;
@@ -26,7 +25,6 @@ public class ChasingMonster : MonoBehaviour
     public LineRenderer lineOfSight;
 
     PlayerControl player;
-    Vector2 playerPos;
     GameObject spottedCue;
 
     void Awake()
@@ -49,7 +47,6 @@ public class ChasingMonster : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-        playerPos = player.transform.position;
         Vector2 currentPos = gameObject.transform.position;
         //initialize the starting position of linecast every frame
         startCast = currentPos;
@@ -116,17 +113,8 @@ public class ChasingMonster : MonoBehaviour
 					//Multiply the movement by the amount set in the inspector
 					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
 				}
-		}
-            
-            
+		}          
 }
-    /*
-        //if player is in this margin
-        if (playerPos.x > startCast.x && playerPos.x < endCast.x)
-        {
-            player.slowMo = false;
-        }
-*/
 
     void LateUpdate()
 	{

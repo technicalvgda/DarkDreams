@@ -11,7 +11,7 @@ public class PatrollingMonster : MonoBehaviour {
 	float distance;
 	public int patrolDistance = 5;
 	//to access methods and variables from the spawner
-	private VisionLessPatrollingMonsterSpawner obj;
+	private PatrollingMonsterSpawner obj;
     PlayerControl player;
 
     // Use this for initialization
@@ -20,7 +20,7 @@ public class PatrollingMonster : MonoBehaviour {
 		//Get the starting position of the enemy
 		startPos = gameObject.transform.position;
 		//Grab the spawner and get its script component
-		obj = GameObject.Find("VisionLessPatrolEnemySpawner").GetComponent<VisionLessPatrollingMonsterSpawner> ();
+		obj = GameObject.Find("PatrollingEnemySpawner").GetComponent<PatrollingMonsterSpawner> ();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
         //If the spawner is facing left...
         if (!obj.facingRight)
