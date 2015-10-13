@@ -107,10 +107,26 @@ public class RandomMapGeneration : MonoBehaviour {
 		for (int i = 0; i < linkedDoor.Count; i++) {
 			//Skip the first door since it will be connected to the basement
 			if (i == 0) {
-				continue;
+                string s1 = linkedDoor[i].name;
+                string[] doorNumber1 = s1.Split(' ');
+
+                Transform gameObjLast = GameObject.Find("Door" + doorNumber1[1]).transform;
+                gameObjLast.GetComponent<TeleportDoors>().exit = GameObject.Find("BasementDoor").transform;
+
+                Transform gameObjBaseDoor = GameObject.Find("BasementDoor").transform;
+                gameObjBaseDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber1[1]).transform;
+                i++;
 			}
 			//if it is the last room, skip the last door since it will be connected to the rooftopRoom
 			if (i == linkedDoor.Count-1) {
+                string s = linkedDoor[i].name;
+                string[] lastDoor = s.Split(' ');
+
+                Transform gameObjectLast = GameObject.Find("Door" + lastDoor[1]).transform;
+                gameObjectLast.GetComponent<TeleportDoors>().exit = GameObject.Find("AtticDoor").transform;
+
+                Transform gameObjAtticDoor = GameObject.Find("AtticDoor").transform;
+                gameObjAtticDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + lastDoor[1]).transform;
 				break;
 			}
 			else {
@@ -147,12 +163,10 @@ public class RandomMapGeneration : MonoBehaviour {
 
         //the basement
         Transform basement = extraRoomUnvisited.Pop();
-        linkedDoor.Add(basement);
         Instantiate(basement, new Vector3(100, -25, 0), transform.rotation);
 
         //the attic
         Transform attic = extraRoomUnvisited.Pop();
-        linkedDoor.Add(attic);
         Instantiate(attic, new Vector3(100, 125, 0), transform.rotation);
 
         for (int j = 0; j < sizeOfMapY; j++)
