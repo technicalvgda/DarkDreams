@@ -51,17 +51,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 130052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc21ebcfa41d1ab4e8dd7a6ea2af19cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 84a01904cab36dc4a858d3046beab43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: 0
-  speed: 10
-  counter: 0
-  distance: 0
-  visionSpeedMultiplier: 2
-  patrolDistance: 5
-  lineCastDistance: 5
-  lineOfSight: {fileID: 0}
+  moveSpeed: 5
 --- !u!212 &21239628
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -87,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d4c83c50108f6bb45ac86521458d379e, type: 3}
-  m_Color: {r: .661764741, g: 0, b: 0, a: 1}
+  m_Color: {r: .882352948, g: .110294119, b: .110294119, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -102,18 +95,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: PatrolEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.r
-      value: .661764741
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.b
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
