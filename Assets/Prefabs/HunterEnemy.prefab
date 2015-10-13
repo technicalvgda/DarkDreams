@@ -51,10 +51,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 130052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84a01904cab36dc4a858d3046beab43a, type: 3}
+  m_Script: {fileID: 11500000, guid: e163ce4fdbee7de4788a5912568137be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  movement: 0
+  speed: 10
+  counter: 0
+  distance: 0
+  visionSpeedMultiplier: 2
+  patrolDistance: 5
+  lineCastDistance: 5
+  lineOfSight: {fileID: 0}
 --- !u!212 &21239628
 SpriteRenderer:
   m_ObjectHideFlags: 1
