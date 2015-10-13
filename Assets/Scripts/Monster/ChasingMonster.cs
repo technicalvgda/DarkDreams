@@ -2,10 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ChasingMonster : MonoBehaviour {
+public class ChasingMonster : MonoBehaviour
+{
 
     Vector3 startPos;
     private bool facingRight = true;
+    private bool isCaught = false;
+	private bool hitPlayer = false;
     public float movement;
     public float speed = 2.0f;
     public float counter = 0;
@@ -84,26 +87,26 @@ public class ChasingMonster : MonoBehaviour {
             FlipEnemy();
             startPos = gameObject.transform.position;
         }
+        // reinitialize caught detection
+        isCaught = false;
+        spottedCue.SetActive(false);
+        
         //Visually see the line cast in scene mode, NOT GAME
         Debug.DrawLine(startCast, endCast, Color.green);
         //Making the line cast
         RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
         //check if the collider exists and if the collider is the player
-        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player")
+        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player" && player.hide == false)
         {
-            ///this code runs when player is seen
-			if (player.hide == false)
+            isCaught = true;
+            if (!player.slowMo)
             {
-                
-                spottedCue.SetActive(true);
+             // Upon player collision with linecast/monster-vision, their speed is reduced
+                player.slowMo = true;
+            }
 
-                if (!player.slowMo)// Upon player collision with linecast/monster-vision, their speed is reduced
-                {
-                    player.slowMo = true;
-                }
-
-                //Tests which direction the monster is facing
-                if (!facingRight) 
+            //Tests which direction the monster is facing
+            if (!facingRight) 
 				{
 					//Multiply the movement by the amount set in the inspector
 					transform.Translate (-movement * visionSpeedMultiplier, 0, 0);
@@ -113,32 +116,36 @@ public class ChasingMonster : MonoBehaviour {
 					//Multiply the movement by the amount set in the inspector
 					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
 				}
-			}
-            else
-            {
-                spottedCue.SetActive(false);
-            }
-            
 		}
+            
+            
+}
+    /*
         //if player is in this margin
         if (playerPos.x > startCast.x && playerPos.x < endCast.x)
         {
             player.slowMo = false;
         }
+*/
 
-
-    }
-    //Function to reverse enemy movemeny position, left or right, to 
-    //test if line cast flips along with the monster
-    void FlipEnemy()
+    void LateUpdate()
+	{
+        if (isCaught == true)
+        {
+            spottedCue.SetActive(true);
+        }
+	}
+//Function to reverse enemy movemeny position, left or right, to 
+//test if line cast flips along with the monster
+void FlipEnemy()
     {
        
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-        player.slowMo = false;
-        spottedCue.SetActive(false);
+        //player.slowMo = false;
+        //spottedCue.SetActive(false);
     }
 	//When the player collides with the patrolling enemy
 	void OnTriggerEnter2D(Collider2D col)
