@@ -232,7 +232,7 @@ ParticleSystem:
         rgba: 4294547749
       minMaxState: 0
     startSize:
-      scalar: 4
+      scalar: 6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1158,6 +1158,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: InitialModule.maxNumParticles
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.scalar
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
