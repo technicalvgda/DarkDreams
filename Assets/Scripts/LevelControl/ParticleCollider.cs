@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class particleCollider : MonoBehaviour {
+public class ParticleCollider : MonoBehaviour {
 
     ParticleSystem particle;
 
