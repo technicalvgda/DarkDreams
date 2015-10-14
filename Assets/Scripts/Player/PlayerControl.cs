@@ -39,7 +39,9 @@ public class PlayerControl : MonoBehaviour
     GameObject wallR;
     GameObject wallL;
 
-
+    // hunter variables
+    public GameObject HunterMonster;
+    private bool isHunterActive = false;
 
 
 
@@ -76,7 +78,14 @@ public class PlayerControl : MonoBehaviour
         {
             sprint = false;
         }
-            
+
+        // code to spawn a HunterMonster targeting the player at a random
+        // location within the same level
+        if (!isHunterActive)
+        {
+            isHunterActive = true;
+            StartCoroutine(SpawnHunterMonster());
+        }  
     }
     void LateUpdate()
     {
@@ -225,5 +234,14 @@ public class PlayerControl : MonoBehaviour
     {
         itemCounter += itemAdd; //adds amount to current score
         Debug.Log("Score: " + itemCounter); //confirms the player has picked up the object (track amount). this is removeable.
+    }
+
+    IEnumerator SpawnHunterMonster() {
+        yield return new WaitForSeconds(Random.Range(20,25));
+        var hunter = Instantiate(HunterMonster, new Vector2(Random.Range(wallL.transform.position.x,wallR.transform.position.x),
+                                 transform.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(60);
+        Destroy(hunter, 1f);
+        isHunterActive = false;
     }
 }

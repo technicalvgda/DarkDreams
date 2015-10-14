@@ -79,6 +79,7 @@ MonoBehaviour:
   slowMoSpeed: 5
   sprintSpeed: 0
   hide: 0
+  HunterMonster: {fileID: 131818, guid: 5ecd8e5b0a260a4428dee4c86a127647, type: 2}
 --- !u!212 &21281236
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -120,6 +121,10 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: HunterMonster
+      value: 
+      objectReference: {fileID: 131818, guid: 5ecd8e5b0a260a4428dee4c86a127647, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184980}
