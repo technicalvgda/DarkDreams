@@ -46,7 +46,8 @@ public class ChasingMonster : MonoBehaviour
     }
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
         Vector2 currentPos = gameObject.transform.position;
         //initialize the starting position of linecast every frame
         startCast = currentPos;
@@ -96,11 +97,8 @@ public class ChasingMonster : MonoBehaviour
         if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player" && player.hide == false)
         {
             isCaught = true;
-            if (!player.slowMo)
-            {
              // Upon player collision with linecast/monster-vision, their speed is reduced
-                player.slowMo = true;
-            }
+            player.slowMo = true;
 
             //Tests which direction the monster is facing
             if (!facingRight) 
@@ -113,7 +111,7 @@ public class ChasingMonster : MonoBehaviour
 					//Multiply the movement by the amount set in the inspector
 					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
 				}
-		}          
+		}
 }
 
     void LateUpdate()
@@ -122,6 +120,10 @@ public class ChasingMonster : MonoBehaviour
         {
             spottedCue.SetActive(true);
         }
+		else
+		{
+			player.slowMo = false;
+		}
 	}
 //Function to reverse enemy movemeny position, left or right, to 
 //test if line cast flips along with the monster

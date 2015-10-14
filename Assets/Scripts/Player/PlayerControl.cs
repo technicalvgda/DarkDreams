@@ -39,10 +39,6 @@ public class PlayerControl : MonoBehaviour
     GameObject wallR;
     GameObject wallL;
 
-
-
-
-
     // Use this for initialization
     void Awake()
     {
@@ -59,10 +55,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
-        
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
-        
-
 	}
     void Update()
     {
