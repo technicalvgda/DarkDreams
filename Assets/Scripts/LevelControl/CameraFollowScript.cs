@@ -30,14 +30,19 @@ public class CameraFollowScript : MonoBehaviour
         }
         else
         {
-            if (!transition) StartCoroutine(Transition());
+            if (!transition)
+            {
+                
+                transition = true;
+                StartCoroutine(Transition());
+            }
            // StartCoroutine(Transition2());
         }
     }//position is camera position
 
     IEnumerator Transition()
     {
-        transition = true;
+        
         playerScript.normalSpeed = 0;
         float t = 0.0f;
         Vector3 startingPos = transform.position;
@@ -50,8 +55,8 @@ public class CameraFollowScript : MonoBehaviour
         }
         playerScript.normalSpeed = playerScript.defaultSpeed;
         transition = false;
-       
-        
+        follow = true;
+
     }
     /*
     IEnumerator Transition2()

@@ -53,10 +53,12 @@ public class TeleportDoors : MonoBehaviour
             TeleportToExit2D(col);
 
         }
+        /*
         else
         {
-            cameraScript.follow = true;//allows smooth transition for each teleport
+            //cameraScript.follow = true;//allows smooth transition for each teleport
         }
+        */
     }
 
     void TeleportToExit2D ( Collider2D col )
