@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VisionLessPatrollingMonsterSpawner : MonoBehaviour {
+public class PatrollingMonsterSpawner : MonoBehaviour {
 
 	//The object that it will spawn, set in the inspector
 	public GameObject obj;

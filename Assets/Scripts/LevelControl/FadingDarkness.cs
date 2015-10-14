@@ -32,7 +32,7 @@ public class FadingDarkness : MonoBehaviour
         // sets the CanvasGroup alpha to 0
         canvasGroup.alpha = 0;
         // sets the fadeSpeed to 10f
-        fadeSpeed = 0.05f;
+        fadeSpeed = 0.01f;
         hiddenFadeSpeed = fadeSpeed * 2; //declares the hiddenFadeSpeed
     }
 
