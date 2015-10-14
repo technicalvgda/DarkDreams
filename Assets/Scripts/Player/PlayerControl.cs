@@ -23,7 +23,8 @@ public class PlayerControl : MonoBehaviour
     public float playerSpeed;               // final magnitude of speed, the player's speed
     public bool slowMo;                     //boolean that toggles slow motion
     public bool sprint;                     //boolean that toggles sprint
-    public float normalSpeed = 10.0f;       //normal speed magnitude
+    public float defaultSpeed = 10.0f;      //same as normal speed
+    public float normalSpeed;       //normal speed magnitude
     public float slowMoSpeed;        //speed magnitude when slowMo is activaed
     public float sprintSpeed;
 
@@ -42,6 +43,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        normalSpeed = defaultSpeed;
         clickPosition = new Vector2(0f, 0f);
         screenWidth = new Vector2((float)Screen.width, 0f);
         edgeLeft = new Vector2(screenWidth.x * EDGEBUFFER, 0f);
