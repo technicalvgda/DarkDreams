@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LevelControl : MonoBehaviour
@@ -6,7 +7,10 @@ public class LevelControl : MonoBehaviour
 
     //public float MAX_TIME = 5.0f;
     public float timer = 5.0f;
+	float fadeTime = 3.0f;
     GameObject player;
+	public GameObject overlay;
+	Image overlay_image;
     GameObject gameOverPanel;
     //GameObject retryButton;
     //GameObject menuButton;
@@ -22,6 +26,8 @@ public class LevelControl : MonoBehaviour
         //retryButton = GameObject.Find("RetryButton");
         //menuButton = GameObject.Find("MenuButton");
         gameOverPanel.SetActive(false);
+		overlay.SetActive (false);
+		overlay_image = overlay.GetComponent<Image> ();
     }
 
     // Update is called once per frame
@@ -38,6 +44,7 @@ public class LevelControl : MonoBehaviour
             }
             if (timer <= 0)
             {
+				StartCoroutine(fadeToBlack());
                 gameOverPanel.SetActive(true);
                 Time.timeScale = 0f;
             }
@@ -56,7 +63,26 @@ public class LevelControl : MonoBehaviour
         Application.LoadLevel("Title Screen");
         
     }
+	public IEnumerator fadeToBlack()
+	{
+		overlay.SetActive (true);
+		Color c = overlay_image.color;
 
-   
 
+		float progress = 0.0f;
+
+		while (progress < 250) 
+		{
+			progress += .015f;
+			c.a = progress;
+			//Debug.Log(progress);
+			overlay_image.color = c;
+
+			yield return null;
+		}
+
+		//c.a = 255.0f;
+		//overlay_image.color = c;
+		
+	}
 }
