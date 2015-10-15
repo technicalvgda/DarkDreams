@@ -40,6 +40,10 @@ public class PlayerControl : MonoBehaviour
     GameObject wallR;
     GameObject wallL;
 
+    // hunter variables
+    public GameObject HunterMonster;
+    private bool isHunterActive = false;
+
     // Use this for initialization
     void Awake()
     {
@@ -71,7 +75,15 @@ public class PlayerControl : MonoBehaviour
         {
             sprint = false;
         }
-            
+
+        // code to spawn a HunterMonster targeting the player at a random
+        // location within the same level
+        if (!isHunterActive)
+        {
+            isHunterActive = true;
+            StartCoroutine(SpawnHunterMonster());
+        }
+
     }
     void LateUpdate()
     {
@@ -220,5 +232,24 @@ public class PlayerControl : MonoBehaviour
     {
         itemCounter += itemAdd; //adds amount to current score
         Debug.Log("Score: " + itemCounter); //confirms the player has picked up the object (track amount). this is removeable.
+    }
+
+    IEnumerator SpawnHunterMonster()
+    {
+        yield return new WaitForSeconds(Random.Range(2, 3));        // testing spawn of hunter
+        // yield return new WaitForSeconds(Random.Range(20,25));    // waits 20-25 seconds before spawning
+
+        // formula so hunter doesn't spawn on near player
+        float xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
+        while (transform.position.x - 10 < xHunterPos && xHunterPos < transform.position.x + 10)
+        {
+            xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
+        }
+
+        // hunter spawns
+        var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(60);    // patrols for 1 minute
+        Destroy(hunter, 1f);                    // goodbye hunter
+        isHunterActive = false;
     }
 }
