@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyActive: 0
   canSee: 0
-  lineCastDistance: 2
+  lineCastDistance: 5
 --- !u!212 &21257502
 SpriteRenderer:
   m_ObjectHideFlags: 1

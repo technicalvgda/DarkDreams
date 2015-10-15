@@ -43,6 +43,7 @@ public class StationaryMonster : MonoBehaviour
         {
             //kill player (variable is in player script)
             anim.SetTrigger("Kill");
+            player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
             player.isAlive = false;
            
         }
