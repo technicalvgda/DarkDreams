@@ -115,6 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f42b0b6254a794d941e898553edbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brightness: {fileID: 0}
+  bgm: {fileID: 0}
+  se: {fileID: 0}
 --- !u!114 &65994444
 MonoBehaviour:
   m_ObjectHideFlags: 0

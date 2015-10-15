@@ -161,7 +161,7 @@ public class MainTitle : MonoBehaviour {
 	
 	// this happens when the player confirms "Test"
 	void StartGame() {
-		Application.LoadLevel ("TestScene");
+		Application.LoadLevel ("MapManagerTesting");
 	}
 	
 	// confirms "Quit"

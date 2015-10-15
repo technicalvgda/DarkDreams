@@ -68,7 +68,8 @@ public class PauseScript : MonoBehaviour {
     }
     public void Quit()
     {
-        Application.LoadLevel("TitleScreen");
+        //load first level in hierarchy
+        Application.LoadLevel(0);
     }
 
 	IEnumerator _UnpauseTransition() {
