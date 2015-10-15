@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21239628}
   - 58: {fileID: 5872462}
   - 114: {fileID: 11495902}
+  - 120: {fileID: 12052462}
   m_Layer: 0
   m_Name: HunterEnemy
   m_TagString: PatrolEnemy
@@ -54,7 +55,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a01904cab36dc4a858d3046beab43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  movement: 0
+  speed: 5
+  counter: 0
+  distance: 0
+  activeSpeed: 10
+  patrolDistance: 5
+  lineCastDistance: 8
+  lineOfSight: {fileID: 0}
+--- !u!120 &12052462
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130052}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 5
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4278190335
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4278255615
+  m_UseWorldSpace: 0
 --- !u!212 &21239628
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -95,6 +140,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: PatrolEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseWorldSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Parameters.m_StartColor.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Parameters.m_EndColor.rgba
+      value: 4278255615
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Parameters.endWidth
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
