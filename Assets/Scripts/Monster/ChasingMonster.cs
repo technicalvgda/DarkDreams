@@ -23,18 +23,19 @@ public class ChasingMonster : MonoBehaviour
     public float lineCastDistance = 0f;
     //LineRenderer to display line of sight to player
     public LineRenderer lineOfSight;
-
+    Animator anim;
     PlayerControl player;
     GameObject spottedCue;
 
     void Awake()
     {
+        anim = GetComponent<Animator>();
         spottedCue = GameObject.Find("SpottedIndicator");
     }
     // Use this for initialization
     void Start ()
     {
-
+       
         //spottedCue.SetActive(false);
         startPos = gameObject.transform.position;
         //set player to the object with tag "Player"
@@ -112,7 +113,9 @@ public class ChasingMonster : MonoBehaviour
 					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
 				}
 		}
-}
+        //set caught animation to play if spotted
+        anim.SetBool("Alert", isCaught);
+    }
 
     void LateUpdate()
 	{

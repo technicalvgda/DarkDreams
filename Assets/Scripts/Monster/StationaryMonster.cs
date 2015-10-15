@@ -19,14 +19,14 @@ public class StationaryMonster : MonoBehaviour
     public float lineCastDistance = 0f;//Variable to set distance of the monster's vision
     private RaycastHit2D hit; //holds info of which object was seen by linecast
 
-    //temp color change for testing
-    Color defaultColor;
+    Animator anim;
+    
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-        defaultColor = GetComponent<SpriteRenderer>().color;
         seconds = 10;             //Starts the timer at 10 seconds
         rand = Random.value* 10; //Generate a random number from 0 to 10 
         Vector2 currentPos = gameObject.transform.position;
@@ -42,6 +42,7 @@ public class StationaryMonster : MonoBehaviour
         if(canSee && enemyActive)
         {
             //kill player (variable is in player script)
+            anim.SetTrigger("Kill");
             player.isAlive = false;
            
         }
@@ -81,15 +82,15 @@ public class StationaryMonster : MonoBehaviour
             //When timer is within a certain range of the random number, it will turn the timer on
             if ((seconds<rand + 1 && seconds> rand - 1))
             {
-                //changes color to red when active
-                GetComponent<SpriteRenderer>().color = Color.red;
-               // Debug.Log("Monster Timer is on!");
+                //changes enemy to alert animation
+                anim.SetBool("Alert", true);
+                // Debug.Log("Monster Timer is on!");
                 enemyActive = true;
             }
             else
             {
-                //changes color back to default when inactive
-                GetComponent<SpriteRenderer>().color = defaultColor;
+                //changes enemy to docile animation
+                anim.SetBool("Alert",false);
                 //Else it will remain off
                 enemyActive = false;
             }

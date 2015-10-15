@@ -65,6 +65,11 @@ public class PlayerControl : MonoBehaviour
 	}
     void Update()
     {
+        //if player is killed, set player object's alpha to 0 (make invisible)
+        if(isAlive==false)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+        }
         //code for sprinting
         if (Input.GetKey(KeyCode.LeftShift))
         {
