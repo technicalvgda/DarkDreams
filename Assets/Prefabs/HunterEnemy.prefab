@@ -58,8 +58,8 @@ MonoBehaviour:
   movement: 0
   speed: 5
   counter: 0
-  activeSpeed: 10
-  lineCastDistance: 8
+  activeSpeed: 8
+  lineCastDistance: 10
   lineOfSight: {fileID: 0}
 --- !u!120 &12052462
 LineRenderer:

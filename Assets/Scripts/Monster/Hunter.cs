@@ -9,7 +9,7 @@ public class Hunter : MonoBehaviour
     public float movement;
     public float speed = 5.0f;
     public float counter = 0;
-    public float activeSpeed = 10.0f;
+    public float activeSpeed = 8.0f;
 
     // the X positions of the path ends
     private float leftEndPath;
@@ -33,12 +33,17 @@ public class Hunter : MonoBehaviour
 
         leftEndPath = GameObject.Find("LeftWall").transform.position.x;
         rightEndPath = GameObject.Find("RightWall").transform.position.x;
+
+        //set player to the object with tag "Player"
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     }
 
     void Start()
     {
-        //set player to the object with tag "Player"
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        if(player.transform.position.x < gameObject.transform.position.x)
+        {
+            FlipEnemy();
+        }
 
         // set lineOfSight to this objects LineRenderer component and positions
         lineOfSight = GetComponent<LineRenderer>();
@@ -73,20 +78,18 @@ public class Hunter : MonoBehaviour
             FlipEnemy();
         }
 
-        isCaught = false;
-        //spottedCue.SetActive(false);  // BUGGED NULL REFERENCE
-
         // Visually see the line cast in scene mode, NOT GAME
         Debug.DrawLine(startCast, endCast, Color.magenta);
 
         // Making the line cast
-        RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
+        RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(startCast, endCast);
 
         // check if the collider exists and if the collider is the player
         if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player" && !player.hide)
         {
             isCaught = true;
-            ///this code runs when player is seen
+            // spottedCue.SetActive(true);  // BUGGED NULL REFERENCE
+            // this code runs when player is seen
 
             //Tests which direction the monster is facing
             if (facingRight)
@@ -99,14 +102,6 @@ public class Hunter : MonoBehaviour
                 //Multiply the movement by the amount set in the inspector
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
-        }
-    }
-
-    void LateUpdate()
-    {
-        if (isCaught)
-        {
-            // spottedCue.SetActive(true);  // BUGGED NULL REFERENCE
         }
     }
 
@@ -123,7 +118,7 @@ public class Hunter : MonoBehaviour
     //When the player collides with the patrolling enemy
     void OnTriggerEnter2D(Collider2D col)
     {
-        //If the player collides with the patrolling enemy and not hiding
+        //If the player collides with the patrolling enemy and is not caught
         if (col.gameObject.tag == "Player" && isCaught)
         {
             //Monster stops moving
