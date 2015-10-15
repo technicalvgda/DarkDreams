@@ -9,9 +9,7 @@ public class Hunter : MonoBehaviour
     public float movement;
     public float speed = 5.0f;
     public float counter = 0;
-    public float distance;
     public float activeSpeed = 10.0f;
-    public int patrolDistance = 5;
 
     // the X positions of the path ends
     private float leftEndPath;
@@ -21,7 +19,7 @@ public class Hunter : MonoBehaviour
     private Vector2 startCast, endCast;
 
     //Variable to set distance of the monster's vision
-    public float lineCastDistance = 8f;
+    public float lineCastDistance = 10f;
 
     //LineRenderer to display line of sight to player
     public LineRenderer lineOfSight;
@@ -126,7 +124,7 @@ public class Hunter : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         //If the player collides with the patrolling enemy and not hiding
-        if (col.gameObject.tag == "Player" && !player.hide)
+        if (col.gameObject.tag == "Player" && isCaught)
         {
             //Monster stops moving
             speed = 0;

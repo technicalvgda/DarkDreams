@@ -58,9 +58,7 @@ MonoBehaviour:
   movement: 0
   speed: 5
   counter: 0
-  distance: 0
   activeSpeed: 10
-  patrolDistance: 5
   lineCastDistance: 8
   lineOfSight: {fileID: 0}
 --- !u!120 &12052462
@@ -73,7 +71,7 @@ LineRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -92,7 +90,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     startWidth: 1
-    endWidth: 5
+    endWidth: 4
     m_StartColor:
       serializedVersion: 2
       rgba: 4278190335
@@ -155,8 +153,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Parameters.endWidth
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 130052}
