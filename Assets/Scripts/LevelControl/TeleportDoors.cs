@@ -23,12 +23,15 @@ public class TeleportDoors : MonoBehaviour
     //reference to camera
     CameraFollowScript cameraScript;
 
+
+
     // Use this for initialization
     void Awake()
     {
         clickPosition = new Vector2(0f, 0f);
         cameraScript = Camera.main.GetComponent<CameraFollowScript>();
     }
+
     void OnTriggerStay2D(Collider2D col)
     {
         ///get position of click
@@ -63,14 +66,15 @@ public class TeleportDoors : MonoBehaviour
 
     void TeleportToExit2D ( Collider2D col )
 	{
+
         if (exit != null)
         {
             col.transform.position = exit.transform.position; //line that teleports player
-
         }
         else
         {
             Debug.Log("no exit assigned");
         }
+
 	}
 }

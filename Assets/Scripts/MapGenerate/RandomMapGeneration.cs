@@ -42,6 +42,9 @@ public class RandomMapGeneration : MonoBehaviour
     //linkedDoor to keep track of the door to be connected on each floor
     private List<Transform> linkedDoor = new List<Transform>();
 
+
+	
+
     // Use this for initialization
     void Awake()
     {
@@ -127,9 +130,13 @@ public class RandomMapGeneration : MonoBehaviour
 
                 Transform gameObjLast = GameObject.Find("Door" + doorNumber1[1]).transform;
                 gameObjLast.GetComponent<TeleportDoors>().exit = GameObject.Find("BasementDoor").transform;
+				//gameObjLast.GetComponent<TeleportDoors>().numberOfTimes++;
+				Destroy (gameObjLast.GetComponent("TeleportDoors"));
 
                 Transform gameObjBaseDoor = GameObject.Find("BasementDoor").transform;
                 gameObjBaseDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber1[1]).transform;
+
+
                 i++;
             }
             //if it is the last room, skip the last door since it will be connected to the rooftopRoom
@@ -141,9 +148,12 @@ public class RandomMapGeneration : MonoBehaviour
                 Transform gameObjectLast = GameObject.Find("Door" + lastDoor[1]).transform;
                 gameObjectLast.GetComponent<TeleportDoors>().exit = GameObject.Find("AtticDoor").transform;
 
+
                 Transform gameObjAtticDoor = GameObject.Find("AtticDoor").transform;
                 gameObjAtticDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + lastDoor[1]).transform;
+				Destroy (gameObjAtticDoor.GetComponent("TeleportDoors"));
                 break;
+
             }
             else
             {
@@ -152,9 +162,11 @@ public class RandomMapGeneration : MonoBehaviour
                 string s2 = linkedDoor[i + 1].name;
                 string[] doorNumber1 = s1.Split(' ');
                 string[] doorNumber2 = s2.Split(' ');
+
                 //Connecting the door
                 Transform gameObjLast = GameObject.Find("Door" + doorNumber2[1]).transform;
                 gameObjLast.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber1[1]).transform;
+
 
                 Transform gameObject2 = GameObject.Find("Door" + doorNumber1[1]).transform;
                 gameObject2.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber2[1]).transform;
