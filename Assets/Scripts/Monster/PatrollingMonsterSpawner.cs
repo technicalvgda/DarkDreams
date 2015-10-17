@@ -16,11 +16,19 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 	//Set in inspector to make the spawner spawn objects that go left or right
 	public bool facingRight;
 
+	// For spawner activation in respect to a room
+	private Vector2 roomSize;
+	GameObject room;
+
 	// Use this for initialization
 	void Start () 
 	{
 		//Make the sprite invisible during game. Sprite will be visible so you can see where it is in Scene mode
 		GetComponent<Renderer>().material.color = Color.clear;
+		//Reference to room, using Temp Fading Room for now
+		room = GameObject.Find("TempFadingRoom");
+		roomSize.x = room.GetComponent<Renderer>().bounds.size.x;
+		roomSize.y = room.GetComponent<Renderer>().bounds.size.y;
 		//Start the spawn
 		Spawn ();
 	}
@@ -37,6 +45,8 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 		{	//else keep spawning within a certain window
 			Invoke ("Spawn", Random.Range (spawnMin, spawnMax));
 		}
+		
+		Debug.Log("Room Size: " + roomSize.x + " " + roomSize.y);
 	}
 	//Spawn method
 	void Spawn()
