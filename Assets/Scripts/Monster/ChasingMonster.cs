@@ -8,6 +8,7 @@ public class ChasingMonster : MonoBehaviour
     Vector3 startPos;
     private bool facingRight = true;
     private bool isCaught = false;
+    private bool isPlayer = false;
     public float movement;
     public float speed = 2.0f;
     public float counter = 0;
@@ -99,9 +100,15 @@ public class ChasingMonster : MonoBehaviour
             //Visually see the line cast in scene mode, NOT GAME
             Debug.DrawLine(startCast, endCast, Color.green);
             //Making the line cast
-            RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
+            RaycastHit2D[] EnemyVisionTrigger = Physics2D.LinecastAll(endCast, startCast);
+
+            for (int i = 0; i < EnemyVisionTrigger.Length - 1; i++)
+            {
+                if (EnemyVisionTrigger[i].collider.tag == "Player")
+                    isPlayer = true;
+            }
             //check if the collider exists and if the collider is the player
-            if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player" && player.hide == false)
+            if (isPlayer == true && player.hide == false)
             {
                 isCaught = true;
                 // Upon player collision with linecast/monster-vision, their speed is reduced
