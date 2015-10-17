@@ -13,6 +13,7 @@ public class PatrollingMonster : MonoBehaviour {
 	//to access methods and variables from the spawner
 	private PatrollingMonsterSpawner obj;
     PlayerControl player;
+    Transform playerPos;
 
     // Use this for initialization
     void Start ()
@@ -38,27 +39,38 @@ public class PatrollingMonster : MonoBehaviour {
 		Vector2 currentPos = gameObject.transform.position;
 
 		//Calculate the distance it has traveled
-		distance = currentPos.x - startPos.x;		
-		//Enemy facing and movement to the left
-		if (!facingRight) 
-		{
-			movement = speed * Time.deltaTime;
-			transform.Translate (-movement, 0, 0);
-		}
-		//Enemy facing and movement to the right
-		else 
-		{
-			movement = speed * Time.deltaTime;
-			transform.Translate (movement, 0, 0);
-		}
-		//If the monster has reached its target distance...	
-		if (distance > patrolDistance || distance < -patrolDistance) 
-		{	//then...
-			//Decrement the spawners current pool
-			obj.currentPool -= 1;
-			//Destroy the enemy once it reaches its target distance
-			Destroy (gameObject);				
-		}
+		distance = currentPos.x - startPos.x;
+        //Enemy facing and movement to the left
+
+        playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
+        // If the player is on our floor, run the script.
+        if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 10)
+        {
+            if (!facingRight)
+            {
+                movement = speed * Time.deltaTime;
+                transform.Translate(-movement, 0, 0);
+            }
+            //Enemy facing and movement to the right
+            else
+            {
+                movement = speed * Time.deltaTime;
+                transform.Translate(movement, 0, 0);
+            }
+            //If the monster has reached its target distance...	
+            if (distance > patrolDistance || distance < -patrolDistance)
+            {   //then...
+                //Decrement the spawners current pool
+                obj.currentPool -= 1;
+                //Destroy the enemy once it reaches its target distance
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            //do nthing
+        }
 	}
 
 	//Function to reverse enemy movemeny position, left or right, to 

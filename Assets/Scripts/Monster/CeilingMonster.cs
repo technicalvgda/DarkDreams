@@ -7,6 +7,7 @@ public class CeilingMonster : MonoBehaviour
     Transform myTransform;          // ceiling monster
     PlayerControl player;           // the player
     GameObject spottedCue;          // indicator when spotted
+    Transform playerPos;
 
     bool isActive = true;           // check if its active or dazed
     bool isFalling = false;         // check if its falling
@@ -57,6 +58,7 @@ public class CeilingMonster : MonoBehaviour
 
     void Update()
     {
+        Vector2 currentPos = gameObject.transform.position;
         // Vision of Ceiling Monster
         RaycastHit2D centerTrigger = Physics2D.Linecast(endCast, startCast);
         RaycastHit2D leftTrigger = Physics2D.Linecast(leftCast, startCast);
@@ -65,62 +67,72 @@ public class CeilingMonster : MonoBehaviour
         // Trigger for Dropping the Ceiling Monster
         isCaught = false;
         spottedCue.SetActive(false);
-
-        if (leftTrigger.collider && leftTrigger.collider.tag == "Player")
-       {
-             isCaught = true;
-             isFalling = true;
-             isClimbing = false;
-       }
-       else if (rightTrigger.collider && rightTrigger.collider.tag == "Player")
-       {
-            isCaught = true;
-            isFalling = true;
-            isClimbing = false;
-       }
-       else if (centerTrigger.collider && centerTrigger.collider.tag == "Player")
-       {
-            isCaught = true;
-            isFalling = true;
-            isClimbing = false;
-       }
-        
-
-        // Ceiling monster is falling
-        if (isFalling)
+        // Disables the enemy if the player is on another floor
+        playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
+        // If the player is on our floor, run the script. 
+        if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 25)
         {
-            if (myTransform.position.y > endCast.y)
+            if (leftTrigger.collider && leftTrigger.collider.tag == "Player")
             {
-                // falling speed equation
-                myTransform.position -= myTransform.up * fallSpeed * Time.deltaTime;
-            }
-            else
-            {
-                //Debug.Log("not active or falling");
-                isFalling = false;
-                isActive = false;
-            }
-        }
-
-        if (isClimbing)
-        {
-            if (myTransform.position.y < startCast.y)
-            {
-                // falling speed equation
-                myTransform.position += myTransform.up * climbSpeed * Time.deltaTime;
-            }
-            else
-            {
-                //Debug.Log("not climbing");
+                isCaught = true;
+                isFalling = true;
                 isClimbing = false;
             }
-        }
+            else if (rightTrigger.collider && rightTrigger.collider.tag == "Player")
+            {
+                isCaught = true;
+                isFalling = true;
+                isClimbing = false;
+            }
+            else if (centerTrigger.collider && centerTrigger.collider.tag == "Player")
+            {
+                isCaught = true;
+                isFalling = true;
+                isClimbing = false;
+            }
 
-        // Ceiling monster is dazed for 'stunTime' seconds
-        if (!isActive)
+
+            // Ceiling monster is falling
+            if (isFalling)
+            {
+                if (myTransform.position.y > endCast.y)
+                {
+                    // falling speed equation
+                    myTransform.position -= myTransform.up * fallSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    //Debug.Log("not active or falling");
+                    isFalling = false;
+                    isActive = false;
+                }
+            }
+
+            if (isClimbing)
+            {
+                if (myTransform.position.y < startCast.y)
+                {
+                    // falling speed equation
+                    myTransform.position += myTransform.up * climbSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    //Debug.Log("not climbing");
+                    isClimbing = false;
+                }
+            }
+
+            // Ceiling monster is dazed for 'stunTime' seconds
+            if (!isActive)
+            {
+                //spottedCue.SetActive(false);
+                StartCoroutine(DazeTimer(stunTime));
+            }
+        }
+        else
         {
-            //spottedCue.SetActive(false);
-            StartCoroutine(DazeTimer(stunTime));
+            //do nothing
         }
     }
 

@@ -28,15 +28,22 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//If the current pool has reached the maximum...
-		if (currentPool >= maxPool) 		
-		{	//then stop the spawning
-			CancelInvoke();
-		}
-		else
-		{	//else keep spawning within a certain window
-			Invoke ("Spawn", Random.Range (spawnMin, spawnMax));
-		}
+        Vector2 currentPos = gameObject.transform.position;
+        Transform playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
+        // If the player is on our floor, run the script. 
+        if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 10)
+        {
+            //If the current pool has reached the maximum...
+            if (currentPool >= maxPool)
+            {   //then stop the spawning
+                CancelInvoke();
+            }
+            else
+            {   //else keep spawning within a certain window
+                Invoke("Spawn", Random.Range(spawnMin, spawnMax));
+            }
+        }
 	}
 	//Spawn method
 	void Spawn()
