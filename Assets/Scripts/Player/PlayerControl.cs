@@ -131,6 +131,7 @@ public class PlayerControl : MonoBehaviour
         //prevent player from moving when hidden
         if (!hide)
         {
+            
             // Set movement and normalize in terms of time passed from previous frame
             // (Assuming we will be frame rate dependent)
             movement.x = h;
@@ -182,10 +183,11 @@ public class PlayerControl : MonoBehaviour
         // OverlapPoint refers to world space instead of screen space, adjusting accordingly
         clickPosition.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         clickPosition.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-       
-       
+
+
         //Toggle Hide/Unhide
-        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)&& col.OverlapPoint(clickPosition))))
+        //  (hide && Input.GetAxis("Horizontal") != 0) part of if statement allows player to exit hide if user inputs movement
+        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)&& col.OverlapPoint(clickPosition))) || (hide && Input.GetAxis("Horizontal") != 0))
         {
             if (col.gameObject.tag == "Cover")
             {
@@ -214,8 +216,8 @@ public class PlayerControl : MonoBehaviour
                 normalSpeed = 0f;
             }
                
-          }     
-        
+          }  
+             
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
