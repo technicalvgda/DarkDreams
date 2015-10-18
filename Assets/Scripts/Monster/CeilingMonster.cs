@@ -63,7 +63,8 @@ public class CeilingMonster : MonoBehaviour
         RaycastHit2D centerTrigger = Physics2D.Linecast(endCast, startCast);
         RaycastHit2D leftTrigger = Physics2D.Linecast(leftCast, startCast);
         RaycastHit2D rightTrigger = Physics2D.Linecast(rightCast, startCast);
-
+        //saves original location to keep inactive while climbing
+        float originalLoc = myTransform.position.y;
         // Trigger for Dropping the Ceiling Monster
         isCaught = false;
         spottedCue.SetActive(false);
@@ -73,23 +74,26 @@ public class CeilingMonster : MonoBehaviour
         // If the player is on our floor, run the script. 
         if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 25)
         {
-            if (leftTrigger.collider && leftTrigger.collider.tag == "Player")
-            {
-                isCaught = true;
-                isFalling = true;
-                isClimbing = false;
-            }
-            else if (rightTrigger.collider && rightTrigger.collider.tag == "Player")
-            {
-                isCaught = true;
-                isFalling = true;
-                isClimbing = false;
-            }
-            else if (centerTrigger.collider && centerTrigger.collider.tag == "Player")
-            {
-                isCaught = true;
-                isFalling = true;
-                isClimbing = false;
+            //only works if ceilling monster is not climbing. keeps the celling monster inactive if it is. 
+            if (isClimbing == false) {
+                if (leftTrigger.collider && leftTrigger.collider.tag == "Player")
+                {
+                    isCaught = true;
+                    isFalling = true;
+                    isClimbing = false;
+                }
+                else if (rightTrigger.collider && rightTrigger.collider.tag == "Player")
+                {
+                    isCaught = true;
+                    isFalling = true;
+                    isClimbing = false;
+                }
+                else if (centerTrigger.collider && centerTrigger.collider.tag == "Player")
+                {
+                    isCaught = true;
+                    isFalling = true;
+                    isClimbing = false;
+                }
             }
 
 
@@ -108,7 +112,8 @@ public class CeilingMonster : MonoBehaviour
                     isActive = false;
                 }
             }
-
+           
+           
             if (isClimbing)
             {
                 if (myTransform.position.y < startCast.y)
@@ -116,6 +121,7 @@ public class CeilingMonster : MonoBehaviour
                     // falling speed equation
                     myTransform.position += myTransform.up * climbSpeed * Time.deltaTime;
                 }
+
                 else
                 {
                     //Debug.Log("not climbing");
