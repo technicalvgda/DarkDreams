@@ -52,11 +52,12 @@ public class ChasingMonster : MonoBehaviour
 	void Update ()
 	{
         Vector2 currentPos = gameObject.transform.position;
+        Vector2 visionPos = new Vector2(currentPos.x, currentPos.y - 1);
         //initialize the starting position of linecast every frame
-        startCast = currentPos;
+        startCast = visionPos;
         //initialize the end position of linecast every frame
-        endCast = currentPos;
-        distance = currentPos.x - startPos.x;
+        endCast = visionPos;
+        distance = visionPos.x - startPos.x;
 
         counter *= Time.deltaTime;
 
