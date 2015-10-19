@@ -84,11 +84,11 @@ public class PlayerControl : MonoBehaviour
 
         // code to spawn a HunterMonster targeting the player at a random
         // location within the same level
-        if (!isHunterActive)
-        {
-            isHunterActive = true;
-            StartCoroutine(SpawnHunterMonster());
-        }
+//        if (!isHunterActive)
+//        {
+//           isHunterActive = true;
+//            StartCoroutine(SpawnHunterMonster());
+//        }
 
     }
     void LateUpdate()
