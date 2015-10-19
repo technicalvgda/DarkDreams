@@ -73,19 +73,19 @@ public class CeilingMonster : MonoBehaviour
         // If the player is on our floor, run the script. 
         if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 25)
         {
-            if (leftTrigger.collider && leftTrigger.collider.tag == "Player")
+            if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
             {
                 isCaught = true;
                 isFalling = true;
                 isClimbing = false;
             }
-            else if (rightTrigger.collider && rightTrigger.collider.tag == "Player")
+            else if (rightTrigger.collider && rightTrigger.collider.tag == "Player" && isActive)
             {
                 isCaught = true;
                 isFalling = true;
                 isClimbing = false;
             }
-            else if (centerTrigger.collider && centerTrigger.collider.tag == "Player")
+            else if (centerTrigger.collider && centerTrigger.collider.tag == "Player" && isActive)
             {
                 isCaught = true;
                 isFalling = true;
@@ -120,6 +120,7 @@ public class CeilingMonster : MonoBehaviour
                 {
                     //Debug.Log("not climbing");
                     isClimbing = false;
+                    isActive = true;
                 }
             }
 
@@ -157,7 +158,7 @@ public class CeilingMonster : MonoBehaviour
     {
         // Debug.Log(Time.time);
         yield return new WaitForSeconds(x);
-        isActive = true;
+        //isActive = true;
         isClimbing = true;
         // Debug.Log(Time.time);
     }
