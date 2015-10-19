@@ -182,10 +182,10 @@ public class PlayerControl : MonoBehaviour
         // OverlapPoint refers to world space instead of screen space, adjusting accordingly
         clickPosition.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         clickPosition.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-       
-       
+
+
         //Toggle Hide/Unhide
-        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)&& col.OverlapPoint(clickPosition))))
+        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition))) || ((hide && Input.GetAxis("Horizontal") != 0) || (hide && Input.GetMouseButton(0))))
         {
             if (col.gameObject.tag == "Cover")
             {
