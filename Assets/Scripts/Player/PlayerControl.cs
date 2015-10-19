@@ -185,7 +185,8 @@ public class PlayerControl : MonoBehaviour
 
 
         //Toggle Hide/Unhide
-        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition))) || ((hide && Input.GetAxis("Horizontal") != 0) || (hide && Input.GetMouseButton(0))))
+        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition))) 
+            || ((hide && (Input.GetAxis("Horizontal") !=0)) || (hide && Input.GetMouseButton(0))))
         {
             if (col.gameObject.tag == "Cover")
             {
