@@ -110,32 +110,7 @@ public class PlayerControl : MonoBehaviour
         {
             playerSpeed = normalSpeed;
         }
-
     }
-   
-    void Move(float h)
-    {
-        //prevent player from moving when hidden
-        if (!hide)
-        {
-            // Set movement and normalize in terms of time passed from previous frame
-            // (Assuming we will be frame rate dependent)
-            movement.x = h;
-            movement *= Time.deltaTime;
-
-            // apply movement to player
-            transform.Translate(movement);
-            //this checks which direction the player is moving and flips the player based upon that
-            if (movement.x > 0 && facingRight == false)
-            {
-                FlipPlayer();
-            }
-            if (movement.x < 0 && facingRight == true)
-            {
-                FlipPlayer();
-            }
-
-        }
 
     }
     //handle collisions with level objects
@@ -191,10 +166,8 @@ public class PlayerControl : MonoBehaviour
                         slowMo = false;
                     }
                 }
-            }
                
           }     
-        
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
