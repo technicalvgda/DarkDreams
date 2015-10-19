@@ -18,17 +18,44 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 
 	// For spawner activation in respect to a room
 	private Vector2 roomSize;
+	private Vector2 roomPosition;
+	
 	GameObject room;
 
 	// Use this for initialization
 	void Start () 
 	{
+		GameObject[] roomAll;
+		GameObject self;
+			
 		//Make the sprite invisible during game. Sprite will be visible so you can see where it is in Scene mode
 		GetComponent<Renderer>().material.color = Color.clear;
-		//Reference to room, using Temp Fading Room for now
-		room = GameObject.Find("TempFadingRoom");
+		//Find the nearest room, which should be the room it is in. Get references
+		
+		// Create temporary collider for room detection
+		// Get all objects with room tag
+		// check to see if spawner is in the bounding box
+		// if it is, reference the game object
+		// Get reference to this spawner
+		self = GameObject.Find("PatrollingEnemySpawner");
+		// Get reference for all of the rooms tagged with "Room", then check to see where spawner is in it
+		// Get the reference for the room the spawner is in
+		roomAll = GameObject.FindGameObjectsWithTag("Room");
+		
+		for (int i = 0; i < roomAll.Length - 1; i++)
+		{
+			if (roomAll[i].GetComponent<Renderer>().bounds.Contains(self.transform.position))
+				room = roomAll[i];
+		}
+				
+		// Get current room size
 		roomSize.x = room.GetComponent<Renderer>().bounds.size.x;
 		roomSize.y = room.GetComponent<Renderer>().bounds.size.y;
+		
+		// Get current room position
+		roomPosition.x = room.transform.position.x;
+		roomPosition.y = room.transform.position.y;
+		
 		//Start the spawn
 		Spawn ();
 	}
@@ -46,7 +73,9 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 			Invoke ("Spawn", Random.Range (spawnMin, spawnMax));
 		}
 		
-		Debug.Log("Room Size: " + roomSize.x + " " + roomSize.y);
+		Debug.Log("Room Name: " + room.name);
+		Debug.Log("Room Size: " + roomSize);
+		Debug.Log("Room Position: " + roomPosition);
 	}
 	//Spawn method
 	void Spawn()
