@@ -30,18 +30,13 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 			
 		//Make the sprite invisible during game. Sprite will be visible so you can see where it is in Scene mode
 		GetComponent<Renderer>().material.color = Color.clear;
-		//Find the nearest room, which should be the room it is in. Get references
 		
-		// Create temporary collider for room detection
-		// Get all objects with room tag
-		// check to see if spawner is in the bounding box
-		// if it is, reference the game object
 		// Get reference to this spawner
 		self = GameObject.Find("PatrollingEnemySpawner");
 		// Get reference for all of the rooms tagged with "Room", then check to see where spawner is in it
-		// Get the reference for the room the spawner is in
 		roomAll = GameObject.FindGameObjectsWithTag("Room");
 		
+		// Get the reference for the room the spawner is in
 		for (int i = 0; i < roomAll.Length - 1; i++)
 		{
 			if (roomAll[i].GetComponent<Renderer>().bounds.Contains(self.transform.position))
