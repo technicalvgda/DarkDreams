@@ -127,6 +127,8 @@ public class RandomMapGeneration : MonoBehaviour
 
                 Transform gameObjLast = GameObject.Find("Door" + doorNumber1[1]).transform;
                 gameObjLast.GetComponent<TeleportDoors>().exit = GameObject.Find("BasementDoor").transform;
+                //added
+                Destroy(gameObjLast.GetComponent("TeleportDoors"));
 
                 Transform gameObjBaseDoor = GameObject.Find("BasementDoor").transform;
                 gameObjBaseDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber1[1]).transform;
@@ -143,6 +145,8 @@ public class RandomMapGeneration : MonoBehaviour
 
                 Transform gameObjAtticDoor = GameObject.Find("AtticDoor").transform;
                 gameObjAtticDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + lastDoor[1]).transform;
+                //added
+                Destroy(gameObjAtticDoor.GetComponent("TeleportDoors"));
                 break;
             }
             else

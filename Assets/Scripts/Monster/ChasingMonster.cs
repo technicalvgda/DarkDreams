@@ -8,12 +8,14 @@ public class ChasingMonster : MonoBehaviour
     Vector3 startPos;
     private bool facingRight = true;
     private bool isCaught = false;
+    private bool isPlayer = false;
     public float movement;
     public float speed = 2.0f;
     public float counter = 0;
     public float distance;
 	public float visionSpeedMultiplier = 2.0f;
     public int patrolDistance = 5;
+    Transform playerPos;
 
     //Start position for the line cast
     private Vector2 startCast;
@@ -50,69 +52,87 @@ public class ChasingMonster : MonoBehaviour
 	void Update ()
 	{
         Vector2 currentPos = gameObject.transform.position;
+        Vector2 visionPos = new Vector2(currentPos.x, currentPos.y - 1);
         //initialize the starting position of linecast every frame
-        startCast = currentPos;
+        startCast = visionPos;
         //initialize the end position of linecast every frame
-        endCast = currentPos;
-        distance = currentPos.x - startPos.x;
+        endCast = visionPos;
+        distance = visionPos.x - startPos.x;
 
         counter *= Time.deltaTime;
-       
-        //enemy facing left change position of line cast to follow change of enemy position
-        if (!facingRight)
+
+        playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
+        // If the player is on our floor, run the script. 
+        if (playerPos.position.y-10 <= currentPos.y && currentPos.y <= playerPos.position.y+10)
         {
-            movement = speed * Time.deltaTime;
-            transform.Translate(-movement, 0, 0);
-            //change x position to keep the line cast a certain distance. 
-            //THIS IS FOR THE MONSTER FACING LEFT
-            endCast.x -= lineCastDistance;
+            //enemy facing left change position of line cast to follow change of enemy position
+            if (!facingRight)
+            {
+                movement = speed * Time.deltaTime;
+                transform.Translate(-movement, 0, 0);
+                //change x position to keep the line cast a certain distance. 
+                //THIS IS FOR THE MONSTER FACING LEFT
+                endCast.x -= lineCastDistance;
+            }
+            //enemy facing right change position of line cast to follow enemy change of position
+            else
+            {
+                movement = speed * Time.deltaTime;
+                transform.Translate(movement, 0, 0);
+                //change x position to keep the line cast a certain distance. 
+                //THIS IS FOR THE MONSTER FACING RIGHT
+                endCast.x += lineCastDistance;
+            }
+
+            //Debug.Log(distance);
+
+            if (distance > patrolDistance || distance < -patrolDistance)
+            {
+                distance = 0;
+                //facingRight = !facingRight;
+                FlipEnemy();
+                startPos = gameObject.transform.position;
+            }
+            // reinitialize caught detection
+            isCaught = false;
+            isPlayer = false;
+            spottedCue.SetActive(false);
+
+            //Visually see the line cast in scene mode, NOT GAME
+            Debug.DrawLine(startCast, endCast, Color.green);
+            //Making the line cast
+            RaycastHit2D[] EnemyVisionTrigger = Physics2D.LinecastAll(endCast, startCast);
+
+            for (int i = 0; i < EnemyVisionTrigger.Length - 1; i++)
+            {
+                if (EnemyVisionTrigger[i].collider.tag == "Player")
+                    isPlayer = true;
+            }
+            //check if the collider exists and if the collider is the player
+            if (isPlayer == true && player.hide == false)
+            {
+                isCaught = true;
+                // Upon player collision with linecast/monster-vision, their speed is reduced
+                player.slowMo = true;
+
+                //Tests which direction the monster is facing
+                if (!facingRight)
+                {
+                    //Multiply the movement by the amount set in the inspector
+                    transform.Translate(-movement * visionSpeedMultiplier, 0, 0);
+                }
+                else
+                {
+                    //Multiply the movement by the amount set in the inspector
+                    transform.Translate(movement * visionSpeedMultiplier, 0, 0);
+                }
+            }
         }
-        //enemy facing right change position of line cast to follow enemy change of position
         else
         {
-            movement = speed * Time.deltaTime;
-            transform.Translate(movement, 0, 0);
-            //change x position to keep the line cast a certain distance. 
-            //THIS IS FOR THE MONSTER FACING RIGHT
-            endCast.x += lineCastDistance;
+            //do nothing
         }
-
-        //Debug.Log(distance);
-
-        if (distance > patrolDistance || distance < -patrolDistance)
-        {
-            distance = 0;
-            //facingRight = !facingRight;
-            FlipEnemy();
-            startPos = gameObject.transform.position;
-        }
-        // reinitialize caught detection
-        isCaught = false;
-        spottedCue.SetActive(false);
-        
-        //Visually see the line cast in scene mode, NOT GAME
-        Debug.DrawLine(startCast, endCast, Color.green);
-        //Making the line cast
-        RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(endCast, startCast);
-        //check if the collider exists and if the collider is the player
-        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player" && player.hide == false)
-        {
-            isCaught = true;
-             // Upon player collision with linecast/monster-vision, their speed is reduced
-            player.slowMo = true;
-
-            //Tests which direction the monster is facing
-            if (!facingRight) 
-				{
-					//Multiply the movement by the amount set in the inspector
-					transform.Translate (-movement * visionSpeedMultiplier, 0, 0);
-				}
-				else 
-				{
-					//Multiply the movement by the amount set in the inspector
-					transform.Translate (movement * visionSpeedMultiplier, 0, 0); 
-				}
-		}
         //set caught animation to play if spotted
         anim.SetBool("Alert", isCaught);
     }

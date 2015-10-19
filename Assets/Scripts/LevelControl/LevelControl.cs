@@ -7,7 +7,7 @@ public class LevelControl : MonoBehaviour
 
     //public float MAX_TIME = 5.0f;
     public float timer = 5.0f;
-    float fadeTime = 3.0f;
+   // float fadeTime = 3.0f;    //disabled for compiler error -joel
     GameObject player;
     public GameObject overlay;
     Image overlay_image;
@@ -20,7 +20,7 @@ public class LevelControl : MonoBehaviour
     {
         Time.timeScale = 1f;
         spottedCue = GameObject.Find("SpottedIndicator");
-        spottedCue.SetActive(false);
+       // spottedCue.SetActive(false);
         player = GameObject.Find("Player");
         gameOverPanel = GameObject.Find("GameOverPanel");
         //retryButton = GameObject.Find("RetryButton");

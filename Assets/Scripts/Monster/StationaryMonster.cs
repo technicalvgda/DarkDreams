@@ -38,64 +38,71 @@ public class StationaryMonster : MonoBehaviour
     }
     void Update()
     {
-        //if you are in the enemy's field of view & the enemy is active, you lose
-        if(canSee && enemyActive)
+        Vector2 currentPos = gameObject.transform.position;
+        Transform playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
+        // If the player is on our floor, run the script. 
+        if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 10)
         {
-            //kill player (variable is in player script)
-            anim.SetTrigger("Kill");
-            player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-            player.isAlive = false;
-           
-        }
-        // Draws the line so that you can see it in the scene and adjust the two points
-        Debug.DrawLine(startCast, endCast, Color.cyan);
-        //sets the monsters vision to true if the player crosses its vision
-        // triggers boolean to true when the line crosses the player's layer and not the monster's own layer
-
-        hit = Physics2D.Linecast(endCast, startCast);
-        if(hit.collider!=null)
-        {
-            if (hit.collider.tag == "Player")
+            //if you are in the enemy's field of view & the enemy is active, you lose
+            if (canSee && enemyActive)
             {
-               
-                canSee = true;
+                //kill player (variable is in player script)
+                anim.SetTrigger("Kill");
+                player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+                player.isAlive = false;
+
+            }
+            // Draws the line so that you can see it in the scene and adjust the two points
+            Debug.DrawLine(startCast, endCast, Color.cyan);
+            //sets the monsters vision to true if the player crosses its vision
+            // triggers boolean to true when the line crosses the player's layer and not the monster's own layer
+
+            hit = Physics2D.Linecast(endCast, startCast);
+            if (hit.collider != null)
+            {
+                if (hit.collider.tag == "Player")
+                {
+
+                    canSee = true;
+                }
+                else
+                {
+                    canSee = false;
+                }
             }
             else
             {
                 canSee = false;
             }
-        }
-        else
-        {
-            canSee = false;
-        }
-       
-        /////////timer code for enemy
-        //door will open for 1 second within a random interval of 10 seconds
-        if (seconds <= 0)     //When the timer drops to zero, it will reset back to 10 seconds
-        {
-            seconds = 10;
-        }
-        else
-        {
-            seconds -= Time.deltaTime;
 
-            //When timer is within a certain range of the random number, it will turn the timer on
-            if ((seconds<rand + 1 && seconds> rand - 1))
+            /////////timer code for enemy
+            //door will open for 1 second within a random interval of 10 seconds
+            if (seconds <= 0)     //When the timer drops to zero, it will reset back to 10 seconds
             {
-                //changes enemy to alert animation
-                anim.SetBool("Alert", true);
-                // Debug.Log("Monster Timer is on!");
-                enemyActive = true;
+                seconds = 10;
             }
             else
             {
-                //changes enemy to docile animation
-                anim.SetBool("Alert",false);
-                //Else it will remain off
-                enemyActive = false;
+                seconds -= Time.deltaTime;
+
+                //When timer is within a certain range of the random number, it will turn the timer on
+                if ((seconds < rand + 1 && seconds > rand - 1))
+                {
+                    //changes enemy to alert animation
+                    anim.SetBool("Alert", true);
+                    // Debug.Log("Monster Timer is on!");
+                    enemyActive = true;
+                }
+                else
+                {
+                    //changes enemy to docile animation
+                    anim.SetBool("Alert", false);
+                    //Else it will remain off
+                    enemyActive = false;
+                }
+
             }
-           
         }
     }
   

@@ -69,6 +69,7 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+<<<<<<< HEAD
 		// Check to see if player is detected, start spawn if it is
 		if (playerDetection.Contains(player.transform.position) && isSpawning == false)
 		{
@@ -91,6 +92,24 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 		}
 		
 		//Debug.Log("(" + room.name + ") Spawning: " + isSpawning);
+=======
+        Vector2 currentPos = gameObject.transform.position;
+        Transform playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
+        // If the player is on our floor, run the script. 
+        if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 10)
+        {
+            //If the current pool has reached the maximum...
+            if (currentPool >= maxPool)
+            {   //then stop the spawning
+                CancelInvoke();
+            }
+            else
+            {   //else keep spawning within a certain window
+                Invoke("Spawn", Random.Range(spawnMin, spawnMax));
+            }
+        }
+>>>>>>> master
 	}
 	//Spawn method
 	void Spawn()
