@@ -15,38 +15,41 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 	public int currentPool = 0;
 	//Set in inspector to make the spawner spawn objects that go left or right
 	public bool facingRight;
-
+	
+	/////
 	// For spawner activation in respect to a room
+	/////
+	private bool isSpawning = false;
+	
+	// room specs
 	private Vector2 roomSize;
 	private Vector2 roomPosition;
 	
 	// The buffer for player detection
-	public float BUFFER = 0.5f;
+	public float BUFFER = 0.1f;
 	private Bounds playerDetection;
 	
-	GameObject room;
-	GameObject player;
+	// Reference to room and player
+	private GameObject room;
+	private GameObject player;
 
 	// Use this for initialization
 	void Start () 
 	{
 		GameObject[] roomAll;
-		GameObject self;
 			
 		//Make the sprite invisible during game. Sprite will be visible so you can see where it is in Scene mode
 		GetComponent<Renderer>().material.color = Color.clear;
 		
-		// Get reference to this spawner
-		self = GameObject.Find("PatrollingEnemySpawner");
 		// Get reference for all of the rooms tagged with "Room", then check to see where spawner is in it
 		roomAll = GameObject.FindGameObjectsWithTag("Room");
 		// Get reference to player
 		player = GameObject.FindWithTag("Player");
 		
 		// Get the reference for the room the spawner is in
-		for (int i = 0; i < roomAll.Length - 1; i++)
+		for (int i = 0; i < roomAll.Length; i++)
 		{
-			if (roomAll[i].GetComponent<Renderer>().bounds.Contains(self.transform.position))
+			if (roomAll[i].GetComponent<Renderer>().bounds.Contains(this.gameObject.transform.position))
 				room = roomAll[i];
 		}
 				
@@ -61,34 +64,33 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 		// Create bounds to start spawning in the center
 		playerDetection = new Bounds(new Vector3(roomPosition.x, roomPosition.y, 0f),
 										new Vector3((roomSize.x * BUFFER), roomSize.y, player.transform.position.z));
-		
-		//Start the spawn
-		Spawn ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		// Check to see if player is detected, start spawn if it is
+		if (playerDetection.Contains(player.transform.position) && isSpawning == false)
+		{
+			//Start the spawn
+			Spawn();
+			isSpawning = true;
+			//Debug.Log("(" + room.name + ") Player has been detected!");
+		}
 		//If the current pool has reached the maximum...
-		//if (currentPool >= maxPool) 		
-		//{	//then stop the spawning
-		//	CancelInvoke();
-		//}
-		//else
-		//{	//else keep spawning within a certain window
-		//	Invoke ("Spawn", Random.Range (spawnMin, spawnMax));
-		//}
+		if(isSpawning == true)
+		{
+			if (currentPool >= maxPool) 		
+			{	//then stop the spawning
+				CancelInvoke();
+			}
+			else
+			{	//else keep spawning within a certain window
+				Invoke ("Spawn", Random.Range (spawnMin, spawnMax));
+			}
+		}
 		
-		if (playerDetection.Contains(player.transform.position))
-			Debug.Log("Player has been detected!");
-		
-		Debug.Log("Room Name: " + room.name);
-		Debug.Log("Room Size: " + roomSize);
-		Debug.Log("Room Position: " + roomPosition);
-		//Debug.Log("Player Position: " + player.transform.position);
-		//Debug.Log("Player Detection: " + playerDetection.ToString());
-		//Debug.Log("Player Detection Position: " + playerDetection.center);
-		//Debug.Log("Player Detection Size: " + playerDetection.size);
+		//Debug.Log("(" + room.name + ") Spawning: " + isSpawning);
 	}
 	//Spawn method
 	void Spawn()
@@ -97,11 +99,13 @@ public class PatrollingMonsterSpawner : MonoBehaviour {
 		Instantiate(obj, transform.position, Quaternion.identity);
 		//Increase amount in pool by 1
 		currentPool += 1;
+		
+		//Debug.Log("(" + room.name + ") Spawned Monster # " + currentPool);
 	}
 	
 	void OnDrawGizmos()
 	{	
-		Gizmos.color = Color.yellow;
+		Gizmos.color = new Color(1f, 0.92f, 0.016f, 0.4f);
 		Gizmos.DrawCube(playerDetection.center, playerDetection.size);
 	}
 }
