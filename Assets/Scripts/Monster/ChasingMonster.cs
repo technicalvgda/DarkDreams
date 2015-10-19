@@ -96,6 +96,7 @@ public class ChasingMonster : MonoBehaviour
             }
             // reinitialize caught detection
             isCaught = false;
+            isPlayer = false;
             spottedCue.SetActive(false);
 
             //Visually see the line cast in scene mode, NOT GAME
