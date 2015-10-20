@@ -86,7 +86,7 @@ public class PlayerControl : MonoBehaviour
         // location within the same level
         if (!isHunterActive)
         {
-            isHunterActive = true;
+           isHunterActive = true;
             StartCoroutine(SpawnHunterMonster());
         }
 
