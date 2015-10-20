@@ -398,7 +398,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 197464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c2d9c46b290db3408511a105f9484c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ffdb65c6706d5b4cbf39a3ec957b1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hunterEnemy: {fileID: 164636}
@@ -416,6 +416,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -780,7 +786,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: hunterEnemy
+      value: 
+      objectReference: {fileID: 164636}
+    - target: {fileID: 0}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 100582}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140266}
