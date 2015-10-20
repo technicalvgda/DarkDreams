@@ -116,6 +116,16 @@ public class RandomMapGeneration : MonoBehaviour
     //Ex: TempRoomDoor 5 and Door5
     void setLinkedDoorPrefab()
     {
+		//Randomize the doors so each door is randomly linked to any door on the next level
+		for (int i = 0; i < linkedDoor.Count; i= i+2) {
+			int r = Random.Range (0,10);
+			Transform temp;
+			if (r > 5) {
+				temp = linkedDoor[i];
+				linkedDoor[i] = linkedDoor[i+1];
+				linkedDoor[i+1] = temp;
+			}
+		}
 
         for (int i = 0; i < linkedDoor.Count; i++)
         {
@@ -162,17 +172,9 @@ public class RandomMapGeneration : MonoBehaviour
 
                 Transform gameObject2 = GameObject.Find("Door" + doorNumber1[1]).transform;
                 gameObject2.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber2[1]).transform;
-
                 i++;
-
             }
-
         }
-        for (int i = 0; i < linkedDoor.Count; i++)
-        {
-            Debug.Log("This is the linkedDoor of " + linkedDoor[i]);
-        }
-
     }
 
 
