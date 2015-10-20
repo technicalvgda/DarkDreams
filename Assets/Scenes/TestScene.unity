@@ -495,52 +495,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f3d2c41f405a09439f10e1c520cb11e, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &592163460
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -16.3999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 25.2000008
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_RootOrder
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 131818, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_Name
-      value: PatrolEnemy (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &702704907 stripped
 Transform:
   m_PrefabParentObject: {fileID: 463436, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
@@ -990,51 +944,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1686051388
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -4.80000019
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 52.0099983
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
     - target: {fileID: 131818, guid: c0af72616afd76647a62314789eddcb0, type: 2}
-      propertyPath: m_Name
-      value: PatrolEnemy (2)
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0af72616afd76647a62314789eddcb0, type: 2}
@@ -1284,7 +1196,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 26
 --- !u!4 &1839634061 stripped
 Transform:
   m_PrefabParentObject: {fileID: 463436, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}

@@ -14,12 +14,12 @@ public class LevelControl : MonoBehaviour
     GameObject gameOverPanel;
     //GameObject retryButton;
     //GameObject menuButton;
-    GameObject spottedCue;
+    //GameObject spottedCue;
     // Use this for initialization
     void Start()
     {
         Time.timeScale = 1f;
-        spottedCue = GameObject.Find("SpottedIndicator");
+       // spottedCue = GameObject.Find("SpottedIndicator");
        // spottedCue.SetActive(false);
         player = GameObject.Find("Player");
         gameOverPanel = GameObject.Find("GameOverPanel");

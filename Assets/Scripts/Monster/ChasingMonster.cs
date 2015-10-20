@@ -27,12 +27,12 @@ public class ChasingMonster : MonoBehaviour
     public LineRenderer lineOfSight;
     Animator anim;
     PlayerControl player;
-    GameObject spottedCue;
+    //GameObject spottedCue;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        spottedCue = GameObject.Find("SpottedIndicator");
+        //spottedCue = GameObject.Find("SpottedIndicator");
     }
     // Use this for initialization
     void Start ()
@@ -97,7 +97,7 @@ public class ChasingMonster : MonoBehaviour
             // reinitialize caught detection
             isCaught = false;
             isPlayer = false;
-            spottedCue.SetActive(false);
+            //spottedCue.SetActive(false);
 
             //Visually see the line cast in scene mode, NOT GAME
             Debug.DrawLine(startCast, endCast, Color.green);
@@ -139,14 +139,11 @@ public class ChasingMonster : MonoBehaviour
 
     void LateUpdate()
 	{
-        if (isCaught == true)
+        if (isCaught == false)
         {
-            spottedCue.SetActive(true);
+            player.slowMo = false;
         }
-		else
-		{
-			player.slowMo = false;
-		}
+		
 	}
 //Function to reverse enemy movemeny position, left or right, to 
 //test if line cast flips along with the monster
