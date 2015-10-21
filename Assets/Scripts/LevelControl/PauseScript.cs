@@ -13,20 +13,22 @@ public class PauseScript : MonoBehaviour {
 
 	public GameObject panel;
 	public GameObject text;
+    GameObject player;
     //public GameObject resumeButton;
-	bool paused;
+    bool paused;
 	bool busy;
 
 	// Use this for initialization
 	void Start () {
         //GameObject.Find("ResumeButton");
        panel.SetActive(false);
+       player = GameObject.Find("Player");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (!busy && Input.GetKeyDown (KeyCode.Escape)) {
+		if (!busy && Input.GetKeyDown (KeyCode.Escape)&& (player.GetComponent<PlayerControl>().isAlive == true)){
             
             paused = !paused;
 
