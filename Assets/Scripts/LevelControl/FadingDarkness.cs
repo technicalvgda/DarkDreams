@@ -15,7 +15,9 @@ public class FadingDarkness : MonoBehaviour
     GameObject player;
     PlayerControl playerScript;
     bool fade = false;
-    bool flash = false;
+    public bool flash = false;
+
+
 
     public float waitTime = 0.0001f;
 
