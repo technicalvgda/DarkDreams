@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /*This script is to be placed inside "item" objects. It's purpose is to add the score into the player script.
  * 
@@ -31,6 +32,12 @@ public static void AddPoints (int itemAdd){
 public class ItemPickup : MonoBehaviour {
 
 	public int itemAdd; // creates counter that can be passed to player control; add amount in inspector
+	//public GameObject canvas;
+	public bool flash = false;
+	public FadingDarkness fadingDarkness;
+	//public GameObject flashingCanvas;
+
+	//Image flashing;
 
 	void OnTriggerEnter2D (Collider2D other) {
 
@@ -40,7 +47,23 @@ public class ItemPickup : MonoBehaviour {
 			return;
 
 		PlayerControl.AddPoints(itemAdd); // on collison, will add the amount in player script
+		flash = true;
 		Destroy(gameObject); //destroys the object
+		
+		//canvas = GameObject.Find ("FadingDarknessCanvas");
+		//fadingDarkness = GameObject.FindWithTag(FadingDarkness);
+		if (fadingDarkness == null) 
+		{
+			Debug.Log ("not found");
+		}
+		fadingDarkness.flash = true; 
+
+		//flashingCanvas = GameObject.Find("FlashingLightCanvas")();
+		//Instantiate(flashingCanvas);
+
+
+	
+
 
 	}
 }	
