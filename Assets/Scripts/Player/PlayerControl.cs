@@ -94,7 +94,6 @@ public class PlayerControl : MonoBehaviour
         // the same level.
         if (!isHunterActive)
         {
-<<<<<<< HEAD
             if (transform.position.y > floorOne && transform.position.y < floorTwo)
             {
                 isHunterActive = true;
@@ -120,13 +119,9 @@ public class PlayerControl : MonoBehaviour
                 isHunterActive = true;
                 StartCoroutine(SpawnHunterMonster(5, 10)); // spawns after 5-10 seconds
             }
-=======
-           isHunterActive = true;
-            StartCoroutine(SpawnHunterMonster());
->>>>>>> refs/remotes/origin/master
         }
-
     }
+
     void LateUpdate()
     {
         //handles player movement based upon mouse clicks (or taps)
@@ -292,6 +287,7 @@ public class PlayerControl : MonoBehaviour
         // hunter spawning code
         var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y), Quaternion.identity);
         yield return new WaitForSeconds(60);    // patrols for 1 minute
+
         Destroy(hunter, 1f);                    // goodbye hunter
         isHunterActive = false;
     }
