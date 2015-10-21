@@ -10,6 +10,7 @@ public class Cutscene : MonoBehaviour
 	const float wallOffset = 20;
 
 	GameObject player;
+    PlayerControl playerScript;
 	GameObject cam;
 
 	// Use this for initialization
@@ -32,9 +33,11 @@ public class Cutscene : MonoBehaviour
 
 		// Move the player to the center
 		player.transform.position = new Vector3 (128, player.transform.position.y, 0);
-
-		// Figure out where the left wall is so the camera's panning can stop there
-		wallMargin = wall.transform.position.x + wallOffset;
+        //prevent player from moving until end of cutscene
+        playerScript = player.GetComponent<PlayerControl>();
+        playerScript.normalSpeed = 0f;
+        // Figure out where the left wall is so the camera's panning can stop there
+        wallMargin = wall.transform.position.x + wallOffset;
 	}
 	
 	IEnumerator _Cutscene()
@@ -67,7 +70,8 @@ public class Cutscene : MonoBehaviour
 			yield return null;
 		}
 		cam.GetComponent<CameraFollowScript> ().enabled = true;
-
-		yield return null;
+        //prevent player from moving until end of cutscene
+        playerScript.normalSpeed = playerScript.defaultSpeed;
+        yield return null;
 	}
 }
