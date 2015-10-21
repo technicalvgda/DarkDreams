@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17, y: 25.2000008, z: 0}
+  m_LocalPosition: {x: 27.6000004, y: 4.5999999, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   maxPool: 1
   currentPool: 0
   facingRight: 1
+  BUFFER: .100000001
 --- !u!212 &21279074
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -103,6 +104,10 @@ Prefab:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 0}
+      propertyPath: self
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150150}

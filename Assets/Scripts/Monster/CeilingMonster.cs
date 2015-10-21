@@ -6,13 +6,13 @@ public class CeilingMonster : MonoBehaviour
 {
     Transform myTransform;          // ceiling monster
     PlayerControl player;           // the player
-    GameObject spottedCue;          // indicator when spotted
+    //GameObject spottedCue;          // indicator when spotted
     Transform playerPos;
 
     bool isActive = true;           // check if its active or dazed
     bool isFalling = false;         // check if its falling
     bool isClimbing = false;        // check if its rising
-    bool isCaught = false;          // check to see if player is spotted
+    
 
     public float stunTime = 10f;    // stun time
     public float fallSpeed = 5f;    // fall speed
@@ -28,7 +28,7 @@ public class CeilingMonster : MonoBehaviour
 
     void Awake()
     {
-        spottedCue = GameObject.Find("SpottedIndicator");
+        //spottedCue = GameObject.Find("SpottedIndicator");
         myTransform = transform;
     }
 
@@ -65,8 +65,8 @@ public class CeilingMonster : MonoBehaviour
         RaycastHit2D rightTrigger = Physics2D.Linecast(rightCast, startCast);
 
         // Trigger for Dropping the Ceiling Monster
-        isCaught = false;
-        spottedCue.SetActive(false);
+       
+       
         // Disables the enemy if the player is on another floor
         playerPos = GameObject.Find("Player").GetComponent<Transform>();
         //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
@@ -75,19 +75,19 @@ public class CeilingMonster : MonoBehaviour
         {
             if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
             {
-                isCaught = true;
+               
                 isFalling = true;
                 isClimbing = false;
             }
             else if (rightTrigger.collider && rightTrigger.collider.tag == "Player" && isActive)
             {
-                isCaught = true;
+               
                 isFalling = true;
                 isClimbing = false;
             }
             else if (centerTrigger.collider && centerTrigger.collider.tag == "Player" && isActive)
             {
-                isCaught = true;
+               
                 isFalling = true;
                 isClimbing = false;
             }
@@ -137,11 +137,6 @@ public class CeilingMonster : MonoBehaviour
         }
     }
 
-    void LateUpdate()
-    {
-		if (isCaught == true)
-		spottedCue.SetActive (true);
-	}
 
     void OnTriggerEnter2D(Collider2D col)
     {

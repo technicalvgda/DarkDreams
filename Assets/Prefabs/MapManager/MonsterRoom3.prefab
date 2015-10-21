@@ -153,7 +153,7 @@ GameObject:
   - 212: {fileID: 21243706}
   m_Layer: 0
   m_Name: MonsterRoom3
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -654,6 +654,7 @@ MonoBehaviour:
   maxPool: 1
   currentPool: 0
   facingRight: 1
+  BUFFER: .100000001
 --- !u!114 &11470752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3285,7 +3286,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Room
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146632}

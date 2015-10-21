@@ -94,6 +94,7 @@ public class PlayerControl : MonoBehaviour
         // the same level.
         if (!isHunterActive)
         {
+<<<<<<< HEAD
             if (transform.position.y > floorOne && transform.position.y < floorTwo)
             {
                 isHunterActive = true;
@@ -119,6 +120,10 @@ public class PlayerControl : MonoBehaviour
                 isHunterActive = true;
                 StartCoroutine(SpawnHunterMonster(5, 10)); // spawns after 5-10 seconds
             }
+=======
+           isHunterActive = true;
+            StartCoroutine(SpawnHunterMonster());
+>>>>>>> refs/remotes/origin/master
         }
 
     }

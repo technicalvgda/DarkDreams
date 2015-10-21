@@ -8,6 +8,8 @@ TagManager:
   - PatrolEnemy
   - StationaryEnemy
   - Enemy
+  - Spawner
+  - Room
   layers:
   - Default
   - TransparentFX

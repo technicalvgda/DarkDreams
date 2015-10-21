@@ -25,11 +25,11 @@ public class Hunter : MonoBehaviour
     public LineRenderer lineOfSight;
 
     PlayerControl player;
-    GameObject spottedCue;
+    //GameObject spottedCue;
 
     void Awake()
     {
-        spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
+        //spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
 
         leftEndPath = GameObject.Find("LeftWall").transform.position.x;
         rightEndPath = GameObject.Find("RightWall").transform.position.x;
