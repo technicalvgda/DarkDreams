@@ -809,7 +809,7 @@ GameObject:
   - 114: {fileID: 794723167}
   - 114: {fileID: 794723169}
   m_Layer: 5
-  m_Name: Dark Dreams
+  m_Name: Parasomnia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Dark Dreams
+  m_Text: Parasomnia
 --- !u!222 &794723168
 CanvasRenderer:
   m_ObjectHideFlags: 0
