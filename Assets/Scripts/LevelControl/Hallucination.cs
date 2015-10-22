@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Halluscination : MonoBehaviour {
+public class Hallucination : MonoBehaviour {
     bool hRoomTrigger = false;
     //the sprite objects in the hallucination
-    public GameObject sprite1, sprite2, sprite3, sprite4, sprite5;
+    public GameObject sprite1, sprite2, sprite3, sprite4, sprite5, sprite6, sprite7, sprite8, sprite9;
     // Use this for initialization
     void Start()
     {
@@ -14,6 +14,10 @@ public class Halluscination : MonoBehaviour {
         sprite3.SetActive(false);
         sprite4.SetActive(false);
         sprite5.SetActive(false);
+        sprite6.SetActive(false);
+        sprite7.SetActive(false);
+        sprite8.SetActive(false);
+        sprite9.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,6 +30,11 @@ public class Halluscination : MonoBehaviour {
             sprite3.SetActive(true);
             sprite4.SetActive(true);
             sprite5.SetActive(true);
+            sprite6.SetActive(true);
+            sprite7.SetActive(true);
+            sprite8.SetActive(true);
+            sprite9.SetActive(true);
+
         }
         else
         {
@@ -34,6 +43,10 @@ public class Halluscination : MonoBehaviour {
             sprite3.SetActive(false);
             sprite4.SetActive(false);
             sprite5.SetActive(false);
+            sprite6.SetActive(false);
+            sprite7.SetActive(false);
+            sprite8.SetActive(false);
+            sprite9.SetActive(false);
 
         }
     }
