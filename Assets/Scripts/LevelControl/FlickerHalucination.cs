@@ -7,19 +7,22 @@ public class FlickerHalucination : MonoBehaviour {
     public float seconds;
     public bool onTrigger;
     public bool onFlicker;
+    public GameObject rain;
 
 	// Use this for initialization
 	void Start () {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0.50f;
         seconds = Random.Range(3,6);
-        
-	}
+        rain.GetComponent<ParticleSystem>().enableEmission = false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (onTrigger)
         {
+            rain.GetComponent<ParticleSystem>().enableEmission = true; 
             if (seconds <= 0)
             {
                 seconds = Random.Range(3, 6);
@@ -40,6 +43,10 @@ public class FlickerHalucination : MonoBehaviour {
                 }
             }
         }
+        else
+        {
+            rain.GetComponent<ParticleSystem>().enableEmission = false;
+        }
 	}
 
     void OnTriggerStay2D(Collider2D col)
@@ -47,6 +54,13 @@ public class FlickerHalucination : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             onTrigger = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            onTrigger = false;
         }
     }
 
