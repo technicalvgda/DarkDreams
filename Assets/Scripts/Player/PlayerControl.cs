@@ -97,27 +97,27 @@ public class PlayerControl : MonoBehaviour
             if (transform.position.y > floorOne && transform.position.y < floorTwo)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(35, 50)); // spawns after 35-50 seconds
+                StartCoroutine(SpawnHunterMonster(25, floorOne, floorTwo));     // spawns after 25 seconds
             }
             if (transform.position.y > floorTwo && transform.position.y < floorThree)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(25, 35)); // spawns after 25-35 seconds
+                StartCoroutine(SpawnHunterMonster(20, floorTwo, floorThree));   // spawns after 20 seconds
             }
             if (transform.position.y > floorThree && transform.position.y < floorFour)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(20, 25)); // spawns after 20-25 seconds
+                StartCoroutine(SpawnHunterMonster(15, floorThree, floorFour));  // spawns after 15 seconds
             }
             if (transform.position.y > floorFour && transform.position.y < floorFive)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(15, 20)); // spawns after 15-20 seconds
+                StartCoroutine(SpawnHunterMonster(10, floorFour, floorFive));   // spawns after 10 seconds
             }
             if (transform.position.y > floorFive && transform.position.y < floorAttic)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(5, 10)); // spawns after 5-10 seconds
+                StartCoroutine(SpawnHunterMonster(5, floorFive, floorAttic));   // spawns after 5 seconds
             }
         }
     }
@@ -273,22 +273,40 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Score: " + itemCounter); //confirms the player has picked up the object (track amount). this is removeable.
     }
 
-    IEnumerator SpawnHunterMonster(int min, int max)
+    IEnumerator SpawnHunterMonster(int time, float bottomFloor, float topFloor)
     {
-        yield return new WaitForSeconds(Random.Range(min,max));    // waits min to max seconds before spawning
-
-        // formula so hunter spawns around the player
-        float xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
-        while (transform.position.x - 10 < xHunterPos && xHunterPos < transform.position.x + 10)
+        // waits time seconds before spawning
+        for (int i = 0; i < time; i++)
         {
-            xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
+            if (transform.position.y > bottomFloor && transform.position.y < topFloor)
+                yield return new WaitForSeconds(1); // waits for time seconds
+            else
+                break;
         }
 
         // hunter spawning code
-        var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y), Quaternion.identity);
-        yield return new WaitForSeconds(60);    // patrols for 1 minute
+        if (transform.position.y > bottomFloor && transform.position.y < topFloor)
+        {
+            float xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
+            while (transform.position.x - 10 < xHunterPos && xHunterPos < transform.position.x + 10)
+            {
+                xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
+            }
+            var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y), Quaternion.identity);
 
-        Destroy(hunter, 1f);                    // goodbye hunter
+            for (int i = 0; i < 60; i++)
+            {
+                if (transform.position.y > bottomFloor && transform.position.y < topFloor)
+                    yield return new WaitForSeconds(1);    // patrols for 60 seconds
+                else
+                    break;
+            }
+
+            // goodbye hunter
+            if (hunter != null)
+                Destroy(hunter, 1f);
+        }
+
         isHunterActive = false;
     }
 }
