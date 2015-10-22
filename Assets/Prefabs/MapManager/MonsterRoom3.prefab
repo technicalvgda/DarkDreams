@@ -667,6 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHidden: 0
+  flash: 0
   waitTime: 9.99999975e-05
 --- !u!114 &11492350
 MonoBehaviour:
@@ -2973,7 +2974,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -765892533
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6c32fcc7a3ee59243813b04307da9a79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3290,6 +3291,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: -765892533
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
