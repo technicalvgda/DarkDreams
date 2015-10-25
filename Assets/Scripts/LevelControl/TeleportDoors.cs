@@ -29,15 +29,26 @@ public class TeleportDoors : MonoBehaviour
         clickPosition = new Vector2(0f, 0f);
         cameraScript = Camera.main.GetComponent<CameraFollowScript>();
     }
+
     void OnTriggerStay2D(Collider2D col)
     {
+        //used to make an offset that creates an area to click on, which can be increased/decreased by changing the constant.
+        float xNegPosition = transform.position.x - 5;
+        float xPosPosition = transform.position.x + 5;
+        float yPosPosition = transform.position.y + 5;
+        float yNegPosition = transform.position.y - 5;
+        
         ///get position of click
         clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-        ///currently, click must be on player
-        if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || (col.OverlapPoint(clickPosition) && Input.GetMouseButtonDown(0))))
+        clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;  
+        ///click can is on door
+        if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || 
+           ((yNegPosition<clickPosition.y && clickPosition.y<yPosPosition)&& 
+            (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&Input.GetMouseButtonDown(0))))
+
+
         {
-            
+      
             if (exit != null)
             {
                 cameraScript.follow = false;
