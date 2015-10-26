@@ -40,11 +40,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6f4a93322d9d845adf3af510e9ab46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 131142, guid: 72bb42a0141910747a271b7919000e29, type: 2}
-  spawnMin: 4
-  spawnMax: 5
-  maxPool: 1
-  currentPool: 0
+  monster: {fileID: 11426506, guid: 72bb42a0141910747a271b7919000e29, type: 2}
+  spawnIntervalMin: 4
+  spawnIntervalMax: 5
   facingRight: 1
   BUFFER: .100000001
 --- !u!212 &21279074
