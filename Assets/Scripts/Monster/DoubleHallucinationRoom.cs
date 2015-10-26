@@ -17,7 +17,7 @@ public class DoubleHallucinationRoom : MonoBehaviour
         facingL = false;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerControl>();
-        clone.SetActive(true);
+        clone.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class DoubleHallucinationRoom : MonoBehaviour
             clone.transform.Translate(playerScript.movement.x * negative, 0, 0);
             if (!playerScript.facingRight && left==false)
             {
-                Debug.Log("Facing Left");
+ 
                 clone.transform.rotation = playerRot;
                 left = true;
                 right = false;
@@ -39,7 +39,6 @@ public class DoubleHallucinationRoom : MonoBehaviour
             }
             else if(playerScript.facingRight && right == false)
             {
-                Debug.Log("Facing Right");
                 playerRot.y = playerRot.y +180;
                 clone.transform.rotation = playerRot;
                 left = false;
