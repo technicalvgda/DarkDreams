@@ -388,6 +388,8 @@ MonoBehaviour:
   - {fileID: 427300, guid: 576f9523b2d994848b94a0f752999f27, type: 2}
   - {fileID: 488688, guid: eceaa9e9f3ceee149abe4f8455297ded, type: 2}
   - {fileID: 412044, guid: 29122eeb0cd9a0e44ad13c56c3362b20, type: 2}
+  - {fileID: 494090, guid: d4147ef21eea6a14da54ecb177513c9c, type: 2}
+  - {fileID: 474710, guid: 8fa7fd5c13b4a3741973a7db34722507, type: 2}
   - {fileID: 417978, guid: 0bd426a47a359c342a8e6de6c2a17226, type: 2}
   extraRoom:
   - {fileID: 406318, guid: 68b5e4a09cb220a4db0144627ae1257d, type: 2}
