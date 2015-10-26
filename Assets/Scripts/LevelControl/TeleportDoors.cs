@@ -20,6 +20,8 @@ public class TeleportDoors : MonoBehaviour
     Vector2 clickPosition;
     //reference to camera
     CameraFollowScript cameraScript;
+    float clickOffsetY = 5;
+    float clickOffsetX = 5;
 
     // Use this for initialization
     void Awake()
@@ -31,10 +33,10 @@ public class TeleportDoors : MonoBehaviour
     void OnTriggerStay2D(Collider2D col)
     {
         //used to make an offset that creates an area to click on, which can be increased/decreased by changing the constant.
-        float xNegPosition = transform.position.x - 5;
-        float xPosPosition = transform.position.x + 5;
-        float yPosPosition = transform.position.y + 5;
-        float yNegPosition = transform.position.y - 5;
+        float xNegPosition = transform.position.x - clickOffsetX;
+        float xPosPosition = transform.position.x + clickOffsetX;
+        float yPosPosition = transform.position.y + clickOffsetY;
+        float yNegPosition = transform.position.y - clickOffsetY;
         
         ///get position of click
         clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
