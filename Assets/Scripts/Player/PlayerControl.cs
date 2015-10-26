@@ -17,8 +17,8 @@ public class PlayerControl : MonoBehaviour
     public bool isAlive = true;
     private SpriteRenderer sprite;
     // for player movement
-    Vector2 movement;
-    private bool facingRight = true;
+    public Vector2 movement;
+    public bool facingRight = true;
     //speed variables
     public float playerSpeed;               // final magnitude of speed, the player's speed
     public bool slowMo;                     //boolean that toggles slow motion
