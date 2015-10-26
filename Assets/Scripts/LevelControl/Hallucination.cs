@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Hallucination : MonoBehaviour {
-    bool hRoomTrigger = false;
+    public bool hRoomTrigger = false;
     //the sprite objects in the hallucination
     public GameObject sprite1, sprite2, sprite3, sprite4, sprite5, sprite6, sprite7, sprite8, sprite9;
     // Use this for initialization

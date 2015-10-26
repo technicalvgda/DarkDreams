@@ -17,7 +17,7 @@ public class DoubleHallucinationRoom : MonoBehaviour
         facingL = false;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerControl>();
-        clone.SetActive(false);
+        clone.SetActive(true);
     }
 
     // Update is called once per frame
