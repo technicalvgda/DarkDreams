@@ -23,6 +23,7 @@ public class TeleportDoors : MonoBehaviour
     //reference to camera
     CameraFollowScript cameraScript;
 
+
     // Use this for initialization
     void Awake()
     {
@@ -35,7 +36,7 @@ public class TeleportDoors : MonoBehaviour
         clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
         ///currently, click must be on player
-        if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || (col.OverlapPoint(clickPosition) && Input.GetMouseButtonDown(0))))
+        if (cameraScript.follow && col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || (col.OverlapPoint(clickPosition) && Input.GetMouseButtonDown(0))))
         {
             
             if (exit != null)
