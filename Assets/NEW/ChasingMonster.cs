@@ -68,10 +68,13 @@ public class ChasingMonster : MonoBehaviour
 
 		// Check for collision with the player
 		// If nothing detected, keep patrolling. Otherwise chase the player
+		// If the object has reached the distance limit, it gives up on chasing the player
 		if (!CheckForPlayer())
-			Patrol();
+			//Patrol();
+			MoveTurn(speedNormal);
 		else
-			Move(speedChasing);
+			//Move(speedChasing);
+			MoveTurn(speedChasing);
 	}
 
 	// Checks for player collision with the line cast
@@ -125,6 +128,7 @@ public class ChasingMonster : MonoBehaviour
 		return false;
 	}
 
+	// UNUSED //
 	// Moves at normal speed then turns around after a certain distance is reached
 	// Occasionally pauses along the way if periodicPause is enabled
 	void Patrol()
@@ -155,6 +159,7 @@ public class ChasingMonster : MonoBehaviour
 		}
 	}
 
+	// UNUSED //
 	// Moves at constant speed in the facing direction
 	float Move(float speed)
 	{
@@ -165,6 +170,47 @@ public class ChasingMonster : MonoBehaviour
 
 		// Returns the distance moved for further processing
 		return movement;
+	}
+
+	// A modified Move(). The object moves at the given speed, turns around
+	// when it reaches the EXACT travel distance limit, no matter what.
+	void MoveTurn(float speed)
+	{
+		// Waits out the pause period
+		if (pauseTime > 0)
+		{
+			pauseTime -= Time.deltaTime;
+			return;
+		}
+
+		// Determine the distance traveled this frame and clamp it if it
+		// happens to make the object go outside of its range.
+		float movement = Mathf.Min
+			(speed * Time.deltaTime,
+			 patrolDistance - accumulatedDistance);
+		
+		// Moves the enemy in the direction it's facing
+		transform.Translate(movement * direction, 0, 0);
+
+		// Moves the enemy and notes the distance traveled
+		accumulatedDistance += movement;
+		
+		// Flips enemy once it has traveled the full distance
+		if (accumulatedDistance >= patrolDistance)
+		{
+			Debug.Log ("Moved: " + movement);
+			Debug.Log ("Turning. Distance traveled: " + accumulatedDistance);
+			accumulatedDistance = 0;
+			FlipEnemy();
+		}
+		
+		// After the enemy has moved for moveTime seconds, pause it
+		moveTime += Time.deltaTime;
+		if (periodicPause && moveTime >= moveDuration)
+		{
+			moveTime = 0;
+			pauseTime = pauseDuration;
+		}
 	}
 
     void LateUpdate()
