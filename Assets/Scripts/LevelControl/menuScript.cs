@@ -7,7 +7,8 @@ public class menuScript : MonoBehaviour {
 	public Canvas quitMenu;
 	public Button startText;
 	public Button exitText;
-	
+	//variables for player prefrences 
+
 	// Use this for initialization
 	void Start ()
 		
@@ -16,6 +17,7 @@ public class menuScript : MonoBehaviour {
 		startText = startText.GetComponent<Button>();
 		exitText = exitText.GetComponent<Button>();
 		quitMenu.enabled = false;
+        
 		
 		
 	}

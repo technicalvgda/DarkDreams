@@ -4,8 +4,15 @@ using System.Collections;
 using Image = UnityEngine.UI.Image;
 using Slider = UnityEngine.UI.Slider;
 
+
 public class optionsScript : MonoBehaviour 
-{
+{   
+    //variables for playerprefs
+    PlayerPrefs bright;
+    PlayerPrefs soundEffects;
+    PlayerPrefs music;
+   
+
 	public Slider brightness;
 	public Slider bgm;
 	public Slider se;
