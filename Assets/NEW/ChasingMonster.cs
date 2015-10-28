@@ -70,10 +70,8 @@ public class ChasingMonster : MonoBehaviour
 		// If nothing detected, keep patrolling. Otherwise chase the player
 		// If the object has reached the distance limit, it gives up on chasing the player
 		if (!CheckForPlayer())
-			//Patrol();
 			MoveTurn(speedNormal);
 		else
-			//Move(speedChasing);
 			MoveTurn(speedChasing);
 	}
 
@@ -128,52 +126,8 @@ public class ChasingMonster : MonoBehaviour
 		return false;
 	}
 
-	// UNUSED //
-	// Moves at normal speed then turns around after a certain distance is reached
-	// Occasionally pauses along the way if periodicPause is enabled
-	void Patrol()
-	{
-		// Waits out the pause period
-		if (pauseTime > 0)
-		{
-			pauseTime -= Time.deltaTime;
-			return;
-		}
-
-		// Moves the enemy and notes the distance traveled
-		accumulatedDistance += Move(speedNormal);
-
-		// Flips enemy once it has traveled the full distance
-		if (accumulatedDistance > patrolDistance)
-		{
-			accumulatedDistance = 0;
-			FlipEnemy();
-		}
-
-		// After the enemy has moved for moveTime seconds, pause it
-		moveTime += Time.deltaTime;
-		if (periodicPause && moveTime >= moveDuration)
-		{
-			moveTime = 0;
-			pauseTime = pauseDuration;
-		}
-	}
-
-	// UNUSED //
-	// Moves at constant speed in the facing direction
-	float Move(float speed)
-	{
-		float movement = speed * Time.deltaTime;
-
-		// Moves the enemy in the direction it's facing
-		transform.Translate(movement * direction, 0, 0);
-
-		// Returns the distance moved for further processing
-		return movement;
-	}
-
-	// A modified Move(). The object moves at the given speed, turns around
-	// when it reaches the EXACT travel distance limit, no matter what.
+	// The object moves at the given speed, then turns around when it reaches
+	// the EXACT travel distance limit.
 	void MoveTurn(float speed)
 	{
 		// Waits out the pause period
@@ -183,7 +137,7 @@ public class ChasingMonster : MonoBehaviour
 			return;
 		}
 
-		// Determine the distance traveled this frame and clamp it if it
+		// Determines the distance traveled this frame and clamp it if it
 		// happens to make the object go outside of its range.
 		float movement = Mathf.Min
 			(speed * Time.deltaTime,
@@ -198,8 +152,6 @@ public class ChasingMonster : MonoBehaviour
 		// Flips enemy once it has traveled the full distance
 		if (accumulatedDistance >= patrolDistance)
 		{
-			Debug.Log ("Moved: " + movement);
-			Debug.Log ("Turning. Distance traveled: " + accumulatedDistance);
 			accumulatedDistance = 0;
 			FlipEnemy();
 		}
