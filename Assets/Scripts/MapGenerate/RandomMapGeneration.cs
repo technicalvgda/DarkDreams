@@ -178,7 +178,7 @@ public class RandomMapGeneration : MonoBehaviour
     }
 
 
-    //Assume that each door and regular room has the same s    ize.
+    //Assume that each door and regular room has the same size.
     void instantiateRooms()
     {
         //level is needed to keep track of each floor.
