@@ -25,11 +25,13 @@ public class RandomMapGeneration : MonoBehaviour
 	public int sizeOfMapY = 1;
 	public int lengthOfRoom = 60;
 	public int heightOfRoom = 27;
+
 	//List of doorRoom and RegularRoom
 	public Transform[] doorRoom;
 	public Transform[] regRoom;
 	public Transform[] extraRoom;
-	
+
+	//roomsWithItem to support ItemGeneration
 	public Stack<Transform> roomsWithItem = new Stack<Transform> ();
 	
 	private Stack<Transform> doorRoomUnvisited = new Stack<Transform>();
@@ -83,8 +85,6 @@ public class RandomMapGeneration : MonoBehaviour
 		{
 			regRoomUnvisited.Push(regRoom[i]);
 		}
-		
-		
 		for (int i = 0; i < extraRoom.Length; i++)
 		{
 			extraRoomUnvisited.Push(extraRoom[i]);
@@ -221,13 +221,18 @@ public class RandomMapGeneration : MonoBehaviour
 				}
 				else
 				{
+
 					Transform regR = regRoomUnvisited.Pop();
+
+					//Get the instantiated room
 					Transform itemR = (Transform)Instantiate(regR, transform.position + sizeOfPrefab, transform.rotation);
+
 					//Put regular rooms in roomsWithItem to decide which room will spawn an item.
 					rooms.Add (itemR);
 					if (rooms.Count == sizeOfMapX - NUMBER_OF_DOOR_PER_FLOOR) {
 					    chooseItemRooms(rooms, level);
 					}
+
 					//Size/Gap between each hallway  (length of rooms)
 					sizeOfPrefab.x += lengthOfRoom;
 				}
@@ -249,8 +254,11 @@ public class RandomMapGeneration : MonoBehaviour
 	//Choose which room on each floor will spawn an item.
 	void chooseItemRooms(List<Transform> rooms,int level) {
 		int itemRoom = Random.Range (0, rooms.Count);
-		int numberOfItems = 0;
+
+		//Add the room that will spawn an item to roomsWithItem
 		roomsWithItem.Push (rooms [itemRoom]);
+
+		//Clear the rooms list.
 		rooms.Clear ();
 	}
 	
