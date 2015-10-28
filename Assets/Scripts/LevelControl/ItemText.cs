@@ -2,11 +2,12 @@
 using UnityEngine.UI;
 using System.Collections;
 public class ItemText : MonoBehaviour{
-    public PlayerControl player;
+    PlayerControl player;
     private GameObject itemTextPanel;
 
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<PlayerControl>();
         itemTextPanel = GameObject.Find("ItemTextPanel");
         itemTextPanel.SetActive(false);
     }
