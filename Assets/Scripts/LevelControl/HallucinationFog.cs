@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ParticleSettings : MonoBehaviour {
+public class HallucinationFog : MonoBehaviour {
 
     public bool onTrigger;
     public ParticleSystem fog;
