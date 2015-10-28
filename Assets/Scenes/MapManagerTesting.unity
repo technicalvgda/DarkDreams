@@ -314,24 +314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7bace83ce844c99ba8dc82adf1404e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemLevel1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemLevel2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemLevel3:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  items:
+  - {fileID: 407304, guid: 9bba61cc6cd09414d9f568cf94b763d5, type: 2}
+  - {fileID: 476994, guid: 96fbba617f1f14b488b6fcf85eee5cfa, type: 2}
+  - {fileID: 415308, guid: df40608013632ab49bb3b137f92a368e, type: 2}
 --- !u!4 &1393475128
 Transform:
   m_ObjectHideFlags: 0
