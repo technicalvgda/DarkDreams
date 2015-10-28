@@ -315,9 +315,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 407304, guid: 9bba61cc6cd09414d9f568cf94b763d5, type: 2}
   - {fileID: 476994, guid: 96fbba617f1f14b488b6fcf85eee5cfa, type: 2}
-  - {fileID: 415308, guid: df40608013632ab49bb3b137f92a368e, type: 2}
+  - {fileID: 476994, guid: 96fbba617f1f14b488b6fcf85eee5cfa, type: 2}
+  - {fileID: 476994, guid: 96fbba617f1f14b488b6fcf85eee5cfa, type: 2}
+  - {fileID: 476994, guid: 96fbba617f1f14b488b6fcf85eee5cfa, type: 2}
+  - {fileID: 476994, guid: 96fbba617f1f14b488b6fcf85eee5cfa, type: 2}
 --- !u!4 &1393475128
 Transform:
   m_ObjectHideFlags: 0
