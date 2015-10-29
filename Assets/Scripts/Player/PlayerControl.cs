@@ -57,6 +57,7 @@ public class PlayerControl : MonoBehaviour
     float floorAttic = 121.8f;
 
     // Stage Difficulty Variable
+    bool standardLevel = true;
     int stageLevel;
     int hunterInactiveDuration;
 
@@ -81,6 +82,10 @@ public class PlayerControl : MonoBehaviour
 
         // Formula to calculate the hunter duration
         Debug.Log("Stage Level: " + Application.loadedLevel);
+        if(Application.loadedLevelName == "Ending Level" || Application.loadedLevelName == "Tutorial Stage")
+        {
+            standardLevel = false;
+        }
         hunterInactiveDuration = 40 - 18 * (Application.loadedLevel - 1);
         if (hunterInactiveDuration < 8)
             hunterInactiveDuration = 8;
@@ -106,7 +111,7 @@ public class PlayerControl : MonoBehaviour
 
         // Code to spawn a HunterMonster targeting the player at a random location within
         // the same floor.
-        if (!isHunterActive)
+        if (!isHunterActive && standardLevel == true)//check if hunter is currently inactive and if this level should spawn a hunter
         {
             if (transform.position.y > floorOne && transform.position.y < floorTwo)
             {

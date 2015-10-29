@@ -8,7 +8,7 @@ public class ItemText : MonoBehaviour{
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerControl>();
-        itemTextPanel = GameObject.Find("ItemTextPanel");
+        itemTextPanel = transform.Find("UICanvas/Overlay/ItemTextPanel").gameObject;//GameObject.Find("ItemTextPanel");
         itemTextPanel.SetActive(false);
     }
     void OnTriggerStay2D(Collider2D other){

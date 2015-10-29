@@ -13,11 +13,16 @@ public class Cutscene : MonoBehaviour
     PlayerControl playerScript;
 	GameObject cam;
 
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start ()
 	{
-		Setup ();
-		StartCoroutine (_Cutscene ());
+        if (Application.loadedLevelName != "Ending Level" && Application.loadedLevelName != "Tutorial Stage")
+        {
+            Setup();
+            StartCoroutine(_Cutscene());
+        }
+       
 	}
 	
 	// Update is called once per frame
