@@ -612,38 +612,38 @@ MonoBehaviour:
   lengthOfRoom: 60
   heightOfRoom: 27
   doorRoom:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 482176, guid: 3654cd01e6a364c1a911debc6169b49d, type: 2}
+  - {fileID: 477016, guid: 975568eba9c1d4703854c8ca448505db, type: 2}
+  - {fileID: 490574, guid: 1278f85ddf6234cba86ea5e28c20f9e8, type: 2}
+  - {fileID: 430554, guid: 1a48df16d2ac5844e8d856c17572d649, type: 2}
+  - {fileID: 462762, guid: d55674af31aac4f00b4f0fa6c56613cf, type: 2}
+  - {fileID: 462228, guid: 710735ec03557465d8a52e28b4d44112, type: 2}
+  - {fileID: 420624, guid: c9e2f0e3918204b1882cc20b9e31f0f9, type: 2}
+  - {fileID: 495588, guid: 9cde225885294466a84c1ac6bb2bece3, type: 2}
+  - {fileID: 406800, guid: 59950e5954f0c1043a6ee80cfd0ca7cc, type: 2}
+  - {fileID: 406318, guid: 184952500e785be4d85f563d46b25ba2, type: 2}
   regRoom:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 479640, guid: 4007779cb5015fa439149994e631c7dc, type: 2}
+  - {fileID: 458742, guid: 29e3748b0332b624dbfc25de8ea94a00, type: 2}
+  - {fileID: 475236, guid: 37537de9c0c67844f8982a51eda032b1, type: 2}
+  - {fileID: 429680, guid: 5f954e2323e23024898dfcfb7d6c8d18, type: 2}
+  - {fileID: 474430, guid: 8780f2c2bc102ca4787b734b88815d07, type: 2}
+  - {fileID: 427300, guid: 576f9523b2d994848b94a0f752999f27, type: 2}
+  - {fileID: 451556, guid: f507cdbb3cbcdee4ea295d42087ca72f, type: 2}
+  - {fileID: 479640, guid: 4007779cb5015fa439149994e631c7dc, type: 2}
+  - {fileID: 458742, guid: 29e3748b0332b624dbfc25de8ea94a00, type: 2}
+  - {fileID: 475236, guid: 37537de9c0c67844f8982a51eda032b1, type: 2}
+  - {fileID: 429680, guid: 5f954e2323e23024898dfcfb7d6c8d18, type: 2}
+  - {fileID: 474430, guid: 8780f2c2bc102ca4787b734b88815d07, type: 2}
+  - {fileID: 427300, guid: 576f9523b2d994848b94a0f752999f27, type: 2}
+  - {fileID: 488688, guid: eceaa9e9f3ceee149abe4f8455297ded, type: 2}
+  - {fileID: 412044, guid: 29122eeb0cd9a0e44ad13c56c3362b20, type: 2}
+  - {fileID: 494090, guid: d4147ef21eea6a14da54ecb177513c9c, type: 2}
+  - {fileID: 474710, guid: 8fa7fd5c13b4a3741973a7db34722507, type: 2}
+  - {fileID: 417978, guid: 0bd426a47a359c342a8e6de6c2a17226, type: 2}
   extraRoom:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 406318, guid: 68b5e4a09cb220a4db0144627ae1257d, type: 2}
+  - {fileID: 406318, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
 --- !u!1001 &1709114104
 Prefab:
   m_ObjectHideFlags: 0
