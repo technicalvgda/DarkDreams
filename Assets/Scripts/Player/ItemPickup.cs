@@ -49,14 +49,17 @@ public class ItemPickup : MonoBehaviour {
 		PlayerControl.AddPoints(itemAdd); // on collison, will add the amount in player script
 		flash = true;
 		Destroy(gameObject); //destroys the object
-		
-		//canvas = GameObject.Find ("FadingDarknessCanvas");
-		//fadingDarkness = GameObject.FindWithTag(FadingDarkness);
-		if (fadingDarkness == null) 
-		{
-			Debug.Log ("not found");
-		}
-		fadingDarkness.flash = true; 
+
+        //canvas = GameObject.Find ("FadingDarknessCanvas");
+        //fadingDarkness = GameObject.FindWithTag(FadingDarkness);
+        if (fadingDarkness == null)
+        {
+            Debug.Log("not found");
+        }
+        else
+        {
+            fadingDarkness.flash = true;
+        }
 
 		//flashingCanvas = GameObject.Find("FlashingLightCanvas")();
 		//Instantiate(flashingCanvas);
