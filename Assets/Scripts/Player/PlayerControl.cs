@@ -45,12 +45,20 @@ public class PlayerControl : MonoBehaviour
     private bool isHunterActive = false;
 
     // estimated position.y of each floor
+        /* Wilburn TODO: I feel like I can grab the floor positions from the floors that's
+           is generated or somehow calculate the required measurements instead of eyeballing
+           and writing it down. It would be cleaner
+        */
     float floorOne = -13f;
     float floorTwo = 13.5f;
     float floorThree = 40.6f;
     float floorFour = 67.6f;
     float floorFive = 94.7f;
     float floorAttic = 121.8f;
+
+    // Stage Difficulty Variable
+    int stageLevel;
+    int hunterInactiveDuration;
 
     // Use this for initialization
     void Awake()
@@ -70,7 +78,13 @@ public class PlayerControl : MonoBehaviour
     void Start() //what happens as soon as player is created
     {
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
-	}
+
+        // Formula to calculate the hunter duration
+        Debug.Log("Stage Level: " + Application.loadedLevel);
+        hunterInactiveDuration = 40 - 18 * (Application.loadedLevel - 1);
+        if (hunterInactiveDuration < 8)
+            hunterInactiveDuration = 8;
+    }
     void Update()
     {
         //if player is killed, set player object's alpha to 0 (make invisible)
@@ -91,33 +105,33 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Code to spawn a HunterMonster targeting the player at a random location within
-        // the same level.
+        // the same floor.
         if (!isHunterActive)
         {
             if (transform.position.y > floorOne && transform.position.y < floorTwo)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(25, floorOne, floorTwo));     // spawns after 25 seconds
+                StartCoroutine(SpawnHunterMonster(hunterInactiveDuration, floorOne, floorTwo));
             }
             if (transform.position.y > floorTwo && transform.position.y < floorThree)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(20, floorTwo, floorThree));   // spawns after 20 seconds
+                StartCoroutine(SpawnHunterMonster(hunterInactiveDuration, floorTwo, floorThree));
             }
             if (transform.position.y > floorThree && transform.position.y < floorFour)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(15, floorThree, floorFour));  // spawns after 15 seconds
+                StartCoroutine(SpawnHunterMonster(hunterInactiveDuration, floorThree, floorFour));
             }
             if (transform.position.y > floorFour && transform.position.y < floorFive)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(10, floorFour, floorFive));   // spawns after 10 seconds
+                StartCoroutine(SpawnHunterMonster(hunterInactiveDuration, floorFour, floorFive));
             }
             if (transform.position.y > floorFive && transform.position.y < floorAttic)
             {
                 isHunterActive = true;
-                StartCoroutine(SpawnHunterMonster(5, floorFive, floorAttic));   // spawns after 5 seconds
+                StartCoroutine(SpawnHunterMonster(hunterInactiveDuration, floorFive, floorAttic));
             }
         }
     }
@@ -279,7 +293,7 @@ public class PlayerControl : MonoBehaviour
         for (int i = 0; i < time; i++)
         {
             if (transform.position.y > bottomFloor && transform.position.y < topFloor)
-                yield return new WaitForSeconds(1); // waits for time seconds
+                yield return new WaitForSeconds(1); // waits up to 'time' seconds
             else
                 break;
         }
@@ -294,10 +308,10 @@ public class PlayerControl : MonoBehaviour
             }
             var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y), Quaternion.identity);
 
-            for (int i = 0; i < 60; i++)
+            for (int i = 0; i < 60; i++)    // 'i' controlls the duration of the hunter existance
             {
                 if (transform.position.y > bottomFloor && transform.position.y < topFloor)
-                    yield return new WaitForSeconds(1);    // patrols for 60 seconds
+                    yield return new WaitForSeconds(1);
                 else
                     break;
             }
