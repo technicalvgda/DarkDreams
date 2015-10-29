@@ -17,11 +17,10 @@ public class Cutscene : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
-        if (Application.loadedLevelName != "Ending Level" && Application.loadedLevelName != "Tutorial Stage")
-        {
+        
             Setup();
             StartCoroutine(_Cutscene());
-        }
+        
        
 	}
 	
