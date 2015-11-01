@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 2
-  fallSpeed: 40
+  fallSpeed: 25
   climbSpeed: 2
   detectionWidth: 0
 --- !u!114 &11492910
@@ -823,10 +823,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -765892533
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: fallSpeed
-      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
