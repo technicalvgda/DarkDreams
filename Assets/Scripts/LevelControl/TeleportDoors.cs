@@ -44,16 +44,13 @@ public class TeleportDoors : MonoBehaviour
         ///click can is on door
         if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || 
            ((yNegPosition<clickPosition.y && clickPosition.y<yPosPosition)&& 
-            (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&Input.GetMouseButtonDown(0))))
-
-
-        {
-      
+            (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&
+            Input.GetMouseButtonDown(0))))
+        {    
             if (exit != null)
             {
                 cameraScript.follow = false;
                 cameraScript.target = exit.transform;
-
             }
             else
             {
@@ -62,7 +59,6 @@ public class TeleportDoors : MonoBehaviour
            
             Debug.Log("Teleport Complete!"); // confirm that teleport is complete; this can be taken out
             TeleportToExit2D(col);
-
         }
         /*
         else
@@ -77,11 +73,15 @@ public class TeleportDoors : MonoBehaviour
         if (exit != null)
         {
             col.transform.position = exit.transform.position; //line that teleports player
-
         }
         else
         {
             Debug.Log("no exit assigned");
         }
 	}
+    void LoadNewLevel(/*Dummy Variable for next level*/)
+    {
+        //int x = blah; Level+"x"
+        Application.LoadLevel(Application.loadedLevel); //change loadedLevel to next level when appropiriate
+    }
 }
