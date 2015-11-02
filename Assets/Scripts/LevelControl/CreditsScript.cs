@@ -1,26 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CreditsScript : MonoBehaviour {
+public class CreditsScript : MonoBehaviour
+{
 
-	public GameObject cam;
-	public int speed = 1;
-	public string level;
-	
-	// Update is called once per frame
-	void Update () {
-	
-		cam.transform.Translate (Vector3.down * Time.deltaTime * speed);
-	
-	}
 
-	IEnumerator waitFor(){
+    public float timer = 10;
+    public float speed = 5;
+    void Start()
+    {
+        
+        StartCoroutine(JumpToStart());
+        
+    }
+    void Update()
+    {
+        
+        //this.transform.Translate(Vector3.up * Time.deltaTime * speed);
+        transform.Translate(new Vector3(0, Time.deltaTime * speed, 0));
+       
+    }
 
-		yield return new WaitForSeconds (20);
-		Application.LoadLevel (level);
+    IEnumerator JumpToStart()
+    {
+        yield return new WaitForSeconds(timer);
+        Application.LoadLevel("TitleScreen");
+    }
 
-	}
 
 }
+
 
 
