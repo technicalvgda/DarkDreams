@@ -16,7 +16,7 @@ public class PauseScript : MonoBehaviour {
     GameObject player;
     //public GameObject resumeButton;
     bool paused;
-	bool busy;
+	public bool busy;
 
 	// Use this for initialization
 	void Start () {
