@@ -178,6 +178,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11449836, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
+      propertyPath: m_Text
+      value: Goodnight
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
   m_IsPrefabParent: 0
@@ -523,7 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endColor: {r: 0, g: 0, b: 0, a: 0}
-  progressMessage: Goodnight
+  progressMessage: 
   timeToWait: 1
   timeToFade: 1
   timeToUpdatePeriods: .5
