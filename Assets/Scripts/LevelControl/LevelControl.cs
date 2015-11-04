@@ -12,6 +12,7 @@ public class LevelControl : MonoBehaviour
     public GameObject overlay;
     Image overlay_image;
     GameObject gameOverPanel;
+    Vector2 initialPlayerPos;
     //GameObject retryButton;
     //GameObject menuButton;
     //GameObject spottedCue;
@@ -22,6 +23,10 @@ public class LevelControl : MonoBehaviour
        // spottedCue = GameObject.Find("SpottedIndicator");
        // spottedCue.SetActive(false);
         player = GameObject.Find("Player");
+
+        // set the initial position of the player
+        initialPlayerPos = player.transform.position;
+
         gameOverPanel = GameObject.Find("GameOverPanel");
         //retryButton = GameObject.Find("RetryButton");
         //menuButton = GameObject.Find("MenuButton");
@@ -51,12 +56,25 @@ public class LevelControl : MonoBehaviour
         }
     }
 
+    // The retry method when the GameOver overlay pops up
     public void Retry()
-    { //The retry button when the game over screen pops up
+    {
+        // Set player position to initial position in basement
+        player.transform.position = initialPlayerPos;
+
+        // Set GameOver and fadetoblack overlay to false
+        gameOverPanel.SetActive(false);
+        overlay.SetActive(false);
+
+        // Set player to alive and enable movement
         player.GetComponent<PlayerControl>().isAlive = true;
-        Application.LoadLevel(Application.loadedLevel);
+        player.GetComponent<PlayerControl>().enabled = true;
+        player.GetComponent<PlayerControl>().normalSpeed = player.GetComponent<PlayerControl>().defaultSpeed;
+
+        // Resume time
         Time.timeScale = 1f;
     }
+
     public void MainMenu()
     { //The main menu button when the game over screen pops up
         Time.timeScale = 1f;
