@@ -6,6 +6,8 @@ public class PatrollingMonsterSpawner : MonoBehaviour
 {
 
     public PatrollingMonster monster;
+    public GameObject leftSpawnpoint;
+    public GameObject rightSpawnpoint;
     //private const int POOL_SIZE = 2;
     //private GameObject[] pool = new GameObject[POOL_SIZE];
 
@@ -75,8 +77,17 @@ public class PatrollingMonsterSpawner : MonoBehaviour
         // wait some time, then reset its position and activate it again
         while (true)
         {
+            //added
+            if(player.GetComponent<PlayerControl>().facingRight == true)
+            {
+                monster.Set(leftSpawnpoint.transform.position, facingRight);
+            }
+            else
+            {
+                monster.Set(rightSpawnpoint.transform.position, !facingRight);
+            }
             // "Spawns" the monster by activating it and placing it at the spawner's position
-            monster.Set(this.transform.position, facingRight);
+            //monster.Set(this.transform.position, facingRight);
             //Debug.Log("(" + room.name + ") Spawned monster.");
 
             // Do nothing while the monster is active

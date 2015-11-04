@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
     public Color initialColor;
     // for player movement
     Vector2 movement;
-    private bool facingRight = true;
+    public bool facingRight = true;
     //speed variables
     public float playerSpeed;               // final magnitude of speed, the player's speed
     public bool slowMo;                     //boolean that toggles slow motion
