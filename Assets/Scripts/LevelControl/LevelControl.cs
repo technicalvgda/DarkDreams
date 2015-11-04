@@ -61,7 +61,7 @@ public class LevelControl : MonoBehaviour
     {
         // Set player position to initial position in basement
         player.transform.position = initialPlayerPos;
-
+        player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerControl>().initialColor;
         // Set GameOver and fadetoblack overlay to false
         gameOverPanel.SetActive(false);
         overlay.SetActive(false);

@@ -16,6 +16,7 @@ public class PlayerControl : MonoBehaviour
     // for references to player
     public bool isAlive = true;
     private SpriteRenderer sprite;
+    public Color initialColor;
     // for player movement
     Vector2 movement;
     private bool facingRight = true;
@@ -78,6 +79,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
+        initialColor = sprite.color;
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
 
         // Formula to calculate the hunter duration
