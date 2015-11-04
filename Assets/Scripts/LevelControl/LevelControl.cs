@@ -4,27 +4,34 @@ using System.Collections;
 
 public class LevelControl : MonoBehaviour
 {
-
-    //public float MAX_TIME = 5.0f;
+    // public float MAX_TIME = 5.0f;
     public float timer = 5.0f;
-   // float fadeTime = 3.0f;    //disabled for compiler error -joel
-    GameObject player;
+    // float fadeTime = 3.0f;    //disabled for compiler error -joel
     public GameObject overlay;
-    Image overlay_image;
+
+    GameObject player;
     GameObject gameOverPanel;
-    //GameObject retryButton;
-    //GameObject menuButton;
-    //GameObject spottedCue;
+
+    Image overlay_image;
+
+    // GameObject retryButton;
+    // GameObject menuButton;
+    // GameObject spottedCue;
     // Use this for initialization
+
+    private Vector2 initialPlayerPos;
+
     void Start()
     {
         Time.timeScale = 1f;
-       // spottedCue = GameObject.Find("SpottedIndicator");
-       // spottedCue.SetActive(false);
+        // spottedCue = GameObject.Find("SpottedIndicator");
+        // spottedCue.SetActive(false);
         player = GameObject.Find("Player");
+        initialPlayerPos = player.transform.position;
+
         gameOverPanel = GameObject.Find("GameOverPanel");
-        //retryButton = GameObject.Find("RetryButton");
-        //menuButton = GameObject.Find("MenuButton");
+        // retryButton = GameObject.Find("RetryButton");
+        // menuButton = GameObject.Find("MenuButton");
         gameOverPanel.SetActive(false);
         overlay.SetActive(false);
         overlay_image = overlay.GetComponent<Image>();
@@ -33,10 +40,12 @@ public class LevelControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Game Over Screen and its options
+        // Game Over Screen and its options
+        // Activates game over screen when player is not alive
         if (player.GetComponent<PlayerControl>().isAlive == false)
-        { //Activates game over screen when player is not alive
-            player.GetComponent<PlayerControl>().enabled = false; //Disables player control script
+        {
+            // Disables player control script
+            player.GetComponent<PlayerControl>().enabled = false; 
 
             if (timer > 0)
             {
@@ -51,14 +60,24 @@ public class LevelControl : MonoBehaviour
         }
     }
 
+    // The retry button when the game over screen pops up
     public void Retry()
-    { //The retry button when the game over screen pops up
+    {   
+        // Set player position to initial position
+        player.transform.position = initialPlayerPos;
+
+        // Set gameover overlay to false
+        gameOverPanel.SetActive(false);
+        
+        // Set player to alive
         player.GetComponent<PlayerControl>().isAlive = true;
-        Application.LoadLevel(Application.loadedLevel);
+
+        // Unpause time? not sure -wilb
         Time.timeScale = 1f;
     }
+
     public void MainMenu()
-    { //The main menu button when the game over screen pops up
+    {   //The main menu button when the game over screen pops up
         Time.timeScale = 1f;
         //load first level in hierarchy
         Application.LoadLevel(0);
