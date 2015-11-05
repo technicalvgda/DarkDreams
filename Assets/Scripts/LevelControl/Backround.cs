@@ -31,11 +31,11 @@ public class Backround : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("HELLO");
+        //Debug.Log("HELLO");
         if (col.gameObject.tag == "Player")
         {
             here++;
-            Debug.Log(here);
+            //Debug.Log(here);
         }
 
     }
