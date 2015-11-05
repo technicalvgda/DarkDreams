@@ -11,15 +11,15 @@ GameObject:
   - 212: {fileID: 21254646}
   - 114: {fileID: 11480814}
   - 120: {fileID: 12046844}
-  - 61: {fileID: 6187244}
   - 95: {fileID: 9564040}
+  - 61: {fileID: 6137456}
   m_Layer: 0
   m_Name: ChasingEnemy
   m_TagString: PatrolEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &432756
 Transform:
   m_ObjectHideFlags: 1
@@ -27,12 +27,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 202.272034, y: -18.5714989, z: 0}
+  m_LocalPosition: {x: 139.938202, y: 15.0620985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6187244
+--- !u!61 &6137456
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -44,7 +44,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 6.17000008, y: 9.31999969}
+  m_Size: {x: 9.36999989, y: 11.6400003}
 --- !u!95 &9564040
 Animator:
   serializedVersion: 3
@@ -73,13 +73,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016dca5c71eab0a4c8c186e2b948418d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: 0
-  speed: 2
-  counter: 0
-  distance: 0
-  visionSpeedMultiplier: 2
-  patrolDistance: 15
-  lineCastDistance: 8
+  speedNormal: 2
+  speedChasing: 4
+  patrolDistance: 25
+  periodicPause: 0
+  moveDuration: 0
+  pauseDuration: 0
+  lineCastDistance: 15
   lineOfSight: {fileID: 12046844}
 --- !u!120 &12046844
 LineRenderer:
@@ -107,7 +107,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 8, y: -1, z: 0}
+  - {x: 15, y: -1, z: 0}
   m_Parameters:
     startWidth: 1
     endWidth: 4
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 024d7a0b6b409b2458188cfd150518db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5efeb584eacd10745a1afca1cd90e680, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
