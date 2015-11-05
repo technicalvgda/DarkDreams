@@ -18,7 +18,7 @@ public class PlayerControl : MonoBehaviour
     private SpriteRenderer sprite;
     public Color initialColor;
     // for player movement
-    Vector2 movement;
+    public Vector2 movement;
     public bool facingRight = true;
     //speed variables
     public float playerSpeed;               // final magnitude of speed, the player's speed
