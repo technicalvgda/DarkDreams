@@ -22,6 +22,7 @@ public class TeleportDoors : MonoBehaviour
     CameraFollowScript cameraScript;
     float clickOffsetY = 5;
     float clickOffsetX = 5;
+    public Sprite up, down;
 
     // Use this for initialization
     void Awake()
@@ -29,7 +30,19 @@ public class TeleportDoors : MonoBehaviour
         clickPosition = new Vector2(0f, 0f);
         cameraScript = Camera.main.GetComponent<CameraFollowScript>();
     }
-
+    void Start()
+    {
+        //if this door leads up
+        if(exit.position.y > transform.position.y)
+        {
+            transform.GetComponent<SpriteRenderer>().sprite = up;
+        }
+        //if door leads down
+        else
+        {
+            transform.GetComponent<SpriteRenderer>().sprite = down;
+        }
+    }
     void OnTriggerStay2D(Collider2D col)
     {
         //used to make an offset that creates an area to click on, which can be increased/decreased by changing the constant.
