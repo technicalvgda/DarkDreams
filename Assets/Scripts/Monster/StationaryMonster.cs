@@ -38,6 +38,14 @@ public class StationaryMonster : MonoBehaviour
     }
     void Update()
     {
+        if(player.isAlive == false)
+        {
+            //changes enemy to docile animation
+            anim.SetBool("Alert", false);
+            anim.ResetTrigger("Kill");
+            //Else it will remain off
+            enemyActive = false;
+        }
         Vector2 currentPos = gameObject.transform.position;
         Transform playerPos = GameObject.Find("Player").GetComponent<Transform>();
         //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
