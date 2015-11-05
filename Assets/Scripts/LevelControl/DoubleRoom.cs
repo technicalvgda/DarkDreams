@@ -23,7 +23,7 @@ public class DoubleRoom : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerPos = player.transform.position;
+        //Vector3 playerPos = player.transform.position;
         Quaternion playerRot = player.transform.rotation;
 
         if (facingR)
