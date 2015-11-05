@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Cutscene : MonoBehaviour
+public class OpeningCutscene : MonoBehaviour
 {
 	public GameObject hunterEnemy;
 	public GameObject wall;
@@ -12,7 +12,7 @@ public class Cutscene : MonoBehaviour
 	GameObject player;
     PlayerControl playerScript;
 	GameObject cam;
-
+    PauseScript pause;
 
     // Use this for initialization
     void Start ()
@@ -32,11 +32,13 @@ public class Cutscene : MonoBehaviour
 
 	void Setup()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player");
+        
+        player = GameObject.FindGameObjectWithTag ("Player");
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
-
-		// Move the player to the center
-		player.transform.position = new Vector3 (128, player.transform.position.y, 0);
+        pause = Camera.main.GetComponent<PauseScript>();
+        pause.busy = true;
+        // Move the player to the center
+        player.transform.position = new Vector3 (128, player.transform.position.y, 0);
         //prevent player from moving until end of cutscene
         playerScript = player.GetComponent<PlayerControl>();
         playerScript.normalSpeed = 0f;
@@ -76,6 +78,7 @@ public class Cutscene : MonoBehaviour
 		cam.GetComponent<CameraFollowScript> ().enabled = true;
         //prevent player from moving until end of cutscene
         playerScript.normalSpeed = playerScript.defaultSpeed;
+        pause.busy = false;
         yield return null;
 	}
 }
