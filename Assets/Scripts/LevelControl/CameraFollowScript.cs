@@ -11,6 +11,7 @@ public class CameraFollowScript : MonoBehaviour
     bool transition = false;
     public bool follow = true;
     public float yOffset = 7;
+    public float doorOffset = 4;
     void Awake()//on start up
     {
         //finds the gameobject with the player tag and stores its transform component
@@ -46,7 +47,7 @@ public class CameraFollowScript : MonoBehaviour
         playerScript.normalSpeed = 0;
         float t = 0.0f;
         Vector3 startingPos = transform.position;
-        Vector3 endPos = new Vector3(target.position.x, target.position.y + yOffset, transform.position.z);
+        Vector3 endPos = new Vector3(target.position.x, target.position.y + doorOffset, transform.position.z);
         while (transform.position != endPos)//t < 1f)
         {
             t += Time.deltaTime * (Time.timeScale / transitionDuration);
