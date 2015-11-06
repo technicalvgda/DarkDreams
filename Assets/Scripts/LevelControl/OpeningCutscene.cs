@@ -34,7 +34,7 @@ public class OpeningCutscene : MonoBehaviour
 	{
         
         player = GameObject.FindGameObjectWithTag ("Player");
-		cam = GameObject.FindGameObjectWithTag ("MainCamera");
+        cam = Camera.main.gameObject;//GameObject.FindGameObjectWithTag ("MainCamera");
         pause = Camera.main.GetComponent<PauseScript>();
         pause.busy = true;
         // Move the player to the center
