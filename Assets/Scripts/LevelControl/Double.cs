@@ -2,12 +2,16 @@
 using System.Collections;
 
 public class Double : MonoBehaviour {
-    bool hRoomTrigger;
-    Hallucination Room;
+   // bool hRoomTrigger;
+    Hallucination roomScript;
+    GameObject doubleRoom;
     public bool setting = false;
 
     void Start()
     {
+        doubleRoom = GameObject.Find("HallucinationRoomMirror");
+        roomScript = doubleRoom.GetComponent<Hallucination>();
+       
     }
     // Update is called once per frame
     void Update()
@@ -19,6 +23,8 @@ public class Double : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
+
+            roomScript.hRoomTrigger = false;
             gameObject.SetActive(false);
         }
     }
