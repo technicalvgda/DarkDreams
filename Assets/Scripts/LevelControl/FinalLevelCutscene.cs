@@ -34,7 +34,7 @@ public class FinalLevelCutscene : MonoBehaviour
 		cam = Camera.main.gameObject;
 		pause = Camera.main.GetComponent<PauseScript>();
 		pause.busy = true;
-		player.transform.position = new Vector3 (128, player.transform.position.y, 0);
+		//player.transform.position = new Vector3 (128, player.transform.position.y, 0);
 		playerScript = player.GetComponent<PlayerControl>();
 		wallMargin = wall.transform.position.x + wallOffset;	
 		defaultSpeedTemp = playerScript.defaultSpeed;
