@@ -1314,6 +1314,10 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22421924, guid: 42c4655a7a1da6644bc03117912e9d98,
     type: 2}
   m_PrefabInternal: {fileID: 799672774}
+--- !u!4 &799672776 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 435054, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
+  m_PrefabInternal: {fileID: 799672774}
 --- !u!1 &804449275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,6 +2531,48 @@ MonoBehaviour:
   timeToUpdatePeriods: .5
   periodCount: 0
   updateText: 1
+--- !u!1001 &1368846845
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 799672776}
+    m_Modifications:
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1393475126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,80 +3211,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 416192, guid: 7ec75d43b56ce734ebf9259766d39a06, type: 2}
   m_PrefabInternal: {fileID: 1932969197}
---- !u!1 &1982151116 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 144698, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
-  m_PrefabInternal: {fileID: 799672774}
---- !u!82 &1982151117
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1982151116}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4afe75c30218ec04da89b86fc716580d, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!1 &2010398355
 GameObject:
   m_ObjectHideFlags: 0

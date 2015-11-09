@@ -10,17 +10,20 @@ public class menuScript : MonoBehaviour {
     float brightnessLevel;
     float musicVolume;
     float sfxVolume;
+    float voiceVolume;
     // Use this for initialization
     void Start ()
 	{
         //Initialize variables for playerprefs (if they dont exist)
         PlayerPrefs.SetFloat("Brightness", 0);
-        PlayerPrefs.SetFloat("Music", 0);
-        PlayerPrefs.SetFloat("SFX", 0);
+        PlayerPrefs.SetFloat("Music", 1);
+        PlayerPrefs.SetFloat("SFX", 1);
+        PlayerPrefs.SetFloat("Voice", 1);
         //set variables to proper level stored in PlayerPref variables
         brightnessLevel = PlayerPrefs.GetFloat("Brightness");
         musicVolume = PlayerPrefs.GetFloat("Music");
         sfxVolume = PlayerPrefs.GetFloat("SFX");
+        voiceVolume = PlayerPrefs.GetFloat("Voice");
 
         quitMenu = quitMenu.GetComponent<Canvas> ();
 		startText = startText.GetComponent<Button>();

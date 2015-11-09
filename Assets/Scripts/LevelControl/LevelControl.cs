@@ -4,7 +4,7 @@ using System.Collections;
 
 public class LevelControl : MonoBehaviour
 {
-
+    AudioHandlerScript audioHandler;
     //public float MAX_TIME = 5.0f;
     public float timer = 5.0f;
    // float fadeTime = 3.0f;    //disabled for compiler error -joel
@@ -23,7 +23,7 @@ public class LevelControl : MonoBehaviour
        // spottedCue = GameObject.Find("SpottedIndicator");
        // spottedCue.SetActive(false);
         player = GameObject.Find("Player");
-
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         // set the initial position of the player
         initialPlayerPos = player.transform.position;
 
@@ -50,6 +50,8 @@ public class LevelControl : MonoBehaviour
             if (timer <= 0)
             {
                 StartCoroutine(fadeToBlack());
+                //play music clip #2 (game over music)
+                audioHandler.PlayMusic(2);
                 gameOverPanel.SetActive(true);
                 Time.timeScale = 0f;
             }
