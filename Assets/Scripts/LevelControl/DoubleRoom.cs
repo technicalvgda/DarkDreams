@@ -10,6 +10,7 @@ public class DoubleRoom : MonoBehaviour {
     private bool left = false;
     private bool right = false;
     private float negative = -1;
+    private float negative2 = 1;
     // Use this for initialization
     void Start()
     {
@@ -48,13 +49,13 @@ public class DoubleRoom : MonoBehaviour {
         }
         else if (facingL)
         {
-            clone.transform.Translate(playerScript.movement.x * negative, 0, 0);
+            clone.transform.Translate(playerScript.movement.x * negative2, 0, 0);
             if (!playerScript.facingRight && left == false)
             {
                 clone.transform.rotation = playerRot;
                 left = true;
                 right = false;
-                negative = negative * -1;
+                negative2 = negative2 * -1;
             }
             else if (playerScript.facingRight && right == false)
             {
@@ -62,7 +63,7 @@ public class DoubleRoom : MonoBehaviour {
                 clone.transform.rotation = playerRot;
                 left = false;
                 right = true;
-                negative = negative * -1;
+                negative2 = negative2 * -1;
             }
         }
     }
