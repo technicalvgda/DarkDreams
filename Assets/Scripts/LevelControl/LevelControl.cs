@@ -43,16 +43,11 @@ public class LevelControl : MonoBehaviour
         { //Activates game over screen when player is not alive
             player.GetComponent<PlayerControl>().enabled = false; //Disables player control script
 
-            if (timer > 0)
-            {
-                timer -= Time.deltaTime;
-            }
-            if (timer <= 0)
-            {
-                StartCoroutine(fadeToBlack());
+
+                overlay.SetActive(true);
                 gameOverPanel.SetActive(true);
                 Time.timeScale = 0f;
-            }
+            
         }
     }
 
