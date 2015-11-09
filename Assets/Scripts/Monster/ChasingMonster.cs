@@ -23,7 +23,7 @@ public class ChasingMonster : MonoBehaviour
     public float pauseDuration;
     float moveTime;
     float pauseTime;
-
+    public bool pause = false;
     // Direction is multiplied with any value that depends on the facing
     // direction (such as speed). 1 = right, -1 = left
     public bool facingRight = true;
@@ -75,15 +75,22 @@ public class ChasingMonster : MonoBehaviour
             this.transform.position.y > playerPos.position.y + 10)
      
             return;
-        
+
 
         // Check for collision with the player
         // If nothing detected, keep patrolling. Otherwise chase the player
         // If the object has reached the distance limit, it gives up on chasing the player
+        
         if (!CheckForPlayer())
-            MoveTurn(speedNormal);
+        {
+            if (!pause)
+            {
+                MoveTurn(speedNormal);
+            }
+        }
         else
             MoveTurn(speedChasing);
+      
     }
 
     // Checks for player collision with the line cast
@@ -110,7 +117,10 @@ public class ChasingMonster : MonoBehaviour
         for (int i = 0; i < EnemyVisionTrigger.Length - 1; i++)
         {
             if (EnemyVisionTrigger[i].collider.tag == "Player")
+            {
                 isPlayerSeen = true;
+                pause = false;
+            }
             // How big is this array? Might want to break once a single collision is found
         }
 
@@ -141,6 +151,7 @@ public class ChasingMonster : MonoBehaviour
     // the EXACT travel distance limit.
     void MoveTurn(float speed)
     {
+
         // Waits out the pause period
         if (pauseTime > 0)
         {
@@ -190,6 +201,7 @@ public class ChasingMonster : MonoBehaviour
     //test if line cast flips along with the monster
     public void FlipEnemy()
     {
+        pause = false;
         facingRight = !facingRight;
         direction *= -1;
         //checks true the first time it passes
@@ -221,7 +233,17 @@ public class ChasingMonster : MonoBehaviour
             }
         }
     }
-  
+    public void PauseEnemy()
+    {
+        pause = true;
+
+    }
+    public void UnpauseEnemy()
+    {
+
+        pause = false;
+    }
+
 }
 
 
