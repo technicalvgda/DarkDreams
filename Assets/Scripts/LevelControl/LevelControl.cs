@@ -70,7 +70,7 @@ public class LevelControl : MonoBehaviour
         Color c = overlay_image.color;
 
 
-        float progress = 0.0f;
+        float progress = 1.0f;
 
         while (progress < 250)
         {
