@@ -42,15 +42,15 @@ public class CameraFollowScript : MonoBehaviour
     }//position is camera position
 
     IEnumerator Transition()
-    {
-        
+    {       
         playerScript.normalSpeed = 0;
         float t = 0.0f;
         Vector3 startingPos = transform.position;
         Vector3 endPos = new Vector3(target.position.x, target.position.y + doorOffset, transform.position.z);
+        float distance = Vector3.Distance(startingPos, endPos);
         while (transform.position != endPos)//t < 1f)
         {
-            t += Time.deltaTime * (Time.timeScale / transitionDuration);
+            t += Time.deltaTime * (Time.timeScale / distance*100);
             transform.position = Vector3.Lerp(startingPos, endPos, t);
             yield return 0;
         }
