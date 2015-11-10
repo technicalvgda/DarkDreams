@@ -71,6 +71,7 @@ public class FadingDarkness : MonoBehaviour
         {
             //turn on fading
             fade = true;
+			playerScript.fadingDarknessScript = this;
 
             
         }

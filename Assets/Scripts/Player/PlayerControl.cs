@@ -29,6 +29,9 @@ public class PlayerControl : MonoBehaviour
     public float slowMoSpeed;        //speed magnitude when slowMo is activaed
     public float sprintSpeed;
 
+	//Fading Darkness Script variable
+	public FadingDarkness fadingDarknessScript;
+
     //point variables
     public static int itemCounter;//to count item pickups
 
