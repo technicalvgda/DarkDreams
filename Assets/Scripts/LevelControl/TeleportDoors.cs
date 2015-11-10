@@ -22,6 +22,7 @@ public class TeleportDoors : MonoBehaviour
     CameraFollowScript cameraScript;
     float clickOffsetY = 5;
     float clickOffsetX = 5;
+    public Sprite up, down;
 
     // Use this for initialization
     void Awake()
@@ -29,7 +30,21 @@ public class TeleportDoors : MonoBehaviour
         clickPosition = new Vector2(0f, 0f);
         cameraScript = Camera.main.GetComponent<CameraFollowScript>();
     }
-
+    void Start()
+    {
+        //if this door leads up
+        if (exit.position.y > transform.position.y)
+        {
+            transform.GetComponent<SpriteRenderer>().sprite = up;
+        }
+        //if door leads down
+        else if (exit.position.y < transform.position.y)
+        {
+            transform.GetComponent<SpriteRenderer>().sprite = down;
+        }
+       
+    }
+    
     void OnTriggerStay2D(Collider2D col)
     {
         //used to make an offset that creates an area to click on, which can be increased/decreased by changing the constant.
@@ -44,16 +59,13 @@ public class TeleportDoors : MonoBehaviour
         ///click can is on door
         if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || 
            ((yNegPosition<clickPosition.y && clickPosition.y<yPosPosition)&& 
-            (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&Input.GetMouseButtonDown(0))))
-
-
-        {
-      
+            (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&
+            Input.GetMouseButtonDown(0))))
+        {    
             if (exit != null)
             {
                 cameraScript.follow = false;
                 cameraScript.target = exit.transform;
-
             }
             else
             {
@@ -62,7 +74,6 @@ public class TeleportDoors : MonoBehaviour
            
             Debug.Log("Teleport Complete!"); // confirm that teleport is complete; this can be taken out
             TeleportToExit2D(col);
-
         }
         /*
         else
@@ -77,11 +88,15 @@ public class TeleportDoors : MonoBehaviour
         if (exit != null)
         {
             col.transform.position = exit.transform.position; //line that teleports player
-
         }
         else
         {
             Debug.Log("no exit assigned");
         }
 	}
+    void LoadNewLevel(/*Dummy Variable for next level*/)
+    {
+        //int x = blah; Level+"x"
+        Application.LoadLevel(Application.loadedLevel); //change loadedLevel to next level when appropiriate
+    }
 }

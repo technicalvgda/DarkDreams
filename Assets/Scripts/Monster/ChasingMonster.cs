@@ -8,20 +8,25 @@ public class ChasingMonster : MonoBehaviour
     // when it spots the player
     public float speedNormal = 2;
     public float speedChasing = 4;
-    public int patrolDistance = 5;
-    float accumulatedDistance;
+   //I commented this out since it is no longer needed for the script
+   //but kept it for future reference if needed
+   // public int patrolDistance = 20;      
+    float accumulatedDistance;         
+  
+   
+  
 
     // With periodicPause on, the object moves for moveDuration seconds and
     // pauses for pauseDuration seconds before moving again. Set in inspector
     public bool periodicPause;
-    public float moveDuration;
+    public float moveDuration;          
     public float pauseDuration;
     float moveTime;
     float pauseTime;
-
+    public bool pause = false;
     // Direction is multiplied with any value that depends on the facing
     // direction (such as speed). 1 = right, -1 = left
-    private bool facingRight = true;
+    public bool facingRight = true;
     int direction = 1;
 
     private bool isChasing = false;
@@ -36,9 +41,11 @@ public class ChasingMonster : MonoBehaviour
     PlayerControl player;
     Transform playerPos;
     //GameObject spottedCue;
+   
 
     void Awake()
     {
+        
         anim = GetComponent<Animator>();
         //spottedCue = GameObject.Find("SpottedIndicator");
     }
@@ -46,6 +53,7 @@ public class ChasingMonster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+       //transform.GetComponent<Collider2D>().attachedRigidbody.AddForce(0, 0);
         //spottedCue.SetActive(false);
 
         //set player to the object with tag "Player"
@@ -58,21 +66,31 @@ public class ChasingMonster : MonoBehaviour
         //set position of end node of line renderer to the same distance as its line cast
         lineOfSight.SetPosition(1, new Vector3(lineCastDistance, 0, 0));
     }
+    
 
     void Update()
     {
         // If this object is not on the same elevation as the player, do nothing
         if (this.transform.position.y < playerPos.position.y - 10 ||
             this.transform.position.y > playerPos.position.y + 10)
+     
             return;
+
 
         // Check for collision with the player
         // If nothing detected, keep patrolling. Otherwise chase the player
         // If the object has reached the distance limit, it gives up on chasing the player
+        
         if (!CheckForPlayer())
-            MoveTurn(speedNormal);
+        {
+            if (!pause)
+            {
+                MoveTurn(speedNormal);
+            }
+        }
         else
             MoveTurn(speedChasing);
+      
     }
 
     // Checks for player collision with the line cast
@@ -99,7 +117,10 @@ public class ChasingMonster : MonoBehaviour
         for (int i = 0; i < EnemyVisionTrigger.Length - 1; i++)
         {
             if (EnemyVisionTrigger[i].collider.tag == "Player")
+            {
                 isPlayerSeen = true;
+                pause = false;
+            }
             // How big is this array? Might want to break once a single collision is found
         }
 
@@ -130,6 +151,7 @@ public class ChasingMonster : MonoBehaviour
     // the EXACT travel distance limit.
     void MoveTurn(float speed)
     {
+
         // Waits out the pause period
         if (pauseTime > 0)
         {
@@ -139,22 +161,25 @@ public class ChasingMonster : MonoBehaviour
 
         // Determines the distance traveled this frame and clamp it if it
         // happens to make the object go outside of its range.
-        float movement = Mathf.Min
-            (speed * Time.deltaTime,
-             patrolDistance - accumulatedDistance);
+      float  movement = speed * Time.deltaTime;
+       // float movement = Mathf.Min
+         //   (speed * Time.deltaTime,
+           //  patrolDistance - accumulatedDistance);
 
-        // Moves the enemy in the direction it's facing
+         // Moves the enemy in the direction it's facing
         transform.Translate(movement * direction, 0, 0);
 
         // Moves the enemy and notes the distance traveled
-        accumulatedDistance += movement;
+      //  accumulatedDistance += movement;
 
-        // Flips enemy once it has traveled the full distance
+        //I commented this out since it is no longer needed for the script
+        //but kept it for future reference if needed 
+        /*// Flips enemy once it has traveled the full distance
         if (accumulatedDistance >= patrolDistance)
         {
             accumulatedDistance = 0;
             FlipEnemy();
-        }
+        }*/
 
         // After the enemy has moved for moveTime seconds, pause it
         moveTime += Time.deltaTime;
@@ -174,16 +199,19 @@ public class ChasingMonster : MonoBehaviour
     }
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
-    void FlipEnemy()
+    public void FlipEnemy()
     {
+        pause = false;
         facingRight = !facingRight;
         direction *= -1;
-
+        //checks true the first time it passes
+       
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
         //player.slowMo = false;
         //spottedCue.SetActive(false);
+       
     }
 
     //When the player collides with the patrolling enemy
@@ -205,6 +233,17 @@ public class ChasingMonster : MonoBehaviour
             }
         }
     }
+    public void PauseEnemy()
+    {
+        pause = true;
+
+    }
+    public void UnpauseEnemy()
+    {
+
+        pause = false;
+    }
+
 }
 
 
@@ -390,3 +429,4 @@ void FlipEnemy()
 		}
 	}    
 }*/
+

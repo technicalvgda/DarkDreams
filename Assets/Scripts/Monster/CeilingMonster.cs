@@ -5,6 +5,7 @@ using System.Collections;
 public class CeilingMonster : MonoBehaviour
 {
     Transform myTransform;          // ceiling monster
+    GameObject playerObj;           // the player
     PlayerControl player;           // the player
     //GameObject spottedCue;          // indicator when spotted
     Transform playerPos;
@@ -34,7 +35,8 @@ public class CeilingMonster : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        playerObj = GameObject.FindWithTag("Player");
+        player = playerObj.GetComponent<PlayerControl>();
 
         // grabs the width of the ceiling monster and divides by 2
         detectionWidth = myTransform.GetComponent<Renderer>().bounds.size.x / 2;
@@ -68,7 +70,7 @@ public class CeilingMonster : MonoBehaviour
        
        
         // Disables the enemy if the player is on another floor
-        playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        playerPos = playerObj.GetComponent<Transform>();
         //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
         // If the player is on our floor, run the script. 
         if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 25)

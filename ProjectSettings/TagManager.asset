@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - Spawner
   - Room
+  - Bug
+  - BugWall
+  - Item
   layers:
   - Default
   - TransparentFX

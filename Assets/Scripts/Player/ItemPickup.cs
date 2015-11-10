@@ -34,32 +34,73 @@ public class ItemPickup : MonoBehaviour {
 	public int itemAdd; // creates counter that can be passed to player control; add amount in inspector
 	//public GameObject canvas;
 	public bool flash = false;
+    public bool textActive = false;
 	public FadingDarkness fadingDarkness;
-	//public GameObject flashingCanvas;
+    PauseScript pause;
+    //public GameObject flashingCanvas;
+   
+    private GameObject itemTextPanel;
+    Vector2 clickPosition;
+  
+    float clickOffsetY = 1;
+    float clickOffsetX = 1;
+    
+    void Start()
+    {
+        pause = Camera.main.GetComponent<PauseScript>();
+        // player = GameObject.Find("Player").GetComponent<PlayerControl>();
+        itemTextPanel = transform.Find("UICanvas/Overlay/ItemTextPanel").gameObject;//GameObject.Find("ItemTextPanel");
+        itemTextPanel.SetActive(false);
+        clickPosition = new Vector2(0f, 0f);
+        //cameraScript = Camera.main.GetComponent<CameraFollowScript>();
+    }
+    void OnTriggerStay2D (Collider2D other) {
 
-	//Image flashing;
+        float xNegPosition = transform.position.x - clickOffsetX;
+        float xPosPosition = transform.position.x + clickOffsetX;
+        float yPosPosition = transform.position.y + clickOffsetY;
+        float yNegPosition = transform.position.y - clickOffsetY;
 
-	void OnTriggerEnter2D (Collider2D other) {
+        ///get position of click
+        clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
-		//this "if" statement confirms that only the player will be allowed to pick the object up (this is assuming the player script is called "PlayerControl")
-		//this is needed in case monsters who also may ahve the box collider2d component, will not pick up the item
-		if(other.GetComponent<PlayerControl>() == null)
-			return;
-
-		PlayerControl.AddPoints(itemAdd); // on collison, will add the amount in player script
-		flash = true;
-		Destroy(gameObject); //destroys the object
-
-        //canvas = GameObject.Find ("FadingDarknessCanvas");
-        //fadingDarkness = GameObject.FindWithTag(FadingDarkness);
-        if (fadingDarkness == null)
+        if (Input.GetKeyDown(KeyCode.Space) || ((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
+            (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition) && Input.GetMouseButtonDown(0)))
         {
-            Debug.Log("not found");
+            if (other.GetComponent<PlayerControl>() == null)
+            {
+                return;
+            }
+            if(textActive == true)
+            {
+                //Time.timeScale = 1;
+                pause.busy = false;
+                PlayerControl.AddPoints(itemAdd); //will add the amount in player script
+                Destroy(gameObject); //destroys the object
+            }
+            itemTextPanel.SetActive(true);
+            pause.busy = true;
+            //Time.timeScale = 0;
+            flash = true;
+            textActive = true;
+            //Destroy(gameObject); //destroys the object
+            //canvas = GameObject.Find ("FadingDarknessCanvas");
+            //fadingDarkness = GameObject.FindWithTag(FadingDarkness);
+            if (fadingDarkness == null)
+            {
+                Debug.Log("not found");
+            }
+            else
+            {
+                fadingDarkness.flash = true;
+            }
         }
-        else
-        {
-            fadingDarkness.flash = true;
-        }
+        
+
+		
+
+       
 
 		//flashingCanvas = GameObject.Find("FlashingLightCanvas")();
 		//Instantiate(flashingCanvas);

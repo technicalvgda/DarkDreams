@@ -257,7 +257,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 96.9361343, y: -16.3263531, z: 0}
+  m_LocalPosition: {x: 93.4835129, y: -91.4625549, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 476086}
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 2
-  fallSpeed: 25
+  fallSpeed: 40
   climbSpeed: 2
   detectionWidth: 0
 --- !u!114 &11492910
@@ -778,8 +778,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5.8499999, y: 4.19999981}
+  m_AnchoredPosition: {x: -.0140000004, y: -.00200000009}
+  m_SizeDelta: {x: 5.8829999, y: 4.23500013}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22499034
 RectTransform:
@@ -795,8 +795,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 2.38420739e-07}
-  m_SizeDelta: {x: 5.8499999, y: 4.19999981}
+  m_AnchoredPosition: {x: -9.12700031e-08, y: 2.17463821e-07}
+  m_SizeDelta: {x: 5.8829999, y: 4.23500013}
   m_Pivot: {x: .5, y: .5}
 --- !u!225 &22542010
 CanvasGroup:
@@ -823,6 +823,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -765892533
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fallSpeed
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

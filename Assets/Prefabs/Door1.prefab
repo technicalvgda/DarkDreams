@@ -9,8 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 407304}
   - 212: {fileID: 21297328}
-  - 61: {fileID: 6186616}
   - 114: {fileID: 11433484}
+  - 61: {fileID: 6149178}
   m_Layer: 0
   m_Name: Door1
   m_TagString: Untagged
@@ -25,12 +25,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.2999992, y: -2, z: 0}
+  m_LocalPosition: {x: 337.556549, y: 37.1508026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6186616
+--- !u!61 &6149178
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -42,7 +42,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 3.19000006, y: 3.78999996}
+  m_Size: {x: 7.32999992, y: 10.0500002}
 --- !u!114 &11433484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,6 +55,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exit: {fileID: 0}
+  up: {fileID: 21300000, guid: c1939e9b0a33f204db8cfedef465b8ac, type: 3}
+  down: {fileID: 21300000, guid: da802f68df156d0408028636362a6aea, type: 3}
+  blocked: {fileID: 21300000, guid: 8aac9aa8df5119e4ebbe4f0d61e243ba, type: 3}
 --- !u!212 &21297328
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -79,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 589999cf0ba5cbf4dac4e376f031140b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1939e9b0a33f204db8cfedef465b8ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
