@@ -50,7 +50,7 @@ public class CameraFollowScript : MonoBehaviour
         float distance = Vector3.Distance(startingPos, endPos);
         while (transform.position != endPos)//t < 1f)
         {
-            t += Time.deltaTime * (Time.timeScale / distance*100);
+            t += Time.deltaTime * (Time.timeScale / distance*50);
             transform.position = Vector3.Lerp(startingPos, endPos, t);
             yield return 0;
         }
