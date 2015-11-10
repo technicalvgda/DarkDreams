@@ -1288,7 +1288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435054, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22408644, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
       propertyPath: m_RootOrder
@@ -2569,6 +2569,14 @@ Prefab:
     - target: {fileID: 485740, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258062, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258062, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}
+      propertyPath: Loop
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd2ddaae2f1306442a88d697beccfaff, type: 2}

@@ -58,4 +58,8 @@ public class AudioHandlerScript : MonoBehaviour {
         voice.Play();
 
     }
+    public void LoopMusic(bool b)
+    {
+        music.loop = b;
+    }
 }

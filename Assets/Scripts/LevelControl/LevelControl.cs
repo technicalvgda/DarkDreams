@@ -33,6 +33,11 @@ public class LevelControl : MonoBehaviour
         gameOverPanel.SetActive(false);
         overlay.SetActive(false);
         overlay_image = overlay.GetComponent<Image>();
+        //play music clip #3 (intro music)
+        audioHandler.LoopMusic(false);
+        audioHandler.PlayMusic(3);
+        
+        
     }
 
     // Update is called once per frame
@@ -51,6 +56,7 @@ public class LevelControl : MonoBehaviour
             {
                 StartCoroutine(fadeToBlack());
                 //play music clip #2 (game over music)
+                audioHandler.LoopMusic(false);
                 audioHandler.PlayMusic(2);
                 gameOverPanel.SetActive(true);
                 Time.timeScale = 0f;

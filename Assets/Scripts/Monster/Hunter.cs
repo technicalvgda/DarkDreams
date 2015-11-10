@@ -4,6 +4,10 @@ using System.Collections;
 
 public class Hunter : MonoBehaviour
 {
+
+    public AudioSource sfx;
+   // public AudioClip[] hunterClips;
+
     private bool facingRight = true;
     private bool isCaught = false;
     public float movement;
@@ -40,7 +44,10 @@ public class Hunter : MonoBehaviour
 
     void Start()
     {
-        if(player.transform.position.x < gameObject.transform.position.x)
+        sfx = this.GetComponent<AudioSource>();
+        //set volume to player's setting
+        sfx.volume = PlayerPrefs.GetFloat("SFX"); ;
+        if (player.transform.position.x < gameObject.transform.position.x)
         {
             FlipEnemy();
         }
@@ -48,6 +55,7 @@ public class Hunter : MonoBehaviour
         // set lineOfSight to this objects LineRenderer component and positions
         lineOfSight = GetComponent<LineRenderer>();
         lineOfSight.SetPosition(1, new Vector2(lineCastDistance, 0));
+        sfx.Play();
     }
 
     // Update is called once per frame
