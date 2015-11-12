@@ -4,6 +4,10 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour 
 {
+
+    ///reset position 
+    public Vector3 retryPos;
+
     public const float EDGEBUFFER = 0.4f; // Percentage of screen to validate mouse click/mobile tap
     // for edge detection
     Vector2 edgeLeft;
