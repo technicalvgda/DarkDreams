@@ -20,6 +20,10 @@ public class PatrollingMonsterSpawner : MonoBehaviour
 
     // Monsters start spawning once the player steps into this
     Bounds playerDetection;
+    //Checks if Player is in the room or on top of a spawnpoint
+    Bounds leftBoundary;
+    Bounds rightBoundary;
+    Bounds playerInRoom;
 
     // The player detection area has a width of ROOM_WIDTH * BUFFER
     public float BUFFER = 0.1f;
@@ -50,6 +54,7 @@ public class PatrollingMonsterSpawner : MonoBehaviour
 
         // Creates a thin, tall rectangular bounds at the center of the room.
         // If the player enters this area, start spawning patrols
+
         playerDetection = new Bounds(
             // Center = center point of the current room
             new Vector3(
@@ -59,6 +64,44 @@ public class PatrollingMonsterSpawner : MonoBehaviour
             // Size = size of the current room, then narrow to around the center
             new Vector3(
                 room.GetComponent<Renderer>().bounds.size.x * BUFFER,
+                room.GetComponent<Renderer>().bounds.size.y,
+                player.transform.position.z)
+            );
+        leftBoundary = new Bounds(
+           // Center = center point of the current room
+           new Vector3(
+               room.transform.position.x - 25,
+               room.transform.position.y,
+               0),
+           // Size = size of the current room, then narrow to around the center
+           new Vector3(
+               room.GetComponent<Renderer>().bounds.size.x * BUFFER,
+               room.GetComponent<Renderer>().bounds.size.y,
+               player.transform.position.z)
+           );
+        rightBoundary = new Bounds(
+           // Center = center point of the current room
+           new Vector3(
+               room.transform.position.x + 25,
+               room.transform.position.y,
+               0),
+           // Size = size of the current room, then narrow to around the center
+           new Vector3(
+               room.GetComponent<Renderer>().bounds.size.x * BUFFER,
+               room.GetComponent<Renderer>().bounds.size.y,
+               player.transform.position.z)
+           );
+
+
+        playerInRoom = new Bounds(
+            // Center = center point of the current room
+            new Vector3(
+                room.transform.position.x,
+                room.transform.position.y,
+                0),
+            // Size = size of the current room, then narrow to around the center
+            new Vector3(
+                room.GetComponent<Renderer>().bounds.size.x,
                 room.GetComponent<Renderer>().bounds.size.y,
                 player.transform.position.z)
             );
@@ -72,17 +115,16 @@ public class PatrollingMonsterSpawner : MonoBehaviour
         while (!playerDetection.Contains(player.transform.position))
             yield return null;
         //Debug.Log("(" + room.name + ") Player entered bounds.");
-
+        
         // Spawn a monster, wait until it has traveled the full length and deactivated itself,
         // wait some time, then reset its position and activate it again
         while (true)
         {
-            //added
-            if(player.GetComponent<PlayerControl>().facingRight == true)
+            if(player.GetComponent<PlayerControl>().facingRight == true && !leftBoundary.Contains(player.transform.position))
             {
                 monster.Set(leftSpawnpoint.transform.position, facingRight);
             }
-            else
+            else if(player.GetComponent<PlayerControl>().facingRight == false && !rightBoundary.Contains(player.transform.position))
             {
                 monster.Set(rightSpawnpoint.transform.position, !facingRight);
             }
@@ -91,12 +133,15 @@ public class PatrollingMonsterSpawner : MonoBehaviour
             //Debug.Log("(" + room.name + ") Spawned monster.");
 
             // Do nothing while the monster is active
-            while (monster.gameObject.activeSelf)
+            while (monster.gameObject.activeSelf || !playerInRoom.Contains(player.transform.position))
                 yield return null;
 
             // Wait an interval
             yield return new WaitForSeconds(
                 Random.Range(spawnIntervalMin, spawnIntervalMax));
+
+           
+
         }
     }
 
@@ -105,8 +150,13 @@ public class PatrollingMonsterSpawner : MonoBehaviour
     {
         Gizmos.color = new Color(1f, 0.92f, 0.016f, 0.4f);
         Gizmos.DrawCube(playerDetection.center, playerDetection.size);
+        Gizmos.DrawCube(leftBoundary.center, playerDetection.size);
+        Gizmos.DrawCube(rightBoundary.center, playerDetection.size);
     }
+
+  
 }
+    
 
 /*using UnityEngine;
 using System.Collections;
