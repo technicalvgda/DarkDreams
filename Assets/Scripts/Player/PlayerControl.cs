@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour 
 {
-    public const float EDGEBUFFER = 0.1f; // Percentage of screen to validate mouse click/mobile tap
+    public const float EDGEBUFFER = 0.4f; // Percentage of screen to validate mouse click/mobile tap
     // for edge detection
     Vector2 edgeLeft;
     Vector2 edgeRight;
@@ -148,9 +148,9 @@ public class PlayerControl : MonoBehaviour
         //handles player movement based upon mouse clicks (or taps)
         if (Input.GetMouseButton(0))
         {
-            if (Input.mousePosition.x < edgeLeft.x + 180)
+            if (Input.mousePosition.x < edgeLeft.x)
                 Move(-playerSpeed);
-            else if (Input.mousePosition.x > edgeRight.x - 180)
+            else if (Input.mousePosition.x > edgeRight.x)
                 Move(playerSpeed);
         }
         //handles player movement based upon keyboard input
