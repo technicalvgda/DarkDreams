@@ -263,13 +263,16 @@ public class PlayerControl : MonoBehaviour
                 }
             }
             //if player is trying to hide, and the object is the trap enemy
+            /*
             else if (col.gameObject.tag == "Enemy")
             {
+               
                 //player dies
                 isAlive = false;
                 //prevents movement
                 normalSpeed = 0f;
             }
+            */
                
           }     
         
@@ -296,7 +299,10 @@ public class PlayerControl : MonoBehaviour
         itemCounter += itemAdd; //adds amount to current score
         Debug.Log("Score: " + itemCounter); //confirms the player has picked up the object (track amount). this is removeable.
     }
-
+    public void HidePlayer()
+    {
+        sprite.color = new Color(1f, 1f, 1f, 0f);
+    }
     IEnumerator SpawnHunterMonster(int time, float bottomFloor, float topFloor)
     {
         // waits time seconds before spawning

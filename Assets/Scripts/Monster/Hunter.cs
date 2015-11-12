@@ -5,7 +5,7 @@ using System.Collections;
 public class Hunter : MonoBehaviour
 {
 
-    public AudioSource sfx;
+   AudioSource sfx;
    // public AudioClip[] hunterClips;
 
     private bool facingRight = true;
@@ -23,10 +23,11 @@ public class Hunter : MonoBehaviour
     private Vector2 startCast, endCast;
 
     //Variable to set distance of the monster's vision
-    public float lineCastDistance = 10f;
+    float lineCastDistance = 14f;
+    float heightOffset = 12f;
 
     //LineRenderer to display line of sight to player
-    public LineRenderer lineOfSight;
+    //public LineRenderer lineOfSight;
 
     PlayerControl player;
     //GameObject spottedCue;
@@ -53,8 +54,8 @@ public class Hunter : MonoBehaviour
         }
 
         // set lineOfSight to this objects LineRenderer component and positions
-        lineOfSight = GetComponent<LineRenderer>();
-        lineOfSight.SetPosition(1, new Vector2(lineCastDistance, 0));
+        //lineOfSight = GetComponent<LineRenderer>();
+        //lineOfSight.SetPosition(1, new Vector2(lineCastDistance, 0));
         sfx.Play();
     }
 
@@ -72,12 +73,14 @@ public class Hunter : MonoBehaviour
             movement = speed * Time.deltaTime;
             transform.Translate(movement, 0, 0);
             endCast.x += lineCastDistance;
+            endCast.y -= heightOffset;
         }
         else                // face left
         {
             movement = speed * Time.deltaTime;
             transform.Translate(-movement, 0, 0);
             endCast.x -= lineCastDistance;
+            endCast.y -= heightOffset;
         }
 
         if (gameObject.transform.position.x < leftEndPath
@@ -99,6 +102,10 @@ public class Hunter : MonoBehaviour
             // spottedCue.SetActive(true);  // BUGGED NULL REFERENCE
             // this code runs when player is seen
 
+           
+        }
+        if(isCaught == true)
+        {
             //Tests which direction the monster is facing
             if (facingRight)
             {

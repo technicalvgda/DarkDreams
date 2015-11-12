@@ -38,7 +38,7 @@ public class OpeningCutscene : MonoBehaviour
         pause = Camera.main.GetComponent<PauseScript>();
         pause.busy = true;
         // Move the player to the center
-        player.transform.position = new Vector3 (128, player.transform.position.y, 0);
+        player.transform.position = new Vector3 (143, player.transform.position.y, 0);
         //prevent player from moving until end of cutscene
         playerScript = player.GetComponent<PlayerControl>();
         playerScript.normalSpeed = 0f;
@@ -58,7 +58,7 @@ public class OpeningCutscene : MonoBehaviour
 		// Pan camera to left until it hits the wall
 		while (cam.transform.position.x > wallMargin)
 		{
-			cam.transform.position += new Vector3(-0.1f, 0, 0);
+			cam.transform.position += new Vector3(-0.2f, 0, 0);
 			yield return null;
 		}
 
@@ -72,7 +72,7 @@ public class OpeningCutscene : MonoBehaviour
 		// pan back to player
 		while (cam.transform.position.x < player.transform.position.x)
 		{
-			cam.transform.position += new Vector3(0.2f, 0, 0);
+			cam.transform.position += new Vector3(0.4f, 0, 0);
 			yield return null;
 		}
 		cam.GetComponent<CameraFollowScript> ().enabled = true;
