@@ -55,11 +55,16 @@ public class LevelControl : MonoBehaviour
             if (timer <= 0)
             {
                 StartCoroutine(fadeToBlack());
+               
                 //play music clip #2 (game over music)
                 audioHandler.LoopMusic(false);
+                //play death crunch sound
+                audioHandler.PlaySound(0);
                 audioHandler.PlayMusic(2);
                 gameOverPanel.SetActive(true);
+                
                 Time.timeScale = 0f;
+                
             }
         }
     }

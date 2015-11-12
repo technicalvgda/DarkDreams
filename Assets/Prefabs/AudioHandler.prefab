@@ -262,7 +262,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 49d5df53284111045ab338722b766b36, type: 3}
   - {fileID: 8300000, guid: 2957cf23a312cac49b0112a3f93006ea, type: 3}
   - {fileID: 8300000, guid: 95b16b385058d254aab6da6bca329d45, type: 3}
-  soundClips: []
+  soundClips:
+  - {fileID: 8300000, guid: 6b269490ef68f04408ae73e043a93bdc, type: 3}
   voiceClips: []
 --- !u!212 &21288430
 SpriteRenderer:

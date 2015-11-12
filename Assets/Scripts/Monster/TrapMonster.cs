@@ -7,7 +7,7 @@ public class TrapMonster : MonoBehaviour {
     PlayerControl player;
     Vector2 clickPosition;
     float clickOffsetY = 5;
-    float clickOffsetX = 5;
+    float clickOffsetX = 2;
     // Use this for initialization
     void Start ()
     {
