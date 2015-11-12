@@ -21,12 +21,6 @@ public class AudioHandlerScript : MonoBehaviour {
         voice.volume = voiceVolume;
     }
 	
-	// Update is called once per frame
-	void Update ()
-    {
-
-	
-	}
 
     public void PlayMusic(int i)
     {

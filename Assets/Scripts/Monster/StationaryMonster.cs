@@ -4,6 +4,7 @@ using System.Collections;
 
 public class StationaryMonster : MonoBehaviour
 {
+    AudioSource sfx;
     //tests whether enemy is looking for you
     public bool enemyActive = false;
     //tests whether enemy has seen you
@@ -24,6 +25,9 @@ public class StationaryMonster : MonoBehaviour
 
     void Start()
     {
+        sfx = this.GetComponent<AudioSource>();
+        //set volume to player's setting
+        sfx.volume = PlayerPrefs.GetFloat("SFX");
         anim = GetComponent<Animator>();
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
@@ -99,6 +103,8 @@ public class StationaryMonster : MonoBehaviour
                 {
                     //changes enemy to alert animation
                     anim.SetBool("Alert", true);
+                    //play awake sound
+                    sfx.Play();
                     // Debug.Log("Monster Timer is on!");
                     enemyActive = true;
                 }

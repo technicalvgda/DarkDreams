@@ -13,6 +13,7 @@ public class LevelControl : MonoBehaviour
     Image overlay_image;
     GameObject gameOverPanel;
     Vector2 initialPlayerPos;
+    bool gameOver = false;
     //GameObject retryButton;
     //GameObject menuButton;
     //GameObject spottedCue;
@@ -52,8 +53,9 @@ public class LevelControl : MonoBehaviour
             {
                 timer -= Time.deltaTime;
             }
-            if (timer <= 0)
+            if (timer <= 0 && gameOver == false)
             {
+                gameOver = true;
                 StartCoroutine(fadeToBlack());
                
                 //play music clip #2 (game over music)
@@ -72,6 +74,7 @@ public class LevelControl : MonoBehaviour
     // The retry method when the GameOver overlay pops up
     public void Retry()
     {
+        gameOver = false;
         // Set player position to initial position in basement
         player.transform.position = initialPlayerPos;
         player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerControl>().initialColor;
@@ -86,6 +89,8 @@ public class LevelControl : MonoBehaviour
 
         // Resume time
         Time.timeScale = 1f;
+        //play intro music
+        audioHandler.PlayMusic(3);
     }
 
     public void MainMenu()

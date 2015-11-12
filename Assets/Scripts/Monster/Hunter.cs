@@ -47,7 +47,7 @@ public class Hunter : MonoBehaviour
     {
         sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting
-        sfx.volume = PlayerPrefs.GetFloat("SFX"); ;
+        sfx.volume = PlayerPrefs.GetFloat("SFX"); 
         if (player.transform.position.x < gameObject.transform.position.x)
         {
             FlipEnemy();
