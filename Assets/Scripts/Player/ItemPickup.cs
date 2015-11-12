@@ -57,8 +57,10 @@ public class ItemPickup : MonoBehaviour {
     }
     void OnTriggerStay2D (Collider2D other) {
 
+
 		playerScript = other.GetComponent<PlayerControl>();
-		fadingDarkness = playerScript.fadingDarknessScript;
+       
+		
 
         float xNegPosition = transform.position.x - clickOffsetX;
         float xPosPosition = transform.position.x + clickOffsetX;
@@ -76,7 +78,8 @@ public class ItemPickup : MonoBehaviour {
             {
                 return;
             }
-            if(textActive == true)
+            fadingDarkness = playerScript.fadingDarknessScript;
+            if (textActive == true)
             {
                 //Time.timeScale = 1;
                 pause.busy = false;
