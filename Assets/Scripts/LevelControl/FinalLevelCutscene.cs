@@ -80,7 +80,7 @@ public class FinalLevelCutscene : MonoBehaviour
 		// Pan camera to left until it hits the wall
 		while (cam.transform.position.x > wallMargin)
 		{
-			cam.transform.position += new Vector3(-0.1f, 0, 0);
+			cam.transform.position += new Vector3(-0.2f, 0, 0);
 			yield return null;
 		}
 		
@@ -94,7 +94,7 @@ public class FinalLevelCutscene : MonoBehaviour
 		// pan back to player
 		while (cam.transform.position.x < player.transform.position.x)
 		{
-			cam.transform.position += new Vector3(0.2f, 0, 0);
+			cam.transform.position += new Vector3(0.4f, 0, 0);
 			yield return null;
 		}
 		cam.GetComponent<CameraFollowScript> ().enabled = true;
