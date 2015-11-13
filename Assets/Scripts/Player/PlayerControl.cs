@@ -51,6 +51,7 @@ public class PlayerControl : MonoBehaviour
     // hunter variables
     public GameObject HunterMonster;
     private bool isHunterActive = false;
+    float hunterYOffset = 10f;
 
     // estimated position.y of each floor
         /* Wilburn TODO: I feel like I can grab the floor positions from the floors that's
@@ -326,7 +327,7 @@ public class PlayerControl : MonoBehaviour
             {
                 xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
             }
-            var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y), Quaternion.identity);
+            var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y + hunterYOffset), Quaternion.identity);
 
             for (int i = 0; i < 60; i++)    // 'i' controlls the duration of the hunter existance
             {
