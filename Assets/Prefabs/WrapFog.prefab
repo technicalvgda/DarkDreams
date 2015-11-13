@@ -11,7 +11,6 @@ GameObject:
   - 198: {fileID: 19803916}
   - 199: {fileID: 19919376}
   - 114: {fileID: 11430734}
-  - 61: {fileID: 6166114}
   m_Layer: 0
   m_Name: WrapFog
   m_TagString: Untagged
@@ -26,24 +25,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -45, y: -.023601532, z: 0}
   m_LocalScale: {x: .641005158, y: .641005158, z: .641005158}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6166114
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139638}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 1.3846705, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 237.36377, y: 42}
 --- !u!114 &11430734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,7 +42,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onTrigger: 0
-  fog: {fileID: 19803916}
 --- !u!198 &19803916
 ParticleSystem:
   m_ObjectHideFlags: 1
