@@ -73,8 +73,16 @@ public class ChasingMonster : MonoBehaviour
         // If this object is not on the same elevation as the player, do nothing
         if (this.transform.position.y < playerPos.position.y - 10 ||
             this.transform.position.y > playerPos.position.y + 10)
-     
+        {
+            anim.enabled = false;
             return;
+        }
+        else
+        {
+            anim.enabled = true;
+        }
+     
+            
 
 
         // Check for collision with the player
@@ -85,6 +93,7 @@ public class ChasingMonster : MonoBehaviour
         {
             if (!pause)
             {
+                
                 MoveTurn(speedNormal);
             }
         }

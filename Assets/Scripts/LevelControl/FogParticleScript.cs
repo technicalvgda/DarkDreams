@@ -7,20 +7,36 @@ public class FogParticleScript : MonoBehaviour
     public bool onTrigger;
     ParticleSystem fog;
     GameObject player;
+    Transform playerPos;
     float offset= 10f;
     // Use this for initialization
     void Start()
     {
         player = GameObject.Find("Player");
+        playerPos = player.GetComponent<Transform>();
         fog = this.GetComponent<ParticleSystem>();
-        fog.enableEmission = false;
+        //fog.enableEmission = false;
     }
 
     // Update is called once per frame
     void Update()
     {
        
-        if((player.transform.position.y > transform.position.y + offset )|| (player.transform.position.y < transform.position.y - offset))
+        // If this object is not on the same elevation as the player, do nothing
+        if (this.transform.position.y < playerPos.position.y - 10 ||
+            this.transform.position.y > playerPos.position.y + 10)
+        {
+            fog.Stop();
+            fog.Clear();
+            //fog.enableEmission = false;
+        }
+        else
+        {
+            fog.Play();
+            //fog.enableEmission = true;
+        }
+        /*
+        if ((player.transform.position.y > transform.position.y + offset )|| (player.transform.position.y < transform.position.y - offset))
         {
            
             onTrigger = false;
@@ -34,23 +50,8 @@ public class FogParticleScript : MonoBehaviour
         {
             fog.enableEmission = true;
         }
+        */
 
     }
-    /*
-    void OnTriggerStay2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            onTrigger = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            onTrigger = false;
-        }
-    }
-    */
+    
 }
