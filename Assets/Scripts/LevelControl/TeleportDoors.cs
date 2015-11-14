@@ -16,7 +16,7 @@ using System.Collections;
 
 public class TeleportDoors : MonoBehaviour
 {
-    public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
+	public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
     Vector2 clickPosition;
     //reference to camera
     CameraFollowScript cameraScript;
