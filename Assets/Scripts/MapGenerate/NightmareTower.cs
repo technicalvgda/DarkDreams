@@ -13,33 +13,57 @@ public class NightmareTower : MonoBehaviour {
 
 	private int noRoomsPerFloor = 4;
 	private int level = 0;
-
-
+	
 	private Vector3 sizeOfPrefab = new Vector3(0,0,0);
 
-
+	//create each hallway
 	private List<Transform> bottomHallway = new List<Transform>();
 	private List<Transform> topHallway = new List<Transform>();
+	private GameObject player;
+	private Vector2 playerPosition;
+	private bool canGenerate;
 
 	void Awake() {
+
 		if (doorRoom.Length < 4) {
 			Debug.Log("Please make sure there are at least 4 door rooms");
 			return;
 		}
+		player = GameObject.Find ("Player");
+		playerPosition = player.transform.position;
+		canGenerate = false;
 		initializeRooms ();
+
 
 	}
 
 
 	// Use this for initialization
 	void Start () {
+
 		instantiateRooms ();
+		//run every 5 seconds to check if I can generate
+		InvokeRepeating ("generate", 0 , 5f);
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//check if the player has moved to the next floor to generate new floor.
+		if (playerPosition.y != player.transform.position.y) {
+			canGenerate = true;
+			playerPosition.y = player.transform.position.y;
+		}
+	}
+
+	void generate() {
+		Debug.Log ("Call this");
+		if (canGenerate) {
+			Debug.Log ("YES I CAN GENERATE");
+			canGenerate = false;
+		}
+
+
 	}
 
 	void instantiateRooms() {
