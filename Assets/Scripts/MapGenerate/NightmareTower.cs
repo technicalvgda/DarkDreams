@@ -22,6 +22,7 @@ public class NightmareTower : MonoBehaviour {
 	private GameObject player;
 	private Vector2 playerPosition;
 	private bool canGenerate;
+	private int counter = 0;
 
 	void Awake() {
 
@@ -34,40 +35,42 @@ public class NightmareTower : MonoBehaviour {
 		canGenerate = false;
 		initializeRooms ();
 
-
 	}
 
 
 	// Use this for initialization
 	void Start () {
-
 		instantiateRooms ();
-		//run every 5 seconds to check if I can generate
-		InvokeRepeating ("generate", 0 , 5f);
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//check if the player has moved to the next floor to generate new floor.
-		if (playerPosition.y != player.transform.position.y) {
-			canGenerate = true;
-			playerPosition.y = player.transform.position.y;
-		}
+		StartCoroutine (checkGenerate());
 	}
 
 	void generate() {
-		Debug.Log ("Call this");
 		if (canGenerate) {
 			Debug.Log ("YES I CAN GENERATE");
+
+			//initializeRooms();
+			//instantiateRooms();
 			canGenerate = false;
 		}
 
 
 	}
 
-	void instantiateRooms() {
 
+
+	IEnumerator checkGenerate() {
+		print (Time.time);
+		yield return new WaitForSeconds (10);
+		playerPosition.y = player.transform.position.y;
+		print (Time.time + "after");
+	}
+
+	void instantiateRooms() {
 		for(int i = 0; i < noRoomsPerFloor; i++) {
 			Instantiate(bottomHallway[i], transform.position + sizeOfPrefab , transform.rotation);
 			sizeOfPrefab.x += lengthOfRoom;
@@ -79,7 +82,7 @@ public class NightmareTower : MonoBehaviour {
 
 		//Size/Gap between each level (height of rooms)
 		sizeOfPrefab.y += heightOfRoom;
-		sizeOfPrefab.y *= level;
+		sizeOfPrefab.y += level;
 		
 		for (int i = 0; i < noRoomsPerFloor; i++) {
 			Instantiate(topHallway[i], transform.position + sizeOfPrefab , transform.rotation);
@@ -87,11 +90,16 @@ public class NightmareTower : MonoBehaviour {
 			Debug.Log (topHallway[i]);
 		}
 
+		level++;
+		sizeOfPrefab.x = 0;
+		//Size/Gap between each level (height of rooms
+		sizeOfPrefab.y += heightOfRoom;
+		sizeOfPrefab.y += level;
+
 		string s1 = bottomHallway[bottomHallway.Count-1].name;
 		string s2 = topHallway[0].name;
 		string[] doorNumber1 = s1.Split(' ');
 		string[] doorNumber2 = s2.Split(' ');
-
 
 		Transform bottomDoor = GameObject.Find("Door" + doorNumber1[1]).transform;
 		bottomDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber2[1]).transform;
@@ -111,15 +119,10 @@ public class NightmareTower : MonoBehaviour {
 		Transform lastDoor = GameObject.Find("Door" + doorNumber2[1]).transform;
 		lastDoor.GetComponent<TeleportDoors>().exit = GameObject.Find("Door" + doorNumber2[1]).transform;
 
-
-
 		bottomHallway.Clear ();
 		topHallway.Clear ();
-		//initializeRooms ();
 	}
-
-
-
+	
 
 	void initializeRooms()
 	{
@@ -162,5 +165,9 @@ public class NightmareTower : MonoBehaviour {
 		r++;
 	}
 
+	void destroyHallway() {
+		
+	
+	}
 
 }

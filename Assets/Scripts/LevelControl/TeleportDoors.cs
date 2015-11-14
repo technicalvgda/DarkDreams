@@ -23,6 +23,8 @@ public class TeleportDoors : MonoBehaviour
     float clickOffsetY = 5;
     float clickOffsetX = 5;
     public Sprite up, down;
+	
+	public bool used = false;
 
     // Use this for initialization
     void Awake()
@@ -87,7 +89,14 @@ public class TeleportDoors : MonoBehaviour
 	{
         if (exit != null)
         {
-            col.transform.position = exit.transform.position; //line that teleports player
+			if(col.transform.position == exit.transform.position) {
+				used = false;
+			}
+			else {
+				used = true;
+			}
+			col.transform.position = exit.transform.position; //line that teleports player
+
         }
         else
         {
