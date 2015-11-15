@@ -97,6 +97,7 @@ GameObject:
   - 92: {fileID: 210250621}
   - 124: {fileID: 210250620}
   - 81: {fileID: 210250619}
+  - 114: {fileID: 210250624}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,6 +172,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &210250624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 210250618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230a5d5222dbfe14c9a038cc0de882c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionDuration: 2
+  target: {fileID: 0}
+  follow: 1
+  yOffset: 7
+  doorOffset: 4
 --- !u!1001 &293566400
 Prefab:
   m_ObjectHideFlags: 0
@@ -250,8 +267,7 @@ MonoBehaviour:
   otherRoom:
   - {fileID: 474430, guid: 8780f2c2bc102ca4787b734b88815d07, type: 2}
   - {fileID: 427300, guid: 576f9523b2d994848b94a0f752999f27, type: 2}
-  - {fileID: 451556, guid: f507cdbb3cbcdee4ea295d42087ca72f, type: 2}
-  - {fileID: 429680, guid: 5f954e2323e23024898dfcfb7d6c8d18, type: 2}
+  noRoomsPerFloor: 4
 --- !u!4 &672092508
 Transform:
   m_ObjectHideFlags: 0
