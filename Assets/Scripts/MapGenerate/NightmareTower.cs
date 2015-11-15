@@ -23,6 +23,7 @@ public class NightmareTower : MonoBehaviour {
 	//create each hallway
 	private List<Transform> bottomHallway = new List<Transform>();
 	private List<Transform> topHallway = new List<Transform>();
+	private List<GameObject> hallToRemove = new List<GameObject> ();
 	
 	//Get the the door to trigger the generate method
 	private GameObject doorToConnect;
@@ -35,9 +36,7 @@ public class NightmareTower : MonoBehaviour {
 	//Last door on the map.
 	private string lastDoorOnMap = "";
 	private GameObject doorToBeTriggered;
-	
-	
-	
+
 	void Awake() {
 		
 		if (doorRoom.Length < 4) {
@@ -49,8 +48,7 @@ public class NightmareTower : MonoBehaviour {
 		initializeRooms ();
 		
 	}
-	
-	
+		
 	// Use this for initialization
 	void Start () {
 		instantiateRooms ();
@@ -60,10 +58,13 @@ public class NightmareTower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (doorToBeTriggered.GetComponent<TeleportDoors> ().used) {
-			canGenerate = true;
-			doorToBeTriggered.GetComponent<TeleportDoors>().used = false;
-		}
+		if (doorToBeTriggered != null) {
+			if (doorToBeTriggered.GetComponent<TeleportDoors> ().used && doorToBeTriggered) {
+				canGenerate = true;
+				doorToBeTriggered.GetComponent<TeleportDoors> ().used = false;
+			}
+		} 
+
 	}
 	
 	void generate() {
@@ -84,9 +85,12 @@ public class NightmareTower : MonoBehaviour {
 	
 	void instantiateRooms() {
 		for(int i = 0; i < noRoomsPerFloor; i++) {
-			Instantiate(bottomHallway[i], transform.position + sizeOfPrefab , transform.rotation);
+
+			Transform obj = (Transform)(Instantiate(bottomHallway[i], transform.position + sizeOfPrefab , transform.rotation));
 			sizeOfPrefab.x += lengthOfRoom;
-			Debug.Log ("ROOM ADDED TO INSTANTIATEDHALL: " + bottomHallway[i].name);
+			obj.name = "New Room " + i;
+			hallToRemove.Add (obj.gameObject);
+			Debug.Log ("ROOM ADDED TO INSTANTIATEDHALL: " + obj.name);
 		}
 		
 		level++;
@@ -199,7 +203,8 @@ public class NightmareTower : MonoBehaviour {
 			for (int i = 0; i < 4; i++) {
 				//Transform destroyObject = GameObject.Find (instantiatedHall[i]+"(Clone)").transform;
 				//Debug.Log ("THIS IS TO BE DESTROYED: " + destroyObject.name);
-				Debug.Log ("This is going t obe destroyed: " + "(Clone)");
+				Debug.Log ("This is going t obe destroyed: " + hallToRemove[i].name);
+				Destroy (hallToRemove[i]);
 
 			}
 			
