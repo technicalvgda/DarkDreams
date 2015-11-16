@@ -40,8 +40,7 @@ public class NightmareTower : MonoBehaviour {
 
 	//Door triggered
 	private GameObject doorToBeTriggered;
-	
-	
+
 	void Awake() {
 		if (doorRoom.Length < noRoomsPerFloor) {
 			Debug.Log("Please make sure there are at least 4 door rooms");
@@ -158,9 +157,11 @@ public class NightmareTower : MonoBehaviour {
 				Transform lastDoorBot = obj.Find ("Door" + doorLastBot[1]).transform;
 				obj.Find ("Door" + doorLastBot[1]).name = "Door To Be Connected E" + level;
 			}
-			//hallToRemoveE.Add (obj);
+
+			//Waiting to be removed
 			hallToRemoveE.Enqueue(obj);
 		}
+
 		//Change level
 		level++;
 		sizeOfPrefab.x = 0;
@@ -194,7 +195,7 @@ public class NightmareTower : MonoBehaviour {
 					}
 				}
 			}
-			//Set the last door to the same spot
+			//Set the last door to the same spot to avoid error
 			else if (gameObj.name == "Door To Be Connected E" + (level-1)) {
 				foreach (GameObject door in GameObject.FindObjectsOfType<GameObject>()) {
 					if (door.name == "Door To Be Connected E" + (level - 1)) {
@@ -229,7 +230,7 @@ public class NightmareTower : MonoBehaviour {
 					}
 				}
 			}
-			//Set the last door to the same spot
+			//Set the last door to the same spot to avoid error
 			else if (gameObj.name == "Door To Be Connected O" + (level-1)) {
 				foreach (GameObject door in GameObject.FindObjectsOfType<GameObject>()) {
 					if (door.name == "Door To Be Connected O" + (level - 1)) {
@@ -261,7 +262,7 @@ public class NightmareTower : MonoBehaviour {
 				Transform lastDoorTop = obj.Find ("Door" + doorLastTop [1]).transform;
 				obj.Find ("Door" + doorLastTop[1]).name = "Door To Be Connected O" + level;  
 			}
-			//hallToRemoveO.Add (obj);
+			//Waiting to be removed
 			hallToRemoveO.Enqueue(obj);
 		}
 		
