@@ -16,7 +16,8 @@ public class NightmareTower : MonoBehaviour {
 	//List of doorRoom and otherRoom
 	public Transform[] doorRoom;
 	public Transform[] otherRoom;
-	
+
+	//use this for number of rooms on each floor
 	public int noRoomsPerFloor = 4;
 	
 	//To keep track of what level is on each floor
@@ -32,15 +33,16 @@ public class NightmareTower : MonoBehaviour {
 	//List of hallways
 	private List<Transform> evenHallway = new List<Transform>();
 	private List<Transform> oddHallway = new List<Transform> ();
-	private List<Transform> hallToRemoveE = new List<Transform>();
-	private List<Transform> hallToRemoveO = new List<Transform>();
+
+	//Queue of hallways to be removed
+	private Queue<Transform> hallToRemoveE = new Queue<Transform>();
+	private Queue<Transform> hallToRemoveO = new Queue<Transform>();
 
 	//Door triggered
 	private GameObject doorToBeTriggered;
 	
 	
 	void Awake() {
-		
 		if (doorRoom.Length < noRoomsPerFloor) {
 			Debug.Log("Please make sure there are at least 4 door rooms");
 			return;
@@ -53,12 +55,13 @@ public class NightmareTower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		instantiateRoomsAtStart();
+		//Invoke repeat to generate hallway if needed
 		InvokeRepeating ("generate", noRoomsPerFloor-1, noRoomsPerFloor-1);        
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log ("DOOR TRIGGERED: " + doorToBeTriggered.name);
+		//use this to set the door to be triggered
 		if (doorToBeTriggered != null) {
 			if (doorToBeTriggered.GetComponent<TeleportDoors> ().used) {
 				//Able to generate once the player enters a room
@@ -66,16 +69,13 @@ public class NightmareTower : MonoBehaviour {
 				generated = true;
 				doorToBeTriggered.GetComponent<TeleportDoors> ().used = false;
 			}
-		} else if (doorToBeTriggered == null) {
-			Debug.Log ("Check CHECK CHECK");
 		}
 	}
 
 	//Call when generate
 	void generate() {
-		Debug.Log ("CHECK IF I CAN GENERATE");
+		//Check if generation is ok.
 		if (canGenerate) {
-			Debug.Log ("YES I CAN.");
 			if (level % 2 == 0) {
 				canGenerate = false;
 				initializeRooms();
@@ -91,51 +91,55 @@ public class NightmareTower : MonoBehaviour {
 				evenHallway.Clear ();
 				connectOdd();
 			}
-			//Invoke("destroyHallway", 4);
+			//Destroy hallway that is not used.
+			Invoke("destroyHallway", noRoomsPerFloor);
 		}
 	}
 
-
+	//Spawn the rooms at the beginning
 	void instantiateRoomsAtStart() {
 		generateEven ();
 		generateOdd ();
-
-			foreach (GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
-				//Remove the script of the first rooms 2 for even floor 1 for odd floor
-				if (gameObj.name == "Door To Be Removed E" + (level - 2) || gameObj.name == "Door To Be Removed O" + (level - 1)) {
-					Destroy (gameObj.GetComponent ("TeleportDoors"));
-				}
-				//Set exit for Even Floor
-				else if (gameObj.name == "Door To Be Connected E" + (level - 2)) {
-					doorToBeTriggered = gameObj;
-					foreach (GameObject door in GameObject.FindObjectsOfType<GameObject>()) {
-						if (door.name == "Door To Be Removed O" + (level - 1)) {
-							gameObj.GetComponent<TeleportDoors> ().exit = door.transform;
-						}
+		foreach (GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
+			//Remove the script of the first rooms 2 for even floor 1 for odd floor
+			if (gameObj.name == "Door To Be Removed E" + (level - 2) || gameObj.name == "Door To Be Removed O" + (level - 1)) {
+				Destroy (gameObj.GetComponent ("TeleportDoors"));
+			}
+			//Set exit for Even Floor
+			else if (gameObj.name == "Door To Be Connected E" + (level - 2)) {
+				doorToBeTriggered = gameObj;
+				foreach (GameObject door in GameObject.FindObjectsOfType<GameObject>()) {
+					if (door.name == "Door To Be Removed O" + (level - 1)) {
+						gameObj.GetComponent<TeleportDoors> ().exit = door.transform;
 					}
 				}
 			}
-			evenHallway.Clear ();
+		}
 
-			foreach(GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
-				//Set exit for Odd Floor
-			 	if (gameObj.name == "Door To Be Connected O" + (level-1)) {
-					//doorToBeTriggered = gameObj;
-					Debug.Log ("the game Obj.name: " + gameObj.name);
-					foreach(GameObject door in GameObject.FindObjectsOfType<GameObject>()) {
-						if(door.name == "Door To Be Connected E" + (level-2)) {
-							gameObj.GetComponent<TeleportDoors>().exit = door.transform;
-						}
+		//clear hallway after used
+		evenHallway.Clear ();
+	
+		foreach(GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
+			//Set exit for Odd Floor
+		 	if (gameObj.name == "Door To Be Connected O" + (level-1)) {
+				//doorToBeTriggered = gameObj;
+				Debug.Log ("the game Obj.name: " + gameObj.name);
+				foreach(GameObject door in GameObject.FindObjectsOfType<GameObject>()) {
+					if(door.name == "Door To Be Connected E" + (level-2)) {
+						gameObj.GetComponent<TeleportDoors>().exit = door.transform;
 					}
 				}
 			}
-			oddHallway.Clear ();
+		}
+
+		//clear hallway after used
+		oddHallway.Clear ();
 
 	
 	}
 
+	//generateEvenFloor
 	void generateEven() {
-		//Spawn Even
 		for(int i = 0; i < noRoomsPerFloor; i++) {
 			Transform obj = (Transform)(Instantiate(evenHallway[i], transform.position + sizeOfPrefab , transform.rotation));
 			sizeOfPrefab.x += lengthOfRoom;
@@ -154,7 +158,8 @@ public class NightmareTower : MonoBehaviour {
 				Transform lastDoorBot = obj.Find ("Door" + doorLastBot[1]).transform;
 				obj.Find ("Door" + doorLastBot[1]).name = "Door To Be Connected E" + level;
 			}
-			hallToRemoveE.Add (obj);
+			//hallToRemoveE.Add (obj);
+			hallToRemoveE.Enqueue(obj);
 		}
 		//Change level
 		level++;
@@ -164,11 +169,9 @@ public class NightmareTower : MonoBehaviour {
 		sizeOfPrefab.y += heightOfRoom;
 		sizeOfPrefab.y += level;
 	}
-
-
+	
 	//Connect generateEven
-	void connectEven() {
-		Debug.Log ("level: " + level);
+	void connectEven() {;
 		foreach (GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
 			//Remove the script of the first rooms 2 for even floor 1 for odd floor
 			if (gameObj.name == "Door To Be Removed E" + (level-1) || gameObj.name == "Door To Be Removed O" + (level - 2)) {
@@ -190,7 +193,6 @@ public class NightmareTower : MonoBehaviour {
 						gameObj.GetComponent<TeleportDoors> ().exit = door.transform;
 					}
 				}
-				Debug.Log ("Something with Even");
 			}
 			//Set the last door to the same spot
 			else if (gameObj.name == "Door To Be Connected E" + (level-1)) {
@@ -205,7 +207,6 @@ public class NightmareTower : MonoBehaviour {
 
 	//Connect generateOdd
 	void connectOdd() {
-		Debug.Log ("level: " + level); //4
 		foreach (GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
 			//Remove the script of the first rooms 2 for even floor 1 for odd floor
 			if (gameObj.name == "Door To Be Removed O" + (level-1) || gameObj.name == "Door To Be Removed E" + (level - 2)) {
@@ -227,7 +228,6 @@ public class NightmareTower : MonoBehaviour {
 						gameObj.GetComponent<TeleportDoors> ().exit = door.transform;
 					}
 				}
-				Debug.Log ("Something with Odd");
 			}
 			//Set the last door to the same spot
 			else if (gameObj.name == "Door To Be Connected O" + (level-1)) {
@@ -237,10 +237,7 @@ public class NightmareTower : MonoBehaviour {
 					}
 				}
 			}
-		}
-
-
-
+		} //end outer foreach
 	}
 
 	void generateOdd() {
@@ -264,7 +261,8 @@ public class NightmareTower : MonoBehaviour {
 				Transform lastDoorTop = obj.Find ("Door" + doorLastTop [1]).transform;
 				obj.Find ("Door" + doorLastTop[1]).name = "Door To Be Connected O" + level;  
 			}
-			hallToRemoveO.Add (obj);
+			//hallToRemoveO.Add (obj);
+			hallToRemoveO.Enqueue(obj);
 		}
 		
 		//Change level
@@ -300,8 +298,7 @@ public class NightmareTower : MonoBehaviour {
 	
 	void initializeRooms()
 	{    
-		randomizeRooms ();
-		
+		randomizeRooms ();	
 		//r to keep track of the room used
 		int r = 0;
 		//set door room to be the first room on each floor
@@ -322,25 +319,17 @@ public class NightmareTower : MonoBehaviour {
 	}
 	void destroyHallway() {
 		if (generated) {
-			if (hallToRemoveE.Count != 0) {
-				for (int i = 0; i < noRoomsPerFloor; i++) {
-					Debug.Log ("hall E going to be destroyed: " + hallToRemoveE[i].name);
-					Destroy (hallToRemoveE[i].transform.gameObject);
-					
+			if(hallToRemoveE.Count != 0 && level % 2 == 1) {
+				for (int i = 0; i < noRoomsPerFloor;i++) {
+					Destroy(hallToRemoveE.Dequeue().transform.gameObject);
 				}
-				generated = false;
 			}
-			else if (hallToRemoveO.Count != 0) {
-				for (int i = 0; i < noRoomsPerFloor; i++) {
-					Debug.Log ("hall O going to be destroyed: " + hallToRemoveO[i].name);
-					Destroy (hallToRemoveO[i].transform.gameObject);
+			else if (hallToRemoveO.Count !=0 && level % 2 == 0 ) {
+				for (int i = 0; i < noRoomsPerFloor;i++) {
+					Destroy(hallToRemoveO.Dequeue().transform.gameObject);
 				}
-				generated = false;
 			}
 		}
-		hallToRemoveE.Clear ();
-		hallToRemoveO.Clear ();
-		
 	}
 	
 }
