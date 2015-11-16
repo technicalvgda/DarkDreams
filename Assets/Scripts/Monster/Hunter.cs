@@ -21,6 +21,9 @@ public class Hunter : MonoBehaviour
 
     // Position for the linecast
     private Vector2 startCast, endCast;
+	
+	// Distance to player
+	private Vector2 playerDistance;
 
     //Variable to set distance of the monster's vision
     float lineCastDistance = 14f;
@@ -41,6 +44,9 @@ public class Hunter : MonoBehaviour
 
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+		
+		// Initialize player distance
+		playerDistance = new Vector2(0f, 0f);
     }
 
     void Start()
@@ -118,6 +124,21 @@ public class Hunter : MonoBehaviour
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
         }
+		
+		// Proximity camera shake
+		
+		// Update player distance
+		playerDistance.x = player.transform.position.x - gameObject.transform.position.x;
+		playerDistance.y = player.transform.position.y - gameObject.transform.position.y;
+		
+		// Make the values positive for calculation
+		if (playerDistance.x < 0)
+			playerDistance.x = -playerDistance.x;
+		if (playerDistance.y < 0)
+			playerDistance.y = -playerDistance.y;
+		
+		Debug.Log("Distance to Player: " + playerDistance);
+		
     }
 
     //Function to reverse enemy movemeny position, left or right, to 
