@@ -23,7 +23,8 @@ public class TeleportDoors : MonoBehaviour
     float clickOffsetY = 5;
     float clickOffsetX = 5;
     public Sprite up, down;
-	
+
+	//Check if the player goes through the door for nightmare tower generation
 	public bool used = false;
 
     // Use this for initialization
