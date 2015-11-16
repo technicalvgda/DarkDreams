@@ -12,7 +12,8 @@ public class ParticleCollider : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        particle.emissionRate = 0;
+		particle.emissionRate = 0;
+		particle.startLifetime = 0;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +25,7 @@ public class ParticleCollider : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            particle.emissionRate = 1;
+            particle.emissionRate = 6;
             particle.startLifetime = 1;
         }
     }

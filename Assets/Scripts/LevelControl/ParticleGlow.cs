@@ -36,8 +36,9 @@ public class ParticleGlow : MonoBehaviour {
         else
         {
            // particle.Play();
-            particle.emissionRate = 1;
-            particle.startLifetime = 1;
+			particle.emissionRate = 6;
+			particle.startLifetime = 1;
+		
         }
     }
 /*
