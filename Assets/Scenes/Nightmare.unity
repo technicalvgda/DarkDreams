@@ -264,10 +264,10 @@ MonoBehaviour:
   - {fileID: 477016, guid: 975568eba9c1d4703854c8ca448505db, type: 2}
   - {fileID: 490574, guid: 1278f85ddf6234cba86ea5e28c20f9e8, type: 2}
   - {fileID: 430554, guid: 1a48df16d2ac5844e8d856c17572d649, type: 2}
+  - {fileID: 430554, guid: 1a48df16d2ac5844e8d856c17572d649, type: 2}
   otherRoom:
   - {fileID: 474430, guid: 8780f2c2bc102ca4787b734b88815d07, type: 2}
   - {fileID: 427300, guid: 576f9523b2d994848b94a0f752999f27, type: 2}
-  noRoomsPerFloor: 4
 --- !u!4 &672092508
 Transform:
   m_ObjectHideFlags: 0

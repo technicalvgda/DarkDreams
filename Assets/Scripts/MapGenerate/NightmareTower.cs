@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 public class NightmareTower : MonoBehaviour {
 	
 	public const int NUMBER_OF_DOOR_PER_FLOOR = 2;
+
+	//use this for number of rooms on each floor
+	private const int ROOMS_PER_FLOOR = 4;
+
 	//size of the room
 	public int lengthOfRoom = 60;
 	public int heightOfRoom = 27;
@@ -17,8 +17,7 @@ public class NightmareTower : MonoBehaviour {
 	public Transform[] doorRoom;
 	public Transform[] otherRoom;
 
-	//use this for number of rooms on each floor
-	public int noRoomsPerFloor = 4;
+
 	
 	//To keep track of what level is on each floor
 	private int level = 0;
@@ -42,7 +41,7 @@ public class NightmareTower : MonoBehaviour {
 	private GameObject doorToBeTriggered;
 
 	void Awake() {
-		if (doorRoom.Length < noRoomsPerFloor) {
+		if (doorRoom.Length < ROOMS_PER_FLOOR) {
 			Debug.Log("Please make sure there are at least 4 door rooms");
 			return;
 		}
@@ -55,7 +54,7 @@ public class NightmareTower : MonoBehaviour {
 	void Start () {
 		instantiateRoomsAtStart();
 		//Invoke repeat to generate hallway if needed
-		InvokeRepeating ("generate", noRoomsPerFloor-1, noRoomsPerFloor-1);        
+		InvokeRepeating ("generate", ROOMS_PER_FLOOR-1, ROOMS_PER_FLOOR-1);        
 	}
 
 	// Update is called once per frame
@@ -91,7 +90,7 @@ public class NightmareTower : MonoBehaviour {
 				connectOdd();
 			}
 			//Destroy hallway that is not used.
-			Invoke("destroyHallway", noRoomsPerFloor);
+			Invoke("destroyHallway", ROOMS_PER_FLOOR);
 		}
 	}
 
@@ -121,8 +120,6 @@ public class NightmareTower : MonoBehaviour {
 		foreach(GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
 			//Set exit for Odd Floor
 		 	if (gameObj.name == "Door To Be Connected O" + (level-1)) {
-				//doorToBeTriggered = gameObj;
-				Debug.Log ("the game Obj.name: " + gameObj.name);
 				foreach(GameObject door in GameObject.FindObjectsOfType<GameObject>()) {
 					if(door.name == "Door To Be Connected E" + (level-2)) {
 						gameObj.GetComponent<TeleportDoors>().exit = door.transform;
@@ -139,7 +136,7 @@ public class NightmareTower : MonoBehaviour {
 
 	//generateEvenFloor
 	void generateEven() {
-		for(int i = 0; i < noRoomsPerFloor; i++) {
+		for(int i = 0; i < ROOMS_PER_FLOOR; i++) {
 			Transform obj = (Transform)(Instantiate(evenHallway[i], transform.position + sizeOfPrefab , transform.rotation));
 			sizeOfPrefab.x += lengthOfRoom;
 			obj.name = "New Room E " + i;
@@ -151,7 +148,7 @@ public class NightmareTower : MonoBehaviour {
 				obj.Find ("Door" + doorFirstBot[1]).name = "Door To Be Removed E" + level;
 				
 			}
-			if (i == noRoomsPerFloor-1) {
+			if (i == ROOMS_PER_FLOOR-1) {
 				string s2 = evenHallway[evenHallway.Count-1].name;
 				string[] doorLastBot = s2.Split(' ');
 				Transform lastDoorBot = obj.Find ("Door" + doorLastBot[1]).transform;
@@ -243,7 +240,7 @@ public class NightmareTower : MonoBehaviour {
 
 	void generateOdd() {
 		//Spawn Odd
-		for (int i = 0; i < noRoomsPerFloor; i++) {
+		for (int i = 0; i < ROOMS_PER_FLOOR; i++) {
 			Transform obj = (Transform)(Instantiate(oddHallway[i], transform.position + sizeOfPrefab , transform.rotation));
 			sizeOfPrefab.x += lengthOfRoom;
 			obj.name = "New Room O " + i;
@@ -255,10 +252,9 @@ public class NightmareTower : MonoBehaviour {
 				obj.Find ("Door" + doorFirstTop[1]).name = "Door To Be Removed O" + level;  
 
 			}
-			if (i == noRoomsPerFloor-1) {
+			if (i == ROOMS_PER_FLOOR-1) {
 				string s4 = oddHallway[oddHallway.Count-1].name;
 				string[] doorLastTop = s4.Split(' ');
-				Debug.Log (" " + doorLastTop[1]);
 				Transform lastDoorTop = obj.Find ("Door" + doorLastTop [1]).transform;
 				obj.Find ("Door" + doorLastTop[1]).name = "Door To Be Connected O" + level;  
 			}
@@ -307,7 +303,7 @@ public class NightmareTower : MonoBehaviour {
 		r++;
 		oddHallway.Add (doorRoom [r]);
 		r++;
-		for (int i = 0; i < noRoomsPerFloor-NUMBER_OF_DOOR_PER_FLOOR; i++) {
+		for (int i = 0; i < ROOMS_PER_FLOOR-NUMBER_OF_DOOR_PER_FLOOR; i++) {
 			int randomRoom = Random.Range (0, otherRoom.Length);
 			evenHallway.Add (otherRoom [i]);
 			oddHallway.Add (otherRoom [randomRoom]);
@@ -321,12 +317,12 @@ public class NightmareTower : MonoBehaviour {
 	void destroyHallway() {
 		if (generated) {
 			if(hallToRemoveE.Count != 0 && level % 2 == 1) {
-				for (int i = 0; i < noRoomsPerFloor;i++) {
+				for (int i = 0; i < ROOMS_PER_FLOOR;i++) {
 					Destroy(hallToRemoveE.Dequeue().transform.gameObject);
 				}
 			}
 			else if (hallToRemoveO.Count !=0 && level % 2 == 0 ) {
-				for (int i = 0; i < noRoomsPerFloor;i++) {
+				for (int i = 0; i < ROOMS_PER_FLOOR;i++) {
 					Destroy(hallToRemoveO.Dequeue().transform.gameObject);
 				}
 			}
