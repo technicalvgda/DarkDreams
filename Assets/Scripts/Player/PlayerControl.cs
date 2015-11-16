@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
 
     // For click/tap detection
     Vector2 clickPosition;
-
+    Hunter Hunterscript;
     // for references to player
     public bool isAlive = true;
     private SpriteRenderer sprite;
@@ -83,6 +83,7 @@ public class PlayerControl : MonoBehaviour
         sprintSpeed = normalSpeed * 2;
         wallR = GameObject.Find("RightWall");
         wallL = GameObject.Find("LeftWall");
+
     }
     // Use this for initialization
     void Start() //what happens as soon as player is created
@@ -331,10 +332,31 @@ public class PlayerControl : MonoBehaviour
 
             for (int i = 0; i < 60; i++)    // 'i' controlls the duration of the hunter existance
             {
+
                 if (transform.position.y > bottomFloor && transform.position.y < topFloor)
-                    yield return new WaitForSeconds(1);
+                {
+                    if (hunter != null)
+                    {
+                        HunterMonster = GameObject.Find("HunterEnemy(Clone)");
+                        Hunterscript = HunterMonster.GetComponent<Hunter>();
+                    }
+                    Debug.Log(Hunterscript.facingRight);
+                    if ((Hunterscript.direction && HunterMonster.transform.position.x > gameObject.transform.position.x)  || (!Hunterscript.direction && HunterMonster.transform.position.x < gameObject.transform.position.x))
+                    {
+                        Debug.Log("Hello lad");
+                        yield return new WaitForSeconds(3);
+                        break;
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(1);
+                    }
+                }
+
                 else
+                {
                     break;
+                }
             }
 
             // goodbye hunter

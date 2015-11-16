@@ -5,10 +5,13 @@ using System.Collections;
 public class Hunter : MonoBehaviour
 {
 
+    
+
    AudioSource sfx;
    // public AudioClip[] hunterClips;
 
-    private bool facingRight = true;
+    public bool facingRight = true;
+    public bool direction;
     private bool isCaught = false;
     public float movement;
     public float speed = 5.0f;
@@ -125,6 +128,7 @@ public class Hunter : MonoBehaviour
     void FlipEnemy()
     {
         facingRight = !facingRight;
+        direction = facingRight;
         Vector2 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
