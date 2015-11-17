@@ -14,6 +14,7 @@ public class Hunter : MonoBehaviour
     public float speed = 5.0f;
     public float counter = 0;
     public float activeSpeed = 8.0f;
+	public float shakeTrigger = 50.0f;
 
     // the X positions of the path ends
     private float leftEndPath;
@@ -21,6 +22,9 @@ public class Hunter : MonoBehaviour
 
     // Position for the linecast
     private Vector2 startCast, endCast;
+	
+	// Distance to player
+	private Vector2 playerDistance;
 
     //Variable to set distance of the monster's vision
     float lineCastDistance = 14f;
@@ -31,6 +35,14 @@ public class Hunter : MonoBehaviour
 
     PlayerControl player;
     //GameObject spottedCue;
+	
+	// Camera references
+	private GameObject cam;
+	private Vector3 camOriginalPos;
+	private Vector3 camNewPos;
+	private Transform camTransform;
+	
+	private float shakeIntensity = 0.07f;
 
     void Awake()
     {
@@ -41,6 +53,9 @@ public class Hunter : MonoBehaviour
 
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+		
+		// Initialize player distance
+		playerDistance = new Vector2(0f, 0f);
     }
 
     void Start()
@@ -57,6 +72,10 @@ public class Hunter : MonoBehaviour
         //lineOfSight = GetComponent<LineRenderer>();
         //lineOfSight.SetPosition(1, new Vector2(lineCastDistance, 0));
         sfx.Play();
+		
+		// Initialize camera
+		cam = GameObject.FindGameObjectWithTag ("MainCamera");
+		camTransform = cam.GetComponent<Transform> ();
     }
 
     // Update is called once per frame
@@ -118,7 +137,40 @@ public class Hunter : MonoBehaviour
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
         }
+		
+		// Proximity camera shake
+		
+		// Update player distance
+		playerDistance.x = player.transform.position.x - gameObject.transform.position.x;
+		playerDistance.y = player.transform.position.y - gameObject.transform.position.y;
+		
+		// Make the values positive for calculation
+		if (playerDistance.x < 0)
+			playerDistance.x = -playerDistance.x;
+		if (playerDistance.y < 0)
+			playerDistance.y = -playerDistance.y;
     }
+	
+	void LateUpdate()
+	{
+		camOriginalPos = cam.transform.localPosition;
+		camNewPos = camOriginalPos;
+		
+		camNewPos.z = -10f;
+		
+		Debug.Log("Player Distance (Mag): " + playerDistance.magnitude);
+		Debug.Log("Shake Trigger: " + shakeTrigger);
+		
+		if (playerDistance.magnitude <= shakeTrigger)
+		{
+			//Calculate the X position of the next camera position
+			camNewPos.x = camOriginalPos.x + (Random.insideUnitSphere.x*shakeIntensity);
+			//Calculate the Y position of the next camera position
+			camNewPos.y = camOriginalPos.y + (Random.insideUnitSphere.y*shakeIntensity);
+			//Move the camera to the new location
+			camTransform.localPosition = camNewPos;
+		}
+	}
 
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
