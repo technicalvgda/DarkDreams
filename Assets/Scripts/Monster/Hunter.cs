@@ -44,6 +44,9 @@ public class Hunter : MonoBehaviour
 	
 	private float shakeIntensity = 0.07f;
 
+    public GameObject fogLeft;
+    public GameObject fogRight;
+
     void Awake()
     {
         //spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
@@ -53,9 +56,14 @@ public class Hunter : MonoBehaviour
 
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+<<<<<<< HEAD
 		
 		// Initialize player distance
 		playerDistance = new Vector2(0f, 0f);
+=======
+        
+        
+>>>>>>> monsterFog
     }
 
     void Start()
@@ -93,6 +101,8 @@ public class Hunter : MonoBehaviour
             transform.Translate(movement, 0, 0);
             endCast.x += lineCastDistance;
             endCast.y -= heightOffset;
+            fogLeft.SetActive(true);
+            fogRight.SetActive(false);
         }
         else                // face left
         {
@@ -100,6 +110,8 @@ public class Hunter : MonoBehaviour
             transform.Translate(-movement, 0, 0);
             endCast.x -= lineCastDistance;
             endCast.y -= heightOffset;
+            fogLeft.SetActive(false);
+            fogRight.SetActive(true);
         }
 
         if (gameObject.transform.position.x < leftEndPath
@@ -137,6 +149,7 @@ public class Hunter : MonoBehaviour
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
         }
+<<<<<<< HEAD
 		
 		// Proximity camera shake
 		
@@ -149,6 +162,9 @@ public class Hunter : MonoBehaviour
 			playerDistance.x = -playerDistance.x;
 		if (playerDistance.y < 0)
 			playerDistance.y = -playerDistance.y;
+=======
+
+>>>>>>> monsterFog
     }
 	
 	void LateUpdate()
@@ -181,6 +197,7 @@ public class Hunter : MonoBehaviour
        
 	}
 
+        
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
     void FlipEnemy()
