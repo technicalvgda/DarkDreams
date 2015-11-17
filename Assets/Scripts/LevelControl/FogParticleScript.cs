@@ -8,7 +8,7 @@ public class FogParticleScript : MonoBehaviour
     ParticleSystem fog;
     GameObject player;
     Transform playerPos;
-    float offset= 10f;
+    //float offset= 10f;
     // Use this for initialization
     void Start()
     {

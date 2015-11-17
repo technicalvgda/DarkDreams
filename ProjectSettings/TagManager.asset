@@ -57,6 +57,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Items
+    uniqueID: 3790465623
+    locked: 0
   - name: Player
     uniqueID: 1535698477
     locked: 0
@@ -65,4 +68,7 @@ TagManager:
     locked: 0
   - name: AboveUI
     uniqueID: 3770508221
+    locked: 0
+  - name: Items
+    uniqueID: 1678781143
     locked: 0

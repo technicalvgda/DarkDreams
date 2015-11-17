@@ -167,8 +167,8 @@ public class Hunter : MonoBehaviour
 		
 		camNewPos.z = -10f;
 		
-		Debug.Log("Player Distance (Mag): " + playerDistance.magnitude);
-		Debug.Log("Shake Trigger: " + shakeTrigger);
+		//Debug.Log("Player Distance (Mag): " + playerDistance.magnitude);
+		//Debug.Log("Shake Trigger: " + shakeTrigger);
 		
 		if (playerDistance.magnitude <= shakeTrigger)
 		{

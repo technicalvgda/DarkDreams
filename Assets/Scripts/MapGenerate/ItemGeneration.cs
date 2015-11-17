@@ -25,7 +25,7 @@ public class ItemGeneration : MonoBehaviour {
 			                                   roomList.Peek().transform.position.z);
 			//randomly choose a position on each floor.
 			roomPosition.x += Random.Range (-l/3, l/3);
-			roomPosition.y += -(h/3)-3;
+			roomPosition.y += -(h/3)-2.5f;
 
 			//randomly choose an item in an item list.
 			int randomItem = Random.Range (0, items.Count);
