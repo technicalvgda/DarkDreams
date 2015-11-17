@@ -10,6 +10,12 @@ public class ItemText : MonoBehaviour
     float clickOffsetY = 1;
     float clickOffsetX = 1;
     bool textActive = false;
+
+    float xNegPosition;
+    float xPosPosition;
+    float yPosPosition;
+    float yNegPosition;
+
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerControl>();
@@ -20,17 +26,20 @@ public class ItemText : MonoBehaviour
     }
     void Update()
     {
-        float xNegPosition = transform.position.x - clickOffsetX;
-        float xPosPosition = transform.position.x + clickOffsetX;
-        float yPosPosition = transform.position.y + clickOffsetY;
-        float yNegPosition = transform.position.y - clickOffsetY;
+        xNegPosition = transform.position.x - clickOffsetX;
+        xPosPosition = transform.position.x + clickOffsetX;
+        yPosPosition = transform.position.y + clickOffsetY;
+        yNegPosition = transform.position.y - clickOffsetY;
 
         ///get position of click
         clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-
-        if (((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
-            (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition)) && Input.GetMouseButtonDown(0))
+        clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;    
+    }
+    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if ((((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
+           (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition)) && Input.GetMouseButtonDown(0)))
         {
             if (textActive == false)
             {
@@ -38,19 +47,13 @@ public class ItemText : MonoBehaviour
                 player.normalSpeed = 0f;
                 textActive = true;
             }
-            else if(textActive == true)
+            else if (textActive == true)
             {
                 itemTextPanel.SetActive(false);
                 player.normalSpeed = player.defaultSpeed;
                 textActive = false;
             }
         }
-      
-    }
-    
-    void OnTriggerStay2D(Collider2D other)
-    {
-
 
         if (Input.GetKeyDown(KeyCode.Space) && textActive == false)
         {
