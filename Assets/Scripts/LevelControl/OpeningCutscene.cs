@@ -48,7 +48,7 @@ public class OpeningCutscene : MonoBehaviour
 	
 	IEnumerator _Cutscene()
 	{
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (3.5f);
 
 		// Lock the camera once it finishes positioning itself
 		cam.GetComponent<CameraFollowScript> ().enabled = false;
