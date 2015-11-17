@@ -32,6 +32,9 @@ public class Hunter : MonoBehaviour
     PlayerControl player;
     //GameObject spottedCue;
 
+    public GameObject fogLeft;
+    public GameObject fogRight;
+
     void Awake()
     {
         //spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
@@ -41,6 +44,8 @@ public class Hunter : MonoBehaviour
 
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        
+        
     }
 
     void Start()
@@ -74,6 +79,8 @@ public class Hunter : MonoBehaviour
             transform.Translate(movement, 0, 0);
             endCast.x += lineCastDistance;
             endCast.y -= heightOffset;
+            fogLeft.SetActive(true);
+            fogRight.SetActive(false);
         }
         else                // face left
         {
@@ -81,6 +88,8 @@ public class Hunter : MonoBehaviour
             transform.Translate(-movement, 0, 0);
             endCast.x -= lineCastDistance;
             endCast.y -= heightOffset;
+            fogLeft.SetActive(false);
+            fogRight.SetActive(true);
         }
 
         if (gameObject.transform.position.x < leftEndPath
@@ -118,8 +127,10 @@ public class Hunter : MonoBehaviour
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
         }
+
     }
 
+        
     //Function to reverse enemy movemeny position, left or right, to 
     //test if line cast flips along with the monster
     void FlipEnemy()

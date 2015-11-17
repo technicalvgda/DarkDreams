@@ -13,6 +13,7 @@ TagManager:
   - Bug
   - BugWall
   - Item
+  - Fog
   layers:
   - Default
   - TransparentFX
