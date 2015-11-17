@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-public class ItemText : MonoBehaviour
-{
+public class ItemText : MonoBehaviour{
     PlayerControl player;
     private GameObject itemTextPanel;
     Vector2 clickPosition;
-    //CameraFollowScript cameraScript;
+    CameraFollowScript cameraScript;
     float clickOffsetY = 1;
     float clickOffsetX = 1;
     bool textActive = false;
@@ -16,10 +15,10 @@ public class ItemText : MonoBehaviour
         itemTextPanel = transform.Find("UICanvas/Overlay/ItemTextPanel").gameObject;//GameObject.Find("ItemTextPanel");
         itemTextPanel.SetActive(false);
         clickPosition = new Vector2(0f, 0f);
-        //cameraScript = Camera.main.GetComponent<CameraFollowScript>();
+        cameraScript = Camera.main.GetComponent<CameraFollowScript>();
     }
-    void Update()
-    {
+    void OnTriggerStay2D(Collider2D other){
+
         float xNegPosition = transform.position.x - clickOffsetX;
         float xPosPosition = transform.position.x + clickOffsetX;
         float yPosPosition = transform.position.y + clickOffsetY;
@@ -29,46 +28,32 @@ public class ItemText : MonoBehaviour
         clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
-        if (((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
-            (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition)) && Input.GetMouseButtonDown(0))
-        {
-            if (textActive == false)
-            {
-                itemTextPanel.SetActive(true);
-                player.normalSpeed = 0f;
-                textActive = true;
-            }
-            else if(textActive == true)
-            {
-                itemTextPanel.SetActive(false);
-                player.normalSpeed = player.defaultSpeed;
-                textActive = false;
-            }
-        }
-      
-    }
-    
-    void OnTriggerStay2D(Collider2D other)
-    {
-
-
-        if (Input.GetKeyDown(KeyCode.Space) && textActive == false)
+        if (Input.GetKeyDown(KeyCode.Space) || ((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
+            (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition) && Input.GetMouseButtonDown(0)))
         {
             if (other.GetComponent<PlayerControl>() == null)
             {
                 return;
             }
-            itemTextPanel.SetActive(true);
-            textActive = true;
-            player.normalSpeed = 0f;
+            if (!textActive)
+            {
+                itemTextPanel.SetActive(true);
+                textActive = true;
+                player.normalSpeed = 0f;
+            }
+            else
+            {
+                itemTextPanel.SetActive(false);
+                textActive = false;
+                player.normalSpeed = player.defaultSpeed;
+            }
         }
-        else if ((Input.GetKeyDown(KeyCode.Space)))
-        {
-            itemTextPanel.SetActive(false);
-            textActive = false;
-            player.normalSpeed = player.defaultSpeed;
-        }
-    }
-   
 
+
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        itemTextPanel.SetActive(false);
+    }
+    
 }
