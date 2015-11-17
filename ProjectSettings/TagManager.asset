@@ -13,6 +13,7 @@ TagManager:
   - Bug
   - BugWall
   - Item
+  - ParticleGlow
   layers:
   - Default
   - TransparentFX
@@ -61,4 +62,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3529074763
+    locked: 0
+  - name: AboveUI
+    uniqueID: 3770508221
     locked: 0
