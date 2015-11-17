@@ -8,7 +8,7 @@ public class Hunter : MonoBehaviour
    AudioSource sfx;
    // public AudioClip[] hunterClips;
 
-    private bool facingRight = true;
+    public bool facingRight = true;
     private bool isCaught = false;
     public float movement;
     public float speed = 5.0f;

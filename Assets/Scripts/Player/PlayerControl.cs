@@ -327,14 +327,28 @@ public class PlayerControl : MonoBehaviour
             {
                 xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
             }
-            var hunter = Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y + hunterYOffset), Quaternion.identity);
-
+            GameObject hunter = (GameObject)Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y + hunterYOffset), Quaternion.identity);
+            Hunter hunterScript = hunter.GetComponent<Hunter>();
             for (int i = 0; i < 60; i++)    // 'i' controlls the duration of the hunter existance
             {
+                //despawn hunter if it passes you
+                 if ((hunterScript.facingRight && hunter.transform.position.x > gameObject.transform.position.x) ||(
+                 !hunterScript.facingRight && hunter.transform.position.x < gameObject.transform.position.x))
+                 {
+                     //wait 3 seconds before despawn
+                     yield return new WaitForSeconds(6);
+                     break;
+                 }
+                 
+                //check if player is on same floor
                 if (transform.position.y > bottomFloor && transform.position.y < topFloor)
+                {
                     yield return new WaitForSeconds(1);
+                }
                 else
+                {
                     break;
+                }
             }
 
             // goodbye hunter

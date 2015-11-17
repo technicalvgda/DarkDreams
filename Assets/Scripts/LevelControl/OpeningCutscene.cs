@@ -79,6 +79,8 @@ public class OpeningCutscene : MonoBehaviour
         //prevent player from moving until end of cutscene
         playerScript.normalSpeed = playerScript.defaultSpeed;
         pause.busy = false;
+        yield return new WaitForSeconds(10f);
+        hunterEnemy.SetActive(false);
         yield return null;
 	}
 }
