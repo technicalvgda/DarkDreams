@@ -15,7 +15,7 @@ public class Hunter : MonoBehaviour
     public float counter = 0;
     public float activeSpeed = 8.0f;
 	public float shakeTrigger = 50.0f;
-
+   
     // the X positions of the path ends
     private float leftEndPath;
     private float rightEndPath;
@@ -163,13 +163,22 @@ public class Hunter : MonoBehaviour
 		
 		if (playerDistance.magnitude <= shakeTrigger)
 		{
-			//Calculate the X position of the next camera position
-			camNewPos.x = camOriginalPos.x + (Random.insideUnitSphere.x*shakeIntensity);
+            //cause vibration on mobile
+#if UNITY_IPHONE || UNITY_ANDROID
+            if (PlayerPrefs.GetFloat("Vibrate") == 1)
+            {
+                Handheld.Vibrate();
+            }          
+#endif
+
+            //Calculate the X position of the next camera position
+            camNewPos.x = camOriginalPos.x + (Random.insideUnitSphere.x*shakeIntensity);
 			//Calculate the Y position of the next camera position
 			camNewPos.y = camOriginalPos.y + (Random.insideUnitSphere.y*shakeIntensity);
 			//Move the camera to the new location
 			camTransform.localPosition = camNewPos;
 		}
+       
 	}
 
     //Function to reverse enemy movemeny position, left or right, to 
@@ -200,4 +209,5 @@ public class Hunter : MonoBehaviour
             }
         }
     }
+   
 }

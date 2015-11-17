@@ -31,6 +31,10 @@ public class menuScript : MonoBehaviour {
         {
             PlayerPrefs.SetFloat("Voice", 1);
         }
+        if (!PlayerPrefs.HasKey("Vibrate"))
+        {
+            PlayerPrefs.SetFloat("Vibrate", 1);
+        }
         //set variables to proper level stored in PlayerPref variables
         brightnessLevel = PlayerPrefs.GetFloat("Brightness");
         musicVolume = PlayerPrefs.GetFloat("Music");
