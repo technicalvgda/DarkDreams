@@ -284,10 +284,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Parasomnia\n\nBased upon\n\nProduction Leads\n\nTechnical team\n\ncore\n\nassociate\n\ncontributor\n\nContent/
-    Design Team\n\ncore\n\nassociate\n\ncontributor\n\nArt Team\n\nCore\n\nassociate
-    \n\ncontributor\n\nSpecial Thanks\n\nCreated by the VGDA of Cal State Long Beach\n\nThank
-    you for playing!\n"
+  m_Text: "Parasomnia\n\nBased upon\n\nProduction Leads\n\nTechnical team\n\nTech
+    Leads\n\ncore\n\nassociate\n\ncontributor\n\nContent/ Design Team\n\nContent/Design
+    Leads\n\ncore\n\nassociate\n\ncontributor\n\nArt Team\n\nArt Leads\n\nCore\n\nassociate
+    \n\ncontributor\n\nSound Team\n\nSound Leads\n\ncore \n\nassociate\n\ncontributor\n\ndialogue\nJosh
+    Shucker\nMichael Zatlin\nEmily Rose Wilder\n\nSpecial Thanks\n\nCreated by the
+    VGDA of Cal State Long Beach\n\nThank you for playing!\n"
 --- !u!222 &1198522922
 CanvasRenderer:
   m_ObjectHideFlags: 0
