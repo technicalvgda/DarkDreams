@@ -56,14 +56,11 @@ public class Hunter : MonoBehaviour
 
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-<<<<<<< HEAD
+
 		
 		// Initialize player distance
-		playerDistance = new Vector2(0f, 0f);
-=======
-        
-        
->>>>>>> monsterFog
+		playerDistance = new Vector2(0f, 0f); 
+
     }
 
     void Start()
@@ -149,7 +146,6 @@ public class Hunter : MonoBehaviour
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
         }
-<<<<<<< HEAD
 		
 		// Proximity camera shake
 		
@@ -162,9 +158,6 @@ public class Hunter : MonoBehaviour
 			playerDistance.x = -playerDistance.x;
 		if (playerDistance.y < 0)
 			playerDistance.y = -playerDistance.y;
-=======
-
->>>>>>> monsterFog
     }
 	
 	void LateUpdate()
