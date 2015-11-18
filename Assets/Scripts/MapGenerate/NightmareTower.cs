@@ -144,14 +144,12 @@ public class NightmareTower : MonoBehaviour {
 				obj.name = "Room to Remove E";
 				string s1 = evenHallway [0].name;
 				string[] doorFirstBot = s1.Split (' ');
-				Transform firstDoorTop = obj.Find ("Door" + doorFirstBot [1]).transform;
 				obj.Find ("Door" + doorFirstBot[1]).name = "Door To Be Removed E" + level;
 				
 			}
 			if (i == ROOMS_PER_FLOOR-1) {
 				string s2 = evenHallway[evenHallway.Count-1].name;
 				string[] doorLastBot = s2.Split(' ');
-				Transform lastDoorBot = obj.Find ("Door" + doorLastBot[1]).transform;
 				obj.Find ("Door" + doorLastBot[1]).name = "Door To Be Connected E" + level;
 			}
 
@@ -255,7 +253,6 @@ public class NightmareTower : MonoBehaviour {
 			if (i == ROOMS_PER_FLOOR-1) {
 				string s4 = oddHallway[oddHallway.Count-1].name;
 				string[] doorLastTop = s4.Split(' ');
-				Transform lastDoorTop = obj.Find ("Door" + doorLastTop [1]).transform;
 				obj.Find ("Door" + doorLastTop[1]).name = "Door To Be Connected O" + level;  
 			}
 			//Waiting to be removed
@@ -326,6 +323,8 @@ public class NightmareTower : MonoBehaviour {
 					Destroy(hallToRemoveO.Dequeue().transform.gameObject);
 				}
 			}
+			//Unload assets
+			Resources.UnloadUnusedAssets() ;
 		}
 	}
 	

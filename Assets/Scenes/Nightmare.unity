@@ -268,6 +268,9 @@ MonoBehaviour:
   otherRoom:
   - {fileID: 474430, guid: 8780f2c2bc102ca4787b734b88815d07, type: 2}
   - {fileID: 427300, guid: 576f9523b2d994848b94a0f752999f27, type: 2}
+  - {fileID: 451556, guid: f507cdbb3cbcdee4ea295d42087ca72f, type: 2}
+  - {fileID: 475236, guid: 37537de9c0c67844f8982a51eda032b1, type: 2}
+  - {fileID: 479640, guid: 4007779cb5015fa439149994e631c7dc, type: 2}
 --- !u!4 &672092508
 Transform:
   m_ObjectHideFlags: 0
