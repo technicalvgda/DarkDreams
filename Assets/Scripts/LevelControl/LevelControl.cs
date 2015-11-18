@@ -9,6 +9,7 @@ public class LevelControl : MonoBehaviour
     public float timer = 5.0f;
    // float fadeTime = 3.0f;    //disabled for compiler error -joel
     GameObject player;
+	PlayerControl playerScript;
     public GameObject overlay;
     Image overlay_image;
     GameObject gameOverPanel;
@@ -24,6 +25,7 @@ public class LevelControl : MonoBehaviour
        // spottedCue = GameObject.Find("SpottedIndicator");
        // spottedCue.SetActive(false);
         player = GameObject.Find("Player");
+		playerScript = GameObject.FindWithTag ("Player").GetComponent<PlayerControl> ();
         audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         // set the initial position of the player
         initialPlayerPos = player.transform.position;
@@ -89,6 +91,13 @@ public class LevelControl : MonoBehaviour
 
         // Resume time
         Time.timeScale = 1f;
+		//resumes hunter speed and resets position
+		playerScript.hunterScript.isCaught = false;
+		playerScript.hunterScript.speed = 5.0f;
+		playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
+		//resumes chasing monster speed
+		playerScript.chasingMonsterScript.speedNormal = 2.0f;
+		playerScript.chasingMonsterScript.speedChasing = 4.0f;
         //play intro music
         audioHandler.PlayMusic(3);
     }

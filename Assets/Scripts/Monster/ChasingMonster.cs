@@ -226,9 +226,11 @@ public class ChasingMonster : MonoBehaviour
     //When the player collides with the patrolling enemy
     void OnTriggerEnter2D(Collider2D col)
     {
+		player.chasingMonsterScript = this;
         //If the player collides with the patrolling enemy and not hiding
         if (col.gameObject.tag == "Player" && player.hide == false)
         {
+
             // Stop the monster; it will not be able to return to the normal speed.
             speedNormal = speedChasing = 0;
 
