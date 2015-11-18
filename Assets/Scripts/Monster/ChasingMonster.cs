@@ -7,10 +7,10 @@ public class ChasingMonster : MonoBehaviour
     // The monster patrols at speedNormal speed and shifts to speedChasing
     // when it spots the player
     public float speedNormal = 2;
-    public float speedChasing = 4;
+    public float speedChasing = 5;
    //I commented this out since it is no longer needed for the script
    //but kept it for future reference if needed
-   // public int patrolDistance = 20;      
+   // public int patrolDistance = 20;    
     float accumulatedDistance;         
   
    
@@ -94,11 +94,11 @@ public class ChasingMonster : MonoBehaviour
             if (!pause)
             {
                 
-                MoveTurn(speedNormal);
+                MoveTurn(speedNormal, false);
             }
         }
         else
-            MoveTurn(speedChasing);
+            MoveTurn(speedChasing, true);
       
     }
 
@@ -158,7 +158,7 @@ public class ChasingMonster : MonoBehaviour
 
     // The object moves at the given speed, then turns around when it reaches
     // the EXACT travel distance limit.
-    void MoveTurn(float speed)
+    void MoveTurn(float speed, bool isChase)
     {
 
         // Waits out the pause period
@@ -167,14 +167,21 @@ public class ChasingMonster : MonoBehaviour
             pauseTime -= Time.deltaTime;
             return;
         }
-
+        float movement;
         // Determines the distance traveled this frame and clamp it if it
         // happens to make the object go outside of its range.
-      float  movement = speed * Time.deltaTime;
-       // float movement = Mathf.Min
+      //float  movement = speed * Time.deltaTime;
+        if (isChase)
+        {
+            movement = speed*Time.deltaTime+.03f;
+        }
+     //   float movement = Mathf.Min
          //   (speed * Time.deltaTime,
            //  patrolDistance - accumulatedDistance);
-
+        else
+        {
+             movement = speed * Time.deltaTime;
+        }
          // Moves the enemy in the direction it's facing
         transform.Translate(movement * direction, 0, 0);
 
