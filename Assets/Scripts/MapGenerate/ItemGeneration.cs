@@ -23,8 +23,8 @@ public class ItemGeneration : MonoBehaviour {
 		for (int i = 0; i < numberOfRooms; i++ ) {		
 			Vector3 roomPosition = new Vector3(roomList.Peek().transform.position.x, roomList.Peek().transform.position.y,
 			                                   roomList.Peek().transform.position.z);
-			//randomly choose a position on each floor.
-			roomPosition.x += Random.Range (-l/3, l/3);
+            //randomly choose a position on each floor. (changed to spawn in center)
+            roomPosition.x += 0;   //Random.Range (-l/3, l/3);
 			roomPosition.y += -(h/3)-2.5f;
 
 			//randomly choose an item in an item list.
