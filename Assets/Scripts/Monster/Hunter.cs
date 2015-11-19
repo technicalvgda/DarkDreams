@@ -9,7 +9,7 @@ public class Hunter : MonoBehaviour
    // public AudioClip[] hunterClips;
 
     public bool facingRight = true;
-    private bool isCaught = false;
+    public bool isCaught = false;
     public float movement;
     public float speed = 5.0f;
     public float counter = 0;
@@ -25,6 +25,9 @@ public class Hunter : MonoBehaviour
 	
 	// Distance to player
 	private Vector2 playerDistance;
+
+	// Original position
+	public Vector3 originalPosition;
 
     //Variable to set distance of the monster's vision
     float lineCastDistance = 14f;
@@ -47,6 +50,8 @@ public class Hunter : MonoBehaviour
     public GameObject fogLeft;
     public GameObject fogRight;
 
+	//public Vector3 originalPosition;
+
     void Awake()
     {
         //spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
@@ -57,9 +62,15 @@ public class Hunter : MonoBehaviour
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
-		
+		//Get Position
+		originalPosition = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z);
+
+
 		// Initialize player distance
 		playerDistance = new Vector2(0f, 0f); 
+
+		//retry restarts movement
+		//speed = 5.0f;
 
     }
 
@@ -200,13 +211,14 @@ public class Hunter : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-
     //When the player collides with the patrolling enemy
     void OnTriggerEnter2D(Collider2D col)
     {
         //If the player collides with the patrolling enemy and is not caught
         if (col.gameObject.tag == "Player" && isCaught)
         {
+			//stores instance of this in player
+			player.hunterScript = this;
             //Monster stops moving
             speed = 0;
             //If monster is facing left and the player is behind the monster OR monster is facing

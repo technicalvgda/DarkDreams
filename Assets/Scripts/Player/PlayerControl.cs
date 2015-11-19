@@ -33,6 +33,12 @@ public class PlayerControl : MonoBehaviour
     public float slowMoSpeed;        //speed magnitude when slowMo is activaed
     public float sprintSpeed;
 
+	//Hunter Script
+	public Hunter hunterScript = null;
+
+	//chasing monster script
+	public ChasingMonster chasingMonsterScript = null;
+
 	//Fading Darkness Script variable
 	public FadingDarkness fadingDarknessScript;
 
