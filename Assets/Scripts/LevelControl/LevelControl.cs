@@ -10,6 +10,7 @@ public class LevelControl : MonoBehaviour
    // float fadeTime = 3.0f;    //disabled for compiler error -joel
     GameObject player;
 	PlayerControl playerScript;
+    OpeningCutscene openCutscene;
     public GameObject overlay;
     Image overlay_image;
     GameObject gameOverPanel;
@@ -22,14 +23,14 @@ public class LevelControl : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-       // spottedCue = GameObject.Find("SpottedIndicator");
-       // spottedCue.SetActive(false);
-        player = GameObject.Find("Player");
-		playerScript = GameObject.FindWithTag ("Player").GetComponent<PlayerControl> ();
+        // spottedCue = GameObject.Find("SpottedIndicator");
+        // spottedCue.SetActive(false);
+        player = GameObject.FindWithTag("Player");
+        playerScript = player.GetComponent<PlayerControl> ();
         audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         // set the initial position of the player
         initialPlayerPos = player.transform.position;
-
+        openCutscene = GameObject.Find("Cutscene").GetComponent<OpeningCutscene>();
         gameOverPanel = GameObject.Find("GameOverPanel");
         //retryButton = GameObject.Find("RetryButton");
         //menuButton = GameObject.Find("MenuButton");
@@ -91,7 +92,10 @@ public class LevelControl : MonoBehaviour
 
         // Resume time
         Time.timeScale = 1f;
-		//resumes hunter speed and resets position
+        //resumes hunter speed and resets position
+        openCutscene.EndCutscene();
+        openCutscene.hunterEnemy.SetActive(true);
+        playerScript.hunterScript = openCutscene.hunterEnemy.GetComponent<Hunter>();
 		playerScript.hunterScript.isCaught = false;
 		playerScript.hunterScript.speed = 5.0f;
 		playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;

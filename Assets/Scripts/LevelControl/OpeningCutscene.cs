@@ -19,7 +19,7 @@ public class OpeningCutscene : MonoBehaviour
 	{
         
             Setup();
-            StartCoroutine(_Cutscene());
+            StartCoroutine("_Cutscene");
         
        
 	}
@@ -45,7 +45,10 @@ public class OpeningCutscene : MonoBehaviour
         // Figure out where the left wall is so the camera's panning can stop there
         wallMargin = wall.transform.position.x + wallOffset;
 	}
-	
+	public void EndCutscene()
+    {
+        StopCoroutine("_Cutscene");
+    }
 	IEnumerator _Cutscene()
 	{
 		yield return new WaitForSeconds (3.5f);
