@@ -45,6 +45,15 @@ public class ItemText : MonoBehaviour
                 textActive = false;
             }
         }
+        else if(Input.GetMouseButtonDown(0))
+        {
+            if (textActive == true)
+            {
+                itemTextPanel.SetActive(false);
+                player.normalSpeed = player.defaultSpeed;
+                textActive = false;
+            }
+        }
       
     }
     

@@ -205,7 +205,7 @@ public class LevelComplete : MonoBehaviour
 
     void LoadNewLevel(/*Dummy Variable for next level*/)
     {
-        //int x = nextLevel; Level+"x"
-        Application.LoadLevel(Application.loadedLevel); //change loadedLevel to next level when appropiriate
+        int i = Application.loadedLevel;
+        Application.LoadLevel(i + 1);
     }
 }
