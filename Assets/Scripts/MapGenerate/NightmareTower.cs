@@ -246,7 +246,6 @@ public class NightmareTower : MonoBehaviour {
 				obj.name = "Room to Remove O";
 				string s3 = oddHallway[0].name;
 				string[] doorFirstTop = s3.Split(' ');
-				Transform firstDoorTop = obj.Find ("Door" + doorFirstTop [1]).transform;
 				obj.Find ("Door" + doorFirstTop[1]).name = "Door To Be Removed O" + level;  
 
 			}
