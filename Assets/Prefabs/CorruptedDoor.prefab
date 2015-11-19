@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 426934}
   - 212: {fileID: 21293316}
   - 95: {fileID: 9573348}
+  - 114: {fileID: 11479582}
+  - 61: {fileID: 6184062}
   m_Layer: 0
   m_Name: CorruptedDoor
   m_TagString: Untagged
@@ -24,11 +26,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.92000008, y: -19.2099991, z: 0}
+  m_LocalPosition: {x: 369.200012, y: -23.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6184062
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180964}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -.0408630371, y: -.204238892}
+  serializedVersion: 2
+  m_Size: {x: 7.67551661, y: 10.5938473}
 --- !u!95 &9573348
 Animator:
   serializedVersion: 3
@@ -46,6 +61,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11479582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a57a417da71314fbc87328f7a66570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exit: {fileID: 0}
+  up: {fileID: 21300000, guid: c1939e9b0a33f204db8cfedef465b8ac, type: 3}
+  down: {fileID: 21300000, guid: 35445d1eada42e1489fa9dd4ab725b5d, type: 3}
+  used: 0
 --- !u!212 &21293316
 SpriteRenderer:
   m_ObjectHideFlags: 1

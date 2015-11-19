@@ -27,6 +27,7 @@ public class TeleportDoors : MonoBehaviour
 	//Check if the player goes through the door for nightmare tower generation
 	public bool used = false;
 
+    Animator anim;
     // Use this for initialization
     void Awake()
     {
@@ -35,6 +36,8 @@ public class TeleportDoors : MonoBehaviour
     }
     void Start()
     {
+        anim = GetComponent<Animator>();
+        anim.enabled = false;
         //if this door leads up
         if (exit.position.y > transform.position.y)
         {
@@ -50,6 +53,11 @@ public class TeleportDoors : MonoBehaviour
     
     void OnTriggerStay2D(Collider2D col)
     {
+        if(exit == null)
+        {
+            //anim.SetTrigger("Inactive");
+            anim.enabled = true;
+        }
         //used to make an offset that creates an area to click on, which can be increased/decreased by changing the constant.
         float xNegPosition = transform.position.x - clickOffsetX;
         float xPosPosition = transform.position.x + clickOffsetX;
