@@ -1547,7 +1547,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 170.915314, y: 152.584229, z: 0}
+  m_LocalPosition: {x: 173.927841, y: 139.934708, z: 0}
   m_LocalScale: {x: 1.64864397, y: 1, z: 1}
   m_Children:
   - {fileID: 486026}
@@ -2153,6 +2153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 1
 --- !u!114 &11406352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2304,6 +2305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 7
 --- !u!114 &11420782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2391,6 +2393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 4
 --- !u!114 &11425494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2639,6 +2642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 3
 --- !u!114 &11442680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2714,6 +2718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 2
 --- !u!114 &11448604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2875,6 +2880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 8
 --- !u!114 &11465168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2940,6 +2946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 9
 --- !u!114 &11469876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3280,6 +3287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 0
 --- !u!114 &11483936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3377,6 +3385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 5
 --- !u!114 &11491516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3404,6 +3413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 6
 --- !u!198 &19805866
 ParticleSystem:
   m_ObjectHideFlags: 1

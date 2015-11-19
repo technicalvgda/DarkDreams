@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 public class ItemText : MonoBehaviour
 {
+    AudioHandlerScript audioHandler;
+    public int dialogueToPlay;
     PlayerControl player;
     private GameObject itemTextPanel;
     Vector2 clickPosition;
@@ -14,6 +16,7 @@ public class ItemText : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<PlayerControl>();
         itemTextPanel = transform.Find("UICanvas/Overlay/ItemTextPanel").gameObject;//GameObject.Find("ItemTextPanel");
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         itemTextPanel.SetActive(false);
         clickPosition = new Vector2(0f, 0f);
         //cameraScript = Camera.main.GetComponent<CameraFollowScript>();
@@ -37,6 +40,7 @@ public class ItemText : MonoBehaviour
                 itemTextPanel.SetActive(true);
                 player.normalSpeed = 0f;
                 textActive = true;
+                audioHandler.PlayVoice(dialogueToPlay);
             }
             else if(textActive == true)
             {
@@ -70,6 +74,7 @@ public class ItemText : MonoBehaviour
             itemTextPanel.SetActive(true);
             textActive = true;
             player.normalSpeed = 0f;
+            audioHandler.PlayVoice(dialogueToPlay);
         }
         else if ((Input.GetKeyDown(KeyCode.Space)))
         {

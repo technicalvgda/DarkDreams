@@ -31,6 +31,8 @@ public static void AddPoints (int itemAdd){
 
 public class ItemPickup : MonoBehaviour {
 
+    AudioHandlerScript audioHandler;
+    public int dialogueToPlay;
 	public int itemAdd; // creates counter that can be passed to player control; add amount in inspector
 	//public GameObject canvas;
 	public bool flash = false;
@@ -49,6 +51,7 @@ public class ItemPickup : MonoBehaviour {
     void Start()
     {
         pause = Camera.main.GetComponent<PauseScript>();
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         // player = GameObject.Find("Player").GetComponent<PlayerControl>();
         itemTextPanel = transform.Find("UICanvas/Overlay/ItemTextPanel").gameObject;//GameObject.Find("ItemTextPanel");
         itemTextPanel.SetActive(false);
@@ -86,11 +89,16 @@ public class ItemPickup : MonoBehaviour {
                 PlayerControl.AddPoints(itemAdd); //will add the amount in player script
                 Destroy(gameObject); //destroys the object
             }
+            
+            
             itemTextPanel.SetActive(true);
             pause.busy = true;
             //Time.timeScale = 0;
             flash = true;
             textActive = true;
+            
+             audioHandler.PlayVoice(dialogueToPlay);
+            
             //Destroy(gameObject); //destroys the object
             //canvas = GameObject.Find ("FadingDarknessCanvas");
             //fadingDarkness = GameObject.FindWithTag(FadingDarkness);

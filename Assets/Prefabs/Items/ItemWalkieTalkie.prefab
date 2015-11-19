@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1b8b8bc63255b47a5606274ad4aa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueToPlay: 9
   itemAdd: 1
   flash: 0
   textActive: 0
@@ -1484,6 +1485,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -504501673
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dialogueToPlay
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
