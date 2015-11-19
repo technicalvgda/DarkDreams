@@ -11,7 +11,6 @@ GameObject:
   - 222: {fileID: 22287426}
   - 114: {fileID: 11425168}
   - 225: {fileID: 22572656}
-  - 114: {fileID: 11443120}
   - 61: {fileID: 6137562}
   m_Layer: 0
   m_Name: Image
@@ -866,7 +865,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 137.389053, y: 183.086761, z: 0}
+  m_LocalPosition: {x: 216.247559, y: -18.3085213, z: 0}
   m_LocalScale: {x: 1.64864397, y: 1, z: 1}
   m_Children:
   - {fileID: 475660}
@@ -1616,19 +1615,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11443120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8717d1b8f23d10247b6b78c0f476bcf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHidden: 0
-  flash: 0
 --- !u!114 &11443878
 MonoBehaviour:
   m_ObjectHideFlags: 1

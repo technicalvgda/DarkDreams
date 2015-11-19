@@ -2823,7 +2823,7 @@ MonoBehaviour:
   - {fileID: 412044, guid: 29122eeb0cd9a0e44ad13c56c3362b20, type: 2}
   - {fileID: 474710, guid: 8fa7fd5c13b4a3741973a7db34722507, type: 2}
   extraRoom:
-  - {fileID: 444774, guid: 112e141b4519c3c4083ccde6c12afea5, type: 2}
+  - {fileID: 464282, guid: 9c70739710aab124292fd0b95c3433c0, type: 2}
   - {fileID: 406318, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
 --- !u!1001 &1398973911
 Prefab:
