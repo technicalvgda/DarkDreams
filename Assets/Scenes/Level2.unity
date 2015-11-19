@@ -332,6 +332,10 @@ Prefab:
       propertyPath: EmissionModule.enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
@@ -625,6 +629,10 @@ Prefab:
       propertyPath: EmissionModule.enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
@@ -880,6 +888,10 @@ Prefab:
       propertyPath: EmissionModule.enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
@@ -930,6 +942,10 @@ Prefab:
     - target: {fileID: 19803916, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
       propertyPath: EmissionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1027,6 +1043,10 @@ Prefab:
     - target: {fileID: 19803916, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
       propertyPath: EmissionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1607,6 +1627,10 @@ Prefab:
       propertyPath: EmissionModule.enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
@@ -1657,6 +1681,10 @@ Prefab:
     - target: {fileID: 19803916, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
       propertyPath: EmissionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2028,6 +2056,10 @@ Prefab:
     - target: {fileID: 19803916, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
       propertyPath: EmissionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2492,6 +2524,10 @@ Prefab:
       propertyPath: EmissionModule.enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
@@ -2730,11 +2766,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 497850, guid: ebc9474a80ac54740bee08b61c0b57d6, type: 2}
-  - {fileID: 436600, guid: 3e561358831e0c148a4a5da99386cebb, type: 2}
-  - {fileID: 468256, guid: 11c3049335e93d44ea89c460f894c54c, type: 2}
   - {fileID: 443954, guid: ececa28adb497d24e8e3265a06601f1d, type: 2}
-  - {fileID: 427900, guid: d8d194edcd6957d45a37b9c88441253a, type: 2}
+  - {fileID: 488554, guid: 8ce5d49eb97f57e47939d7b83e9a83dc, type: 2}
+  - {fileID: 406544, guid: 26e255261f0a0dd468f118afdd2205e8, type: 2}
+  - {fileID: 468256, guid: 11c3049335e93d44ea89c460f894c54c, type: 2}
+  - {fileID: 479774, guid: 6b29c4388f6e5aa43a3a7b5f9f1c4900, type: 2}
 --- !u!4 &1393475128
 Transform:
   m_ObjectHideFlags: 0
@@ -2822,6 +2858,8 @@ MonoBehaviour:
   - {fileID: 488688, guid: eceaa9e9f3ceee149abe4f8455297ded, type: 2}
   - {fileID: 412044, guid: 29122eeb0cd9a0e44ad13c56c3362b20, type: 2}
   - {fileID: 474710, guid: 8fa7fd5c13b4a3741973a7db34722507, type: 2}
+  - {fileID: 401008, guid: a1102f96b0dc6134a91c43dec54155f2, type: 2}
+  - {fileID: 414230, guid: c54c077b0236e054da510ef0ce19d5f2, type: 2}
   extraRoom:
   - {fileID: 464282, guid: 9c70739710aab124292fd0b95c3433c0, type: 2}
   - {fileID: 406318, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
@@ -2913,6 +2951,10 @@ Prefab:
     - target: {fileID: 19803916, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
       propertyPath: EmissionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19919376, guid: c6dd812052e728e4cb0ab23f9136afd7, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1535698477
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

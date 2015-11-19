@@ -259,12 +259,14 @@ public class PlayerControl : MonoBehaviour
             {
                 if (!hide)
                 {
-                    sprite.sortingOrder = hidingOrder;
+                    //sprite.sortingOrder = hidingOrder;
+                    sprite.color = new Color(1f, 1f, 1f, 0f);
                     hide = true;
                 }
                 else if (hide)
                 {
-                    sprite.sortingOrder = sortingOrder;
+                    sprite.color = initialColor;
+                    //sprite.sortingOrder = sortingOrder;
                     hide = false;
 
                     if (slowMo) //Disables slowmotion speed upon hiding

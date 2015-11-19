@@ -392,7 +392,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 209.512665, y: -43.5592651, z: 0}
+  m_LocalPosition: {x: 671.84137, y: 102.010498, z: 0}
   m_LocalScale: {x: 1.3482455, y: 1, z: 1}
   m_Children:
   - {fileID: 408180}
@@ -851,11 +851,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
+  isCaught: 0
   movement: 0
   speed: 5
   counter: 0
   activeSpeed: 8
   shakeTrigger: 50
+  originalPosition: {x: 0, y: 0, z: 0}
   fogLeft: {fileID: 150744}
   fogRight: {fileID: 106834}
 --- !u!114 &11412156
@@ -5388,7 +5390,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -765892533
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c32fcc7a3ee59243813b04307da9a79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f15234608f825e44ebd7c96d37acc496, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21233310
 SpriteRenderer:

@@ -30,7 +30,11 @@ public class LevelControl : MonoBehaviour
         audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         // set the initial position of the player
         initialPlayerPos = player.transform.position;
-        openCutscene = GameObject.Find("Cutscene").GetComponent<OpeningCutscene>();
+        //only store this if the player is on level 1, 2, or 3
+        if (Application.loadedLevel >= 1 && Application.loadedLevel <= 3)
+        {
+            openCutscene = GameObject.Find("Cutscene").GetComponent<OpeningCutscene>();
+        }
         gameOverPanel = GameObject.Find("GameOverPanel");
         //retryButton = GameObject.Find("RetryButton");
         //menuButton = GameObject.Find("MenuButton");

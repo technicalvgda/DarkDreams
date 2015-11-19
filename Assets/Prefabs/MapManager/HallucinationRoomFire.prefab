@@ -504,7 +504,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 152.413132, y: -46.1011124, z: 0}
+  m_LocalPosition: {x: 677.855347, y: 102.83107, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406600}
@@ -612,6 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34dd8c13cca0d7408401283f2822488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hRoomTrigger: 0
   sprite1: {fileID: 199486}
   sprite2: {fileID: 154870}
   sprite3: {fileID: 197568}
@@ -634,7 +635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHidden: 0
   flash: 0
-  waitTime: 9.99999975e-05
 --- !u!114 &11468804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10612,7 +10612,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -765892533
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c32fcc7a3ee59243813b04307da9a79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f15234608f825e44ebd7c96d37acc496, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21256280
 SpriteRenderer:
