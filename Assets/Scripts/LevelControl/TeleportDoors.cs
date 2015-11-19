@@ -16,13 +16,16 @@ using System.Collections;
 
 public class TeleportDoors : MonoBehaviour
 {
-    public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
+	public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
     Vector2 clickPosition;
     //reference to camera
     CameraFollowScript cameraScript;
     float clickOffsetY = 5;
     float clickOffsetX = 5;
     public Sprite up, down;
+
+	//Check if the player goes through the door for nightmare tower generation
+	public bool used = false;
 
     // Use this for initialization
     void Awake()
@@ -87,7 +90,14 @@ public class TeleportDoors : MonoBehaviour
 	{
         if (exit != null)
         {
-            col.transform.position = exit.transform.position; //line that teleports player
+			if(col.transform.position == exit.transform.position) {
+				used = false;
+			}
+			else {
+				used = true;
+			}
+			col.transform.position = exit.transform.position; //line that teleports player
+
         }
         else
         {
