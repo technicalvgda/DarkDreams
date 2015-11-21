@@ -123,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 180.144211, y: -32.5105362, z: 4.875}
+  m_LocalPosition: {x: 239.389252, y: -33.0951004, z: 4.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 448270}
@@ -277,7 +277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u201CYou have to take care of him, or else you\u2019ll kill it.\u201D\n"
+  m_Text: "\u201CYou have to take care of him, okay? Or else he\u2019ll die.\u201D\n"
 --- !u!198 &19818330
 ParticleSystem:
   m_ObjectHideFlags: 1

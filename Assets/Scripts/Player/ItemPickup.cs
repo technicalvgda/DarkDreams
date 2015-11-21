@@ -89,15 +89,19 @@ public class ItemPickup : MonoBehaviour {
                 PlayerControl.AddPoints(itemAdd); //will add the amount in player script
                 Destroy(gameObject); //destroys the object
             }
+            else
+            {
+
+
+                itemTextPanel.SetActive(true);
+                pause.busy = true;
+                //Time.timeScale = 0;
+                flash = true;
+                textActive = true;
+                audioHandler.PlayVoice(dialogueToPlay);
+            }
             
             
-            itemTextPanel.SetActive(true);
-            pause.busy = true;
-            //Time.timeScale = 0;
-            flash = true;
-            textActive = true;
-            
-             audioHandler.PlayVoice(dialogueToPlay);
             
             //Destroy(gameObject); //destroys the object
             //canvas = GameObject.Find ("FadingDarknessCanvas");

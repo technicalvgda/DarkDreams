@@ -103,9 +103,12 @@ public class LevelControl : MonoBehaviour
 		playerScript.hunterScript.isCaught = false;
 		playerScript.hunterScript.speed = 5.0f;
 		playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
-		//resumes chasing monster speed
-		playerScript.chasingMonsterScript.speedNormal = 2.0f;
-		playerScript.chasingMonsterScript.speedChasing = 4.0f;
+        //resumes chasing monster speed
+        if (playerScript.chasingMonsterScript != null)
+        {
+            playerScript.chasingMonsterScript.speedNormal = 2.0f;
+            playerScript.chasingMonsterScript.speedChasing = 4.0f;
+        }
         //play intro music
         audioHandler.PlayMusic(3);
     }
