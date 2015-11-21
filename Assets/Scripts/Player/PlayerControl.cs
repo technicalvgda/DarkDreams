@@ -114,7 +114,9 @@ public class PlayerControl : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         }
         */
-        //code for sprinting
+        //code for sprinting (for debugging)
+        //////////////////////////////////////////////
+        /*
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //it shift key is hit, players speed is 2 times the speed
@@ -124,7 +126,8 @@ public class PlayerControl : MonoBehaviour
         {
             sprint = false;
         }
-
+        */
+        /////////////////////////////////////////////
         // Code to spawn a HunterMonster targeting the player at a random location within
         // the same floor.
         if (!isHunterActive && standardLevel == true)//check if hunter is currently inactive and if this level should spawn a hunter
@@ -339,6 +342,7 @@ public class PlayerControl : MonoBehaviour
             Hunter hunterScript = hunter.GetComponent<Hunter>();
             for (int i = 0; i < 60; i++)    // 'i' controlls the duration of the hunter existance
             {
+                /*
                 //despawn hunter if it passes you
                  if ((hunterScript.facingRight && hunter.transform.position.x > gameObject.transform.position.x) ||(
                  !hunterScript.facingRight && hunter.transform.position.x < gameObject.transform.position.x))
@@ -347,6 +351,7 @@ public class PlayerControl : MonoBehaviour
                      yield return new WaitForSeconds(6);
                      break;
                  }
+                 */
                  
                 //check if player is on same floor
                 if (transform.position.y > bottomFloor && transform.position.y < topFloor)

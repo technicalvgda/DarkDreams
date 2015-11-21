@@ -14,7 +14,7 @@ public class Hunter : MonoBehaviour
     public float speed = 5.0f;
     public float counter = 0;
     public float activeSpeed = 8.0f;
-	public float shakeTrigger = 50.0f;
+	public float shakeTrigger = 25.0f;
    
     // the X positions of the path ends
     private float leftEndPath;
@@ -131,18 +131,27 @@ public class Hunter : MonoBehaviour
         // Visually see the line cast in scene mode, NOT GAME
         Debug.DrawLine(startCast, endCast, Color.magenta);
 
-        // Making the line cast
-        RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(startCast, endCast);
+        /////
+        RaycastHit2D[] EnemyVisionTrigger;
+        EnemyVisionTrigger = Physics2D.LinecastAll(startCast, endCast);
+
+        for (int i = 0; i < EnemyVisionTrigger.Length; i++)
+        {
+            RaycastHit2D hit = EnemyVisionTrigger[i];
+            if (hit.collider && hit.collider.tag == "Player" && !player.hide)
+            {
+                isCaught = true;
+                // spottedCue.SetActive(true);  // BUGGED NULL REFERENCE
+                // this code runs when player is seen
+
+
+            }
+        }
+            // Making the line cast
+           // RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(startCast, endCast);
 
         // check if the collider exists and if the collider is the player
-        if (EnemyVisionTrigger.collider && EnemyVisionTrigger.collider.tag == "Player" && !player.hide)
-        {
-            isCaught = true;
-            // spottedCue.SetActive(true);  // BUGGED NULL REFERENCE
-            // this code runs when player is seen
-
-           
-        }
+       
         if(isCaught == true)
         {
             //Tests which direction the monster is facing
@@ -181,7 +190,7 @@ public class Hunter : MonoBehaviour
 		//Debug.Log("Player Distance (Mag): " + playerDistance.magnitude);
 		//Debug.Log("Shake Trigger: " + shakeTrigger);
 		
-		if (playerDistance.magnitude <= shakeTrigger)
+		if (playerDistance.magnitude <= shakeTrigger && player.isAlive)
 		{
             //cause vibration on mobile
 #if UNITY_IPHONE || UNITY_ANDROID
