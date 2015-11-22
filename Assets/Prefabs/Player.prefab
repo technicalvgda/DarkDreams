@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5085472}
   - 114: {fileID: 11452020}
   - 61: {fileID: 6103136}
+  - 95: {fileID: 9535884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -60,6 +61,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: .233528137}
   serializedVersion: 2
   m_Size: {x: 2.30999994, y: 4.75294352}
+--- !u!95 &9535884
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 08015ba49d28c8b4594c118f12a05564, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11452020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,6 +101,8 @@ MonoBehaviour:
   normalSpeed: 10
   slowMoSpeed: 5
   sprintSpeed: 0
+  hunterScript: {fileID: 0}
+  chasingMonsterScript: {fileID: 0}
   fadingDarknessScript: {fileID: 0}
   hide: 0
   HunterMonster: {fileID: 130052, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}

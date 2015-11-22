@@ -5,6 +5,8 @@ using System.Collections;
 public class LevelControl : MonoBehaviour
 {
     AudioHandlerScript audioHandler;
+    //time to wait until starting level music
+    float waitTime = 12f;
     //public float MAX_TIME = 5.0f;
     public float timer = 5.0f;
    // float fadeTime = 3.0f;    //disabled for compiler error -joel
@@ -44,6 +46,8 @@ public class LevelControl : MonoBehaviour
         //play music clip #3 (intro music)
         audioHandler.LoopMusic(false);
         audioHandler.PlayMusic(3);
+        //start level music at certain time
+        StartCoroutine("levelMusic");
         
         
     }
@@ -51,6 +55,7 @@ public class LevelControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //Game Over Screen and its options
         if (player.GetComponent<PlayerControl>().isAlive == false)
         { //Activates game over screen when player is not alive
@@ -141,5 +146,14 @@ public class LevelControl : MonoBehaviour
         //c.a = 255.0f;
         //overlay_image.color = c;
 
+    }
+    public IEnumerator levelMusic()
+    {
+        ///wait for length of intro
+        yield return new WaitForSeconds(waitTime);
+        //play and loop level music
+        audioHandler.LoopMusic(true);
+        audioHandler.PlayMusic(5);
+        yield return null;
     }
 }
