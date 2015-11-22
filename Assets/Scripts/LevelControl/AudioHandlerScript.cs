@@ -11,7 +11,8 @@ public class AudioHandlerScript : MonoBehaviour {
     public AudioClip[] voiceClips;
 
     // Use this for initialization
-    void Start ()
+
+    void Awake ()
     {
         musicVolume = PlayerPrefs.GetFloat("Music");
         sfxVolume = PlayerPrefs.GetFloat("SFX");
