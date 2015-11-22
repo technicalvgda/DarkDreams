@@ -6,11 +6,13 @@ public class ChasingMonster : MonoBehaviour
 {
     // The monster patrols at speedNormal speed and shifts to speedChasing
     // when it spots the player
-    public float speedNormal = 2;
-    public float speedChasing = 4;
-   //I commented this out since it is no longer needed for the script
-   //but kept it for future reference if needed
-   // public int patrolDistance = 20;      
+    public float speedNormal;
+    public float speedNormalDefault = 2;
+    public float speedChasing;
+    public float speedChasingDefault = 4;
+    //I commented this out since it is no longer needed for the script
+    //but kept it for future reference if needed
+    // public int patrolDistance = 20;      
     float accumulatedDistance;         
   
    
@@ -53,6 +55,8 @@ public class ChasingMonster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        speedNormal = speedNormalDefault;
+        speedChasing = speedChasingDefault;
        //transform.GetComponent<Collider2D>().attachedRigidbody.AddForce(0, 0);
         //spottedCue.SetActive(false);
 
@@ -230,9 +234,10 @@ public class ChasingMonster : MonoBehaviour
         //If the player collides with the patrolling enemy and not hiding
         if (col.gameObject.tag == "Player" && player.hide == false)
         {
-            player.chasingMonsterScript = this;
+            //player.chasingMonsterScript = this;
             // Stop the monster; it will not be able to return to the normal speed.
             speedNormal = speedChasing = 0;
+            StartCoroutine("StartMovement");
 
             //If monster is facing left and the player is behind the monster OR monster is facing
             //right and player is behind the monster
@@ -253,6 +258,13 @@ public class ChasingMonster : MonoBehaviour
     {
 
         pause = false;
+    }
+    public IEnumerator StartMovement()
+    {
+        yield return new WaitForSeconds(2);
+        speedNormal = speedNormalDefault;
+        speedChasing = speedChasingDefault;
+        yield return null;
     }
 
 }

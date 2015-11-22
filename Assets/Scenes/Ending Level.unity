@@ -130,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11495902, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}
       propertyPath: speed
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8290982, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}
       propertyPath: BypassListenerEffects

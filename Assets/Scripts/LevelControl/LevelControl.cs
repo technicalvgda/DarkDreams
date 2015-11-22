@@ -95,10 +95,11 @@ public class LevelControl : MonoBehaviour
         overlay.SetActive(false);
 
         // Set player to alive and enable movement
-        player.GetComponent<PlayerControl>().isAlive = true;
-        player.GetComponent<PlayerControl>().enabled = true;
-        player.GetComponent<PlayerControl>().normalSpeed = player.GetComponent<PlayerControl>().defaultSpeed;
-        player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerControl>().initialColor;
+        playerScript.isAlive = true;
+        playerScript.enabled = true;
+        playerScript.normalSpeed = playerScript.defaultSpeed;
+        player.GetComponent<SpriteRenderer>().color = playerScript.initialColor;
+        playerScript.StopCoroutine("SpawnHunterMonster");
         // Resume time
         Time.timeScale = 1f;
         //resumes hunter speed and resets position
