@@ -89,7 +89,7 @@ public class LevelControl : MonoBehaviour
         gameOver = false;
         // Set player position to initial position in basement
         player.transform.position = initialPlayerPos;
-        player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerControl>().initialColor;
+       
         // Set GameOver and fadetoblack overlay to false
         gameOverPanel.SetActive(false);
         overlay.SetActive(false);
@@ -98,7 +98,7 @@ public class LevelControl : MonoBehaviour
         player.GetComponent<PlayerControl>().isAlive = true;
         player.GetComponent<PlayerControl>().enabled = true;
         player.GetComponent<PlayerControl>().normalSpeed = player.GetComponent<PlayerControl>().defaultSpeed;
-
+        player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerControl>().initialColor;
         // Resume time
         Time.timeScale = 1f;
         //resumes hunter speed and resets position

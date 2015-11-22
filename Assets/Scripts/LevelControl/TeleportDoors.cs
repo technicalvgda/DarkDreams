@@ -24,6 +24,8 @@ public class TeleportDoors : MonoBehaviour
     float clickOffsetX = 5;
     public Sprite up, down;
 
+    PlayerControl player;
+
 	//Check if the player goes through the door for nightmare tower generation
 	public bool used = false;
 
@@ -38,6 +40,7 @@ public class TeleportDoors : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.enabled = false;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
         //if this door leads up
         if (exit.position.y > transform.position.y)
         {
@@ -100,6 +103,7 @@ public class TeleportDoors : MonoBehaviour
 	{
         if (exit != null)
         {
+            player.hide = true;
 			if(col.transform.position == exit.transform.position) {
 				used = false;
 			}
@@ -107,6 +111,7 @@ public class TeleportDoors : MonoBehaviour
 				used = true;
 			}
 			col.transform.position = exit.transform.position; //line that teleports player
+            player.hide = false;
 
         }
         else
