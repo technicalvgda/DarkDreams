@@ -33,6 +33,8 @@ public class PlayerControl : MonoBehaviour
     public float slowMoSpeed;        //speed magnitude when slowMo is activaed
     public float sprintSpeed;
 
+    private bool touchingHidingSpot = false;
+
 	//Hunter Script
 	public Hunter hunterScript = null;
 
@@ -102,7 +104,10 @@ public class PlayerControl : MonoBehaviour
         {
             standardLevel = false;
         }
+        // What is 40? 
+        // Application.loadedLevel requires that the levels be set in the build in a particular order, this is dangerous.
         hunterInactiveDuration = 40 - 18 * (Application.loadedLevel - 1);
+        // What is 8? Should probably be a constant variable
         if (hunterInactiveDuration < 8)
             hunterInactiveDuration = 8;
     }
@@ -193,6 +198,27 @@ public class PlayerControl : MonoBehaviour
             playerSpeed = normalSpeed;
         }
 
+        if(Input.GetKeyDown(KeyCode.Space) && touchingHidingSpot)
+        {
+            if (!hide)
+            {
+                //sprite.sortingOrder = hidingOrder;
+                sprite.color = new Color(1f, 1f, 1f, 0f);
+                hide = true;
+            }
+            else
+            {
+                sprite.color = initialColor;
+                //sprite.sortingOrder = sortingOrder;
+                hide = false;
+
+                if (slowMo) //Disables slowmotion speed upon hiding
+                {
+                    slowMo = false;
+                }
+            }
+        }
+
     }
    
     void Move(float h)
@@ -243,8 +269,22 @@ public class PlayerControl : MonoBehaviour
         {
             transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
         }
+
+        if(col.gameObject.tag == "Cover")
+        {
+            touchingHidingSpot = true;
+        }
        
     }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Cover")
+        {
+            touchingHidingSpot = false;
+        }
+    }
+
     //allows actions when staying within collision area
     void OnTriggerStay2D(Collider2D col)
     {
@@ -254,30 +294,30 @@ public class PlayerControl : MonoBehaviour
 
 
         //Toggle Hide/Unhide
-        if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition)))) //if player activates hiding spot
-            //|| ((hide && ((Input.GetAxis("Horizontal") > 0.9)||(Input.GetAxis("Horizontal") < -0.9)))  //or if player is hidden and moves using the keyboard
-            //|| (hide && Input.GetMouseButton(0)&& (Input.mousePosition.x < edgeLeft.x || Input.mousePosition.x > edgeRight.x)))) //or if player is hidden and moves using the mouse
-        {
-            if (col.gameObject.tag == "Cover")
-            {
-                if (!hide)
-                {
-                    //sprite.sortingOrder = hidingOrder;
-                    sprite.color = new Color(1f, 1f, 1f, 0f);
-                    hide = true;
-                }
-                else if (hide)
-                {
-                    sprite.color = initialColor;
-                    //sprite.sortingOrder = sortingOrder;
-                    hide = false;
+        //if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition)))) //if player activates hiding spot
+        //    //|| ((hide && ((Input.GetAxis("Horizontal") > 0.9)||(Input.GetAxis("Horizontal") < -0.9)))  //or if player is hidden and moves using the keyboard
+        //    //|| (hide && Input.GetMouseButton(0)&& (Input.mousePosition.x < edgeLeft.x || Input.mousePosition.x > edgeRight.x)))) //or if player is hidden and moves using the mouse
+        //{
+        //    if (col.gameObject.tag == "Cover")
+        //    {
+        //        if (!hide)
+        //        {
+        //            //sprite.sortingOrder = hidingOrder;
+        //            sprite.color = new Color(1f, 1f, 1f, 0f);
+        //            hide = true;
+        //        }
+        //        else
+        //        {
+        //            sprite.color = initialColor;
+        //            //sprite.sortingOrder = sortingOrder;
+        //            hide = false;
 
-                    if (slowMo) //Disables slowmotion speed upon hiding
-                    {
-                        slowMo = false;
-                    }
-                }
-            }
+        //            if (slowMo) //Disables slowmotion speed upon hiding
+        //            {
+        //                slowMo = false;
+        //            }
+        //        }
+        //    }
             //if player is trying to hide, and the object is the trap enemy
             /*
             else if (col.gameObject.tag == "Enemy")
@@ -290,16 +330,16 @@ public class PlayerControl : MonoBehaviour
             }
             */
                
-          }     
+          //}     
         
-        //if player colliders with an enemy and is not hidden
-        if (col.gameObject.tag == "PatrolEnemy" && hide == false)
-        {
-            //player is dead
-            isAlive = false;
-            //prevent player from moving
-            normalSpeed = 0f;
-        }
+        ////if player colliders with an enemy and is not hidden
+        //if (col.gameObject.tag == "PatrolEnemy" && hide == false)
+        //{
+        //    //player is dead
+        //    isAlive = false;
+        //    //prevent player from moving
+        //    normalSpeed = 0f;
+        //}
        ///gameover for stationary enemies handled in their own code
     }
     void FlipPlayer()
