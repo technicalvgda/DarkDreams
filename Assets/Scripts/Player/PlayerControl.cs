@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour 
 {
-
+    Animator anim;
     ///reset position 
     public Vector3 retryPos;
 
@@ -95,6 +95,7 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Start() //what happens as soon as player is created
     {
+        anim = this.GetComponent<Animator>();
         initialColor = sprite.color;
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
 
@@ -233,6 +234,14 @@ public class PlayerControl : MonoBehaviour
 
             // apply movement to player
             transform.Translate(movement);
+            if (movement.x != 0)
+            {
+                anim.SetBool("Walking", true);
+            }
+            else
+            {
+                anim.SetBool("Walking", false);
+            }
             //this checks which direction the player is moving and flips the player based upon that
             if (movement.x > 0 && facingRight == false)
             {
