@@ -52,8 +52,13 @@ public class CameraFollowScript : MonoBehaviour
         {
             t += Time.deltaTime * (Time.timeScale / distance*50);
             transform.position = Vector3.Lerp(startingPos, endPos, t);
+            if(transform.position.x < endPos.x + 0.5 && transform.position.x > endPos.x - 0.5)
+            {
+                break;
+            }
             yield return 0;
         }
+        Debug.Log("Move yo ass!");
         playerScript.normalSpeed = playerScript.defaultSpeed;
         transition = false;
         follow = true;
