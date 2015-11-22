@@ -86,7 +86,7 @@ public class ItemPickup : MonoBehaviour {
             {
                 //Time.timeScale = 1;
                 pause.busy = false;
-                PlayerControl.AddPoints(itemAdd); //will add the amount in player script
+                playerScript.AddPoints(itemAdd); //will add the amount in player script
                 Destroy(gameObject); //destroys the object
             }
             else

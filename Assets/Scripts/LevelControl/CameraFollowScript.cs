@@ -58,7 +58,6 @@ public class CameraFollowScript : MonoBehaviour
             }
             yield return 0;
         }
-        Debug.Log("Move yo ass!");
         playerScript.normalSpeed = playerScript.defaultSpeed;
         transition = false;
         follow = true;

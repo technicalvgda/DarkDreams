@@ -28,6 +28,7 @@ public class Hunter : MonoBehaviour
 
 	// Original position
 	public Vector3 originalPosition;
+    public Quaternion originalRotation;
 
     //Variable to set distance of the monster's vision
     float lineCastDistance = 14f;
@@ -62,9 +63,9 @@ public class Hunter : MonoBehaviour
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
-		//Get Position
-		originalPosition = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z);
-
+        //Get Position
+        originalPosition = this.transform.position;
+        originalRotation = this.transform.rotation;
 
 		// Initialize player distance
 		playerDistance = new Vector2(0f, 0f); 

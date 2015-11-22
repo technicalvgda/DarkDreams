@@ -109,6 +109,7 @@ public class LevelControl : MonoBehaviour
 		playerScript.hunterScript.isCaught = false;
 		playerScript.hunterScript.speed = 5.0f;
 		playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
+        playerScript.hunterScript.transform.rotation = playerScript.hunterScript.originalRotation;
         //resumes chasing monster speed
         if (playerScript.chasingMonsterScript != null)
         {
@@ -116,7 +117,10 @@ public class LevelControl : MonoBehaviour
             playerScript.chasingMonsterScript.speedChasing = 4.0f;
         }
         //play intro music
+        audioHandler.LoopMusic(false);
         audioHandler.PlayMusic(3);
+        //play level music
+        StartCoroutine("levelMusic");
     }
 
     public void MainMenu()

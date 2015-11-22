@@ -45,7 +45,7 @@ public class PlayerControl : MonoBehaviour
 	public FadingDarkness fadingDarknessScript;
 
     //point variables
-    public static int itemCounter;//to count item pickups
+    public int itemCounter =0;//to count item pickups
 
     //hiding variables
     public bool hide = false;
@@ -359,7 +359,7 @@ public class PlayerControl : MonoBehaviour
         transform.localScale = theScale;
     }
     // adds points in  the Player Script
-    public static void AddPoints(int itemAdd)
+    public void AddPoints(int itemAdd)
     {
         itemCounter += itemAdd; //adds amount to current score
         Debug.Log("Score: " + itemCounter); //confirms the player has picked up the object (track amount). this is removeable.

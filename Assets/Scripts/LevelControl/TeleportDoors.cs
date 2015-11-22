@@ -16,6 +16,7 @@ using System.Collections;
 
 public class TeleportDoors : MonoBehaviour
 {
+    
 	public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
     Vector2 clickPosition;
     //reference to camera
@@ -23,7 +24,7 @@ public class TeleportDoors : MonoBehaviour
     float clickOffsetY = 5;
     float clickOffsetX = 5;
     public Sprite up, down;
-
+    public GameObject boardedDoor;
     PlayerControl player;
 
 	//Check if the player goes through the door for nightmare tower generation
@@ -38,6 +39,7 @@ public class TeleportDoors : MonoBehaviour
     }
     void Start()
     {
+
         anim = GetComponent<Animator>();
         anim.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
@@ -51,8 +53,14 @@ public class TeleportDoors : MonoBehaviour
         {
             transform.GetComponent<SpriteRenderer>().sprite = down;
         }
-       
-    }
+        if (exit.gameObject.name.Equals("AtticDoor"))
+        {
+            boardedDoor = GameObject.FindGameObjectWithTag("BoardedDoor");
+            boardedDoor.transform.position = this.transform.position;
+        }
+
+
+        }
     
     void OnTriggerStay2D(Collider2D col)
     {
@@ -80,8 +88,22 @@ public class TeleportDoors : MonoBehaviour
         {    
             if (exit != null)
             {
-                cameraScript.follow = false;
-                cameraScript.target = exit.transform;
+                if (exit.gameObject.name.Equals("AtticDoor"))
+                {
+                    //if player has collected all 5 items
+                    if (player.itemCounter == 5)
+                    {
+                        cameraScript.follow = false;
+                        cameraScript.target = exit.transform;
+                    }
+                }
+                else
+                {
+                    cameraScript.follow = false;
+                    cameraScript.target = exit.transform;
+                }
+                
+                
             }
             else
             {
@@ -101,19 +123,40 @@ public class TeleportDoors : MonoBehaviour
 
     void TeleportToExit2D ( Collider2D col )
 	{
+
         if (exit != null)
         {
-            player.hide = true;
-			if(col.transform.position == exit.transform.position) {
-				used = false;
-			}
-			else {
-				used = true;
-			}
-			col.transform.position = exit.transform.position; //line that teleports player
-            player.hide = false;
-
-        }
+            if (exit.gameObject.name.Equals("AtticDoor"))
+            {
+                //if player has collected all 5 items
+                if (player.itemCounter == 5)
+                {
+                    player.hide = true;
+                    if (col.transform.position == exit.transform.position)
+                    {
+                        used = false;
+                    }
+                    else
+                    {
+                        used = true;
+                    }
+                    col.transform.position = exit.transform.position; //line that teleports player
+                    player.hide = false;
+                }
+            }         
+            else
+            {
+                player.hide = true;
+			    if(col.transform.position == exit.transform.position) {
+				    used = false;
+			    }
+			    else {
+				    used = true;
+			    }
+			    col.transform.position = exit.transform.position; //line that teleports player
+                player.hide = false;
+                }
+            }
         else
         {
             Debug.Log("no exit assigned");
