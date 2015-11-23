@@ -58,6 +58,7 @@ public class PlayerControl : MonoBehaviour
 
     // hunter variables
     public GameObject HunterMonster;
+	private GameObject hunter;
     private bool isHunterActive = false;
     float hunterYOffset = 10f;
 
@@ -387,8 +388,17 @@ public class PlayerControl : MonoBehaviour
             {
                 xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
             }
-            GameObject hunter = (GameObject)Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y + hunterYOffset), Quaternion.identity);
-            Hunter hunterScript = hunter.GetComponent<Hunter>();
+			if (hunter == null) {
+           		hunter = (GameObject)Instantiate(HunterMonster, new Vector2(
+					xHunterPos, transform.position.y + hunterYOffset),
+				    Quaternion.identity);
+			}
+			else {
+				hunter.transform.position = new Vector3(xHunterPos, transform.position.y + hunterYOffset, 0);
+				hunter.SetActive(true);
+			}
+
+           // Hunter hunterScript = hunter.GetComponent<Hunter>();
             for (int i = 0; i < 60; i++)    // 'i' controlls the duration of the hunter existance
             {
                 /*
@@ -414,8 +424,9 @@ public class PlayerControl : MonoBehaviour
             }
 
             // goodbye hunter
-            if (hunter != null)
-                Destroy(hunter, 1f);
+            if (hunter != null) {
+				hunter.SetActive(false);
+			}
         }
 
         isHunterActive = false;
