@@ -55,6 +55,9 @@ public class PlayerControl : MonoBehaviour
     //teleport walls
     GameObject wallR;
     GameObject wallL;
+    //new gameObject initialized in ontrigerStay. used to set new player position
+    //to center of object after coming out of hiding. 
+    GameObject cover;
 
     // hunter variables
     public GameObject HunterMonster;
@@ -205,14 +208,17 @@ public class PlayerControl : MonoBehaviour
             {
                 //sprite.sortingOrder = hidingOrder;
                 sprite.color = new Color(1f, 1f, 1f, 0f);
+                transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
                 hide = true;
             }
             else
             {
                 sprite.color = initialColor;
                 //sprite.sortingOrder = sortingOrder;
+                //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
                 hide = false;
-
+                //snaps player to center of hiding object, after hiding. 
+                
                 if (slowMo) //Disables slowmotion speed upon hiding
                 {
                     slowMo = false;
@@ -280,7 +286,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         if(col.gameObject.tag == "Cover")
-        {
+        {   
+            //sets the cover gameobject be set to col and used to set the new position 
+            cover = col.gameObject;
             touchingHidingSpot = true;
         }
        
