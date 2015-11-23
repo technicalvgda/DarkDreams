@@ -208,7 +208,7 @@ public class PlayerControl : MonoBehaviour
             {
                 //sprite.sortingOrder = hidingOrder;
                 sprite.color = new Color(1f, 1f, 1f, 0f);
-                transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
+                
                 hide = true;
             }
             else
@@ -218,7 +218,7 @@ public class PlayerControl : MonoBehaviour
                 //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
                 hide = false;
                 //snaps player to center of hiding object, after hiding. 
-                
+                transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
                 if (slowMo) //Disables slowmotion speed upon hiding
                 {
                     slowMo = false;
