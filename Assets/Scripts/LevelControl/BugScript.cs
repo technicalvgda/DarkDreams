@@ -5,6 +5,7 @@ using System.Collections;
 //There MUST be instances of the bug for the hallucination room to take affect
 //20+ instances of the bugs make for better hallucination effects 
 //However too many will decrease performance of the game
+//The Camera bug MUST be attached to the camera for it to move with and stay inside the camera screen
 public class BugScript : MonoBehaviour 
 {
 	//The array of bugs
@@ -49,28 +50,36 @@ public class BugScript : MonoBehaviour
 		//Set change direction and timer so that the bug spawns in a random rotation
 		changeDirectionTime = Random.Range (timeMin,timeMax);
 		timer = changeDirectionTime - 0.01f;
+		//Search through the bugArray to find the Camera Bug
+		for (int i = 0; i < bugArray.Length; i++) 
+		{
+			if (bugArray [i].name.Contains ("Camera")) 
+			{
+				CamBug = bugArray [i];
+			}
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{
-		//Loop through the bug array
-		for (int i = 0; i < bugArray.Length; i++) 
-		{
-			//If the bug is a camera bug
-			if (bugArray [i].name.Contains ("Camera")) 
-			{
-				CamBug = bugArray [i];
-				//and if the camera bug is moving
-				if (CamBug.GetComponent<BugScript> ().isMoving) 
-				{					
-					//Ignore the collision of the bug and the camera bug
-					Physics2D.IgnoreCollision (bugPos.GetComponent<Collider2D> (), 
-					                           CamBug.transform.GetComponent<Collider2D>(),
-					                           true);
-				}
-			}
-		}
+	{				
+		//for (int i = 0; i < bugArray.Length; i++) 
+		//{
+		//	if (bugArray [i].name.Contains ("Camera")) 
+		//	{
+		//		CamBug = bugArray [i];
+		//		if(CamBug.GetComponent<BugScript>().isMoving)
+		//		{
+		//			Physics2D.IgnoreCollision (bugPos.GetComponent<Collider2D> (), 
+		//			                           CamBug.transform.GetComponent<Collider2D>(),
+		//			                           true);
+		//		}
+		//	}
+		//}
+		//Ignore the collision of the bug and the camera bug
+		Physics2D.IgnoreCollision (bugPos.GetComponent<Collider2D> (), 
+			                       CamBug.transform.GetComponent<Collider2D>(),
+			                       true);		
 		//Ignore the collision of the bug and the player
 		Physics2D.IgnoreCollision (bugPos.GetComponent<Collider2D> (), 
 		                           playerPos.GetComponent<Collider2D> (), true);
@@ -97,7 +106,7 @@ public class BugScript : MonoBehaviour
 			rotationVector.x = 0f;
 			rotationVector.y = 0f;
 			//rotate the bug
-			bugPos.Rotate(rotationVector);
+			bugPos.Rotate(rotationVector*5);
 			//reset the timer
 			timer -= changeDirectionTime;
 		}

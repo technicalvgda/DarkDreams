@@ -55,9 +55,13 @@ public class PlayerControl : MonoBehaviour
     //teleport walls
     GameObject wallR;
     GameObject wallL;
+    //new gameObject initialized in ontrigerStay. used to set new player position
+    //to center of object after coming out of hiding. 
+    GameObject cover;
 
     // hunter variables
     public GameObject HunterMonster;
+	private GameObject hunter;
     private bool isHunterActive = false;
     float hunterYOffset = 10f;
 
@@ -198,21 +202,24 @@ public class PlayerControl : MonoBehaviour
         {
             playerSpeed = normalSpeed;
         }
-
+        //activate hiding
         if(Input.GetKeyDown(KeyCode.Space) && touchingHidingSpot)
         {
             if (!hide)
             {
                 //sprite.sortingOrder = hidingOrder;
                 sprite.color = new Color(1f, 1f, 1f, 0f);
+                
                 hide = true;
             }
             else
             {
                 sprite.color = initialColor;
                 //sprite.sortingOrder = sortingOrder;
+                //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
                 hide = false;
-
+                //snaps player to center of hiding object, after hiding. 
+                transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
                 if (slowMo) //Disables slowmotion speed upon hiding
                 {
                     slowMo = false;
@@ -280,7 +287,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         if(col.gameObject.tag == "Cover")
-        {
+        {   
+            //sets the cover gameobject be set to col and used to set the new position 
+            cover = col.gameObject;
             touchingHidingSpot = true;
         }
        
@@ -300,7 +309,29 @@ public class PlayerControl : MonoBehaviour
         // OverlapPoint refers to world space instead of screen space, adjusting accordingly
         clickPosition.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         clickPosition.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        if (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition)&& touchingHidingSpot) //if player activates hiding spot
+        {
+            if (!hide)
+            {
+                //sprite.sortingOrder = hidingOrder;
+                sprite.color = new Color(1f, 1f, 1f, 0f);
 
+                hide = true;
+            }
+            else
+            {
+                sprite.color = initialColor;
+                //sprite.sortingOrder = sortingOrder;
+                //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
+                hide = false;
+                //snaps player to center of hiding object, after hiding. 
+                transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
+                if (slowMo) //Disables slowmotion speed upon hiding
+                {
+                    slowMo = false;
+                }
+            }
+        }
 
         //Toggle Hide/Unhide
         //if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition)))) //if player activates hiding spot
@@ -321,12 +352,12 @@ public class PlayerControl : MonoBehaviour
         //            //sprite.sortingOrder = sortingOrder;
         //            hide = false;
 
-        //            if (slowMo) //Disables slowmotion speed upon hiding
-        //            {
-        //                slowMo = false;
-        //            }
-        //        }
-        //    }
+            //            if (slowMo) //Disables slowmotion speed upon hiding
+            //            {
+            //                slowMo = false;
+            //            }
+            //        }
+            //    }
             //if player is trying to hide, and the object is the trap enemy
             /*
             else if (col.gameObject.tag == "Enemy")
@@ -338,18 +369,18 @@ public class PlayerControl : MonoBehaviour
                 normalSpeed = 0f;
             }
             */
-               
-          //}     
-        
-        ////if player colliders with an enemy and is not hidden
-        //if (col.gameObject.tag == "PatrolEnemy" && hide == false)
-        //{
-        //    //player is dead
-        //    isAlive = false;
-        //    //prevent player from moving
-        //    normalSpeed = 0f;
-        //}
-       ///gameover for stationary enemies handled in their own code
+
+            //}     
+
+            ////if player colliders with an enemy and is not hidden
+            //if (col.gameObject.tag == "PatrolEnemy" && hide == false)
+            //{
+            //    //player is dead
+            //    isAlive = false;
+            //    //prevent player from moving
+            //    normalSpeed = 0f;
+            //}
+            ///gameover for stationary enemies handled in their own code
     }
     void FlipPlayer()
     {
@@ -387,8 +418,17 @@ public class PlayerControl : MonoBehaviour
             {
                 xHunterPos = Random.Range(wallL.transform.position.x, wallR.transform.position.x);
             }
-            GameObject hunter = (GameObject)Instantiate(HunterMonster, new Vector2(xHunterPos, transform.position.y + hunterYOffset), Quaternion.identity);
-            Hunter hunterScript = hunter.GetComponent<Hunter>();
+			if (hunter == null) {
+           		hunter = (GameObject)Instantiate(HunterMonster, new Vector2(
+					xHunterPos, transform.position.y + hunterYOffset),
+				    Quaternion.identity);
+			}
+			else {
+				hunter.transform.position = new Vector3(xHunterPos, transform.position.y + hunterYOffset, 0);
+				hunter.SetActive(true);
+			}
+
+           // Hunter hunterScript = hunter.GetComponent<Hunter>();
             for (int i = 0; i < 60; i++)    // 'i' controlls the duration of the hunter existance
             {
                 /*
@@ -414,8 +454,9 @@ public class PlayerControl : MonoBehaviour
             }
 
             // goodbye hunter
-            if (hunter != null)
-                Destroy(hunter, 1f);
+            if (hunter != null) {
+				hunter.SetActive(false);
+			}
         }
 
         isHunterActive = false;
