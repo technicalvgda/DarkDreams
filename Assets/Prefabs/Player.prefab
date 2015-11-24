@@ -104,6 +104,7 @@ MonoBehaviour:
   hunterScript: {fileID: 0}
   chasingMonsterScript: {fileID: 0}
   fadingDarknessScript: {fileID: 0}
+  itemCounter: 0
   hide: 0
   HunterMonster: {fileID: 130052, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}
 --- !u!212 &21281236
