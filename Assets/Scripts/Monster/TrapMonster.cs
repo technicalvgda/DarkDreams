@@ -9,7 +9,8 @@ public class TrapMonster : MonoBehaviour
     Vector2 clickPosition;
     float clickOffsetY = 5;
     float clickOffsetX = 2;
-    float time = 10.0f;
+    float defaultTime = 10.0f;
+    float time;
     float incrementTime = 0.3f;
     GameObject cover;
     // Use this for initialization
@@ -18,7 +19,8 @@ public class TrapMonster : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
         clickPosition = new Vector2(0f, 0f);
         trapAnim = this.GetComponent<Animator>();
-        Time.timeScale = 1f;
+        time = defaultTime;
+        //Time.timeScale = 1f;
     }
 
 
@@ -54,7 +56,7 @@ public class TrapMonster : MonoBehaviour
                 if (time < 0)
                 {
                     //play trap enemy animation
-                    trapAnim.SetTrigger("Kill");
+                    //trapAnim.SetTrigger("Kill");
                 }
             }
 
@@ -71,7 +73,7 @@ public class TrapMonster : MonoBehaviour
     }
     public void KillPlayer()
     {
-
+        time = defaultTime;
         //player dies
         player.isAlive = false;
         //prevents movement
