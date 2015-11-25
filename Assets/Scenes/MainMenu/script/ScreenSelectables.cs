@@ -2,70 +2,65 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScreenSelectables : MonoBehaviour
+public class ScreenSelectables : CustomScreen
 {
     public Selectable[] selectables;
-    Coroutine routine;
     WaitForSeconds wait = new WaitForSeconds(.1f);
 
-    void SetRoutine(IEnumerator arg)
-    {
-        if (routine != null) StopCoroutine(routine);
-        routine = StartCoroutine(arg);
-    }
-
-    void SetButtonsActive(bool arg)
+    void SetAllActive(bool arg)
     {
         for (int i = 0; i < selectables.Length; i++)
             selectables[i].gameObject.SetActive(arg);
     }
 
     // This is also called whenever a screen needs to unfocus
-    public void SetButtonsInteractable(bool arg)
+    public override void SetAllInteractable(bool arg)
     {
         for (int i = 0; i < selectables.Length; i++)
             selectables[i].interactable = arg;
     }
 
-    public void Activate()
+    public override void Activate()
     {
         this.gameObject.SetActive(true);
-        SetButtonsActive(false);
-        SetButtonsInteractable(false);
-        SetRoutine(_FadeIn());
+        SetAllActive(false);
+        SetAllInteractable(false);
+
+        StartCoroutine(_EnterFlash());
     }
 
-    public void Deactivate()
+    public override void Deactivate()
     {
-        SetButtonsActive(true);
-        SetButtonsInteractable(false);
-        SetRoutine(_FadeOut());
+        SetAllActive(true);
+        SetAllInteractable(false);
+
+        StartCoroutine(_ExitFlash());
     }
 
-    IEnumerator _FadeIn()
+    IEnumerator _EnterFlash()
     {
         // Flash the UI elements
         for (int i = 0; i < 5; i++)
         {
-            SetButtonsActive(!selectables[0].gameObject.activeSelf);
+            SetAllActive(!selectables[0].gameObject.activeSelf);
             yield return null;
             yield return null;
         }
-        SetButtonsActive(true);
+        SetAllActive(true);
 
         yield return wait;
-        SetButtonsInteractable(true);
+        SetAllInteractable(true);
     }
 
-    IEnumerator _FadeOut()
+    IEnumerator _ExitFlash()
     {
         for (int i = 0; i < 5; i++)
         {
-            SetButtonsActive(!selectables[0].gameObject.activeSelf);
+            SetAllActive(!selectables[0].gameObject.activeSelf);
             yield return null;
             yield return null;
         }
-        SetButtonsActive(false);
+        SetAllActive(false);
 
         this.gameObject.SetActive(false);
     }

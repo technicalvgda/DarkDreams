@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: .211999997, g: .226999998, b: .259000003, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
   m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
   m_AmbientIntensity: 1
@@ -580,7 +580,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1711017390}
-        m_MethodName: TransitionFromLogo
+        m_MethodName: TransitionToMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -861,12 +861,23 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1090364366}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 70
+  m_Value: 7
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 723904674}
+        m_MethodName: UpdateVoice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &225930526
@@ -1402,8 +1413,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 424776188}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: .5, y: 0}
+  m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 56, y: 70}
   m_Pivot: {x: .5, y: .5}
@@ -1878,14 +1889,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 723904673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7119ba333f1bec4c9f7ecb345d44f7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1784f61b334a8774681b96dc4359d182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectables:
-  - {fileID: 1369400142}
-  - {fileID: 1369028626}
-  - {fileID: 193485389}
-  - {fileID: 82665590}
+  audioHandler: {fileID: 1845467629}
+  slrMusic: {fileID: 1369400142}
+  slrSfx: {fileID: 1369028626}
+  slrVoice: {fileID: 193485389}
+  btnBack: {fileID: 82665590}
 --- !u!114 &723904675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,6 +2101,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: 1}
   m_Children:
+  - {fileID: 1548171484}
   - {fileID: 1332367030}
   - {fileID: 1362994889}
   m_Father: {fileID: 0}
@@ -2107,12 +2119,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 828086673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7119ba333f1bec4c9f7ecb345d44f7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fa6e3f21799d1a4f883cd662da0aacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectables:
-  - {fileID: 1332367031}
-  - {fileID: 1362994886}
+  slrBright: {fileID: 1332367031}
+  btnBack: {fileID: 1362994886}
 --- !u!114 &828086676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2675,7 +2686,7 @@ RectTransform:
   - {fileID: 1774433837}
   - {fileID: 424776188}
   m_Father: {fileID: 828086674}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -139, y: -261}
@@ -2720,13 +2731,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 539560806}
   m_Direction: 0
-  m_MinValue: 1
-  m_MaxValue: 5
+  m_MinValue: -3
+  m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 828086675}
+        m_MethodName: UpdateBrightness
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1362994885
@@ -2843,7 +2865,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 828086674}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 467, y: -253}
@@ -2925,12 +2947,23 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1256554787}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 70
+  m_Value: 7
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 723904674}
+        m_MethodName: UpdateSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1369400140
@@ -3009,12 +3042,23 @@ MonoBehaviour:
   m_HandleRect: {fileID: 677428291}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 70
+  m_Value: 7
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 723904674}
+        m_MethodName: UpdateMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1428981501
@@ -3300,6 +3344,60 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &1548171483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1548171484}
+  - 212: {fileID: 1548171485}
+  m_Layer: 5
+  m_Name: Preview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1548171484
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1548171483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -.100000001}
+  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_Children: []
+  m_Father: {fileID: 828086674}
+  m_RootOrder: 0
+--- !u!212 &1548171485
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1548171483}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 21300000, guid: 09bca562642141d409fb7edbf047c219, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1562263533
 GameObject:
   m_ObjectHideFlags: 0
@@ -4024,6 +4122,12 @@ RectTransform:
   m_AnchoredPosition: {x: -1.70000005, y: 0}
   m_SizeDelta: {x: -77.1999969, y: 0}
   m_Pivot: {x: .5, y: .5}
+--- !u!114 &1845467629 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11440884, guid: dd2ddaae2f1306442a88d697beccfaff,
+    type: 2}
+  m_PrefabInternal: {fileID: 765116395}
+  m_Script: {fileID: 11500000, guid: f46251c519e96954391e0e7e004c8ca8, type: 3}
 --- !u!1 &1887841807
 GameObject:
   m_ObjectHideFlags: 0
