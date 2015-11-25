@@ -84,7 +84,7 @@ public class ItemText : MonoBehaviour
             player.normalSpeed = 0f;
             audioHandler.PlayVoice(dialogueToPlay);
         }
-        else if ((Input.GetKeyDown(KeyCode.Space)))
+        else if ((Input.GetKeyDown(KeyCode.Space)) && textActive == true)
         {
             itemTextPanel.SetActive(false);
             textActive = false;

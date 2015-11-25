@@ -6,6 +6,7 @@ public class ParticleGlow : MonoBehaviour {
     ParticleSystem particle;
     GameObject player;
     Transform playerPos;
+    int playerOffset = 15;
 
     void Awake()
     {
@@ -25,8 +26,8 @@ public class ParticleGlow : MonoBehaviour {
     void Update()
     {
         // If this object is not on the same elevation as the player, do nothing
-        if (this.transform.position.y < playerPos.position.y - 10 ||
-            this.transform.position.y > playerPos.position.y + 10)
+        if (this.transform.position.y < playerPos.position.y - playerOffset ||
+            this.transform.position.y > playerPos.position.y + playerOffset)
         {
            // particle.Stop();
             //particle.Clear();

@@ -40,7 +40,7 @@ public class LevelComplete : MonoBehaviour
 
     public GameObject wall;
     float wallMargin;
-    const float wallOffset = 40;
+    const float wallOffset = 42;
     // Use this for initialization
     void Awake()
     {
@@ -115,7 +115,7 @@ public class LevelComplete : MonoBehaviour
         // Pan camera to left until it hits the wall
         while (cam.transform.position.x > wallMargin)
         {
-            cam.transform.position += new Vector3(-0.1f, 0, 0);
+            cam.transform.position += new Vector3(-0.3f, 0, 0);
             yield return null;
         }
 
@@ -151,7 +151,7 @@ public class LevelComplete : MonoBehaviour
 		while ((cam.transform.position.x+horzExtent) < 
 		       (atticRoom.transform.position.x + atticRoom.GetComponent<Renderer> ().bounds.extents.x))
 		{
-            cam.transform.position += new Vector3(0.2f, 0, 0);
+            cam.transform.position += new Vector3(0.4f, 0, 0);
             yield return null;
         }
 		//Set the correct R,G,B values for the glow but alpha to 0
