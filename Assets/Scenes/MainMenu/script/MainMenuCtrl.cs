@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Manages the screens, contains functions to be called on button clicks.
 public class MainMenuCtrl : MonoBehaviour
 {
-    // Manages the screens, contains functions to be used on button clicks.
-
     public ScreenLogo scrnLogo;
-    public ScreenSelectables scrnMain;
-    public ScreenSelectables scrnSettings;
-    public ScreenSelectables scrnBrightness;
-    public ScreenSelectables scrnAudio;
+    public CustomScreen scrnMain;
+    public CustomScreen scrnSettings;
+    public CustomScreen scrnBrightness;
+    public CustomScreen scrnAudio;
     public ScreenDialog quitDialog;
 
-    ScreenSelectables scrnLast;
-    Coroutine routine;
+    CustomScreen scrnLast;
     WaitForSeconds waitTransition = new WaitForSeconds(.3f);
 
     //audio control
@@ -21,41 +19,34 @@ public class MainMenuCtrl : MonoBehaviour
 
     void Start ()
     {
+        // Unfreezes time in case somebody forgets to do it (thanks pause screen)
+        Time.timeScale = 1f;
+
         // Makes sure the sprites appear correct
         const int scrnHeight = 720;
         const int ppu = 100;
         FindObjectOfType<Camera>().orthographicSize = (scrnHeight / 2.0f) / ppu;
+
         //find audio handler
         audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
-
-        // Unfreeze time in case somebody forgets to do it (thanks pause screen)
-        Time.timeScale = 1f;
-
-        scrnLogo.Activate();
         //play title music
         audioHandler.LoopMusic(true);
         //music 0 is Lullaby Waltz (title music)
         audioHandler.PlayMusic(0);
+
+        scrnLogo.Activate();
+        scrnLast = scrnLogo;
     }
 
     // Not used for now
+    Coroutine routine;
     void SetRoutine(IEnumerator arg)
     {
         if (routine != null) StopCoroutine(routine);
         routine = StartCoroutine(arg);
     }
 
-    // redundant
-    IEnumerator _TransitionFromLogo()
-    {
-        scrnLogo.Deactivate();
-        // Requires manual syncing, not as flexible as while(lastscreen=active)yield;
-        yield return waitTransition;
-        scrnMain.Activate();
-        scrnLast = scrnMain;
-    }
-    
-    IEnumerator _TransitionTo(ScreenSelectables arg)
+    IEnumerator _TransitionTo(CustomScreen arg)
     {
         scrnLast.Deactivate();
         yield return waitTransition;
@@ -67,10 +58,10 @@ public class MainMenuCtrl : MonoBehaviour
     // This HAS to be called after the dialog activation, or the while loop ends immediately.
     IEnumerator _DialogStandby()
     {
-        scrnLast.SetButtonsInteractable(false);
+        scrnLast.SetAllInteractable(false);
         while (quitDialog.gameObject.activeSelf)
             yield return null;
-        scrnLast.SetButtonsInteractable(true);
+        scrnLast.SetAllInteractable(true);
     }
 
     IEnumerator _FadeIn()
@@ -88,7 +79,6 @@ public class MainMenuCtrl : MonoBehaviour
     }
 
     // These allow the coroutines to be called in the buttons' UnityEvent
-    public void TransitionFromLogo() { StartCoroutine(_TransitionFromLogo()); }
     public void TransitionToMain() { StartCoroutine(_TransitionTo(scrnMain)); }
     public void TransitionToSettings() { StartCoroutine(_TransitionTo(scrnSettings)); }
     public void TransitionToBrightness() { StartCoroutine(_TransitionTo(scrnBrightness)); }

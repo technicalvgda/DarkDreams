@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
-public class ScreenLogo : MonoBehaviour
+public class ScreenLogo : CustomScreen
 {
     SpriteRenderer sr;
     Button btn;
@@ -14,8 +15,9 @@ public class ScreenLogo : MonoBehaviour
         btn = this.transform.Find("Click").GetComponent<Button>();
 	}
 
-    public void Activate() { StartCoroutine(_FadeIn()); }
-    public void Deactivate() { StartCoroutine(_FadeOut()); }
+    public override void Activate() { StartCoroutine(_FadeIn()); }
+    public override void Deactivate() { StartCoroutine(_FadeOut()); }
+    public override void SetAllInteractable(bool arg) { }
 
     IEnumerator _FadeIn()
     {
