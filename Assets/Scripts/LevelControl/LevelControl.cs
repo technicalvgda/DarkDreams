@@ -105,6 +105,7 @@ public class LevelControl : MonoBehaviour
         //resumes hunter speed and resets position
         openCutscene.EndCutscene();
         openCutscene.hunterEnemy.SetActive(true);
+        StartCoroutine("DespawnBasementHunter");
         playerScript.hunterScript = openCutscene.hunterEnemy.GetComponent<Hunter>();
 		playerScript.hunterScript.isCaught = false;
 		playerScript.hunterScript.speed = 5.0f;
@@ -129,6 +130,12 @@ public class LevelControl : MonoBehaviour
         //load first level in hierarchy
         Application.LoadLevel(0);
 
+    }
+    public IEnumerator DespawnBasementHunter()
+    {
+        yield return new WaitForSeconds(15f);
+        openCutscene.hunterEnemy.SetActive(false);
+        yield return null;
     }
     public IEnumerator fadeToBlack()
     {
