@@ -55,6 +55,9 @@ TagManager:
   - name: RoomDivider
     uniqueID: 2688088535
     locked: 0
+  - name: Background Objects
+    uniqueID: 762566937
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

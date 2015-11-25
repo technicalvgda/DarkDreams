@@ -40,7 +40,7 @@ public class LevelComplete : MonoBehaviour
 
     public GameObject wall;
     float wallMargin;
-    const float wallOffset = 42;
+    const float wallOffset = 41;
     // Use this for initialization
     void Awake()
     {
