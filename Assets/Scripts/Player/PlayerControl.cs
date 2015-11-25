@@ -203,7 +203,7 @@ public class PlayerControl : MonoBehaviour
             playerSpeed = normalSpeed;
         }
         //activate hiding
-        if(Input.GetKeyDown(KeyCode.Space) && touchingHidingSpot)
+        if(Input.GetKeyDown(KeyCode.Space)&& touchingHidingSpot)
         {
             if (!hide)
             {
@@ -228,7 +228,32 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
-   
+   void OnMouseDown()
+    {
+        if (touchingHidingSpot)
+        {
+            if (!hide)
+            {
+                //sprite.sortingOrder = hidingOrder;
+                sprite.color = new Color(1f, 1f, 1f, 0f);
+
+                hide = true;
+            }
+            else
+            {
+                sprite.color = initialColor;
+                //sprite.sortingOrder = sortingOrder;
+                //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
+                hide = false;
+                //snaps player to center of hiding object, after hiding. 
+                transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
+                if (slowMo) //Disables slowmotion speed upon hiding
+                {
+                    slowMo = false;
+                }
+            }
+        }
+    }
     void Move(float h)
     {
         //prevent player from moving when hidden
@@ -309,7 +334,7 @@ public class PlayerControl : MonoBehaviour
         // OverlapPoint refers to world space instead of screen space, adjusting accordingly
         clickPosition.x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
         clickPosition.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        if (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition)&& touchingHidingSpot) //if player activates hiding spot
+       /* if (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition)&& touchingHidingSpot) //if player activates hiding spot
         {
             if (!hide)
             {
@@ -332,7 +357,7 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
-
+        */
         //Toggle Hide/Unhide
         //if ((Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0) && col.OverlapPoint(clickPosition)))) //if player activates hiding spot
         //    //|| ((hide && ((Input.GetAxis("Horizontal") > 0.9)||(Input.GetAxis("Horizontal") < -0.9)))  //or if player is hidden and moves using the keyboard
