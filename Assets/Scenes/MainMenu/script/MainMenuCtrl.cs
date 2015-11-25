@@ -16,18 +16,27 @@ public class MainMenuCtrl : MonoBehaviour
     Coroutine routine;
     WaitForSeconds waitTransition = new WaitForSeconds(.3f);
 
+    //audio control
+    AudioHandlerScript audioHandler;
+
     void Start ()
     {
         // Makes sure the sprites appear correct
         const int scrnHeight = 720;
         const int ppu = 100;
         FindObjectOfType<Camera>().orthographicSize = (scrnHeight / 2.0f) / ppu;
+        //find audio handler
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
 
         // Unfreeze time in case somebody forgets to do it (thanks pause screen)
         Time.timeScale = 1f;
 
         scrnLogo.Activate();
-	}
+        //play title music
+        audioHandler.LoopMusic(true);
+        //music 0 is Lullaby Waltz (title music)
+        audioHandler.PlayMusic(0);
+    }
 
     // Not used for now
     void SetRoutine(IEnumerator arg)

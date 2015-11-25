@@ -195,7 +195,7 @@ public class Hunter : MonoBehaviour
 		{
             //cause vibration on mobile
 #if UNITY_IPHONE || UNITY_ANDROID
-            if (PlayerPrefs.GetFloat("Vibrate") == 1)
+            if (PlayerPrefs.GetFloat("Vibrate") == 1 && (playerDistance.magnitude <= shakeTrigger/2))
             {
                 Handheld.Vibrate();
             }          
