@@ -49,6 +49,8 @@ public class PlayerControl : MonoBehaviour
 
     //hiding variables
     public bool hide = false;
+    bool mouseOverCover = false;
+    CoverAnimation coverScript;
     int hidingOrder = 0;//sorting layer when hidden
     int sortingOrder = 2;//sorting layer normally
 
@@ -203,7 +205,11 @@ public class PlayerControl : MonoBehaviour
             playerSpeed = normalSpeed;
         }
         //activate hiding
-        if(Input.GetKeyDown(KeyCode.Space)&& touchingHidingSpot)
+        if(coverScript!= null)
+        {
+            mouseOverCover = coverScript.mouseOver;
+        }
+        if((Input.GetKeyDown(KeyCode.Space)|| (Input.GetMouseButtonDown(0) && mouseOverCover == true))&& touchingHidingSpot)
         {
             if (!hide)
             {
@@ -228,6 +234,7 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
+    
    void OnMouseDown()
     {
         if (touchingHidingSpot)
@@ -255,6 +262,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
+    
     void Move(float h)
     {
         //prevent player from moving when hidden
@@ -316,6 +324,7 @@ public class PlayerControl : MonoBehaviour
         {   
             //sets the cover gameobject be set to col and used to set the new position 
             cover = col.gameObject;
+            coverScript = cover.GetComponent<CoverAnimation>();
             touchingHidingSpot = true;
         }
        
@@ -325,6 +334,7 @@ public class PlayerControl : MonoBehaviour
     {
         if(col.gameObject.tag == "Cover")
         {
+            coverScript = null;
             touchingHidingSpot = false;
         }
     }

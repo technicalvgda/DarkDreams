@@ -5,18 +5,23 @@ public class CoverAnimation : MonoBehaviour {
 
     Animator anim;
     PlayerControl player;
+    public bool mouseOver = false;
 	// Use this for initialization
 	void Start ()
     {
         anim = this.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
+    //detect player clicks
+    void OnMouseEnter()
     {
-	
-	}
+        mouseOver = true;
+    }
+    void OnMouseExit()
+    {
+        mouseOver = false;
+    }
+    //
     void OnTriggerStay2D(Collider2D col)
     {
         if (col.tag == "Player")
