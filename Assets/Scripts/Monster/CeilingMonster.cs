@@ -13,7 +13,8 @@ public class CeilingMonster : MonoBehaviour
     bool isActive = true;           // check if its active or dazed
     bool isFalling = false;         // check if its falling
     bool isClimbing = false;        // check if its rising
-    
+    public bool rotate = false;
+    bool rotationSwitch = false;
 
     public float stunTime = 10f;    // stun time
     public float fallSpeed = 5f;    // fall speed
@@ -60,6 +61,7 @@ public class CeilingMonster : MonoBehaviour
 
     void Update()
     {
+        
         Vector2 currentPos = gameObject.transform.position;
         // Vision of Ceiling Monster
         RaycastHit2D centerTrigger = Physics2D.Linecast(endCast, startCast);
@@ -75,6 +77,23 @@ public class CeilingMonster : MonoBehaviour
         // If the player is on our floor, run the script. 
         if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 25)
         {
+            ///rotation code
+            if (rotate == true)
+            {
+                //Debug.Log(transform.localEulerAngles.z);
+                if (rotationSwitch)
+                {
+                    transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 50, 60));
+                }
+                else
+                {
+                    transform.localEulerAngles = new Vector3(0, 0, -Mathf.PingPong(Time.time * 50, 60));
+                }
+                if(transform.localEulerAngles.z < 5 || transform.localEulerAngles.z > 355)
+                {
+                    rotationSwitch = !rotationSwitch;
+                }
+            }
             if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
             {
                
