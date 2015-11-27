@@ -111,7 +111,7 @@ public class PlayerControl : MonoBehaviour
         }
         // What is 40? 
         // Application.loadedLevel requires that the levels be set in the build in a particular order, this is dangerous.
-        hunterInactiveDuration = 40 - 18 * (Application.loadedLevel - 1);
+        hunterInactiveDuration = 40 - 18 * (Application.loadedLevel - 2);
         // What is 8? Should probably be a constant variable
         if (hunterInactiveDuration < 8)
             hunterInactiveDuration = 8;
