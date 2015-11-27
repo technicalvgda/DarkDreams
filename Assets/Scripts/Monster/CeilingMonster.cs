@@ -15,6 +15,7 @@ public class CeilingMonster : MonoBehaviour
     bool isClimbing = false;        // check if its rising
     public bool rotate = false;
     bool rotationSwitch = false;
+    double rotationTimer;
 
     public float stunTime = 10f;    // stun time
     public float fallSpeed = 5f;    // fall speed
@@ -83,16 +84,22 @@ public class CeilingMonster : MonoBehaviour
                 //Debug.Log(transform.localEulerAngles.z);
                 if (rotationSwitch)
                 {
-                    transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 50, 60));
+                    transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 20, 40));
+                    //endCast.x = -Mathf.PingPong(Time.time*transform.position.x , transform.position.x-1);
                 }
                 else
                 {
-                    transform.localEulerAngles = new Vector3(0, 0, -Mathf.PingPong(Time.time * 50, 60));
+                    transform.localEulerAngles = new Vector3(0, 0, -Mathf.PingPong(Time.time * 20, 40));
+                    //endCast.x = -Mathf.PingPong(transform.position.x, transform.position.x - 5);
                 }
-                if(transform.localEulerAngles.z < 5 || transform.localEulerAngles.z > 355)
+                rotationTimer += Time.deltaTime;
+                if(rotationTimer > 4)
                 {
+                    rotationTimer = 0;
                     rotationSwitch = !rotationSwitch;
                 }
+                //reset linecasts
+
             }
             if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
             {
