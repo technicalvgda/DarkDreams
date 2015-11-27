@@ -91,7 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedNormal: 2
+  speedNormalDefault: 2
   speedChasing: 4
+  speedChasingDefault: 4
   periodicPause: 0
   moveDuration: 0
   pauseDuration: 0

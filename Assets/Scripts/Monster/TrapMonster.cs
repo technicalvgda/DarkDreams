@@ -25,18 +25,27 @@ public class TrapMonster : MonoBehaviour
     }
     void Update()
     {
+        /*
         if(!playerInContact)
         {
             killTimer = defaultTime;
+            
         }
+        */
         if(playerInContact && player.hide)
         {
             //count down
             killTimer = (killTimer - Time.deltaTime);
         }
+        else
+        {
+            killTimer = defaultTime;
+            trapAnim.SetBool("Kill", false);
+            StopCoroutine("KillPlayer");
+        }
         if(killTimer < 0)
         {
-            KillPlayer();
+           StartCoroutine("KillPlayer");
         }
     }
     void OnTriggerEnter2D(Collider2D col)
@@ -55,63 +64,19 @@ public class TrapMonster : MonoBehaviour
         }
     }
 
-    /*
-    void OnTriggerStay2D(Collider2D col)
+    IEnumerator KillPlayer()
     {
-        //used to make an offset that creates an area to click on, which can be increased/decreased by changing the constant.
-        float xNegPosition = transform.position.x - clickOffsetX;
-        float xPosPosition = transform.position.x + clickOffsetX;
-        float yPosPosition = transform.position.y + clickOffsetY;
-        float yNegPosition = transform.position.y - clickOffsetY;
-
-        ///get position of click
-        clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-        ///click can is on door
-        if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) ||
-           ((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
-            (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition) &&
-            Input.GetMouseButtonDown(0))))
-        {
-            player.hide = true;
-            if (player.hide == true)
-            {
-                while (time > 0 )
-                {
-                    time -= Time.deltaTime;
-                    Debug.Log(time);
-                    if (((Input.GetKeyDown(KeyCode.Space))))
-                    {
-                        player.hide = false;
-                    }
-                }
-                if (time < 0)
-                {
-                    //play trap enemy animation
-                    //trapAnim.SetTrigger("Kill");
-                }
-            }
-
-            //play trap enemy animation
-            //trapAnim.SetTrigger("Kill");
-            //time = 0;
-        }
-
-    }
-    
-    public void HidePlayer()
-    {
-        //make player invisible
-        player.HidePlayer();
-    }
-    */
-    public void KillPlayer()
-    {
+       
+        trapAnim.SetBool("Kill", true);
+        yield return new WaitForSeconds(3);
         killTimer = defaultTime;
         //player dies
+        //player.hide = false;
         player.isAlive = false;
         //prevents movement
         player.normalSpeed = 0f;
+        trapAnim.SetBool("Hidden", false);
+        yield return null;
 
     }
    

@@ -97,6 +97,7 @@ public class LevelControl : MonoBehaviour
         // Set player to alive and enable movement
         playerScript.isAlive = true;
         playerScript.enabled = true;
+        playerScript.hide = false;
         playerScript.normalSpeed = playerScript.defaultSpeed;
         player.GetComponent<SpriteRenderer>().color = playerScript.initialColor;
         playerScript.StopCoroutine("SpawnHunterMonster");

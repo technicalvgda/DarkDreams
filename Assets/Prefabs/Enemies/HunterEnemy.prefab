@@ -330,11 +330,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a01904cab36dc4a858d3046beab43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 1
+  isCaught: 0
   movement: 0
   speed: 5
   counter: 0
   activeSpeed: 8
   shakeTrigger: 50
+  originalPosition: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
   fogLeft: {fileID: 176598}
   fogRight: {fileID: 139974}
 --- !u!198 &19837960
