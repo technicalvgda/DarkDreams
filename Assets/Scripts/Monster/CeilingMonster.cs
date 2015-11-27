@@ -7,6 +7,7 @@ public class CeilingMonster : MonoBehaviour
     Transform myTransform;          // ceiling monster
     GameObject playerObj;           // the player
     PlayerControl player;           // the player
+    public GameObject endCastObj, leftCastObj, rightCastObj;
     //GameObject spottedCue;          // indicator when spotted
     Transform playerPos;
 
@@ -55,9 +56,9 @@ public class CeilingMonster : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.DrawLine(startCast, endCast, Color.green);        // center trigger
-        Debug.DrawLine(startCast, leftCast, Color.yellow);      // left trigger
-        Debug.DrawLine(startCast, rightCast, Color.yellow);     // right trigger
+        Debug.DrawLine(startCast, endCastObj.transform.position, Color.green);        // center trigger
+        Debug.DrawLine(startCast, leftCastObj.transform.position, Color.yellow);      // left trigger
+        Debug.DrawLine(startCast, rightCastObj.transform.position, Color.yellow);     // right trigger
     }
 
     void Update()
@@ -65,9 +66,9 @@ public class CeilingMonster : MonoBehaviour
         
         Vector2 currentPos = gameObject.transform.position;
         // Vision of Ceiling Monster
-        RaycastHit2D centerTrigger = Physics2D.Linecast(endCast, startCast);
-        RaycastHit2D leftTrigger = Physics2D.Linecast(leftCast, startCast);
-        RaycastHit2D rightTrigger = Physics2D.Linecast(rightCast, startCast);
+        RaycastHit2D centerTrigger = Physics2D.Linecast(endCastObj.transform.position, startCast);
+        RaycastHit2D leftTrigger = Physics2D.Linecast(leftCastObj.transform.position, startCast);
+        RaycastHit2D rightTrigger = Physics2D.Linecast(rightCastObj.transform.position, startCast);
 
         // Trigger for Dropping the Ceiling Monster
        
@@ -84,13 +85,13 @@ public class CeilingMonster : MonoBehaviour
                 //Debug.Log(transform.localEulerAngles.z);
                 if (rotationSwitch)
                 {
-                    transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 20, 40));
-                    //endCast.x = -Mathf.PingPong(Time.time*transform.position.x , transform.position.x-1);
+                    transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 10, 20));
+                    
                 }
                 else
                 {
-                    transform.localEulerAngles = new Vector3(0, 0, -Mathf.PingPong(Time.time * 20, 40));
-                    //endCast.x = -Mathf.PingPong(transform.position.x, transform.position.x - 5);
+                    transform.localEulerAngles = new Vector3(0, 0, -Mathf.PingPong(Time.time * 10, 20));
+                   
                 }
                 rotationTimer += Time.deltaTime;
                 if(rotationTimer > 4)
@@ -98,7 +99,7 @@ public class CeilingMonster : MonoBehaviour
                     rotationTimer = 0;
                     rotationSwitch = !rotationSwitch;
                 }
-                //reset linecasts
+               
 
             }
             if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
@@ -161,6 +162,8 @@ public class CeilingMonster : MonoBehaviour
         }
         else
         {
+            //reset position
+            transform.position = startCast;
             //do nothing
         }
     }
@@ -171,6 +174,8 @@ public class CeilingMonster : MonoBehaviour
         //if player colliders with an enemy and is active
         if (isActive && col.gameObject.tag == "Player")
         {
+            
+            //kill player
             player.isAlive = false;
             //print("Game Over");
         }
