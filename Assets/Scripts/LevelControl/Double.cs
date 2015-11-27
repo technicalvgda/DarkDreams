@@ -9,7 +9,7 @@ public class Double : MonoBehaviour {
 
     void Start()
     {
-        doubleRoom = GameObject.Find("HallucinationRoomMirror");
+        doubleRoom = GameObject.Find("HallucinationRoomMirror(Clone)");
         roomScript = doubleRoom.GetComponent<Hallucination>();
        
     }
