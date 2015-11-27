@@ -62,7 +62,9 @@ public class StationaryMonster : MonoBehaviour
                 //kill player (variable is in player script)
                 anim.SetTrigger("Kill");
                 player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-                player.isAlive = false;
+                player.normalSpeed = 0;
+                canSee = false;
+                enemyActive = false;
 
             }
             // Draws the line so that you can see it in the scene and adjust the two points
@@ -106,8 +108,9 @@ public class StationaryMonster : MonoBehaviour
                     //play awake sound
                     sfx.Play();
                     // Debug.Log("Monster Timer is on!");
-                    enemyActive = true;
+                    //enemyActive = true;
                 }
+                /*
                 else
                 {
                     //changes enemy to docile animation
@@ -115,9 +118,23 @@ public class StationaryMonster : MonoBehaviour
                     //Else it will remain off
                     enemyActive = false;
                 }
+                */
 
             }
         }
     }
-  
+    public void Activate()
+    {
+        enemyActive = true;
+    }
+    public void Deactivate()
+    {
+        anim.SetBool("Alert", false);
+        enemyActive = false;
+    }
+    public void KillPlayer()
+    {
+        player.isAlive = false;
+    }
+
 }

@@ -41,6 +41,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 11426506, guid: 72bb42a0141910747a271b7919000e29, type: 2}
+  leftSpawnpoint: {fileID: 0}
+  rightSpawnpoint: {fileID: 0}
   spawnIntervalMin: 4
   spawnIntervalMax: 5
   facingRight: 1
