@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TrapCurtainOpen
+  m_Name: TrapCurtainEnter
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -18,12 +18,18 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 8504d8661ea8eb14ea9ed7d0cb4914db, type: 3}
+      value: {fileID: 21300000, guid: 02decc8df56c47f47aff377effab713a, type: 3}
+    - time: .100000001
+      value: {fileID: 21300000, guid: 69f25fb9f636dfa4bae6054589f9c6d2, type: 3}
+    - time: .200000003
+      value: {fileID: 21300000, guid: 1d647b60e0c616d4796a1d973fd79e96, type: 3}
+    - time: .300000012
+      value: {fileID: 21300000, guid: b2940fdab6bcae74f9a6222473185a9a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -37,11 +43,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 8504d8661ea8eb14ea9ed7d0cb4914db, type: 3}
+    - {fileID: 21300000, guid: 02decc8df56c47f47aff377effab713a, type: 3}
+    - {fileID: 21300000, guid: 69f25fb9f636dfa4bae6054589f9c6d2, type: 3}
+    - {fileID: 21300000, guid: 1d647b60e0c616d4796a1d973fd79e96, type: 3}
+    - {fileID: 21300000, guid: b2940fdab6bcae74f9a6222473185a9a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .0166666675
+    m_StopTime: .400000006
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
