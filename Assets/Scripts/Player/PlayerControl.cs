@@ -236,8 +236,8 @@ public class PlayerControl : MonoBehaviour
             {
                 //sprite.sortingOrder = hidingOrder;
                 sprite.color = new Color(1f, 1f, 1f, 0f);
-
                 hide = true;
+                //cover.GetComponent<Animator>().SetBool("Hidden", true);
             }
             else
             {
@@ -245,6 +245,7 @@ public class PlayerControl : MonoBehaviour
                 //sprite.sortingOrder = sortingOrder;
                 //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
                 hide = false;
+                //cover.GetComponent<Animator>().SetBool("Hidden", false);
                 //snaps player to center of hiding object, after hiding. 
                 transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
                 if (slowMo) //Disables slowmotion speed upon hiding

@@ -62,7 +62,7 @@ GameObject:
   - 4: {fileID: 435884}
   - 212: {fileID: 21254694}
   m_Layer: 0
-  m_Name: Generic Text Canvis
+  m_Name: Generic Text Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

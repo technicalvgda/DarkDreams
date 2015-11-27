@@ -10,20 +10,52 @@ public class TrapMonster : MonoBehaviour
     float clickOffsetY = 5;
     float clickOffsetX = 2;
     float defaultTime = 10.0f;
-    float time;
+    float killTimer;
     float incrementTime = 0.3f;
     GameObject cover;
+    bool playerInContact;
     // Use this for initialization
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
         clickPosition = new Vector2(0f, 0f);
         trapAnim = this.GetComponent<Animator>();
-        time = defaultTime;
+        killTimer = defaultTime;
         //Time.timeScale = 1f;
     }
+    void Update()
+    {
+        if(!playerInContact)
+        {
+            killTimer = defaultTime;
+        }
+        if(playerInContact && player.hide)
+        {
+            //count down
+            killTimer = (killTimer - Time.deltaTime);
+        }
+        if(killTimer < 0)
+        {
+            KillPlayer();
+        }
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //if player is hiding in this trap
+        if (col.tag == "Player")
+        {
+            playerInContact = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.tag == "Player")
+        {
+            playerInContact = false;
+        }
+    }
 
-
+    /*
     void OnTriggerStay2D(Collider2D col)
     {
         //used to make an offset that creates an area to click on, which can be increased/decreased by changing the constant.
@@ -62,22 +94,25 @@ public class TrapMonster : MonoBehaviour
 
             //play trap enemy animation
             //trapAnim.SetTrigger("Kill");
-            time = 0;
+            //time = 0;
         }
 
     }
+    
     public void HidePlayer()
     {
         //make player invisible
         player.HidePlayer();
     }
+    */
     public void KillPlayer()
     {
-        time = defaultTime;
+        killTimer = defaultTime;
         //player dies
         player.isAlive = false;
         //prevents movement
         player.normalSpeed = 0f;
-        
+
     }
+   
 }
