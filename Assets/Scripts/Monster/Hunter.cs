@@ -231,14 +231,20 @@ public class Hunter : MonoBehaviour
 			player.hunterScript = this;
             //Monster stops moving
             speed = 0;
+
+            ////removed fip code, possibly needs an offset
+
             //If monster is facing left and the player is behind the monster OR monster is facing
             //right and player is behind the monster
+
+            /*
             if ((!facingRight && (gameObject.transform.position.x < player.transform.position.x))
                  || (facingRight && (gameObject.transform.position.x > player.transform.position.x)))
             {
                 //Flip the monster to face the player
                 FlipEnemy();
             }
+            */
         }
     }
    
