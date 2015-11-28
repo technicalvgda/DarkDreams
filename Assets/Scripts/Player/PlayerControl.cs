@@ -105,6 +105,9 @@ public class PlayerControl : MonoBehaviour
         initialColor = sprite.color;
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
 
+        //increase boxcollider size for cover, 
+        GameObject.Find("Cover").GetComponent<BoxCollider2D>().size = new Vector3(.5f, .2f, 0);
+
         // Formula to calculate the hunter duration
         Debug.Log("Stage Level: " + Application.loadedLevel);
         if(Application.loadedLevelName == "Ending Level" || Application.loadedLevelName == "Tutorial Stage")

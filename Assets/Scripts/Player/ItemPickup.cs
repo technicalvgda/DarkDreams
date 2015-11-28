@@ -59,6 +59,8 @@ public class ItemPickup : MonoBehaviour {
         itemTextPanel.SetActive(false);
         clickPosition = new Vector2(0f, 0f);
         //cameraScript = Camera.main.GetComponent<CameraFollowScript>();
+        //gets attached object collider and widens range 
+        GetComponent<BoxCollider2D>().size = new Vector3(.5f, .2f, 0);
     }
     void Update()
     {
