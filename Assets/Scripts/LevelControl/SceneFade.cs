@@ -29,7 +29,7 @@ public class SceneFade : MonoBehaviour
     void Start()
     {
         Debug.Log("Start()");
-        blackTexture.rectTransform.localScale = new Vector2(Screen.width, Screen.height);
+        //blackTexture.rectTransform.localScale = new Vector2(Screen.width, Screen.height);
         StartCoroutine(Timer());
     }
 
