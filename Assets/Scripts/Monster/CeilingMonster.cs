@@ -82,25 +82,8 @@ public class CeilingMonster : MonoBehaviour
             ///rotation code
             if (rotate == true)
             {
-                //Debug.Log(transform.localEulerAngles.z);
-                if (rotationSwitch)
-                {
-                    transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 10, 20));
-                    
-                }
-                else
-                {
-                    transform.localEulerAngles = new Vector3(0, 0, -Mathf.PingPong(Time.time * 10, 20));
-                   
-                }
-                rotationTimer += Time.deltaTime;
-                if(rotationTimer > 4)
-                {
-                    rotationTimer = 0;
-                    rotationSwitch = !rotationSwitch;
-                }
-               
-
+                //distance pingpongs between -20 and 20 (0-40 minus 20)
+                transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 10, 40)-20);
             }
             if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
             {
