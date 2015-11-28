@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ScreenDialog : MonoBehaviour
 {
+    // The beam's sprites had pivots that are not at the center. Be careful when modifying them!
     public Transform beamHead, beamTail;
     public Button btnYes, btnNo;
 

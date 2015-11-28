@@ -70,7 +70,8 @@ public class PauseScript : MonoBehaviour {
     }
     public void Quit()
     {
-        //load first level in hierarchy
+        // Resumes time and loads first scene in hierarchy
+        Time.timeScale = 1f;
         Application.LoadLevel(0);
     }
 

@@ -12,7 +12,6 @@ public class FxDust : MonoBehaviour
     {
         t = this.transform;
         sr = this.GetComponent<SpriteRenderer>();
-
         yStarting = t.position.y;
 
         StartCoroutine(_VFX());

@@ -1,23 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 // Manages the screens, contains functions to be called on button clicks.
 public class MainMenuCtrl : MonoBehaviour
 {
-    public ScreenLogo scrnLogo;
-    public CustomScreen scrnMain;
-    public CustomScreen scrnSettings;
-    public CustomScreen scrnBrightness;
-    public CustomScreen scrnAudio;
-    public ScreenDialog quitDialog;
+    [Header("Graphics")]
+    public SpriteRenderer fade;
 
-    CustomScreen scrnLast;
+    [Header("Screens")]
+    public MenuScreen scrnLogo;
+    public MenuScreen scrnMain, scrnSettings, scrnBrightness, scrnAudio;
+    public ScreenDialog quitDialog;
+    MenuScreen scrnLast;
+
     WaitForSeconds waitTransition = new WaitForSeconds(.3f);
 
-    //audio control
-    AudioHandlerScript audioHandler;
-
-    void Start ()
+    void Start()
     {
         // Unfreezes time in case somebody forgets to do it (thanks pause screen)
         Time.timeScale = 1f;
@@ -27,15 +26,12 @@ public class MainMenuCtrl : MonoBehaviour
         const int ppu = 100;
         FindObjectOfType<Camera>().orthographicSize = (scrnHeight / 2.0f) / ppu;
 
-        //find audio handler
-        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
-        //play title music
-        audioHandler.LoopMusic(true);
-        //music 0 is Lullaby Waltz (title music)
-        audioHandler.PlayMusic(0);
+        // The settings management code are in their respective screens.
+        // These screens start out inactive; their initialization needs to be called here.
+        scrnBrightness.InitSettings();
+        scrnAudio.InitSettings();
 
-        scrnLogo.Activate();
-        scrnLast = scrnLogo;
+        StartCoroutine(_FadeIn());
     }
 
     // Not used for now
@@ -46,7 +42,34 @@ public class MainMenuCtrl : MonoBehaviour
         routine = StartCoroutine(arg);
     }
 
-    IEnumerator _TransitionTo(CustomScreen arg)
+    IEnumerator _FadeIn()
+    {
+        yield return new WaitForSeconds(.5f);
+        while (fade.color.a > 0)
+        {
+            fade.color += new Color(0, 0, 0, -.1f);
+            yield return null;
+        }
+        fade.color = Color.clear;
+
+        yield return new WaitForSeconds(2.5f);
+
+        scrnLogo.Activate();
+        scrnLast = scrnLogo;
+    }
+
+    IEnumerator _FadeToGame()
+    {
+        while (fade.color.a < 1)
+        {
+            fade.color += new Color(0, 0, 0, .1f);
+            yield return null;
+        }
+        fade.color = Color.black;
+        Application.LoadLevel(2);
+    }
+
+    IEnumerator _TransitionTo(MenuScreen arg)
     {
         scrnLast.Deactivate();
         yield return waitTransition;
@@ -64,20 +87,6 @@ public class MainMenuCtrl : MonoBehaviour
         scrnLast.SetAllInteractable(true);
     }
 
-    IEnumerator _FadeIn()
-    {
-        //put things here
-        yield return new WaitForSeconds(1);
-    }
-
-    IEnumerator _FadeToGame()
-    {
-        // put things here
-        //yield return new WaitForSeconds(1);
-        yield return null;
-        Application.LoadLevel(1);
-    }
-
     // These allow the coroutines to be called in the buttons' UnityEvent
     public void TransitionToMain() { StartCoroutine(_TransitionTo(scrnMain)); }
     public void TransitionToSettings() { StartCoroutine(_TransitionTo(scrnSettings)); }
@@ -88,5 +97,6 @@ public class MainMenuCtrl : MonoBehaviour
     public void Quit() { Application.Quit(); }
 
     // Note:
-    // Clicked "Back" buttons should really tell the control to go back instead of actually bringing up a specific screen
+    // Clicked "Back" buttons should really tell the control to go back on some kind
+    // of screen stack instead of actually bringing up a specific screen
 }
