@@ -2,32 +2,35 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScreenBrightness : CustomScreen
+public class ScreenBrightness : MenuScreen
 {
-    //public Transform preview; // already affected by the light
+    //public Transform preview;
     public Slider slrBright;
     public Button btnBack;
-    float gamma;
+
     WaitForSeconds wait = new WaitForSeconds(.1f);
 
-    void Start()
+    public override void InitSettings()
     {
-        gamma = 1 + slrBright.value * .2f;
-        SaveSettings();
-        gamma = PlayerPrefs.GetFloat("Brightness");
-        RenderSettings.ambientLight = new Color(gamma, gamma, gamma, 1);
-    }
+        if (!PlayerPrefs.HasKey("Brightness"))
+            PlayerPrefs.SetFloat("Brightness", slrBright.value);
 
-    public void UpdateBrightness()
-    {
-        gamma = 1 + slrBright.value * .2f;
+        // Set slider to either its own value (in the editor) or the existing value in PlayerPrefs
+        slrBright.value = PlayerPrefs.GetFloat("Brightness");
+
+        float gamma = 1 + slrBright.value * .2f;
         RenderSettings.ambientLight = new Color(gamma, gamma, gamma, 1);
     }
 
     void SaveSettings()
     {
-        if (!PlayerPrefs.HasKey("Brightness"))
-            PlayerPrefs.SetFloat("Brightness", gamma);
+        PlayerPrefs.SetFloat("Brightness", slrBright.value);
+    }
+
+    public void UpdateBrightness()
+    {
+        float gamma = 1 + slrBright.value * .2f;
+        RenderSettings.ambientLight = new Color(gamma, gamma, gamma, 1);
     }
 
     public override void Activate()

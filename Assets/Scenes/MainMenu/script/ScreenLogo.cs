@@ -3,50 +3,51 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
-public class ScreenLogo : CustomScreen
+public class ScreenLogo : MenuScreen
 {
-    SpriteRenderer sr;
-    Button btn;
+    public Button start;
+    Image img;
 
-	// Use this for initialization
-	void Start ()
+    public override void Activate()
     {
-        sr = this.transform.Find("Logo").GetComponent<SpriteRenderer>();
-        btn = this.transform.Find("Click").GetComponent<Button>();
-	}
+        this.gameObject.SetActive(true);
 
-    public override void Activate() { StartCoroutine(_FadeIn()); }
-    public override void Deactivate() { StartCoroutine(_FadeOut()); }
-    public override void SetAllInteractable(bool arg) { }
+        // Can be put in Awake() too
+        start.interactable = false;
+        img = start.GetComponent<Image>();
+        img.color = new Color(0, 0, 0, 0);
+
+        StartCoroutine(_FadeIn());
+    }
+
+    public override void Deactivate()
+    {
+        start.interactable = false;
+        StartCoroutine(_FadeOut());
+    }
 
     IEnumerator _FadeIn()
     {
-        sr.color = new Color(1, 1, 1, 0);
-        btn.interactable = false;
-        yield return new WaitForSeconds(.5f);
-
-        while (sr.color.a < 1)
+        while (img.color.a < 1)
         {
-            sr.color += new Color(0, 0, 0, .02f);
+            img.color += new Color(.03f, .03f, .03f, .03f);
             yield return null;
         }
-        sr.color = new Color(1, 1, 1, 1);
+        img.color = new Color(1, 1, 1, 1);
 
         yield return new WaitForSeconds(.2f);
-        btn.interactable = true;
+        start.interactable = true;
     }
 
     IEnumerator _FadeOut()
     {
-        sr.color = new Color(1, 1, 1, 1);
-        btn.interactable = false;
-
-        while (sr.color.a > 0)
+        img.color = new Color(1, 1, 1, 1);
+        while (img.color.a > 0)
         {
-            sr.color -= new Color(0, 0, 0, .08f);
+            img.color -= new Color(0, 0, 0, .08f);
             yield return null;
         }
-        sr.color = new Color(1, 1, 1, 0);
+        img.color = new Color(1, 1, 1, 0);
 
         this.gameObject.SetActive(false);
     }

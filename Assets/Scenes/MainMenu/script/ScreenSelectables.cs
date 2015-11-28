@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScreenSelectables : CustomScreen
+public class ScreenSelectables : MenuScreen
 {
+    // Buttons, sliders etc. are selectables
     public Selectable[] selectables;
     WaitForSeconds wait = new WaitForSeconds(.1f);
 

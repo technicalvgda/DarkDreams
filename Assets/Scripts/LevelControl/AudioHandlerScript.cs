@@ -12,37 +12,41 @@ public class AudioHandlerScript : MonoBehaviour {
 
     // Use this for initialization
 
-    void Awake ()
+    void Awake()
     {
-        //Initialize variables for playerprefs (if they dont exist)
-        if (!PlayerPrefs.HasKey("Brightness"))
-        {
-            PlayerPrefs.SetFloat("Brightness", 0);
-        }
-        if (!PlayerPrefs.HasKey("Music"))
-        {
-            PlayerPrefs.SetFloat("Music", 1);
-        }
-        if (!PlayerPrefs.HasKey("SFX"))
-        {
-            PlayerPrefs.SetFloat("SFX", 1);
-        }
-        if (!PlayerPrefs.HasKey("Voice"))
-        {
-            PlayerPrefs.SetFloat("Voice", 1);
-        }
-        if (!PlayerPrefs.HasKey("Vibrate"))
-        {
-            PlayerPrefs.SetFloat("Vibrate", 1);
-        }
-        musicVolume = PlayerPrefs.GetFloat("Music");
-        sfxVolume = PlayerPrefs.GetFloat("SFX");
-        voiceVolume = PlayerPrefs.GetFloat("Voice");
-        music.volume = musicVolume;
-        sfx.volume = sfxVolume;
-        voice.volume = voiceVolume;
+        //play title music
+        this.LoopMusic(true);
+        //music 0 is Lullaby Waltz (title music)
+        this.PlayMusic(0);
+
+        ////Initialize variables for playerprefs (if they dont exist)
+        //if (!PlayerPrefs.HasKey("Brightness"))
+        //{
+        //    PlayerPrefs.SetFloat("Brightness", 0);
+        //}
+        //if (!PlayerPrefs.HasKey("Music"))
+        //{
+        //    PlayerPrefs.SetFloat("Music", 1);
+        //}
+        //if (!PlayerPrefs.HasKey("SFX"))
+        //{
+        //    PlayerPrefs.SetFloat("SFX", 1);
+        //}
+        //if (!PlayerPrefs.HasKey("Voice"))
+        //{
+        //    PlayerPrefs.SetFloat("Voice", 1);
+        //}
+        //if (!PlayerPrefs.HasKey("Vibrate"))
+        //{
+        //    PlayerPrefs.SetFloat("Vibrate", 1);
+        //}
+        //musicVolume = PlayerPrefs.GetFloat("Music");
+        //sfxVolume = PlayerPrefs.GetFloat("SFX");
+        //voiceVolume = PlayerPrefs.GetFloat("Voice");
+        //music.volume = musicVolume;
+        //sfx.volume = sfxVolume;
+        //voice.volume = voiceVolume;
     }
-	
 
     public void PlayMusic(int i)
     {

@@ -2,55 +2,43 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScreenAudio : CustomScreen
+public class ScreenAudio : MenuScreen
 {
     public AudioHandlerScript audioHandler;
     public Slider slrMusic, slrSfx, slrVoice;
     public Button btnBack;
-    float music, sfx, voice;
 
     WaitForSeconds wait = new WaitForSeconds(.1f);
 
-    void Start()
+    public override void InitSettings()
     {
-        music = slrMusic.value * .1f;
-        sfx = slrSfx.value * .1f;
-        voice = slrVoice.value * .1f;
+        if (!PlayerPrefs.HasKey("Music"))
+            PlayerPrefs.SetFloat("Music", slrMusic.value);
+        if (!PlayerPrefs.HasKey("SFX"))
+            PlayerPrefs.SetFloat("SFX", slrSfx.value);
+        if (!PlayerPrefs.HasKey("Voice"))
+            PlayerPrefs.SetFloat("Voice", slrVoice.value);
 
-        SaveSettings();
+        // Set sliders to either their own values (in the editor) or the existing values in PlayerPrefs
+        slrMusic.value = PlayerPrefs.GetFloat("Music");
+        slrSfx.value = PlayerPrefs.GetFloat("SFX");
+        slrVoice.value = PlayerPrefs.GetFloat("Voice");
 
-        music = PlayerPrefs.GetFloat("Music");
-        sfx = PlayerPrefs.GetFloat("SFX");
-        voice = PlayerPrefs.GetFloat("Voice");
-    }
-
-    public void UpdateMusic()
-    {
-        music = slrMusic.value * .1f;
-        audioHandler.music.volume = music;
-    }
-
-    public void UpdateSfx()
-    {
-        sfx = slrSfx.value * .1f;
-        audioHandler.sfx.volume = sfx;
-    }
-
-    public void UpdateVoice()
-    {
-        voice = slrVoice.value * .1f;
-        audioHandler.voice.volume = voice;
+        audioHandler.music.volume = slrMusic.value * .1f;
+        audioHandler.sfx.volume = slrSfx.value * .1f;
+        audioHandler.voice.volume = slrVoice.value * .1f;
     }
 
     void SaveSettings()
     {
-        if (!PlayerPrefs.HasKey("Music"))
-            PlayerPrefs.SetFloat("Music", music);
-        if (!PlayerPrefs.HasKey("SFX"))
-            PlayerPrefs.SetFloat("SFX", sfx);
-        if (!PlayerPrefs.HasKey("Voice"))
-            PlayerPrefs.SetFloat("Voice", voice);
+        PlayerPrefs.SetFloat("Music", slrMusic.value);
+        PlayerPrefs.SetFloat("SFX", slrSfx.value);
+        PlayerPrefs.SetFloat("Voice", slrVoice.value);
     }
+
+    public void UpdateMusic() { audioHandler.music.volume = slrMusic.value * .1f; }
+    public void UpdateSfx() { audioHandler.sfx.volume = slrSfx.value * .1f; }
+    public void UpdateVoice() { audioHandler.voice.volume = slrVoice.value * .1f; }
 
     public override void Activate()
     {
