@@ -15,6 +15,7 @@ TagManager:
   - Item
   - ParticleGlow
   - BoardedDoor
+  - HunterEnemy
   layers:
   - Default
   - TransparentFX

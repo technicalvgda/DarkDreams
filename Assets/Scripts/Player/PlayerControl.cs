@@ -308,9 +308,10 @@ public class PlayerControl : MonoBehaviour
             //prevent player from moving
             normalSpeed = 0f;
         }
+       
         //level warp
-       
-       
+
+
         //checks for collision
         if (col.gameObject.name == "LeftWall")
         {
@@ -501,5 +502,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         isHunterActive = false;
+    }
+    public void SetInvisible()
+    {
+        sprite.color = new Color(1f, 1f, 1f, 0f);
     }
 }

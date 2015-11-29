@@ -25,7 +25,7 @@ public class FinalLevelCutscene : MonoBehaviour
 		door = GameObject.Find ("DoorLeft");
 		activated = false;
 		wall = GameObject.Find ("LeftWall");
-		hunterEnemy = GameObject.FindGameObjectWithTag ("PatrolEnemy");
+		hunterEnemy = GameObject.FindGameObjectWithTag ("HunterEnemy");
 		hunterEnemy.SetActive (false);
 		levelBounds = this.transform.GetComponent<Renderer>().bounds;
 		minY = levelBounds.center.y - levelBounds.extents.y;

@@ -6,6 +6,7 @@ public class Hunter : MonoBehaviour
 {
 
    AudioSource sfx;
+   public Animator anim;
    // public AudioClip[] hunterClips;
 
     public bool facingRight = true;
@@ -32,7 +33,7 @@ public class Hunter : MonoBehaviour
 
     //Variable to set distance of the monster's vision
     float lineCastDistance = 14f;
-    float heightOffset = 12f;
+    float heightOffset = 9f;
 
     //LineRenderer to display line of sight to player
     //public LineRenderer lineOfSight;
@@ -56,7 +57,7 @@ public class Hunter : MonoBehaviour
     void Awake()
     {
         //spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
-
+        anim = this.GetComponent<Animator>();
         leftEndPath = GameObject.Find("LeftWall").transform.position.x;
         rightEndPath = GameObject.Find("RightWall").transform.position.x;
 
@@ -69,7 +70,7 @@ public class Hunter : MonoBehaviour
 
 		// Initialize player distance
 		playerDistance = new Vector2(0f, 0f); 
-
+        
 		//retry restarts movement
 		//speed = 5.0f;
 
@@ -99,7 +100,7 @@ public class Hunter : MonoBehaviour
     void Update()
     {
         // initialize the position of the linecast
-        startCast = endCast = gameObject.transform.position;
+        startCast = endCast = gameObject.transform.position ;
 
         counter *= Time.deltaTime;
 
@@ -109,6 +110,7 @@ public class Hunter : MonoBehaviour
             movement = speed * Time.deltaTime;
             transform.Translate(movement, 0, 0);
             endCast.x += lineCastDistance;
+            startCast.y -= heightOffset;
             endCast.y -= heightOffset;
             fogLeft.SetActive(true);
             fogRight.SetActive(false);
@@ -118,6 +120,7 @@ public class Hunter : MonoBehaviour
             movement = speed * Time.deltaTime;
             transform.Translate(-movement, 0, 0);
             endCast.x -= lineCastDistance;
+            startCast.y -= heightOffset;
             endCast.y -= heightOffset;
             fogLeft.SetActive(false);
             fogRight.SetActive(true);
@@ -227,10 +230,14 @@ public class Hunter : MonoBehaviour
         //If the player collides with the patrolling enemy and is not caught
         if (col.gameObject.tag == "Player" && isCaught)
         {
-			//stores instance of this in player
+            //stores instance of this in player
+            anim.SetBool("Kill", true);
 			player.hunterScript = this;
             //Monster stops moving
             speed = 0;
+            player.normalSpeed = 0;
+            player.SetInvisible();
+            //anim.ResetTrigger("Kill");
 
             ////removed fip code, possibly needs an offset
 
@@ -247,5 +254,10 @@ public class Hunter : MonoBehaviour
             */
         }
     }
-   
+    public void KillPlayer()
+    {
+        player.isAlive = false;
+       
+    }
+
 }

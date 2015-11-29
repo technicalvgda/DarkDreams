@@ -32,7 +32,7 @@ GameObject:
   - 95: {fileID: 9573520}
   m_Layer: 0
   m_Name: HunterEnemy
-  m_TagString: PatrolEnemy
+  m_TagString: HunterEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 203.44873, y: -29.242733, z: 0}
+  m_LocalPosition: {x: 99.379837, y: -29.7561283, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498758}
@@ -218,9 +218,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -11, y: -.921829224}
+  m_Offset: {x: -6.5356946, y: -.921829224}
   serializedVersion: 2
-  m_Size: {x: 17.8623276, y: 24.4763412}
+  m_Size: {x: 26.7909393, y: 24.4763412}
 --- !u!82 &8290982
 AudioSource:
   m_ObjectHideFlags: 1
@@ -322,7 +322,7 @@ MonoBehaviour:
   facingRight: 1
   isCaught: 0
   movement: 0
-  speed: 5
+  speed: 9
   counter: 0
   activeSpeed: 8
   shakeTrigger: 50
