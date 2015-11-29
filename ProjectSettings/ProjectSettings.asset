@@ -105,7 +105,7 @@ PlayerSettings:
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
-  APKExpansionFiles: 0
+  APKExpansionFiles: 1
   preloadShaders: 0
   StripUnusedMeshComponents: 0
   VertexChannelCompressionMask:
@@ -149,8 +149,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/Josh/Documents/GitHub/TheLastStand/user.keystore
+  AndroidKeyaliasName: technicalvgda
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1

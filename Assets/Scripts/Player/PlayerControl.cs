@@ -102,6 +102,7 @@ public class PlayerControl : MonoBehaviour
     void Start() //what happens as soon as player is created
     {
         anim = this.GetComponent<Animator>();
+        anim.SetBool("FacingRight", facingRight);
         initialColor = sprite.color;
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
 
@@ -421,9 +422,13 @@ public class PlayerControl : MonoBehaviour
     void FlipPlayer()
     {
         facingRight = !facingRight;
+        //make the animators bool the same as the players
+        anim.SetBool("FacingRight", facingRight);
+        /*
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        */
     }
     // adds points in  the Player Script
     public void AddPoints(int itemAdd)

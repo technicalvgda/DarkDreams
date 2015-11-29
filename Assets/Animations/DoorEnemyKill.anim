@@ -18,18 +18,24 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 8a27fba95b9c18f4787af60948c2acb8, type: 3}
+      value: {fileID: 21300000, guid: 0f69b0d79784c3b429544fd635646b53, type: 3}
+    - time: .111111112
+      value: {fileID: 21300000, guid: bec0f15f885a9fe4296d81365ed75f28, type: 3}
+    - time: .222222224
+      value: {fileID: 21300000, guid: f1b62161c174ff54d8ee72d9713af51f, type: 3}
     - time: .333333343
-      value: {fileID: 21300000, guid: ca2dec9174f640d48bf138b473007364, type: 3}
+      value: {fileID: 21300000, guid: 9e0e1fad4047ed74888a4b47e4d8943f, type: 3}
+    - time: .444444448
+      value: {fileID: 21300000, guid: 9b8572d785ff46849a084b92b250d108, type: 3}
+    - time: .555555582
+      value: {fileID: 21300000, guid: ef74ff20a55a345418d13cc4d70b67ca, type: 3}
     - time: .666666687
-      value: {fileID: 21300000, guid: 45ed667f0a992d949996db4a8ab9e19b, type: 3}
-    - time: 1.01666665
-      value: {fileID: 21300000, guid: cccd1d24841400b40914dcbe192ba758, type: 3}
+      value: {fileID: 21300000, guid: f006def8a90f9684bb3b48b8d3fdc514, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 9
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -43,14 +49,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 8a27fba95b9c18f4787af60948c2acb8, type: 3}
-    - {fileID: 21300000, guid: ca2dec9174f640d48bf138b473007364, type: 3}
-    - {fileID: 21300000, guid: 45ed667f0a992d949996db4a8ab9e19b, type: 3}
-    - {fileID: 21300000, guid: cccd1d24841400b40914dcbe192ba758, type: 3}
+    - {fileID: 21300000, guid: 0f69b0d79784c3b429544fd635646b53, type: 3}
+    - {fileID: 21300000, guid: bec0f15f885a9fe4296d81365ed75f28, type: 3}
+    - {fileID: 21300000, guid: f1b62161c174ff54d8ee72d9713af51f, type: 3}
+    - {fileID: 21300000, guid: 9e0e1fad4047ed74888a4b47e4d8943f, type: 3}
+    - {fileID: 21300000, guid: 9b8572d785ff46849a084b92b250d108, type: 3}
+    - {fileID: 21300000, guid: ef74ff20a55a345418d13cc4d70b67ca, type: 3}
+    - {fileID: 21300000, guid: f006def8a90f9684bb3b48b8d3fdc514, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 1.0333333
+    m_StopTime: .777777791
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -70,7 +79,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 1
+  - time: .666666687
     functionName: KillPlayer
     data: 
     objectReferenceParameter: {fileID: 0}
