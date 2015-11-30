@@ -91,7 +91,7 @@ public class Hunter : MonoBehaviour
         // set lineOfSight to this objects LineRenderer component and positions
         //lineOfSight = GetComponent<LineRenderer>();
         //lineOfSight.SetPosition(1, new Vector2(lineCastDistance, 0));
-        sfx.Play();
+       
 		
 		// Initialize camera
 		cam = GameObject.FindGameObjectWithTag ("MainCamera");
@@ -261,12 +261,12 @@ public class Hunter : MonoBehaviour
         player.isAlive = false;
        
     }
+    //activated at spawn, sets hunter to move, plays train whistle
     public void SetSpeed()
     {
-        Debug.Log("Yo!");
+        sfx.Play();
         speed = defaultSpeed;
-        Debug.Log(defaultSpeed);
-        Debug.Log(speed);
+       
 
     }
     public void StopSpeed()
