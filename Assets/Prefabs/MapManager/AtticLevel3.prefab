@@ -2161,7 +2161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 127.397133, y: 166.969849, z: 0}
+  m_LocalPosition: {x: 180.711761, y: 177.474365, z: 0}
   m_LocalScale: {x: 1.64864397, y: 1, z: 1}
   m_Children:
   - {fileID: 448492}
@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 13
 --- !u!114 &11410862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3250,7 +3250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 5
 --- !u!114 &11414418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3321,7 +3321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 12
 --- !u!114 &11417700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3344,7 +3344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 6
 --- !u!114 &11420484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3859,7 +3859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 1
 --- !u!114 &11436504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3952,7 +3952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 3
 --- !u!114 &11440770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3996,7 +3996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 4
 --- !u!114 &11442850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4207,7 +4207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 11
 --- !u!114 &11456884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4251,7 +4251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 2
 --- !u!114 &11462424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4547,7 +4547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 8
 --- !u!114 &11481584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4683,7 +4683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 10
 --- !u!114 &11488890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4743,7 +4743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 14
 --- !u!114 &11490256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4798,7 +4798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 7
 --- !u!114 &11495322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4826,7 +4826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 9
 --- !u!114 &11496586
 MonoBehaviour:
   m_ObjectHideFlags: 1
