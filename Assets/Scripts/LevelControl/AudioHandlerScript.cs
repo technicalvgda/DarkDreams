@@ -82,4 +82,8 @@ public class AudioHandlerScript : MonoBehaviour {
     {
         music.loop = b;
     }
+    public void StopMusic()
+    {
+        music.Stop();
+    }
 }
