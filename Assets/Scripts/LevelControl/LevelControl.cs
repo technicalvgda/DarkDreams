@@ -154,7 +154,15 @@ public class LevelControl : MonoBehaviour
     public IEnumerator DespawnBasementHunter()
     {
         yield return new WaitForSeconds(15f);
-        endCutscene.hunterEnemy.SetActive(false);
+        if (openCutscene != null)
+        {
+            openCutscene.hunterEnemy.SetActive(false);
+        }
+        if (endCutscene != null)
+        {
+            endCutscene.hunterEnemy.SetActive(false);
+        }
+       
         yield return null;
     }
     public IEnumerator fadeToBlack()
