@@ -13,6 +13,7 @@ public class LevelControl : MonoBehaviour
     GameObject player;
 	PlayerControl playerScript;
     OpeningCutscene openCutscene;
+    FinalLevelCutscene endCutscene;
     public GameObject overlay;
     Image overlay_image;
     GameObject gameOverPanel;
@@ -33,9 +34,14 @@ public class LevelControl : MonoBehaviour
         // set the initial position of the player
         initialPlayerPos = player.transform.position;
         //only store this if the player is on level 1, 2, or 3
-        if (Application.loadedLevel >= 1 && Application.loadedLevel <= 3)
+        if (Application.loadedLevel >= 3 && Application.loadedLevel <= 5)
         {
             openCutscene = GameObject.Find("Cutscene").GetComponent<OpeningCutscene>();
+        }
+        //only store if final level
+        else if(Application.loadedLevel == 6)
+        {
+            endCutscene = GameObject.Find("HallwayRoom1").GetComponent<FinalLevelCutscene>();
         }
         gameOverPanel = GameObject.Find("GameOverPanel");
         //retryButton = GameObject.Find("RetryButton");
@@ -104,11 +110,23 @@ public class LevelControl : MonoBehaviour
         // Resume time
         Time.timeScale = 1f;
         //resumes hunter speed and resets position
-        openCutscene.EndCutscene();
-        openCutscene.hunterEnemy.SetActive(true);
-        StartCoroutine("DespawnBasementHunter");
-        playerScript.hunterScript = openCutscene.hunterEnemy.GetComponent<Hunter>();
-		playerScript.hunterScript.isCaught = false;
+        if (openCutscene != null)
+        {
+            openCutscene.EndCutscene();
+            openCutscene.hunterEnemy.SetActive(true);
+            StartCoroutine("DespawnBasementHunter");
+            playerScript.hunterScript = openCutscene.hunterEnemy.GetComponent<Hunter>();
+        }
+        if (endCutscene != null)
+        {
+            endCutscene.EndCutscene();
+            endCutscene.activated = false;
+            endCutscene.hunterEnemy.SetActive(true);
+            StartCoroutine("DespawnBasementHunter");
+            playerScript.hunterScript = endCutscene.hunterEnemy.GetComponent<Hunter>();
+        }
+
+        playerScript.hunterScript.isCaught = false;
         playerScript.hunterScript.anim.SetBool("Kill", false);
         playerScript.hunterScript.speed = 5.0f;
 		playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
@@ -136,7 +154,7 @@ public class LevelControl : MonoBehaviour
     public IEnumerator DespawnBasementHunter()
     {
         yield return new WaitForSeconds(15f);
-        openCutscene.hunterEnemy.SetActive(false);
+        endCutscene.hunterEnemy.SetActive(false);
         yield return null;
     }
     public IEnumerator fadeToBlack()
