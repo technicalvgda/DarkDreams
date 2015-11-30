@@ -88,8 +88,8 @@ public class PatrollingMonster : MonoBehaviour
         //If the player collides with the patrolling enemy and not hiding
         if (col.gameObject.tag == "Player" && player.hide == false)
         {
-            //Monster stops moving
-            speed = 0;
+            //deactivate monster when colliding with player
+            this.gameObject.SetActive(false);
         }
     }
 }
