@@ -7,7 +7,8 @@ public class CeilingMonster : MonoBehaviour
     Transform myTransform;          // ceiling monster
     GameObject playerObj;           // the player
     PlayerControl player;           // the player
-    public GameObject endCastObj, leftCastObj, rightCastObj;
+  //  public GameObject endCastObj, leftCastObj, rightCastObj;
+  
     //GameObject spottedCue;          // indicator when spotted
     Transform playerPos;
 
@@ -27,6 +28,11 @@ public class CeilingMonster : MonoBehaviour
     Vector2 endCast;                // end position of line
     Vector2 leftCast;               // end position of visions
     Vector2 rightCast;              // end position of visions
+    
+    //delete this, just for testing purposes. 
+   // Vector2 leftCast2;               // end position of visions
+   // Vector2 rightCast2;              // end position of visions
+   // public float detectionWidth2;
 
     float lineCastDistance = 18.5f; // length of the line cast
 
@@ -41,34 +47,52 @@ public class CeilingMonster : MonoBehaviour
         playerObj = GameObject.FindWithTag("Player");
         player = playerObj.GetComponent<PlayerControl>();
 
-        // grabs the width of the ceiling monster and divides by 2
-        detectionWidth = myTransform.GetComponent<Renderer>().bounds.size.x / 2;
-
-        // set the hit linecast start and end
+        // grabs the width of the ceiling monster multiplies it by 3
+        detectionWidth = myTransform.GetComponent<Renderer>().bounds.size.x*3;
+   
+       /// set the hit linecast start and end
         startCast = endCast = myTransform.position;
         leftCast.y = rightCast.y = endCast.y -= lineCastDistance;
+        //delete this
+        
 
         // sets the width of the linecasts to detect 
+    
         leftCast.x = endCast.x - detectionWidth;
         rightCast.x = endCast.x + detectionWidth;
-        //spottedCue.SetActive(false);
+
+ 
+        //spottedCue.SetActive(false);*/
     }
 
     void FixedUpdate()
     {
-        Debug.DrawLine(startCast, endCastObj.transform.position, Color.green);        // center trigger
-        Debug.DrawLine(startCast, leftCastObj.transform.position, Color.yellow);      // left trigger
-        Debug.DrawLine(startCast, rightCastObj.transform.position, Color.yellow);     // right trigger
+       //Debug.DrawLine(startCast, endCastObj.transform.position, Color.green);        // center trigger
+       //Debug.DrawLine(startCast, leftCastObj.transform.position, Color.yellow);      // left trigger
+       //Debug.DrawLine(startCast, rightCastObj.transform.position, Color.yellow);     // right trigger*/
+        
+        Debug.DrawLine(startCast, endCast, Color.green);        // center trigger
+        Debug.DrawLine(startCast, leftCast, Color.yellow);      // left trigger
+        Debug.DrawLine(startCast, rightCast, Color.yellow);     // right trigger
+      
+
     }
 
     void Update()
     {
-        
         Vector2 currentPos = gameObject.transform.position;
+      
         // Vision of Ceiling Monster
-        RaycastHit2D centerTrigger = Physics2D.Linecast(endCastObj.transform.position, startCast);
+      /*  RaycastHit2D centerTrigger = Physics2D.Linecast(endCastObj.transform.position, startCast);
         RaycastHit2D leftTrigger = Physics2D.Linecast(leftCastObj.transform.position, startCast);
-        RaycastHit2D rightTrigger = Physics2D.Linecast(rightCastObj.transform.position, startCast);
+        RaycastHit2D rightTrigger = Physics2D.Linecast(rightCastObj.transform.position, startCast);*/
+
+        RaycastHit2D centerTrigger = Physics2D.Linecast(endCast, startCast);
+        RaycastHit2D leftTrigger = Physics2D.Linecast(leftCast, startCast);
+        RaycastHit2D rightTrigger = Physics2D.Linecast(rightCast, startCast);
+        
+        
+       
 
         // Trigger for Dropping the Ceiling Monster
        
