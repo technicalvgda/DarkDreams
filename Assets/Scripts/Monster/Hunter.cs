@@ -12,7 +12,8 @@ public class Hunter : MonoBehaviour
     public bool facingRight = true;
     public bool isCaught = false;
     public float movement;
-    public float speed = 5.0f;
+    public float defaultSpeed = 9.0f;
+    float speed;
     public float counter = 0;
     public float activeSpeed = 8.0f;
 	public float shakeTrigger = 25.0f;
@@ -78,6 +79,7 @@ public class Hunter : MonoBehaviour
 
     void Start()
     {
+        //speed = defaultSpeed;
         sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting
         sfx.volume = PlayerPrefs.GetFloat("SFX"); 
@@ -103,7 +105,7 @@ public class Hunter : MonoBehaviour
         startCast = endCast = gameObject.transform.position ;
 
         counter *= Time.deltaTime;
-
+        
         // movement of monster and changes the position of linecast
         if (facingRight)     // face right
         {
@@ -258,6 +260,19 @@ public class Hunter : MonoBehaviour
     {
         player.isAlive = false;
        
+    }
+    public void SetSpeed()
+    {
+        Debug.Log("Yo!");
+        speed = defaultSpeed;
+        Debug.Log(defaultSpeed);
+        Debug.Log(speed);
+
+    }
+    public void StopSpeed()
+    {
+        speed = 0;
+
     }
 
 }

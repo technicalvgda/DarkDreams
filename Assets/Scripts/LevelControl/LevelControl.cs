@@ -128,7 +128,7 @@ public class LevelControl : MonoBehaviour
 
         playerScript.hunterScript.isCaught = false;
         playerScript.hunterScript.anim.SetBool("Kill", false);
-        playerScript.hunterScript.speed = 5.0f;
+        playerScript.hunterScript.StopSpeed();//playerScript.hunterScript.defaultSpeed;
 		playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
         playerScript.hunterScript.transform.rotation = playerScript.hunterScript.originalRotation;
         //resumes chasing monster speed
