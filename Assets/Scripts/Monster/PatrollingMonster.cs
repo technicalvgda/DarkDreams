@@ -89,10 +89,20 @@ public class PatrollingMonster : MonoBehaviour
         if (col.gameObject.tag == "Player" && player.hide == false)
         {
             //Monster stops moving
-            speed = 0;
+            // speed = 0;
+            //deactivate monster when colliding with player
+            player.SetInvisible();
+            StartCoroutine("SetInactive");
         }
+
     }
-}
+    IEnumerator SetInactive()
+    {
+        yield return new WaitForSeconds(3f);
+        this.gameObject.SetActive(false);
+        yield return null;
+    }
+}        
 
 
 /*using UnityEngine;
