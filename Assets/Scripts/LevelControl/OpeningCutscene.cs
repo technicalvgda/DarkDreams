@@ -70,7 +70,7 @@ public class OpeningCutscene : MonoBehaviour
 		// move the hunter
 		hunterEnemy.SetActive (true);
 
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (1.5f);
 
 		// pan back to player
 		while (cam.transform.position.x < player.transform.position.x)
