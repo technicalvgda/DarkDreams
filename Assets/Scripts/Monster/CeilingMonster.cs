@@ -80,7 +80,7 @@ public class CeilingMonster : MonoBehaviour
         if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 25)
         {
             ///rotation code
-            if (rotate == true)
+            if (rotate == true && isFalling == false && isActive == true)
             {
                 //distance pingpongs between -20 and 20 (0-40 minus 20)
                 transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 10, 40)-20);
