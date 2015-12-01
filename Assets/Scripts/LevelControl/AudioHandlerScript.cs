@@ -14,11 +14,6 @@ public class AudioHandlerScript : MonoBehaviour {
 
     void Awake()
     {
-        //play title music
-        this.LoopMusic(true);
-        //music 0 is Lullaby Waltz (title music)
-        this.PlayMusic(0);
-
         ////Initialize variables for playerprefs (if they dont exist)
         //if (!PlayerPrefs.HasKey("Brightness"))
         //{

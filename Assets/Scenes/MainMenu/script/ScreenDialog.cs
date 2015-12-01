@@ -6,16 +6,10 @@ public class ScreenDialog : MonoBehaviour
 {
     // The beam's sprites had pivots that are not at the center. Be careful when modifying them!
     public Transform beamHead, beamTail;
+    public SpriteRenderer msg;
     public Button btnYes, btnNo;
 
-    Coroutine routine;
     WaitForSeconds wait = new WaitForSeconds(.1f);
-
-    void SetRoutine(IEnumerator arg)
-    {
-        if (routine != null) StopCoroutine(routine);
-        routine = StartCoroutine(arg);
-    }
 
     void SetButtonsActive(bool arg)
     {
@@ -34,22 +28,29 @@ public class ScreenDialog : MonoBehaviour
         this.gameObject.SetActive(true);
         SetButtonsActive(false);
         SetButtonsInteractable(false);
-        SetRoutine(_BeamIn());
+
+        StopAllCoroutines();
+        StartCoroutine(_EnterBeam());
     }
 
     public void Deactivate()
     {
         SetButtonsActive(true);
         SetButtonsInteractable(false);
-        SetRoutine(_FadeOut());
+
+        StopAllCoroutines();
+        StartCoroutine(_ExitFlash());
     }
 
-    IEnumerator _BeamIn()
+    IEnumerator _EnterBeam()
     {
+        // INIT
         beamHead.position = new Vector3(-40, 0, 0);
         beamTail.position = new Vector3(-40, 0, 0);
         beamTail.localScale = new Vector3(100000, 1200, 1);
+        msg.color = new Color(1, 1, 1, 0);
 
+        // EXEC
         while (beamTail.position.x < 6.2)
         {
             beamHead.position += new Vector3(2, 0, 0);
@@ -63,6 +64,22 @@ public class ScreenDialog : MonoBehaviour
             yield return null;
         }
 
+        StartCoroutine(_EnterMsg());
+        StartCoroutine(_EnterFlash());
+    }
+
+    IEnumerator _EnterMsg()
+    {
+        while (msg.color.a < 1)
+        {
+            msg.color += new Color(0, 0, 0, .1f);
+            yield return null;
+        }
+        msg.color = Color.white;
+    }
+
+    IEnumerator _EnterFlash()
+    {
         for (int i = 0; i < 5; i++)
         {
             SetButtonsActive(!btnYes.gameObject.activeSelf);
@@ -75,7 +92,7 @@ public class ScreenDialog : MonoBehaviour
         SetButtonsInteractable(true);
     }
 
-    IEnumerator _FadeOut()
+    IEnumerator _ExitFlash()
     {
         for (int i = 0; i < 5; i++)
         {
@@ -84,6 +101,7 @@ public class ScreenDialog : MonoBehaviour
             yield return null;
         }
         SetButtonsActive(false);
+        msg.color = new Color(1, 1, 1, 0);
 
         this.gameObject.SetActive(false);
     }
