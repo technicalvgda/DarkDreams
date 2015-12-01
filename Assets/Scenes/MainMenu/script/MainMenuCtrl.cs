@@ -8,6 +8,9 @@ public class MainMenuCtrl : MonoBehaviour
     [Header("Graphics")]
     public SpriteRenderer fade;
 
+    [Header("Audio")]
+    public AudioHandlerScript audioHandler;
+
     [Header("Screens")]
     public MenuScreen scrnLogo;
     public MenuScreen scrnMain, scrnSettings, scrnBrightness, scrnAudio;
@@ -26,8 +29,14 @@ public class MainMenuCtrl : MonoBehaviour
         const int ppu = 100;
         FindObjectOfType<Camera>().orthographicSize = (scrnHeight / 2.0f) / ppu;
 
+        //play title music
+        audioHandler.LoopMusic(true);
+        //music 0 is Lullaby Waltz (title music)
+        audioHandler.PlayMusic(0);
+
         // The settings management code are in their respective screens.
-        // These screens start out inactive; their initialization needs to be called here.
+        // These screens start out inactive; their initialization needs to be manually called.
+        // Awake() and Start() won't be called if an object starts out inactive.
         scrnBrightness.InitSettings();
         scrnAudio.InitSettings();
 
@@ -58,15 +67,26 @@ public class MainMenuCtrl : MonoBehaviour
         scrnLast = scrnLogo;
     }
 
-    IEnumerator _FadeToGame()
+    IEnumerator _FadeToScene(int scene)
     {
+        scrnLast.Deactivate();
+        scrnLast = null;
+
+        fade.color = Color.clear;
+        while (fade.color.a < 0.1f)
+        {
+            fade.color += new Color(0, 0, 0, .0015f);
+            yield return null;
+        }
         while (fade.color.a < 1)
         {
             fade.color += new Color(0, 0, 0, .1f);
             yield return null;
         }
         fade.color = Color.black;
-        Application.LoadLevel(2);
+
+        yield return waitTransition;
+        Application.LoadLevel(scene);
     }
 
     IEnumerator _TransitionTo(MenuScreen arg)
@@ -93,7 +113,8 @@ public class MainMenuCtrl : MonoBehaviour
     public void TransitionToBrightness() { StartCoroutine(_TransitionTo(scrnBrightness)); }
     public void TransitionToAudio() { StartCoroutine(_TransitionTo(scrnAudio)); }
     public void DialogStandby() { StartCoroutine(_DialogStandby()); }
-    public void NewGame() { StartCoroutine(_FadeToGame()); }
+    public void NewGame() { StartCoroutine(_FadeToScene(2)); }
+    public void NightmareTower() { StartCoroutine(_FadeToScene(8)); }
     public void Quit() { Application.Quit(); }
 
     // Note:

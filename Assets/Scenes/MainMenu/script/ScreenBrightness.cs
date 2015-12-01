@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ScreenBrightness : MenuScreen
 {
-    //public Transform preview;
+    public FxTrace trace;
     public Slider slrBright;
     public Button btnBack;
 
@@ -37,6 +37,7 @@ public class ScreenBrightness : MenuScreen
     {
         this.gameObject.SetActive(true);
         SetAllInteractable(false);
+        trace.Run();
 
         StartCoroutine(_EnterStretch());
         StartCoroutine(_EnterFlash());
@@ -46,6 +47,7 @@ public class ScreenBrightness : MenuScreen
     {
         SetAllInteractable(false);
         SaveSettings();
+
         StartCoroutine(_ExitFlash());
     }
 
@@ -57,7 +59,15 @@ public class ScreenBrightness : MenuScreen
 
     IEnumerator _EnterStretch()
     {
-        yield return null;
+        RectTransform rt = slrBright.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(0, 18);
+        while (861 - rt.sizeDelta.x > 10)
+        {
+            rt.sizeDelta += new Vector2(.3f * (861 - rt.sizeDelta.x), 0);
+            yield return null;
+        }
+        rt.sizeDelta = new Vector2(861, 18);
+        slrBright.interactable = true;
     }
 
     IEnumerator _EnterFlash()
@@ -71,7 +81,7 @@ public class ScreenBrightness : MenuScreen
         btnBack.gameObject.SetActive(true);
 
         yield return wait;
-        SetAllInteractable(true);
+        btnBack.interactable = true;
     }
 
     IEnumerator _ExitFlash()

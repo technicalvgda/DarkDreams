@@ -96,4 +96,20 @@ public class BulbScript : MonoBehaviour
         logoShadow.color = new Color(1, 1, 1, dest1);
         bulbFading = false;
     }
+
+    IEnumerator _Pop()
+    {
+        this.GetComponent<FxSwing>().enabled = true;
+        for (int i = 0; i < 10; i++)
+        {
+            StartCoroutine(_BulbFadeOutIn(0, .25f, 0, 1, .25f));
+            while (bulbFading) yield return null;
+        }
+    }
+
+    public void Pop()
+    {
+        StopAllCoroutines();
+        StartCoroutine(_Pop());
+    }
 }

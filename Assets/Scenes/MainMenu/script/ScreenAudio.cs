@@ -7,7 +7,11 @@ public class ScreenAudio : MenuScreen
     public AudioHandlerScript audioHandler;
     public Slider slrMusic, slrSfx, slrVoice;
     public Button btnBack;
+    public FxStreak streak;
 
+    RectTransform rtMusic, rtSfx, rtVoice;
+
+    WaitForSeconds waitShort = new WaitForSeconds(.03f);
     WaitForSeconds wait = new WaitForSeconds(.1f);
 
     public override void InitSettings()
@@ -27,6 +31,10 @@ public class ScreenAudio : MenuScreen
         audioHandler.music.volume = slrMusic.value * .1f;
         audioHandler.sfx.volume = slrSfx.value * .1f;
         audioHandler.voice.volume = slrVoice.value * .1f;
+
+        rtMusic = slrMusic.GetComponent<RectTransform>();
+        rtSfx = slrSfx.GetComponent<RectTransform>();
+        rtVoice = slrVoice.GetComponent<RectTransform>();
     }
 
     void SaveSettings()
@@ -44,8 +52,13 @@ public class ScreenAudio : MenuScreen
     {
         this.gameObject.SetActive(true);
         SetAllInteractable(false);
+        streak.Activate(-3.4f);
 
-        StartCoroutine(_EnterStretch());
+        rtMusic.position = new Vector3(-10, rtMusic.position.y, rtMusic.position.z);
+        rtSfx.position = new Vector3(-10, rtSfx.position.y, rtSfx.position.z);
+        rtVoice.position = new Vector3(-10, rtVoice.position.y, rtVoice.position.z);
+
+        StartCoroutine(_EnterSlide3());
         StartCoroutine(_EnterFlash());
     }
 
@@ -53,6 +66,7 @@ public class ScreenAudio : MenuScreen
     {
         SetAllInteractable(false);
         SaveSettings();
+        streak.Deactivate();
         StartCoroutine(_ExitFlash());
     }
 
@@ -64,9 +78,23 @@ public class ScreenAudio : MenuScreen
         btnBack.interactable = arg;
     }
 
-    IEnumerator _EnterStretch()
+    IEnumerator _EnterSlide(RectTransform rt)
     {
-        yield return null;
+        while (1.41f - rt.position.x > 0.1f)
+        {
+            rt.position += new Vector3(.3f * (1.41f - rt.position.x), 0, 0);
+            yield return null;
+        }
+        rt.position = new Vector3(1.41f, rt.position.y, rt.position.z);
+    }
+
+    IEnumerator _EnterSlide3()
+    {
+        StartCoroutine(_EnterSlide(rtMusic));
+        yield return waitShort;
+        StartCoroutine(_EnterSlide(rtSfx));
+        yield return waitShort;
+        StartCoroutine(_EnterSlide(rtVoice));
     }
 
     IEnumerator _EnterFlash()
