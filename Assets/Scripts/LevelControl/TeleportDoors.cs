@@ -17,9 +17,7 @@ using System.Collections;
 public class TeleportDoors : MonoBehaviour
 {
     public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
-	//public Transform exitlock;
-	Vector2 clickPosition;
-
+    Vector2 clickPosition;
     //reference to camera
     CameraFollowScript cameraScript;
     float clickOffsetY = 5;
@@ -44,22 +42,8 @@ public class TeleportDoors : MonoBehaviour
         {
             transform.GetComponent<SpriteRenderer>().sprite = down;
         }
-/*
-		//if this door leads up
-		if (exitlock.position.y > transform.position.y)
-		{
-			transform.GetComponent<SpriteRenderer>().sprite = up;
-		}
-		//if door leads down
-		else if (exitlock.position.y < transform.position.y)
-		{
-			transform.GetComponent<SpriteRenderer>().sprite = down;
-		}
-*/
-
- 
-	
-	}
+       
+    }
     
     void OnTriggerStay2D(Collider2D col)
     {
@@ -78,12 +62,7 @@ public class TeleportDoors : MonoBehaviour
             (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&
             Input.GetMouseButtonDown(0))))
         {    
-/*			if(TutorialDoorCheck.islocked == false){
-				cameraScript.follow = false;
-				cameraScript.target = exitlock.transform;
-
-			}
-       */     if (exit != null)
+            if (exit != null)
             {
                 cameraScript.follow = false;
                 cameraScript.target = exit.transform;
@@ -106,12 +85,7 @@ public class TeleportDoors : MonoBehaviour
 
     void TeleportToExit2D ( Collider2D col )
 	{
-
-	/*	if(TutorialDoorCheck.islocked == false){
-			col.transform.position = exitlock.transform.position;
-
-		}
-      */  if (exit != null)
+        if (exit != null)
         {
             col.transform.position = exit.transform.position; //line that teleports player
         }
