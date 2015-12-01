@@ -13,6 +13,9 @@ TagManager:
   - Bug
   - BugWall
   - Item
+  - ParticleGlow
+  - BoardedDoor
+  - HunterEnemy
   - Fake
   - Lock
   - Fake1
