@@ -16,9 +16,16 @@ using System.Collections;
 
 public class TeleportDoors : MonoBehaviour
 {
+<<<<<<< HEAD
     
 	public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
     Vector2 clickPosition;
+=======
+    public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
+	//public Transform exitlock;
+	Vector2 clickPosition;
+
+>>>>>>> MZ_Branch
     //reference to camera
     CameraFollowScript cameraScript;
     float clickOffsetY = 5;
@@ -53,6 +60,7 @@ public class TeleportDoors : MonoBehaviour
         {
             transform.GetComponent<SpriteRenderer>().sprite = down;
         }
+<<<<<<< HEAD
         if (exit.gameObject.name.Equals("AtticDoor"))
         {
             boardedDoor = GameObject.FindGameObjectWithTag("BoardedDoor");
@@ -61,6 +69,24 @@ public class TeleportDoors : MonoBehaviour
 
 
         }
+=======
+/*
+		//if this door leads up
+		if (exitlock.position.y > transform.position.y)
+		{
+			transform.GetComponent<SpriteRenderer>().sprite = up;
+		}
+		//if door leads down
+		else if (exitlock.position.y < transform.position.y)
+		{
+			transform.GetComponent<SpriteRenderer>().sprite = down;
+		}
+*/
+
+ 
+	
+	}
+>>>>>>> MZ_Branch
     
     void OnTriggerStay2D(Collider2D col)
     {
@@ -86,7 +112,12 @@ public class TeleportDoors : MonoBehaviour
             (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&
             Input.GetMouseButtonDown(0))))
         {    
-            if (exit != null)
+/*			if(TutorialDoorCheck.islocked == false){
+				cameraScript.follow = false;
+				cameraScript.target = exitlock.transform;
+
+			}
+       */     if (exit != null)
             {
                 if (exit.gameObject.name.Equals("AtticDoor"))
                 {
@@ -124,7 +155,15 @@ public class TeleportDoors : MonoBehaviour
     void TeleportToExit2D ( Collider2D col )
 	{
 
+<<<<<<< HEAD
         if (exit != null)
+=======
+	/*	if(TutorialDoorCheck.islocked == false){
+			col.transform.position = exitlock.transform.position;
+
+		}
+      */  if (exit != null)
+>>>>>>> MZ_Branch
         {
             if (exit.gameObject.name.Equals("AtticDoor"))
             {
