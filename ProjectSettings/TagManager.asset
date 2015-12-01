@@ -13,6 +13,9 @@ TagManager:
   - Bug
   - BugWall
   - Item
+  - Fake
+  - Lock
+  - Fake1
   layers:
   - Default
   - TransparentFX
