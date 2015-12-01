@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TutorialDoorCheck : MonoBehaviour {
 	public static bool islocked = true;
+    PlayerControl player;
 	 TeleportDoors teleport;
 
 	GameObject door;
@@ -12,11 +13,12 @@ public class TutorialDoorCheck : MonoBehaviour {
 		//teleport = GameObject.Find("Door2(1)").GetComponent<TeleportDoors>();
 		door = GameObject.FindGameObjectWithTag ("Lock");
 		teleport.enabled = false;
-	}
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	if (PlayerControl.itemCounter == 1) {
+	if (player.itemCounter == 1) {
 			islocked = false;
 			Destroy (GameObject.Find ("Lock"));
 		//	TeleportDoors.exit.transform.position = null;
