@@ -27,8 +27,10 @@ public class BeatGameScript : MonoBehaviour
 	private GameObject hunterEnemy;
 	//The basement
 	private GameObject basementRoom;
-	//The player
-	private GameObject player;
+    //The bulb
+    public GameObject lightBulb;
+    //The player
+    private GameObject player;
 	//The variable to control how fast something fades
 	public float fadingSpeed = 1f;
 	Vector2 clickPosition;
@@ -102,7 +104,8 @@ public class BeatGameScript : MonoBehaviour
 	IEnumerator _BeatGame()
 	{
 		//Make it true so the player can't spam space and glitch the cutscene
-		cutsceneActivated = true;		
+		cutsceneActivated = true;
+        lightBulb.SetActive(true);	
 		//Make it so the hunter's linecast won't trigger it to run fast or make the player lose the game if there is a collision
 		player.GetComponent<PlayerControl> ().hide = true;
 
@@ -133,8 +136,7 @@ public class BeatGameScript : MonoBehaviour
 				silhouette.GetComponent<Renderer>().material.color  = new Color(1,1,1,appearingAlpha);
 				//Make the hunter disappear
 				hunterEnemy.GetComponent<Renderer>().material.color = new Color(1,1,1,fadingAlpha);
-				//Make the spotlight disappear
-				spotlight.GetComponent<Renderer>().material.color = new Color(1,1,1,fadingAlpha);
+				
 			}
 			yield return null;
 		}
