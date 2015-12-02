@@ -113,7 +113,7 @@ public class MainMenuCtrl : MonoBehaviour
     public void TransitionToBrightness() { StartCoroutine(_TransitionTo(scrnBrightness)); }
     public void TransitionToAudio() { StartCoroutine(_TransitionTo(scrnAudio)); }
     public void DialogStandby() { StartCoroutine(_DialogStandby()); }
-    public void NewGame() { StartCoroutine(_FadeToScene(3)); }//make this 2 for tutorial
+    public void NewGame() { StartCoroutine(_FadeToScene(10)); }//make this 2 for tutorial
     public void NightmareTower() { StartCoroutine(_FadeToScene(9)); }
     public void Quit() { Application.Quit(); }
 
