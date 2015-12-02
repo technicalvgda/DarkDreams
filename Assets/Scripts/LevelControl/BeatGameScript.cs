@@ -119,8 +119,11 @@ public class BeatGameScript : MonoBehaviour
 		//Activate the hunter
 		hunterEnemy.SetActive (true);
 		//Correctly position the hunter
-		hunterEnemy.transform.position = new Vector3 (player.transform.position.x -40, player.transform.position.y + 10, player.transform.position.z);
-		//While the hunter is visible
+		hunterEnemy.transform.position = new Vector3 (player.transform.position.x -20, player.transform.position.y + 10, player.transform.position.z);
+        //While the hunter is visible
+        hunterEnemy.GetComponent<Hunter>().anim.SetBool("End", true);
+        yield return new WaitForSeconds(6f);
+        /*
 		while (hunterEnemy.GetComponent<Renderer>().material.color.a >= 0f) 
 		{
 			//If the hunter is in the basement since it spawns offscreen
@@ -140,8 +143,9 @@ public class BeatGameScript : MonoBehaviour
 			}
 			yield return null;
 		}
-		//Make the hunter inactive
-		hunterEnemy.SetActive (false);
+        */
+        //Make the hunter inactive
+        hunterEnemy.SetActive (false);
 		//Reset the fadingAlpha
 		fadingAlpha = 1;
 		//Wait 2 seconds
