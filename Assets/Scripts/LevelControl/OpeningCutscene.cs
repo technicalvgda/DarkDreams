@@ -38,7 +38,10 @@ public class OpeningCutscene : MonoBehaviour
         pause = Camera.main.GetComponent<PauseScript>();
         pause.busy = true;
         // Move the player to the center
-        player.transform.position = new Vector3 (143, player.transform.position.y, 0);
+        if (Application.loadedLevelName != "Tutorial Stage")
+        {
+            player.transform.position = new Vector3(143, player.transform.position.y, 0);
+        }
         //prevent player from moving until end of cutscene
         playerScript = player.GetComponent<PlayerControl>();
         playerScript.normalSpeed = 0f;
