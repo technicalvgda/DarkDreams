@@ -26,6 +26,10 @@ public class IntroFade : MonoBehaviour
 
     void Start()
     {
+        if(Application.loadedLevelName == "Tutorial Stage")
+        {
+            timeToWait = 5.0f;
+        }
         imagesToFade = this.GetComponentsInChildren<Image>();
         imageStartColors = new Color[imagesToFade.Length];
         for (int i = 0; i < imagesToFade.Length; i++)

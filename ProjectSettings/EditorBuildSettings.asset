@@ -26,4 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nightmare.unity
   - enabled: 1
+    path: Assets/Scenes/TitleLoadingScreen.unity
+  - enabled: 1
     path: Assets/Scenes/LoadingScreen.unity

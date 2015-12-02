@@ -55,7 +55,14 @@ public class OpeningCutscene : MonoBehaviour
 	IEnumerator _Cutscene()
 	{
         //how long to wait until cutscene begins
-		yield return new WaitForSeconds (9.5f);
+        if (Application.loadedLevelName == "Tutorial Stage")
+        {
+            yield return new WaitForSeconds(5.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(9.5f);
+        }
 
 		// Lock the camera once it finishes positioning itself
 		cam.GetComponent<CameraFollowScript> ().enabled = false;
