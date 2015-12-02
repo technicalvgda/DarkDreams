@@ -21,10 +21,7 @@ public class LoadingScene : MonoBehaviour {
         {
 
             blackTexture.color = Color.Lerp(blackTexture.color, Color.black, fadeSpeed * Time.deltaTime);
-            if (blackTexture.color.a > 254f)
-            {
-                async.allowSceneActivation = true;
-            }
+           
         }
         else
         {
@@ -37,11 +34,13 @@ public class LoadingScene : MonoBehaviour {
     private IEnumerator LoadLevel(string Level)
     {
         yield return new WaitForSeconds(waitTime);
-        async=Application.LoadLevelAsync(Level);
-        async.allowSceneActivation = false;
-        fadeOut = true;
+        //fadeOut = true;
+        //yield return new WaitForSeconds(3);
+        async =Application.LoadLevelAsync(Level);
+        //async.allowSceneActivation = false;
+        
         
        
-        yield return 0;
+        yield return async;
     }
 }

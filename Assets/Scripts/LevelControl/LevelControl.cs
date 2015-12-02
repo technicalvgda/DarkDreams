@@ -34,6 +34,7 @@ public class LevelControl : MonoBehaviour
         audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         // set the initial position of the player
         initialPlayerPos = player.transform.position;
+        
         //only store this if the player is on level 1, 2, or 3
         if (Application.loadedLevel >= 3 && Application.loadedLevel <= 5)
         {
@@ -102,6 +103,11 @@ public class LevelControl : MonoBehaviour
             gameOver = false;
             gameOverMusicPlaying = false;
             // Set player position to initial position in basement
+            if (Application.loadedLevelName == "Tutorial Stage")
+            {
+                initialPlayerPos = new Vector3(-111, -78, player.transform.position.z);
+            }
+           
             player.transform.position = initialPlayerPos;
 
             // Set GameOver and fadetoblack overlay to false
