@@ -157,7 +157,7 @@ public class LevelControl : MonoBehaviour
     { //The main menu button when the game over screen pops up
         Time.timeScale = 1f;
         //load first level in hierarchy
-        Application.LoadLevel(0);
+        Application.LoadLevel(1);
 
     }
     public IEnumerator DespawnBasementHunter()
