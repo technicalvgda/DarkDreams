@@ -101,6 +101,12 @@ public class Hunter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("HunterWalk") && speed == 0)
+        {
+            speed = defaultSpeed;
+        }
+        */
         // initialize the position of the linecast
         startCast = endCast = gameObject.transform.position ;
 
@@ -199,13 +205,14 @@ public class Hunter : MonoBehaviour
 		if (playerDistance.magnitude <= shakeTrigger && player.isAlive)
 		{
             //cause vibration on mobile
+            /*
 #if UNITY_IPHONE || UNITY_ANDROID
             if (PlayerPrefs.GetFloat("Vibrate") == 1 && (playerDistance.magnitude <= shakeTrigger/2))
             {
                 Handheld.Vibrate();
             }          
 #endif
-
+            */
             //Calculate the X position of the next camera position
             camNewPos.x = camOriginalPos.x + (Random.insideUnitSphere.x*shakeIntensity);
 			//Calculate the Y position of the next camera position
@@ -264,7 +271,7 @@ public class Hunter : MonoBehaviour
     //activated at spawn, sets hunter to move, plays train whistle
     public void SetSpeed()
     {
-        sfx.Play();
+        //sfx.Play();
         speed = defaultSpeed;
        
 
@@ -272,6 +279,11 @@ public class Hunter : MonoBehaviour
     public void StopSpeed()
     {
         speed = 0;
+
+    }
+    public void PlayWhistle()
+    {
+        sfx.Play();
 
     }
 

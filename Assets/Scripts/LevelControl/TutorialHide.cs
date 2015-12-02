@@ -11,8 +11,8 @@ public class TutorialHide : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 		fake = GameObject.FindWithTag ("Fake");
-		darkness = GameObject.Find("FadingDarknessCanvasTut");
-		handler = darkness.GetComponent<FadingDarkness>();
+		//darkness = GameObject.Find("FadingDarknessCanvasTut");
+		//handler = darkness.GetComponent<FadingDarkness>();
 		//handler.enabled = false;
 	}
 	// Update is called once per frame

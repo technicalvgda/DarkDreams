@@ -94,7 +94,7 @@ public class FinalLevelCutscene : MonoBehaviour
 		// move the hunter
 		hunterEnemy.SetActive (true);
 		
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (1.5f);
 		
 		// pan back to player
 		while (cam.transform.position.x < player.transform.position.x)
@@ -103,7 +103,8 @@ public class FinalLevelCutscene : MonoBehaviour
 			yield return null;
 		}
 		cam.GetComponent<CameraFollowScript> ().enabled = true;
-		//prevent player from moving until end of cutscene
+        //prevent player from moving until end of cutscene
+        hunterEnemy.GetComponent<Hunter>().SetSpeed();
 		playerScript.defaultSpeed = defaultSpeedTemp;
 		playerScript.normalSpeed = playerScript.defaultSpeed;
 		pause.busy = false;

@@ -56,9 +56,6 @@ TagManager:
   - name: Background
     uniqueID: 2331572209
     locked: 0
-  - name: RoomDivider
-    uniqueID: 2688088535
-    locked: 0
   - name: Background Objects
     uniqueID: 762566937
     locked: 0
@@ -73,6 +70,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1535698477
+    locked: 0
+  - name: RoomDivider
+    uniqueID: 2688088535
     locked: 0
   - name: UI
     uniqueID: 3529074763

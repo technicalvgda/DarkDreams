@@ -1,62 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
-/*This script is to be placed inside "item" objects. It's purpose is to add the score into the player script.
- * 
- * 
- * Instructions: 
- 1)  Drag this script in your Scripts folder in Unity.
- 2)  Create an object. This will be an "item" the player can "pick up."
- 3)  In the inspector tab, add a "Box Collider 2D" component and check "Is Trigger" option.
- 4)  Drag this script to your item object.
- 5)  In the inspector tab, locate your "Item Pickup(Script)" script and find the option "Item Add".
- 6)  Insert the amount you wish to add (ideally this will be 1) and hit enter.
- 7)  Open your PlayerControl script and add this code into it:
-
-//to count item pickups
-public static int itemCounter;
-
-// adds points in  the Player Script
-public static void AddPoints (int itemAdd){
-	itemCounter += itemAdd; //adds amount to current score
-	Debug.Log ("Score: " + itemCounter); //confirms the player has picked up the object (track amount). this is removeable.
-}
-
-
- * 8) Save both your PlayerControl script and ItemPickup script. Run the game!
- * Note: In the event that you are not allowed or cannot see the "Item Add" option, try skipping to step 7 first and include the code that will be placed into the PlayerContol script.
- */
-
-
-public class ItemPickup : MonoBehaviour {
+public class LightBulbItemPickup : MonoBehaviour
+{
 
     AudioHandlerScript audioHandler;
     public int dialogueToPlay;
-	public int itemAdd; // creates counter that can be passed to player control; add amount in inspector
-	//public GameObject canvas;
-	public bool flash = false;
+    public int itemAdd; // creates counter that can be passed to player control; add amount in inspector
+                        //public GameObject canvas;
+    public bool flash = false;
     public bool textActive = false;
     private bool playerTouching = false;
-	public FadingDarkness fadingDarkness;
-	PlayerControl playerScript;
+    public FadingDarkness fadingDarkness;
+    PlayerControl playerScript;
     PauseScript pause;
     //public GameObject flashingCanvas;
-   
+
     private GameObject itemTextPanel;
     Vector2 clickPosition;
-  
+
     float clickOffsetY = 1;
     float clickOffsetX = 1;
-    
+
     void Start()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
         pause = Camera.main.GetComponent<PauseScript>();
         audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         // player = GameObject.Find("Player").GetComponent<PlayerControl>();
-        itemTextPanel = transform.Find("UICanvas/Overlay/ItemTextPanel").gameObject;//GameObject.Find("ItemTextPanel");
-        itemTextPanel.SetActive(false);
+        //itemTextPanel = transform.Find("UICanvas/Overlay/ItemTextPanel").gameObject;//GameObject.Find("ItemTextPanel");
+        //itemTextPanel.SetActive(false);
         clickPosition = new Vector2(0f, 0f);
         //cameraScript = Camera.main.GetComponent<CameraFollowScript>();
     }
@@ -77,27 +50,17 @@ public class ItemPickup : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) || ((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
                 (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition) && Input.GetMouseButtonDown(0)))
             {
-               
+
                 fadingDarkness = playerScript.fadingDarknessScript;
-                if (textActive == true)
-                {
-                    Time.timeScale = 1;
-                    pause.busy = false;
+                
                     playerScript.AddPoints(itemAdd); //will add the amount in player script
                     Destroy(gameObject); //destroys the object
-                }
-                else
-                {
-
-                    itemTextPanel.SetActive(true);
-                    pause.busy = true;
                     flash = true;
-                    textActive = true;
                     if (dialogueToPlay != -1)
                     {
                         audioHandler.PlayVoice(dialogueToPlay);
                     }
-                    Time.timeScale = 0;
+                   
 
                 }
                 if (fadingDarkness == null)
@@ -108,10 +71,10 @@ public class ItemPickup : MonoBehaviour {
                 {
                     fadingDarkness.flash = true;
                 }
+
+
+
             
-
-
-            }
         }
     }
     void OnTriggerEnter2D(Collider2D col)
@@ -120,7 +83,7 @@ public class ItemPickup : MonoBehaviour {
         {
             playerTouching = true;
         }
-        
+
     }
     void OnTriggerExit2D(Collider2D col)
     {
@@ -194,6 +157,6 @@ public class ItemPickup : MonoBehaviour {
         
 	}
     */
-    
-   
-}	
+
+
+}
