@@ -93,6 +93,7 @@ public class ScreenBrightness : MenuScreen
             yield return null;
         }
         btnBack.gameObject.SetActive(false);
+        trace.gameObject.SetActive(false);
 
         this.gameObject.SetActive(false);
     }
