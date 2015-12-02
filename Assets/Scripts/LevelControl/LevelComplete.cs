@@ -83,8 +83,11 @@ public class LevelComplete : MonoBehaviour
 		bulb = GameObject.Find ("LightBulb_NOT_lit_1");
 		//Find the glow attached to the bulb
 		bulbGlow = GameObject.Find ("LightBulbParticleGlow");
-		//Get the color of the glow
-		defaultGlowColor = itemsGlow[itemsGlow.Length-1].GetComponent<ParticleSystem> ().startColor;
+        //Get the color of the glow
+        if (itemsGlow.Length > 1)
+        {
+            defaultGlowColor = itemsGlow[itemsGlow.Length - 1].GetComponent<ParticleSystem>().startColor;
+        }
         player = GameObject.FindGameObjectWithTag("Player");
         cam = Camera.main.gameObject;
         pause = Camera.main.GetComponent<PauseScript>();

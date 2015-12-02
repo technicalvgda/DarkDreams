@@ -1,59 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &127870
+--- !u!1 &188264
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 409268}
-  - 212: {fileID: 21201638}
-  - 95: {fileID: 9556256}
-  - 61: {fileID: 6161574}
-  - 114: {fileID: 11492556}
+  - 4: {fileID: 404716}
+  - 212: {fileID: 21204262}
+  - 61: {fileID: 6194588}
+  - 114: {fileID: 11413946}
+  - 95: {fileID: 9582870}
   m_Layer: 0
-  m_Name: MirrorJumpScare
+  m_Name: PaintingJumpScare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &409268
+--- !u!4 &404716
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127870}
+  m_GameObject: {fileID: 188264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 133.465836, y: 181.523239, z: 0}
+  m_LocalPosition: {x: 118.120003, y: 175.270004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6161574
+--- !u!61 &6194588
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127870}
+  m_GameObject: {fileID: 188264}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .262878418, y: -4.07532597}
+  m_Offset: {x: .262878418, y: -1.80250549}
   serializedVersion: 2
-  m_Size: {x: 12.0616379, y: 17.5706596}
---- !u!95 &9556256
+  m_Size: {x: 12.0616379, y: 13.0250225}
+--- !u!95 &9582870
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127870}
+  m_GameObject: {fileID: 188264}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3eb0bb84c3c96614bb0265626825837b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 02d73eb4a1ad7254c892ada8dd70c57d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -61,24 +61,24 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11492556
+--- !u!114 &11413946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127870}
+  m_GameObject: {fileID: 188264}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0a9738d97a80b34997fdcd2664be3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundNum: 0
---- !u!212 &21201638
+--- !u!212 &21204262
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127870}
+  m_GameObject: {fileID: 188264}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -99,7 +99,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ec2b54bf9ea23b4c8f45e1d07028d49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00504972dcd77ba469f3cf25fc97c487, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -110,5 +110,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 127870}
+  m_RootGameObject: {fileID: 188264}
   m_IsPrefabParent: 1
