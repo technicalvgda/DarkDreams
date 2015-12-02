@@ -93,7 +93,10 @@ public class ItemPickup : MonoBehaviour {
                     pause.busy = true;
                     flash = true;
                     textActive = true;
-                    audioHandler.PlayVoice(dialogueToPlay);
+                    if (dialogueToPlay != -1)
+                    {
+                        audioHandler.PlayVoice(dialogueToPlay);
+                    }
                     Time.timeScale = 0;
 
                 }

@@ -2,11 +2,13 @@
 using System.Collections;
 
 public class JumpScare : MonoBehaviour {
-
+    AudioHandlerScript audioHandler;
     Animator anim;
+    public int soundNum;
 	// Use this for initialization
 	void Start ()
     {
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         anim = this.GetComponent<Animator>();
 	}
 	
@@ -20,5 +22,9 @@ public class JumpScare : MonoBehaviour {
         {
             anim.SetTrigger("Jump");
         }
+    }
+    void JumpSound()
+    {
+        audioHandler.PlaySound(soundNum);
     }
 }

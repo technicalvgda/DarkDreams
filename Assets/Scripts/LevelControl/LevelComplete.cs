@@ -83,8 +83,11 @@ public class LevelComplete : MonoBehaviour
 		bulb = GameObject.Find ("LightBulb_NOT_lit_1");
 		//Find the glow attached to the bulb
 		bulbGlow = GameObject.Find ("LightBulbParticleGlow");
-		//Get the color of the glow
-		defaultGlowColor = itemsGlow[itemsGlow.Length-1].GetComponent<ParticleSystem> ().startColor;
+        //Get the color of the glow
+        if (itemsGlow.Length > 1)
+        {
+            defaultGlowColor = itemsGlow[itemsGlow.Length - 1].GetComponent<ParticleSystem>().startColor;
+        }
         player = GameObject.FindGameObjectWithTag("Player");
         cam = Camera.main.gameObject;
         pause = Camera.main.GetComponent<PauseScript>();
@@ -108,51 +111,55 @@ public class LevelComplete : MonoBehaviour
 
         // Lock the camera once it finishes positioning itself
         cam.GetComponent<CameraFollowScript>().enabled = false;
-
-		//Wait 1 second
-        yield return new WaitForSeconds(1);
-
-        // Pan camera to left until it hits the wall
-        while (cam.transform.position.x > wallMargin)
+        if (Application.loadedLevelName != "Tutorial Stage")
         {
-            cam.transform.position += new Vector3(-0.3f, 0, 0);
-            yield return null;
-        }
+            //Wait 1 second
+            yield return new WaitForSeconds(1);
 
-		//Get the alpha value of an item
-		fadingAlpha = defaultGlowColor.a;
+            // Pan camera to left until it hits the wall
+            while (cam.transform.position.x > wallMargin)
+            {
+                cam.transform.position += new Vector3(-0.3f, 0, 0);
+                yield return null;
+            }
 
-		//While the alpha of the item is greater than 0
-		while (itemsGlow[itemsGlow.Length-1/*i*/].GetComponent<ParticleSystem>().startColor.a > 0f) 
-		{
-			//Decrease the alpha until it reaches 0
-			fadingAlpha  -= Time.deltaTime * fadingSpeed;
-			//Go through all the items so they fade away at the same rate
-			for(int i = 0; i < itemsGlow.Length; i++)
-			{
-				itemsGlow[i].GetComponent<ParticleSystem>().startColor = 
-					new Color(defaultGlowColor.r,defaultGlowColor.g,defaultGlowColor.b,fadingAlpha);
-			}
-			yield return null;
-		}
-		//Reset the fading alpha
-		fadingAlpha = defaultGlowColor.a;
+            //Get the alpha value of an item
+            fadingAlpha = defaultGlowColor.a;
 
-		//Move the bulb above the UI
-		bulb.GetComponent<SpriteRenderer> ().sortingLayerName = "AboveUI";
+            //While the alpha of the item is greater than 0
 
-		//Move the glow above the UI
-		bulbGlow.GetComponent<ParticleSystem> ().GetComponent<Renderer> ().sortingLayerName = "AboveUI";
+            while (itemsGlow[itemsGlow.Length - 1/*i*/].GetComponent<ParticleSystem>().startColor.a > 0f)
+            {
+                //Decrease the alpha until it reaches 0
+                fadingAlpha -= Time.deltaTime * fadingSpeed;
+                //Go through all the items so they fade away at the same rate
+                for (int i = 0; i < itemsGlow.Length; i++)
+                {
+                    itemsGlow[i].GetComponent<ParticleSystem>().startColor =
+                        new Color(defaultGlowColor.r, defaultGlowColor.g, defaultGlowColor.b, fadingAlpha);
+                }
+                yield return null;
+            }
 
-		//Wait 3 seconds
-        yield return new WaitForSeconds(3);
+            //Reset the fading alpha
+            fadingAlpha = defaultGlowColor.a;
 
-		// pan back to the right side of the wall
-		while ((cam.transform.position.x+horzExtent) < 
-		       (atticRoom.transform.position.x + atticRoom.GetComponent<Renderer> ().bounds.extents.x))
-		{
-            cam.transform.position += new Vector3(0.4f, 0, 0);
-            yield return null;
+            //Move the bulb above the UI
+            bulb.GetComponent<SpriteRenderer>().sortingLayerName = "AboveUI";
+
+            //Move the glow above the UI
+            bulbGlow.GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingLayerName = "AboveUI";
+
+            //Wait 3 seconds
+            yield return new WaitForSeconds(3);
+
+            // pan back to the right side of the wall
+            while ((cam.transform.position.x + horzExtent) <
+                   (atticRoom.transform.position.x + atticRoom.GetComponent<Renderer>().bounds.extents.x))
+            {
+                cam.transform.position += new Vector3(0.4f, 0, 0);
+                yield return null;
+            }
         }
 		//Set the correct R,G,B values for the glow but alpha to 0
 		bulbGlow.GetComponent<ParticleSystem> ().startColor = 

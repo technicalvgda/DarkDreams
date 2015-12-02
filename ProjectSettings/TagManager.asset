@@ -15,6 +15,10 @@ TagManager:
   - Item
   - ParticleGlow
   - BoardedDoor
+  - HunterEnemy
+  - Fake
+  - Lock
+  - Fake1
   layers:
   - Default
   - TransparentFX
@@ -52,20 +56,23 @@ TagManager:
   - name: Background
     uniqueID: 2331572209
     locked: 0
-  - name: RoomDivider
-    uniqueID: 2688088535
-    locked: 0
   - name: Background Objects
     uniqueID: 762566937
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemies
+    uniqueID: 1357706135
+    locked: 0
   - name: Items
     uniqueID: 3790465623
     locked: 0
   - name: Player
     uniqueID: 1535698477
+    locked: 0
+  - name: RoomDivider
+    uniqueID: 2688088535
     locked: 0
   - name: UI
     uniqueID: 3529074763

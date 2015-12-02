@@ -102,6 +102,7 @@ public class PlayerControl : MonoBehaviour
     void Start() //what happens as soon as player is created
     {
         anim = this.GetComponent<Animator>();
+        anim.SetBool("FacingRight", facingRight);
         initialColor = sprite.color;
         slowMo = false;  //slowMo starts out as false since the player hasn't hit the button yet
 
@@ -113,7 +114,7 @@ public class PlayerControl : MonoBehaviour
         }
         // What is 40? 
         // Application.loadedLevel requires that the levels be set in the build in a particular order, this is dangerous.
-        hunterInactiveDuration = 40 - 18 * (Application.loadedLevel - 2);
+        hunterInactiveDuration = 40 - 10 * (Application.loadedLevel - 3);
         // What is 8? Should probably be a constant variable
         if (hunterInactiveDuration < 8)
             hunterInactiveDuration = 8;
@@ -307,9 +308,10 @@ public class PlayerControl : MonoBehaviour
             //prevent player from moving
             normalSpeed = 0f;
         }
+       
         //level warp
-       
-       
+
+
         //checks for collision
         if (col.gameObject.name == "LeftWall")
         {
@@ -421,9 +423,13 @@ public class PlayerControl : MonoBehaviour
     void FlipPlayer()
     {
         facingRight = !facingRight;
+        //make the animators bool the same as the players
+        anim.SetBool("FacingRight", facingRight);
+        /*
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        */
     }
     // adds points in  the Player Script
     public void AddPoints(int itemAdd)
@@ -496,5 +502,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         isHunterActive = false;
+    }
+    public void SetInvisible()
+    {
+        sprite.color = new Color(1f, 1f, 1f, 0f);
     }
 }

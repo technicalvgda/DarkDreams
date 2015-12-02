@@ -1722,7 +1722,7 @@ GameObject:
   - 4: {fileID: 422448}
   - 212: {fileID: 21205256}
   m_Layer: 0
-  m_Name: toy_shelves_1
+  m_Name: toy_shelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2019,7 +2019,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: -7.73000002, z: 0}
+  m_LocalPosition: {x: 1.73000002, y: -8.36999989, z: 0}
   m_LocalScale: {x: .606559098, y: 1, z: 1}
   m_Children:
   - {fileID: 411026}
@@ -2108,7 +2108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.05000019, y: -7.67000008, z: 0}
+  m_LocalPosition: {x: -6.07000017, y: -8.18999958, z: 0}
   m_LocalScale: {x: .606559098, y: 1, z: 1}
   m_Children:
   - {fileID: 438070}
@@ -2122,7 +2122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.89122772, y: -8.5, z: 0}
+  m_LocalPosition: {x: -9.90999985, y: -8.06000042, z: 0}
   m_LocalScale: {x: .606559098, y: 1, z: 1}
   m_Children:
   - {fileID: 452856}
@@ -2161,7 +2161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 183.230072, y: 69.9805527, z: 0}
+  m_LocalPosition: {x: 180.711761, y: 177.474365, z: 0}
   m_LocalScale: {x: 1.64864397, y: 1, z: 1}
   m_Children:
   - {fileID: 448492}
@@ -2379,7 +2379,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.1099997, y: -3.73000002, z: 0}
+  m_LocalPosition: {x: -13.1099997, y: -3.49000001, z: 0}
   m_LocalScale: {x: .606559098, y: 1, z: 1}
   m_Children:
   - {fileID: 486112}
@@ -2457,7 +2457,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.91000009, y: 2.71000004, z: 0}
+  m_LocalPosition: {x: -2.8900001, y: 2.29999995, z: 0}
   m_LocalScale: {x: .606559098, y: 1, z: 1}
   m_Children:
   - {fileID: 460858}
@@ -2483,7 +2483,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.0900002, y: -7.82999992, z: 0}
+  m_LocalPosition: {x: -13.1099997, y: -7.59000015, z: 0}
   m_LocalScale: {x: .606559098, y: 1, z: 1}
   m_Children:
   - {fileID: 405792}
@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 13
 --- !u!114 &11410862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3250,7 +3250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 5
 --- !u!114 &11414418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3321,7 +3321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 12
 --- !u!114 &11417700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3344,7 +3344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 6
 --- !u!114 &11420484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3859,7 +3859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 1
 --- !u!114 &11436504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3952,7 +3952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 3
 --- !u!114 &11440770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3996,7 +3996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 4
 --- !u!114 &11442850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4207,7 +4207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 11
 --- !u!114 &11456884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4251,7 +4251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 2
 --- !u!114 &11462424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4547,7 +4547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 8
 --- !u!114 &11481584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4683,7 +4683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 10
 --- !u!114 &11488890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4743,7 +4743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 14
 --- !u!114 &11490256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4798,7 +4798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 7
 --- !u!114 &11495322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4826,7 +4826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: 9
 --- !u!114 &11496586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23386,7 +23386,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -504501673
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df06e469a24668a469af5836812e6e6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f0330ebebcfc244fb733b43aa6e2c15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21205828
 SpriteRenderer:
@@ -23620,7 +23620,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -504501673
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 17d49d701c8c06542b1926ce58ba3686, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82095b7be0cee0c49b2ef5cdf12032a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21242782
 SpriteRenderer:
@@ -23672,7 +23672,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -504501673
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 17d49d701c8c06542b1926ce58ba3686, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 48064ee0409e67f45bb846c5f1c58065, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21244480
 SpriteRenderer:
@@ -23698,7 +23698,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -504501673
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 17d49d701c8c06542b1926ce58ba3686, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33135685377a292458f6f83791dcd899, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21254642
 SpriteRenderer:
@@ -23750,7 +23750,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -504501673
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 17d49d701c8c06542b1926ce58ba3686, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2db6bdd30a367b247b6a709d01e24784, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21265076
 SpriteRenderer:

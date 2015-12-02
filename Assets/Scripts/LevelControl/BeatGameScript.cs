@@ -47,7 +47,7 @@ public class BeatGameScript : MonoBehaviour
 		//Find the silhouette
 		silhouette = GameObject.Find ("tempSilhouette");
 		//Find the hunter monster
-		hunterEnemy = GameObject.FindGameObjectWithTag ("PatrolEnemy");
+		hunterEnemy = GameObject.FindGameObjectWithTag ("HunterEnemy");
 		//Get the spotlight for the hunter monster
 		spotlight = GameObject.Find ("hunter_spotlight_test_1");
 		//Make the silhouette invisible
