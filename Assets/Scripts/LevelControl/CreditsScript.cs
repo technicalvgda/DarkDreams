@@ -5,7 +5,7 @@ public class CreditsScript : MonoBehaviour
 {
 
     AudioHandlerScript audioHandler;
-    public float timer = 10;
+    float timer =300;
     public float speed = 5;
     void Start()
     {
@@ -27,7 +27,8 @@ public class CreditsScript : MonoBehaviour
     IEnumerator JumpToStart()
     {
         yield return new WaitForSeconds(timer);
-        Application.LoadLevel("TitleScreen");
+        //load title
+        Application.LoadLevel(1);
     }
 
 
