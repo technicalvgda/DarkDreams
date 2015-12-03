@@ -81,14 +81,14 @@ public class SceneFade : MonoBehaviour
         sceneEnding = true;
         yield return new WaitForSeconds(5);
         //**** COPY FROM HERE ****//
-        BG1.enabled = false;
-        BG2.enabled = true;
-        sceneStarting = true;
-        sceneEnding = false;
+        //BG1.enabled = false;
+        //BG2.enabled = true;
+        //sceneStarting = true;
+        //sceneEnding = false;
 
-        yield return new WaitForSeconds(5);
-        sceneEnding = true;
-        yield return new WaitForSeconds(5);
+        //yield return new WaitForSeconds(5);
+        //sceneEnding = true;
+       // yield return new WaitForSeconds(5);
         //**** COPY TO HERE ****//
 
         //**** PASTE HERE ****//
