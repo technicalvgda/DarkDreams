@@ -108,8 +108,8 @@ public class OpeningCutscene : MonoBehaviour
         pause.busy = false;
         audioHandler.LoopMusic(true);
         audioHandler.PlayMusic(5);
-        yield return new WaitForSeconds(10f);
-        hunterEnemy.SetActive(false);
+        //yield return new WaitForSeconds(10f);
+       // hunterEnemy.SetActive(false);
         yield return null;
 	}
 }

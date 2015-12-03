@@ -66,6 +66,7 @@ public class PlayerControl : MonoBehaviour
 	private GameObject hunter;
     private bool isHunterActive = false;
     float hunterYOffset = 10f;
+    public bool killedByHunter = false;
 
     // estimated position.y of each floor
         /* Wilburn TODO: I feel like I can grab the floor positions from the floors that's

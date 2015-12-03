@@ -107,7 +107,15 @@ public class LevelControl : MonoBehaviour
             // Set player position to initial position in basement
             if (Application.loadedLevelName == "Tutorial Stage")
             {
-                initialPlayerPos = new Vector3(-111, -78, player.transform.position.z);
+                if (playerScript.killedByHunter==true)
+                {
+
+
+                }
+                else
+                {
+                    initialPlayerPos = new Vector3(-111, -78, player.transform.position.z);
+                }
             }
            
             player.transform.position = initialPlayerPos;
@@ -156,6 +164,7 @@ public class LevelControl : MonoBehaviour
                 playerScript.chasingMonsterScript.speedNormal = 2.0f;
                 playerScript.chasingMonsterScript.speedChasing = 4.0f;
             }
+            playerScript.killedByHunter = false;
             //play intro music
             /*
             audioHandler.LoopMusic(false);

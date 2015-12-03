@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21261082}
   - 114: {fileID: 11426506}
   - 61: {fileID: 6178648}
+  - 95: {fileID: 9518310}
+  - 50: {fileID: 5042302}
   m_Layer: 0
   m_Name: PatrollingEnemy
   m_TagString: PatrolEnemy
@@ -25,11 +27,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 473.874084, y: 166.319351, z: 0}
+  m_LocalPosition: {x: -24.2498779, y: -9.65144348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5042302
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131142}
+  m_Mass: 9.99999975e-05
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!61 &6178648
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -40,9 +58,26 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -.587646484, y: .565895081}
   serializedVersion: 2
-  m_Size: {x: 5.76999998, y: 4.26000023}
+  m_Size: {x: 9.79170799, y: 7.79644442}
+--- !u!95 &9518310
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c769ae11e86567847a8e648e21e0264c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11426506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,13 +109,15 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1357706135
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 76976e939d76c9342a68e1ab1eb6efa4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a997272be815a7347a1eabcf767fac02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

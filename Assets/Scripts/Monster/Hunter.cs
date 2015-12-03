@@ -109,7 +109,7 @@ public class Hunter : MonoBehaviour
         */
         // initialize the position of the linecast
         startCast = endCast = gameObject.transform.position ;
-
+        
         counter *= Time.deltaTime;
         
         // movement of monster and changes the position of linecast
@@ -153,21 +153,24 @@ public class Hunter : MonoBehaviour
             if (hit.collider && hit.collider.tag == "Player" && !player.hide)
             {
                 isCaught = true;
+                //freeze player
+                player.normalSpeed = 0;
                 // spottedCue.SetActive(true);  // BUGGED NULL REFERENCE
                 // this code runs when player is seen
 
 
             }
         }
-            // Making the line cast
-           // RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(startCast, endCast);
+        // Making the line cast
+        // RaycastHit2D EnemyVisionTrigger = Physics2D.Linecast(startCast, endCast);
 
         // check if the collider exists and if the collider is the player
-       
-        if(isCaught == true && killPlayer == false)
+       // Debug.Log(speed);
+        if (isCaught == true && killPlayer == false)
         {
-            speed = activeSpeed;
-            /*
+           
+            ///speed = activeSpeed;
+            
             //Tests which direction the monster is facing
             if (facingRight)
             {
@@ -179,12 +182,14 @@ public class Hunter : MonoBehaviour
                 //Multiply the movement by the amount set in the inspector
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
-            */
+            
         }
+        /*
         else if(killPlayer == false)
         {
             speed = defaultSpeed;
         }
+        */
        
         
 		
@@ -246,13 +251,21 @@ public class Hunter : MonoBehaviour
     //When the player collides with the patrolling enemy
     void OnTriggerEnter2D(Collider2D col)
     {
-        //If the player collides with the patrolling enemy and is not caught
-        if (col.gameObject.tag == "Player" && isCaught)
+        Debug.Log(col);
+        if (col.gameObject.name == "BasementWallRight") //&& isCaught)
         {
+            this.gameObject.SetActive(false);
+        }
+        
+        //If the player collides with the patrolling enemy and is not caught
+        if (col.gameObject.tag == "Player") //&& isCaught)
+        {
+            player.killedByHunter = true;
             killPlayer = true;
-            //stores instance of this in player
             anim.SetBool("Kill", true);
-			player.hunterScript = this;
+            //stores instance of this in player
+
+            player.hunterScript = this;
             //Monster stops moving
             speed = 0;
             player.normalSpeed = 0;
