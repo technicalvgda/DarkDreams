@@ -4,7 +4,8 @@ using System.Collections;
 
 public class FinalLevelCutscene : MonoBehaviour
 {
-	private GameObject door;
+    AudioHandlerScript audioHandler;
+    private GameObject door;
 	public bool activated;
 	private Bounds levelBounds;
 	private float minY;
@@ -22,7 +23,8 @@ public class FinalLevelCutscene : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		door = GameObject.Find ("DoorLeft");
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
+        door = GameObject.Find ("DoorLeft");
 		activated = false;
 		wall = GameObject.Find ("LeftWall");
 		//hunterEnemy = GameObject.FindGameObjectWithTag ("HunterEnemy");
@@ -75,7 +77,9 @@ public class FinalLevelCutscene : MonoBehaviour
 	{
         pause.busy = true;
         playerScript.normalSpeed = 0f;
-		yield return new WaitForSeconds (0.5f);
+        audioHandler.LoopMusic(false);
+        audioHandler.PlayMusic(3);
+        yield return new WaitForSeconds (0.5f);
 		
 		// Lock the camera once it finishes positioning itself
 		cam.GetComponent<CameraFollowScript> ().enabled = false;

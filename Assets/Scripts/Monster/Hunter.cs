@@ -271,7 +271,7 @@ public class Hunter : MonoBehaviour
     //activated at spawn, sets hunter to move, plays train whistle
     public void SetSpeed()
     {
-        sfx.Play();
+        //sfx.Play();
         speed = defaultSpeed;
        
 
@@ -281,12 +281,12 @@ public class Hunter : MonoBehaviour
         speed = 0;
 
     }
-    /*
+    
     public void PlayWhistle()
     {
         sfx.Play();
 
     }
-    */
+    
 
 }

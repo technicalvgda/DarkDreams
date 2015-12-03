@@ -52,10 +52,12 @@ public class LevelControl : MonoBehaviour
         overlay.SetActive(false);
         overlay_image = overlay.GetComponent<Image>();
         //play music clip #3 (intro music)
+        /*
         audioHandler.LoopMusic(false);
         audioHandler.PlayMusic(3);
+        */
         //start level music at certain time
-        StartCoroutine("levelMusic");
+        //StartCoroutine("levelMusic");
         
         
     }
@@ -152,8 +154,10 @@ public class LevelControl : MonoBehaviour
                 playerScript.chasingMonsterScript.speedChasing = 4.0f;
             }
             //play intro music
+            /*
             audioHandler.LoopMusic(false);
             audioHandler.PlayMusic(3);
+            */
             //play level music
             StartCoroutine("levelMusic");
         }

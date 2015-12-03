@@ -14,7 +14,7 @@ public class BeatGameScript : MonoBehaviour
 	//The distance between the monster and the ground so the silhouette is on the ground
 	private Vector3 silhouetteMonsterOffset;
 	//The silhouette object
-	private GameObject silhouette;
+	//private GameObject silhouette;
 	//The spotlight for the hunter monster
 	private GameObject spotlight;
 	//Variable for the alpha of anything fading. Need to set to 1 after every object
@@ -25,10 +25,14 @@ public class BeatGameScript : MonoBehaviour
 	private FinalLevelCutscene finalLevelCutscene;
 	//The hunter enemy
 	private GameObject hunterEnemy;
+    //the hunters fog
+    private GameObject hunterFog;
 	//The basement
 	private GameObject basementRoom;
     //The bulb
     public GameObject lightBulb;
+    //this objects particle glow
+    public ParticleSystem glow;
     //The player
     private GameObject player;
 	//The variable to control how fast something fades
@@ -40,6 +44,7 @@ public class BeatGameScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+        glow = GameObject.Find("EndGlow").GetComponent<ParticleSystem>();
 		//Set the fadingAlpha to 1 so that things will fade correctly
 		fadingAlpha = 1;
 		//Find the final level script
@@ -47,15 +52,16 @@ public class BeatGameScript : MonoBehaviour
 		//Find the basement room
 		basementRoom = GameObject.Find ("EndingBasement");
 		//Find the silhouette
-		silhouette = GameObject.Find ("tempSilhouette");
+		//silhouette = GameObject.Find ("tempSilhouette");
 		//Find the hunter monster
 		hunterEnemy = GameObject.FindGameObjectWithTag ("HunterEnemy");
+        hunterFog = GameObject.Find("FogLeft");
 		//Get the spotlight for the hunter monster
 		spotlight = GameObject.Find ("hunter_spotlight_test_1");
 		//Make the silhouette invisible
-		silhouette.GetComponent<Renderer> ().material.color = Color.clear;
+		//silhouette.GetComponent<Renderer> ().material.color = Color.clear;
 		//Make it inactive until the ending cutscene starts
-		silhouette.SetActive (false);
+		//silhouette.SetActive (false);
 		//find the player
 		player = GameObject.FindGameObjectWithTag ("Player");
 		clickPosition = new Vector2(0f, 0f);
@@ -64,6 +70,7 @@ public class BeatGameScript : MonoBehaviour
 	// Update is called once per framead
 	void Update () 
 	{
+        /*
 		//If both the hunterEnemy and silhouette are both active
 		if (hunterEnemy.activeSelf == true && silhouette.activeSelf == true) 
 		{
@@ -72,6 +79,7 @@ public class BeatGameScript : MonoBehaviour
 			silhouetteMonsterOffset.y  = hunterEnemy.transform.position.y-10;
 			silhouette.transform.position = silhouetteMonsterOffset;
 		}
+        */
 	}
 	void OnTriggerStay2D(Collider2D other)
 	{
@@ -105,23 +113,30 @@ public class BeatGameScript : MonoBehaviour
 	{
 		//Make it true so the player can't spam space and glitch the cutscene
 		cutsceneActivated = true;
-        lightBulb.SetActive(true);	
-		//Make it so the hunter's linecast won't trigger it to run fast or make the player lose the game if there is a collision
-		player.GetComponent<PlayerControl> ().hide = true;
+        lightBulb.SetActive(true);
+        glow.emissionRate = 0;
+        glow.startLifetime = 0;
+
+        //Make it so the hunter's linecast won't trigger it to run fast or make the player lose the game if there is a collision
+        player.GetComponent<PlayerControl> ().hide = true;
 
 		Debug.Log ("You beat the game!");
-		//Make it so player can't move
-		player.GetComponent<PlayerControl> ().normalSpeed = 0;
+        darknessImage.alpha = 0;
+        //Make it so player can't move
+        player.GetComponent<PlayerControl> ().normalSpeed = 0;
 		//Disable the final level cutscene script so the hunter can stay active
 		finalLevelCutscene.enabled = false;
 		//Activate the silhoutte
-		silhouette.SetActive (true);
+		//silhouette.SetActive (true);
 		//Activate the hunter
 		hunterEnemy.SetActive (true);
 		//Correctly position the hunter
 		hunterEnemy.transform.position = new Vector3 (player.transform.position.x -20, player.transform.position.y + 10, player.transform.position.z);
         //While the hunter is visible
         hunterEnemy.GetComponent<Hunter>().anim.SetBool("End", true);
+        hunterFog.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        hunterEnemy.GetComponent<Hunter>().StopSpeed();
         yield return new WaitForSeconds(6f);
         /*
 		while (hunterEnemy.GetComponent<Renderer>().material.color.a >= 0f) 
@@ -151,6 +166,7 @@ public class BeatGameScript : MonoBehaviour
 		//Wait 2 seconds
 		yield return new WaitForSeconds (2f);
 		//While the silhouette is visisble
+        /*
 		while (silhouette.GetComponent<Renderer>().material.color.a >= 0f) 
 		{
 			//Make things fade
@@ -166,6 +182,7 @@ public class BeatGameScript : MonoBehaviour
 
 			yield return null;
 		}
+        */
 		//Finish whiting out the screen
 		while (whiteOutImage.alpha  < 1f) 
 		{

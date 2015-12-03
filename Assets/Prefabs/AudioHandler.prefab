@@ -281,6 +281,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 23f04f8d894aa8e469621e91ed3d44a7, type: 3}
   - {fileID: 8300000, guid: bdbcc23335b0c9e4a85ca266896b4f15, type: 3}
   - {fileID: 8300000, guid: c4c82b77a0e823843aa11856cab0708f, type: 3}
+  - {fileID: 8300000, guid: fa94e86251d2e2a41b1723485468a87a, type: 3}
+  - {fileID: 8300000, guid: 525e98e8779991d4abdfa740191337bc, type: 3}
+  - {fileID: 8300000, guid: db56f1e5a0858fb41b3cb95f3d837f27, type: 3}
+  - {fileID: 8300000, guid: d6d124be1f481c745ac0347cf34ef2cb, type: 3}
 --- !u!212 &21288430
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -299,7 +303,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}

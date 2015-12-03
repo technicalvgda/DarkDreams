@@ -4,7 +4,8 @@ using System.Collections;
 
 public class OpeningCutscene : MonoBehaviour
 {
-	public GameObject hunterEnemy;
+    AudioHandlerScript audioHandler;
+    public GameObject hunterEnemy;
 	public GameObject wall;
 	float wallMargin;
 	const float wallOffset = 20;
@@ -17,9 +18,9 @@ public class OpeningCutscene : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
-        
-            Setup();
-            StartCoroutine("_Cutscene");
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
+        Setup();
+        StartCoroutine("_Cutscene");
         
        
 	}
@@ -66,8 +67,9 @@ public class OpeningCutscene : MonoBehaviour
 
 		// Lock the camera once it finishes positioning itself
 		cam.GetComponent<CameraFollowScript> ().enabled = false;
-
-		yield return new WaitForSeconds (1);
+        audioHandler.LoopMusic(false);
+        audioHandler.PlayMusic(3);
+        yield return new WaitForSeconds (1);
 
 		// Pan camera to left until it hits the wall
 		while (cam.transform.position.x > wallMargin)
@@ -93,6 +95,8 @@ public class OpeningCutscene : MonoBehaviour
         //prevent player from moving until end of cutscene
         playerScript.normalSpeed = playerScript.defaultSpeed;
         pause.busy = false;
+        audioHandler.LoopMusic(true);
+        audioHandler.PlayMusic(5);
         yield return new WaitForSeconds(10f);
         hunterEnemy.SetActive(false);
         yield return null;
