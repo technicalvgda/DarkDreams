@@ -12,7 +12,7 @@ public class Eclipse : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        if(Application.loadedLevelName == "Ending Level")
+        if(Application.loadedLevelName == "Ending Level" || Application.loadedLevelName == "Nightmare")
         {
             audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         }
@@ -31,7 +31,7 @@ public class Eclipse : MonoBehaviour {
         }
         else
         {
-            if (Application.loadedLevelName == "Ending Level" && goodnight == false)
+            if ((Application.loadedLevelName == "Ending Level"|| Application.loadedLevelName == "Nightmare") && goodnight == false)
             {
                 goodnight = true;
                 audioHandler.PlayVoice(17);

@@ -77,7 +77,7 @@ public class CeilingMonster : MonoBehaviour
         playerPos = playerObj.GetComponent<Transform>();
         //Debug.Log("ENEMY: "+ currentPos.y+ "\nPLAYER: " +playerPos.position.y); //debug purposes
         // If the player is on our floor, run the script. 
-        if (playerPos.position.y - 10 <= currentPos.y && currentPos.y <= playerPos.position.y + 25)
+        if (playerPos.position.y <= currentPos.y && currentPos.y <= playerPos.position.y + 36)
         {
             ///rotation code
             if (rotate == true && isFalling == false && isActive == true)
