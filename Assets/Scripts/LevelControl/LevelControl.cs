@@ -104,6 +104,7 @@ public class LevelControl : MonoBehaviour
         {
             gameOver = false;
             gameOverMusicPlaying = false;
+            audioHandler.StopMusic();
             // Set player position to initial position in basement
             if (Application.loadedLevelName == "Tutorial Stage")
             {
@@ -221,6 +222,7 @@ public class LevelControl : MonoBehaviour
     public IEnumerator levelMusic()
     {
         ///wait for length of intro
+       // if(Application.loadedLevelName != "Ending Level" && Application.loadedLevelName != "Nightmare")
         yield return new WaitForSeconds(waitTime);
         //play and loop level music
         audioHandler.LoopMusic(true);

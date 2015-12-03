@@ -306,8 +306,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -2355}
-  m_SizeDelta: {x: 559, y: 4146}
+  m_AnchoredPosition: {x: 0, y: -3116}
+  m_SizeDelta: {x: 559, y: 5669}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1198522921
 MonoBehaviour:
@@ -342,15 +342,16 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "PARASOMNIA\n\nBased upon an original idea by\nJosh Shucker\n\n-Production
     Leads-\nNathan Moore\nAaron Gutierrez\n\n--------------------\nTECHNICAL TEAM\n\n-Technical
-    Lead-\nJosh Shucker\n\n-Assistant Technical Lead-\nMichael Zatlin\n\n(Core Developers)\n\n\n(Associate
-    Developers)\n\n\n(Contributors)\n\n----------------------------\nCONTENT/DESIGN
+    Lead-\nJosh Shucker\n\n-Assistant Technical Lead-\nMichael Zatlin\n\n(Core Developers)\nJosh
+    Shucker\nMichael Zatlin\n\n(Associate Developers)\n\n\n(Contributors)\n\n----------------------------\nCONTENT/DESIGN
     TEAM\n\n-Content/Design Lead-\nEmily Rose Wilder\n\n-Assistant Content/Design
-    Lead-\nElijah Wigman-Nilsson\n\n(Core Developers)\nJoshua Chan\nAshley Anthony\nPeter
-    Dorian\nJason Thames\nSonca Nguyen\nAaron Taylor\nNicki Calimlim\nJose Prado\nJacob
-    Tapia\nOrion Kongmalay\nSebastian Gutierrez\n\n(Associate Developers)\nKrystal
-    Fontaine\n\n(Contributors)\nJake Bostrom\n\n-----------\nART TEAM\n\n-Art Lead-\nKatrina
-    Yi\n\n-Assistant Art Leads-\n\n(Core Developers)\n\n(Associate Developers) \n\n(Contributors)\n\nSOUND
-    TEAM\n\n-Sound Lead-\nAndrew Loyola\n\n-Assistant Sound Lead-\nEmily Nelson-Garcia\n\n-Composers-\r\n(Core
+    Lead-\nElijah Wigman-Nilsson\n\n(Core Developers)\nEmily Rose Wilder\nElijah Wigman-Nilsson\nJoshua
+    Chan\nAshley Anthony\nPeter Dorian\nJason Thames\nSonca Nguyen\nAaron Taylor\nNicki
+    Calimlim\nJose Prado\nJacob Tapia\nOrion Kongmalay\nSebastian Gutierrez\n\n(Associate
+    Developers)\nKrystal Fontaine\n\n(Contributors)\nJake Bostrom\n\n-----------\nART
+    TEAM\n\n-Art Lead-\nKatrina Yi\n\n-Assistant Art Leads-\n\n(Core Developers)\nKatrina
+    Yi\n\n(Associate Developers) \n\n(Contributors)\n\nSOUND TEAM\n\n-Sound Lead-\nAndrew
+    Loyola\n\n-Assistant Sound Lead-\nEmily Nelson-Garcia\n\n-Composers-\r\n(Core
     Developers)\nAmy Hori\nCameron Johnston\r\nLuis Gracia\n\n-Sound Effects-\n(Core
     Developers)\nEmily Nelson\r\n\n(Associate Developers)\nKevin Nasus Ai\r\n\n-Voice
     Acting-\nJosh Shucker\nMichael Zatlin\n\nSPECIAL THANKS\nAdam Moore\nAaron Lane\n\nCreated
