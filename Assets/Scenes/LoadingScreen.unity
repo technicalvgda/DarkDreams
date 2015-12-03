@@ -417,10 +417,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575445356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c46726225710e714caa5cd57ea94e93f, type: 3}
+  m_Script: {fileID: 11500000, guid: 688f43d913e7e284f846076b1781328b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackTexture: {fileID: 1068079058}
+  blackTexture: {fileID: 0}
   fadeSpeed: 1.5
 --- !u!81 &1575445358
 AudioListener:

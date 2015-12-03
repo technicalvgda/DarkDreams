@@ -23,7 +23,9 @@ public class MainMenuCtrl : MonoBehaviour
     {
         // Unfreezes time in case somebody forgets to do it (thanks pause screen)
         Time.timeScale = 1f;
-
+        //create or reset the playerpref for level jumping
+        PlayerPrefs.SetInt("NextLevel", 3);
+        
         // Makes sure the sprites appear correct
         const int scrnHeight = 720;
         const int ppu = 100;

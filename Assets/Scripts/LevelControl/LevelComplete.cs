@@ -213,6 +213,9 @@ public class LevelComplete : MonoBehaviour
     void LoadNewLevel(/*Dummy Variable for next level*/)
     {
         int i = Application.loadedLevel;
-        Application.LoadLevel(i + 1);
+        //set next level variable
+        PlayerPrefs.SetInt("NextLevel", i+1);
+        Application.LoadLevel("LoadingScreen");
+        //Application.LoadLevel(i + 1);
     }
 }
