@@ -9,7 +9,7 @@ public class IntroFade : MonoBehaviour
     public Color endColor;
     //displays on intro panel (may change from level to level)
     public string progressMessage = "Goodnight";
-    float timeToWait = 9.0f;// used to be public
+    float timeToWait = 5.0f;// used to be public
     public float timeToFade = 1.0f;
     public float timeToUpdatePeriods = 0.5f;
     public int periodCount = 3;

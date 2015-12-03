@@ -64,7 +64,7 @@ public class OpeningCutscene : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
             if (Application.loadedLevelName == "Ending Level")
             {
                 audioHandler.PlayVoice(17);
@@ -73,7 +73,7 @@ public class OpeningCutscene : MonoBehaviour
             {
                 audioHandler.PlayVoice(16);
             }
-            yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(3f);
         }
 
 		// Lock the camera once it finishes positioning itself
