@@ -4039,7 +4039,7 @@ MonoBehaviour:
   - {fileID: 401008, guid: a1102f96b0dc6134a91c43dec54155f2, type: 2}
   - {fileID: 414230, guid: c54c077b0236e054da510ef0ce19d5f2, type: 2}
   extraRoom:
-  - {fileID: 451122, guid: b64df3b746738b345ab06a9c0f94e2e9, type: 2}
+  - {fileID: 0}
   - {fileID: 406318, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
 --- !u!1 &1393586454
 GameObject:

@@ -306,8 +306,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 13, y: -702}
-  m_SizeDelta: {x: 559, y: 840}
+  m_AnchoredPosition: {x: 0, y: -2355}
+  m_SizeDelta: {x: 559, y: 4146}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1198522921
 MonoBehaviour:
@@ -335,17 +335,22 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 40
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Parasomnia\n\nBased upon\n\nProduction Leads\n\nTechnical team\n\nTech
-    Leads\n\ncore\n\nassociate\n\ncontributor\n\nContent/ Design Team\n\nContent/Design
-    Leads\n\ncore\n\nassociate\n\ncontributor\n\nArt Team\n\nArt Leads\n\nCore\n\nassociate
-    \n\ncontributor\n\nSound Team\n\nSound Leads\n\ncore \n\nassociate\n\ncontributor\n\ndialogue\nJosh
-    Shucker\nMichael Zatlin\nEmily Rose Wilder\n\nSpecial Thanks\n\nCreated by the
-    VGDA of Cal State Long Beach\n\nThank you for playing!\n"
+  m_Text: "PARASOMNIA\n\nBased upon an original idea by\nJosh Shucker\n\n-Production
+    Leads-\nNathan Moore\nAaron Gutierrez\n\nTECHNICAL TEAM\n--------------------\n-Technical
+    Lead-\nJosh Shucker\n\n-Assistant Technical Lead-\nMichael Zatlin\n\n-Core Developers-\n\n\n-Associate
+    Developers-\n\n\n-Contributors-\n\n\nCONTENT/DESIGN TEAM\n----------------------------\n-Content/Design
+    Lead-\nEmily Rose Wilder\n\n-Assistant Content/Design Lead-\nElijah Wigman-Nilsson\n\ncore\n\nassociate\n\ncontributor\n\nART
+    TEAM\n\n-Art Lead-\nKatrina Yi\n\n-Assistant Art Leads-\n\nCore\n\nassociate \n\ncontributor\n\nSOUND
+    TEAM\n\n-Sound Lead-\nAndrew Loyola\n\n-Assistant Sound Lead-\nEmily Nelson-Garcia\n\n-Composers-\r\n(Core
+    Developers)\nAmy Hori\nCameron Johnston\r\nLuis Gracia\n\n-Sound Effects-\n(Core
+    Developers)\nEmily Nelson\r\n\n(Associate Developers)\nKevin Nasus\r\n\n-Voice
+    Acting-\nJosh Shucker\nMichael Zatlin\n\nSPECIAL THANKS\nAdam Moore\nAaron Lane\n\nCreated
+    by the VGDA of Cal State Long Beach\n\nTHANK YOU FOR PLAYING!\n"
 --- !u!222 &1198522922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -363,7 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eaf302d2831b6140ac92e06b1ebd249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 10
   speed: 20
 --- !u!1 &1334232219
 GameObject:

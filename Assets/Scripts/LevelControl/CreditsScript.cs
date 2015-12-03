@@ -5,7 +5,7 @@ public class CreditsScript : MonoBehaviour
 {
 
     AudioHandlerScript audioHandler;
-    float timer =300;
+    float timer =200;
     public float speed = 5;
     void Start()
     {
@@ -16,7 +16,7 @@ public class CreditsScript : MonoBehaviour
         StartCoroutine(JumpToStart());
         
     }
-    void Update()
+    void FixedUpdate()
     {
         
         //this.transform.Translate(Vector3.up * Time.deltaTime * speed);

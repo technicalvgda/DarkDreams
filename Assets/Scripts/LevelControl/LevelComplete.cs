@@ -40,7 +40,7 @@ public class LevelComplete : MonoBehaviour
 
     public GameObject wall;
     float wallMargin;
-    const float wallOffset = 41;
+    const float wallOffset = 51;
     // Use this for initialization
     void Awake()
     {
@@ -114,7 +114,7 @@ public class LevelComplete : MonoBehaviour
         if (Application.loadedLevelName != "Tutorial Stage")
         {
             //Wait 1 second
-            yield return new WaitForSeconds(1);
+            //yield return new WaitForSeconds(1);
 
             // Pan camera to left until it hits the wall
             while (cam.transform.position.x > wallMargin)
