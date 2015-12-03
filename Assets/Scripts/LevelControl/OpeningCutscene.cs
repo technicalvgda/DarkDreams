@@ -58,7 +58,7 @@ public class OpeningCutscene : MonoBehaviour
         //how long to wait until cutscene begins
         if (Application.loadedLevelName == "Tutorial Stage")
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
             audioHandler.PlayVoice(15);
             yield return new WaitForSeconds(3f);
         }

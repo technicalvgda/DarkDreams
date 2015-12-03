@@ -12,12 +12,12 @@ public class Hunter : MonoBehaviour
     public bool facingRight = true;
     public bool isCaught = false;
     public float movement;
-    public float defaultSpeed = 9.0f;
+    public float defaultSpeed = 5.0f;
     float speed;
     public float counter = 0;
     public float activeSpeed = 8.0f;
 	public float shakeTrigger = 25.0f;
-   
+    public bool killPlayer = false;
     // the X positions of the path ends
     private float leftEndPath;
     private float rightEndPath;
@@ -164,8 +164,10 @@ public class Hunter : MonoBehaviour
 
         // check if the collider exists and if the collider is the player
        
-        if(isCaught == true)
+        if(isCaught == true && killPlayer == false)
         {
+            speed = activeSpeed;
+            /*
             //Tests which direction the monster is facing
             if (facingRight)
             {
@@ -177,7 +179,14 @@ public class Hunter : MonoBehaviour
                 //Multiply the movement by the amount set in the inspector
                 transform.Translate(-movement * activeSpeed, 0, 0);
             }
+            */
         }
+        else if(killPlayer == false)
+        {
+            speed = defaultSpeed;
+        }
+       
+        
 		
 		// Proximity camera shake
 		
@@ -239,6 +248,7 @@ public class Hunter : MonoBehaviour
         //If the player collides with the patrolling enemy and is not caught
         if (col.gameObject.tag == "Player" && isCaught)
         {
+            killPlayer = true;
             //stores instance of this in player
             anim.SetBool("Kill", true);
 			player.hunterScript = this;

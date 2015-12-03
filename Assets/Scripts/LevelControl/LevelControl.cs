@@ -141,12 +141,15 @@ public class LevelControl : MonoBehaviour
                 StartCoroutine("DespawnBasementHunter");
                 playerScript.hunterScript = endCutscene.hunterEnemy.GetComponent<Hunter>();
             }
-
-            playerScript.hunterScript.isCaught = false;
-            playerScript.hunterScript.anim.SetBool("Kill", false);
-            playerScript.hunterScript.StopSpeed();//playerScript.hunterScript.defaultSpeed;
-            playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
-            playerScript.hunterScript.transform.rotation = playerScript.hunterScript.originalRotation;
+            if (playerScript.hunterScript != null)
+            {
+                playerScript.hunterScript.isCaught = false;
+                playerScript.hunterScript.killPlayer = false;
+                playerScript.hunterScript.anim.SetBool("Kill", false);
+                playerScript.hunterScript.StopSpeed();//playerScript.hunterScript.defaultSpeed;
+                playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
+                playerScript.hunterScript.transform.rotation = playerScript.hunterScript.originalRotation;
+            }
             //resumes chasing monster speed
             if (playerScript.chasingMonsterScript != null)
             {
