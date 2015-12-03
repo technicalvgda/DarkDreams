@@ -109,7 +109,7 @@ public class PlayerControl : MonoBehaviour
 
         // Formula to calculate the hunter duration
         Debug.Log("Stage Level: " + Application.loadedLevel);
-        if(Application.loadedLevelName == "Ending Level" || Application.loadedLevelName == "Tutorial Stage")
+        if(Application.loadedLevelName == "Ending Level" || Application.loadedLevelName == "Tutorial Stage" || Application.loadedLevelName == "Nightmare")
         {
             standardLevel = false;
         }

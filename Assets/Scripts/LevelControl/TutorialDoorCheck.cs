@@ -35,7 +35,7 @@ public class TutorialDoorCheck : MonoBehaviour {
 	}
 void OnTriggerEnter2D(Collider2D col){
 		if (islocked == false) {
-			Debug.Log ("You have enough to enter!");
+			//Debug.Log ("You have enough to enter!");
 		//	col.gameObject.GetComponent<TeleportDoors>().enabled = true;
 			teleport.enabled = true;
 			col.transform.position = col.transform.position;
@@ -45,7 +45,7 @@ void OnTriggerEnter2D(Collider2D col){
 		else{
 			//col.gameObject.GetComponent<TeleportDoors>().enabled = false;
 			teleport.enabled = false;
-			Debug.Log ("insufficient items");
+			//Debug.Log ("insufficient items");
 		//	col.transform.position =TeleportDoors.exit.transform.position;
 		
 		

@@ -251,7 +251,7 @@ public class Hunter : MonoBehaviour
     //When the player collides with the patrolling enemy
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col);
+        
         if (col.gameObject.name == "BasementWallRight") //&& isCaught)
         {
             this.gameObject.SetActive(false);
