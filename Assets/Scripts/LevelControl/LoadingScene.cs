@@ -4,7 +4,7 @@ using System.Collections;
 
 public class LoadingScene : MonoBehaviour {
 
-    private AsyncOperation async = null;
+    private AsyncOperation async;
     public Image blackTexture;
     public float fadeSpeed = 1.5f;
     private int waitTime = 10;
@@ -13,6 +13,7 @@ public class LoadingScene : MonoBehaviour {
     void Start()
     {
         StartCoroutine(LoadLevel("Tutorial Stage"));
+        Invoke("ActivateScene", 12f);
     }
     void Update()
     {
@@ -25,7 +26,7 @@ public class LoadingScene : MonoBehaviour {
         }
         else
         {
-            blackTexture.color = Color.Lerp(blackTexture.color, Color.clear, fadeSpeed * Time.deltaTime);
+            blackTexture.color = Color.Lerp(blackTexture.color, Color.clear, fadeSpeed * Time.deltaTime/5);
         }
        
     }
@@ -33,14 +34,17 @@ public class LoadingScene : MonoBehaviour {
 
     private IEnumerator LoadLevel(string Level)
     {
-        yield return new WaitForSeconds(waitTime);
+        //yield return new WaitForSeconds(waitTime);
         //fadeOut = true;
         //yield return new WaitForSeconds(3);
         async =Application.LoadLevelAsync(Level);
-        //async.allowSceneActivation = false;
-        
-        
-       
+        async.allowSceneActivation = false;
+        yield return new WaitForSeconds(waitTime);
+        fadeOut = true;
         yield return async;
+    }
+    public void ActivateScene()
+    {
+        async.allowSceneActivation = true;
     }
 }
