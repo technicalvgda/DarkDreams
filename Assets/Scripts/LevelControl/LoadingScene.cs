@@ -13,7 +13,7 @@ public class LoadingScene : MonoBehaviour {
     void Start()
     {
         StartCoroutine(LoadLevel("Tutorial Stage"));
-        Invoke("ActivateScene", 12f);
+        Invoke("ActivateScene", 14f);
     }
     void Update()
     {
@@ -27,6 +27,11 @@ public class LoadingScene : MonoBehaviour {
         else
         {
             blackTexture.color = Color.Lerp(blackTexture.color, Color.clear, fadeSpeed * Time.deltaTime/5);
+            if (blackTexture.color.a > 254f)
+            {
+                blackTexture.color = Color.black;
+
+            }
         }
        
     }
