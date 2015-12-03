@@ -5,8 +5,9 @@ using System.Collections;
 //will stop in front of the player to have a clean looking cutscene. Adjust the fadingSpeed to achieve such a result.
 public class BeatGameScript : MonoBehaviour 
 {
-	//Bool variable for if the cutscene has activated
-	private bool cutsceneActivated;
+    AudioHandlerScript audioHandler;
+    //Bool variable for if the cutscene has activated
+    private bool cutsceneActivated;
 	//The background for the white out. Drag and drop throug the inspector to set
 	public CanvasGroup whiteOutImage;
 	//The background for the darkness. Drag and drop throug the inspector to set
@@ -44,6 +45,7 @@ public class BeatGameScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+        audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
         glow = GameObject.Find("EndGlow").GetComponent<ParticleSystem>();
 		//Set the fadingAlpha to 1 so that things will fade correctly
 		fadingAlpha = 1;
@@ -165,7 +167,7 @@ public class BeatGameScript : MonoBehaviour
 		fadingAlpha = 1;
 		//Wait 2 seconds
 		yield return new WaitForSeconds (2f);
-		//While the silhouette is visisble
+        //While the silhouette is visisble
         /*
 		while (silhouette.GetComponent<Renderer>().material.color.a >= 0f) 
 		{
@@ -183,8 +185,9 @@ public class BeatGameScript : MonoBehaviour
 			yield return null;
 		}
         */
-		//Finish whiting out the screen
-		while (whiteOutImage.alpha  < 1f) 
+        //Finish whiting out the screen
+        audioHandler.PlayVoice(18);
+        while (whiteOutImage.alpha  < 1f) 
 		{
 			whiteOutImage.alpha += Time.deltaTime*fadingSpeed;
 			yield return null;
