@@ -103,14 +103,15 @@ public class FadingDarkness : MonoBehaviour
     void Flash()
     {
         // If this object is not on the same elevation as the player, do nothing
-        if (this.transform.position.y < playerPos.position.y - 10 ||
-            this.transform.position.y > playerPos.position.y + 40)
+        if (this.transform.position.y < playerPos.position.y + 20 &&
+            this.transform.position.y > playerPos.position.y)
         {
             //generate a random float number from 0.0 to 1.0
             float alphaValue = Random.Range(0.0f, 0.4f);
 
             //set the random generated number to the alpha value of the Canvas Group
             canvasGroup.alpha = alphaValue;
+            
         }
         //Debug.Log ("Random #: " + alphaValue); //confirms and prints value of the random generated number. WARNING! This will print A LOT of values. This is removable.
     }

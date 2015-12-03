@@ -242,6 +242,7 @@ public class Hunter : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
     //When the player collides with the patrolling enemy
     void OnTriggerEnter2D(Collider2D col)
     {
