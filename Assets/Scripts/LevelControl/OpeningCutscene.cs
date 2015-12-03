@@ -58,11 +58,22 @@ public class OpeningCutscene : MonoBehaviour
         //how long to wait until cutscene begins
         if (Application.loadedLevelName == "Tutorial Stage")
         {
-            yield return new WaitForSeconds(5.5f);
+            yield return new WaitForSeconds(3f);
+            audioHandler.PlayVoice(15);
+            yield return new WaitForSeconds(3f);
         }
         else
         {
-            yield return new WaitForSeconds(9.5f);
+            yield return new WaitForSeconds(3f);
+            if (Application.loadedLevelName == "Ending Level")
+            {
+                audioHandler.PlayVoice(17);
+            }
+            else
+            {
+                audioHandler.PlayVoice(16);
+            }
+            yield return new WaitForSeconds(6f);
         }
 
 		// Lock the camera once it finishes positioning itself
