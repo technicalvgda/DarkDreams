@@ -67,7 +67,8 @@ public class OpeningCutscene : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             if (Application.loadedLevelName == "Ending Level")
             {
-                audioHandler.PlayVoice(17);
+                //do nothing
+               // audioHandler.PlayVoice(17);
             }
             else
             {
