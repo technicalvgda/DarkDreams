@@ -306,8 +306,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -3116}
-  m_SizeDelta: {x: 559, y: 5669}
+  m_AnchoredPosition: {x: 0, y: -4110}
+  m_SizeDelta: {x: 559, y: 7754}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1198522921
 MonoBehaviour:
@@ -343,14 +343,27 @@ MonoBehaviour:
   m_Text: "PARASOMNIA\n\nBased upon an original idea by\nJosh Shucker\n\n-Production
     Leads-\nNathan Moore\nAaron Gutierrez\n\n--------------------\nTECHNICAL TEAM\n\n-Technical
     Lead-\nJosh Shucker\n\n-Assistant Technical Lead-\nMichael Zatlin\n\n(Core Developers)\nJosh
-    Shucker\nMichael Zatlin\n\n(Associate Developers)\n\n\n(Contributors)\n\n----------------------------\nCONTENT/DESIGN
+    Shucker\nMichael Zatlin\nWilburn Hou\r\nNessa Cheevasuchin\r\nDoan Doan\nKen Miller\r\nBen
+    Seo \r\nKristian Naranjo\r\nNarith Choeun\r\nJuan Alvarez\r\nDevin Joseph\r\nTitas
+    Canet\r\nStanley Ung\n\n(Associate Developers)\nJoel Lee\r\nJason Plojo\r\nJimmy
+    Chau\r\nAlex Tol\r\nChristopher Vargas\r\nLiam Faulds\n\n(Contributors)\nSteven
+    McCracken\r\nJeremy Burgonio\r\nAenah Ramones\r\nJaiden Garcia\r\nJeffrey Washburn
+    \r\nMichael Cassell\r\nSyed Haider\r\nAngel Trujillo\r\nAlejandra Gonzalez\r\nMukesh
+    Sehdev\r\nSachin Chavan\r\nJesse Vargas\r\nJohnathan Onglatco\r\nTam Tran\r\nDion
+    Woo\r\nDaniel Jacobo\r\nAndrew Suddarth\r\nRuben Baerga\n\n----------------------------\nCONTENT/DESIGN
     TEAM\n\n-Content/Design Lead-\nEmily Rose Wilder\n\n-Assistant Content/Design
     Lead-\nElijah Wigman-Nilsson\n\n(Core Developers)\nEmily Rose Wilder\nElijah Wigman-Nilsson\nJoshua
-    Chan\nAshley Anthony\nPeter Dorian\nJason Thames\nSonca Nguyen\nAaron Taylor\nNicki
+    Chan\nAshley Anthony\nPeter Dorian\nJason Thames\nSon Ca Nguyen\nAaron Taylor\nNicki
     Calimlim\nJose Prado\nJacob Tapia\nOrion Kongmalay\nSebastian Gutierrez\n\n(Associate
     Developers)\nKrystal Fontaine\n\n(Contributors)\nJake Bostrom\n\n-----------\nART
-    TEAM\n\n-Art Lead-\nKatrina Yi\n\n-Assistant Art Leads-\n\n(Core Developers)\nKatrina
-    Yi\n\n(Associate Developers) \n\n(Contributors)\n\nSOUND TEAM\n\n-Sound Lead-\nAndrew
+    TEAM\n\n-Art Lead-\nKatrina Yi\n\n-Assistant Art Leads-\nSarah Cho\r\nHailey Kosinski\n\n(Core
+    Developers)\nKatrina Yi\nSarah Cho\r\nHailey Kosinski\nArielle Mangabat\nJimmy
+    Ip\nMichael Tewasart\n\n(Associate Developers) \nBrett Weston\nColeton Palmer\r\nDoan
+    Doan\nErin Emre\nHisham Nashef\nMiguel Portillo\r\nNathan Chan\nPhilip Houth\n\n(Contributors)\nAaron
+    Taylor\nEllen Wong\nFrancis Basco\r\nGilbert Onodera\nHan Vi\nIrene Shea\nJordan
+    Brown\nJose De Luis\nKate Ruthenbeck\nLeah Richards\r\nLilly Ngov\nLorenzo Tayag\nNathan
+    Moore\r\nPaul LaPoint\nPriscilla Candelas\r\nRamiro Perez\r\nRoman Wiant\nTome
+    Sullivan\r\nTorilyn Mundi\n\n---------------\nSOUND TEAM\n\n-Sound Lead-\nAndrew
     Loyola\n\n-Assistant Sound Lead-\nEmily Nelson-Garcia\n\n-Composers-\r\n(Core
     Developers)\nAmy Hori\nCameron Johnston\r\nLuis Gracia\n\n-Sound Effects-\n(Core
     Developers)\nEmily Nelson\r\n\n(Associate Developers)\nKevin Nasus Ai\r\n\n-Voice
@@ -373,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eaf302d2831b6140ac92e06b1ebd249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 21
 --- !u!1 &1334232219
 GameObject:
   m_ObjectHideFlags: 0

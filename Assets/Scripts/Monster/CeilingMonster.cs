@@ -66,9 +66,9 @@ public class CeilingMonster : MonoBehaviour
         
         Vector2 currentPos = gameObject.transform.position;
         // Vision of Ceiling Monster
-        RaycastHit2D centerTrigger = Physics2D.Linecast(endCastObj.transform.position, startCast);
-        RaycastHit2D leftTrigger = Physics2D.Linecast(leftCastObj.transform.position, startCast);
-        RaycastHit2D rightTrigger = Physics2D.Linecast(rightCastObj.transform.position, startCast);
+        RaycastHit2D[] centerTrigger = Physics2D.LinecastAll(endCastObj.transform.position, startCast);
+        RaycastHit2D[] leftTrigger = Physics2D.LinecastAll(leftCastObj.transform.position, startCast);
+        RaycastHit2D[] rightTrigger = Physics2D.LinecastAll(rightCastObj.transform.position, startCast);
 
         // Trigger for Dropping the Ceiling Monster
        
@@ -79,36 +79,68 @@ public class CeilingMonster : MonoBehaviour
         // If the player is on our floor, run the script. 
         if (playerPos.position.y <= currentPos.y && currentPos.y <= playerPos.position.y + 36)
         {
+            
             ///rotation code
             if (rotate == true && isFalling == false && isActive == true)
             {
                 //distance pingpongs between -20 and 20 (0-40 minus 20)
                 transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 10, 40)-20);
             }
+            /*
             if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
             {
-               
+                Debug.Log("Hi");
                 isFalling = true;
                 isClimbing = false;
             }
             else if (rightTrigger.collider && rightTrigger.collider.tag == "Player" && isActive)
             {
-               
+                Debug.Log("Hi");
                 isFalling = true;
                 isClimbing = false;
             }
             else if (centerTrigger.collider && centerTrigger.collider.tag == "Player" && isActive)
             {
-               
+                Debug.Log("Hi");
                 isFalling = true;
                 isClimbing = false;
             }
-
+            */
+            for (int i = 0; i < centerTrigger.Length; i++)
+            {
+                RaycastHit2D hit = centerTrigger[i];
+                if (hit.collider && hit.collider.tag == "Player" && isActive && !player.hide)
+                {
+                    //Debug.Log("Hi");
+                    isFalling = true;
+                    isClimbing = false;
+                }
+            }
+            for (int i = 0; i < leftTrigger.Length; i++)
+            {
+                RaycastHit2D hit = leftTrigger[i];
+                if (hit.collider && hit.collider.tag == "Player" && isActive && !player.hide)
+                {
+                    //Debug.Log("Hi");
+                    isFalling = true;
+                    isClimbing = false;
+                }
+            }
+            for (int i = 0; i < rightTrigger.Length; i++)
+            {
+                RaycastHit2D hit = rightTrigger[i];
+                if (hit.collider && hit.collider.tag == "Player" && isActive && !player.hide)
+                {
+                    //Debug.Log("Hi");
+                    isFalling = true;
+                    isClimbing = false;
+                }
+            }
 
             // Ceiling monster is falling
             if (isFalling)
             {
-                if (myTransform.position.y > endCast.y)
+                if (myTransform.position.y > endCast.y + 5)
                 {
                     // falling speed equation
                     myTransform.position -= myTransform.up * fallSpeed * Time.deltaTime;

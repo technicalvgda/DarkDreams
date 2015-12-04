@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Eclipse : MonoBehaviour {
     AudioHandlerScript audioHandler;
+    PlayerControl player;
     Vector3 startPos;
     Vector3 endPos;
     Vector3 movementDist = new Vector3(3f, 0,0);
@@ -12,9 +13,12 @@ public class Eclipse : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
         if(Application.loadedLevelName == "Ending Level" || Application.loadedLevelName == "Nightmare")
         {
             audioHandler = GameObject.Find("AudioHandler").GetComponent<AudioHandlerScript>();
+            player.normalSpeed = 0;
+            
         }
         startPos = this.transform.position;
         //move it over based upon level
@@ -35,6 +39,7 @@ public class Eclipse : MonoBehaviour {
             {
                 goodnight = true;
                 audioHandler.PlayVoice(17);
+                player.normalSpeed = player.defaultSpeed;
             }
         }
 

@@ -5,7 +5,7 @@ public class CreditsScript : MonoBehaviour
 {
 
     AudioHandlerScript audioHandler;
-    float timer =200;
+    float timer =133;
     public float speed = 5;
     void Start()
     {
