@@ -35,12 +35,12 @@ public class AudioHandlerScript : MonoBehaviour {
         //{
         //    PlayerPrefs.SetFloat("Vibrate", 1);
         //}
-        //musicVolume = PlayerPrefs.GetFloat("Music");
-        //sfxVolume = PlayerPrefs.GetFloat("SFX");
-        //voiceVolume = PlayerPrefs.GetFloat("Voice");
-        //music.volume = musicVolume;
-        //sfx.volume = sfxVolume;
-        //voice.volume = voiceVolume;
+        musicVolume = PlayerPrefs.GetFloat("Music");
+        sfxVolume = PlayerPrefs.GetFloat("SFX");
+        voiceVolume = PlayerPrefs.GetFloat("Voice");
+        music.volume = musicVolume;
+        sfx.volume = sfxVolume;
+        voice.volume = voiceVolume;
     }
 
     public void PlayMusic(int i)
