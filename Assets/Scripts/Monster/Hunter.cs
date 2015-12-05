@@ -258,7 +258,7 @@ public class Hunter : MonoBehaviour
         }
         
         //If the player collides with the patrolling enemy and is not caught
-        if (col.gameObject.tag == "Player") //&& isCaught)
+        if (col.gameObject.tag == "Player" && !player.hide) //&& isCaught)
         {
             player.killedByHunter = true;
             killPlayer = true;

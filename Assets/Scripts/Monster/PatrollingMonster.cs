@@ -4,10 +4,10 @@ using System.Collections;
 
 public class PatrollingMonster : MonoBehaviour
 {
-
+    AudioSource sfx;
     private bool facingRight = true;
     public float speed = 8;
-    public float patrolDistance = 32;
+    public float patrolDistance = 48;
     float accumulatedDistance = 0;
 
     //to access methods and variables from the spawner
@@ -18,6 +18,9 @@ public class PatrollingMonster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        sfx = this.GetComponent<AudioSource>();
+        //set volume to player's setting
+        sfx.volume = PlayerPrefs.GetFloat("SFX");
         //Grab the spawner and get its script component
         //obj = GameObject.Find("PatrollingEnemySpawner").GetComponent<PatrollingMonsterSpawner> ();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
