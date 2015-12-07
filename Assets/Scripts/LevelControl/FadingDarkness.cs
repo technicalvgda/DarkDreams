@@ -47,7 +47,7 @@ public class FadingDarkness : MonoBehaviour
         if (fade)
         {
             //Debug.Log("fading");
-            if (canvasGroup.alpha <= 0.85) //stops the fade at 0.85
+            if (canvasGroup.alpha <= 0.75) //stops the fade at 0.85
             {
 
                 if (playerScript.hide) //when player is hidden...

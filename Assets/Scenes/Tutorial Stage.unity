@@ -991,9 +991,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.0140075684, y: .199768066}
+  m_Offset: {x: -.0140113831, y: .439544678}
   serializedVersion: 2
-  m_Size: {x: 4.78021049, y: 7.32939625}
+  m_Size: {x: 6.91153717, y: 7.8089447}
 --- !u!212 &398393571
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4401,7 +4401,6 @@ GameObject:
   - 61: {fileID: 650202883}
   - 114: {fileID: 650202882}
   - 95: {fileID: 650202881}
-  - 114: {fileID: 650202885}
   m_Layer: 0
   m_Name: CurtainCover
   m_TagString: Cover
@@ -4464,9 +4463,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .181427002, y: -3.15504169}
+  m_Offset: {x: .020111084, y: -.694976807}
   serializedVersion: 2
-  m_Size: {x: 5.17106056, y: 10.6516361}
+  m_Size: {x: 6.46159363, y: 15.5717468}
 --- !u!212 &650202884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4496,17 +4495,6 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2c6049d4a52b0294e886d6b82c7931c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &650202885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 650202879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cdafed2705aa6f40b63523141ed5ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &674330660 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 125450, guid: c72a44169ceca2a4fb85cfa4c33dc9ca, type: 2}
@@ -4577,6 +4565,22 @@ Prefab:
     - target: {fileID: 19801426, guid: af07ccc1c6999b340a6bd8a47ddc1283, type: 2}
       propertyPath: InitialModule.startSize.scalar
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193874, guid: af07ccc1c6999b340a6bd8a47ddc1283, type: 2}
+      propertyPath: m_Offset.x
+      value: .0665512085
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193874, guid: af07ccc1c6999b340a6bd8a47ddc1283, type: 2}
+      propertyPath: m_Size.x
+      value: 2.76557636
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193874, guid: af07ccc1c6999b340a6bd8a47ddc1283, type: 2}
+      propertyPath: m_Offset.y
+      value: .0665512085
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193874, guid: af07ccc1c6999b340a6bd8a47ddc1283, type: 2}
+      propertyPath: m_Size.y
+      value: 2.89556909
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af07ccc1c6999b340a6bd8a47ddc1283, type: 2}
@@ -6682,6 +6686,10 @@ Prefab:
       propertyPath: m_TagString
       value: Fake
       objectReference: {fileID: 0}
+    - target: {fileID: 125450, guid: c72a44169ceca2a4fb85cfa4c33dc9ca, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c72a44169ceca2a4fb85cfa4c33dc9ca, type: 2}
   m_IsPrefabParent: 0
@@ -7040,9 +7048,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.0140075684, y: .199768066}
+  m_Offset: {x: .0355482101, y: .397994995}
   serializedVersion: 2
-  m_Size: {x: 4.78021049, y: 7.32939625}
+  m_Size: {x: 6.46515179, y: 7.7258606}
 --- !u!212 &1192276203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7114,6 +7122,22 @@ Prefab:
     - target: {fileID: 197158, guid: 734032b0f57712440a123df870b72548, type: 2}
       propertyPath: m_Name
       value: ChairCover1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Offset.x
+      value: .0332794189
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Size.x
+      value: 6.8363843
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Offset.y
+      value: .332878113
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Size.y
+      value: 7.59562635
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 734032b0f57712440a123df870b72548, type: 2}
@@ -9037,9 +9061,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .199768066}
+  m_Offset: {x: .0495529175, y: .199768066}
   serializedVersion: 2
-  m_Size: {x: 4.63999987, y: 7.32939625}
+  m_Size: {x: 6.72140741, y: 7.32939625}
 --- !u!212 &1434408620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9614,9 +9638,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.0140075684, y: .199768066}
+  m_Offset: {x: .0126342773, y: .332977295}
   serializedVersion: 2
-  m_Size: {x: 4.78021049, y: 7.32939625}
+  m_Size: {x: 6.75167847, y: 7.59580994}
 --- !u!212 &1589917825
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11998,6 +12022,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Offset.x
+      value: -.0332794189
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Size.x
+      value: 6.83638954
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Offset.y
+      value: .332885742
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193592, guid: 734032b0f57712440a123df870b72548, type: 2}
+      propertyPath: m_Size.y
+      value: 7.59561253
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 734032b0f57712440a123df870b72548, type: 2}
   m_IsPrefabParent: 0
@@ -12245,7 +12285,7 @@ Transform:
   - {fileID: 1454501811}
   - {fileID: 1130348025}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &2121655438
 GameObject:
   m_ObjectHideFlags: 0
