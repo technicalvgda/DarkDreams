@@ -16,7 +16,7 @@ public class CreditsScript : MonoBehaviour
         StartCoroutine(JumpToStart());
         
     }
-    void FixedUpdate()
+    void Update()
     {
         
         //this.transform.Translate(Vector3.up * Time.deltaTime * speed);
