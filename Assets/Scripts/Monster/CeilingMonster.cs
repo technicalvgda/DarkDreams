@@ -10,7 +10,7 @@ public class CeilingMonster : MonoBehaviour
     public GameObject endCastObj, leftCastObj, rightCastObj;
     //GameObject spottedCue;          // indicator when spotted
     Transform playerPos;
-
+    public Animator anim;
     bool isActive = true;           // check if its active or dazed
     bool isFalling = false;         // check if its falling
     bool isClimbing = false;        // check if its rising
@@ -38,6 +38,7 @@ public class CeilingMonster : MonoBehaviour
 
     void Start()
     {
+        anim = this.GetComponent<Animator>();
         playerObj = GameObject.FindWithTag("Player");
         player = playerObj.GetComponent<PlayerControl>();
 
@@ -85,6 +86,7 @@ public class CeilingMonster : MonoBehaviour
             {
                 //distance pingpongs between -20 and 20 (0-40 minus 20)
                 transform.localEulerAngles = new Vector3(0, 0, Mathf.PingPong(Time.time * 10, 40)-20);
+                //transform.position = new Vector3(transform.position.x+(Mathf.PingPong(Time.time * 0.01, 4)-2), transform.position.y, transform.position.z);
             }
             /*
             if (leftTrigger.collider && leftTrigger.collider.tag == "Player" && isActive)
@@ -112,6 +114,7 @@ public class CeilingMonster : MonoBehaviour
                 if (hit.collider && hit.collider.tag == "Player" && isActive && !player.hide)
                 {
                     //Debug.Log("Hi");
+                   
                     isFalling = true;
                     isClimbing = false;
                 }
@@ -122,6 +125,7 @@ public class CeilingMonster : MonoBehaviour
                 if (hit.collider && hit.collider.tag == "Player" && isActive && !player.hide)
                 {
                     //Debug.Log("Hi");
+                   
                     isFalling = true;
                     isClimbing = false;
                 }
@@ -132,6 +136,7 @@ public class CeilingMonster : MonoBehaviour
                 if (hit.collider && hit.collider.tag == "Player" && isActive && !player.hide)
                 {
                     //Debug.Log("Hi");
+                   
                     isFalling = true;
                     isClimbing = false;
                 }
@@ -140,6 +145,7 @@ public class CeilingMonster : MonoBehaviour
             // Ceiling monster is falling
             if (isFalling)
             {
+                anim.SetBool("Dropping", true);
                 if (myTransform.position.y > endCast.y + 5)
                 {
                     // falling speed equation
@@ -148,6 +154,7 @@ public class CeilingMonster : MonoBehaviour
                 else
                 {
                     //Debug.Log("not active or falling");
+                    anim.SetBool("Dropping", false);
                     isFalling = false;
                     isActive = false;
                 }

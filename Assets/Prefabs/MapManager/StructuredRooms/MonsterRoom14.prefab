@@ -345,7 +345,7 @@ GameObject:
   - 50: {fileID: 5068408}
   - 82: {fileID: 8260078}
   m_Layer: 0
-  m_Name: ChasingEnemy (1)
+  m_Name: ChasingEnemy
   m_TagString: PatrolEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22, y: -5, z: 0}
+  m_LocalPosition: {x: 20, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 421514}
@@ -382,7 +382,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 202.554993, y: 168.098419, z: 0}
+  m_LocalPosition: {x: 153.775925, y: 4.78969049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409668}
@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!114 &11406348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1281,6 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!114 &11493504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1293,6 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!120 &12007374
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -5057,7 +5060,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: -765892533
+  m_SortingLayerID: 1374107011
   m_SortingOrder: 0
 --- !u!224 &22430440
 RectTransform:

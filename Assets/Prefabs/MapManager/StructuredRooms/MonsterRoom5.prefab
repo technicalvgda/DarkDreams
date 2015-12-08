@@ -475,7 +475,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 197.63829, y: 170.054565, z: 0}
+  m_LocalPosition: {x: 157.328857, y: 8.47926903, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 487286}
@@ -926,6 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!114 &11416202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -963,6 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!114 &11434728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -986,6 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!114 &11451976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4863,7 +4866,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: -765892533
+  m_SortingLayerID: 1374107011
   m_SortingOrder: 0
 --- !u!224 &22420546
 RectTransform:

@@ -71,6 +71,9 @@ TagManager:
   - name: Player
     uniqueID: 1535698477
     locked: 0
+  - name: FadingDarkness
+    uniqueID: 1374107011
+    locked: 0
   - name: RoomDivider
     uniqueID: 2688088535
     locked: 0
