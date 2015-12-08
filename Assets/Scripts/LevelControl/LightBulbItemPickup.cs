@@ -65,7 +65,7 @@ public class LightBulbItemPickup : MonoBehaviour
                 }
                 if (fadingDarkness == null)
                 {
-                    Debug.Log("not found");
+                    //Debug.Log("not found");
                 }
                 else
                 {

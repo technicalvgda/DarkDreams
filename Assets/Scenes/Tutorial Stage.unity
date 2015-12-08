@@ -980,6 +980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!61 &398393570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4452,6 +4453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!61 &650202883
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7093,6 +7095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!61 &1192276202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9144,6 +9147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!95 &1434408618
 Animator:
   serializedVersion: 3
@@ -9739,6 +9743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseOver: 0
+  playerContact: 0
 --- !u!61 &1589917824
 BoxCollider2D:
   m_ObjectHideFlags: 0

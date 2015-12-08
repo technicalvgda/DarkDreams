@@ -129,6 +129,7 @@ public class LevelControl : MonoBehaviour
             playerScript.isAlive = true;
             playerScript.enabled = true;
             playerScript.hide = false;
+            playerScript.canHide = true;
             playerScript.normalSpeed = playerScript.defaultSpeed;
             player.GetComponent<SpriteRenderer>().color = playerScript.initialColor;
             playerScript.StopCoroutine("SpawnHunterMonster");

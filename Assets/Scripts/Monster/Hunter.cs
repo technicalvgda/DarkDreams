@@ -216,7 +216,7 @@ public class Hunter : MonoBehaviour
 		//Debug.Log("Player Distance (Mag): " + playerDistance.magnitude);
 		//Debug.Log("Shake Trigger: " + shakeTrigger);
 		
-		if (playerDistance.magnitude <= shakeTrigger && player.isAlive)
+		if (playerDistance.magnitude <= shakeTrigger && player.isAlive && speed > 0)
 		{
             //cause vibration on mobile
             /*
@@ -257,9 +257,10 @@ public class Hunter : MonoBehaviour
             this.gameObject.SetActive(false);
         }
         
-        //If the player collides with the patrolling enemy and is not caught
-        if (col.gameObject.tag == "Player" && !player.hide) //&& isCaught)
+        //If the player collides with the patrolling enemy and is not caught and hunter is moving
+        if (col.gameObject.tag == "Player" && !player.hide && speed>0) //&& isCaught)
         {
+            player.canHide = false;
             player.killedByHunter = true;
             killPlayer = true;
             anim.SetBool("Kill", true);

@@ -34,6 +34,7 @@ public class PlayerControl : MonoBehaviour
     public float sprintSpeed;
 
     private bool touchingHidingSpot = false;
+    public bool canHide = true;
 
 	//Hunter Script
 	public Hunter hunterScript = null;
@@ -207,11 +208,13 @@ public class PlayerControl : MonoBehaviour
             playerSpeed = normalSpeed;
         }
         //activate hiding
+        /*
         if(coverScript!= null)
         {
             mouseOverCover = coverScript.mouseOver;
         }
-        if((Input.GetKeyDown(KeyCode.Space)|| (Input.GetMouseButtonDown(0) && mouseOverCover == true))&& touchingHidingSpot)
+        */
+        if((Input.GetKeyDown(KeyCode.Space) && touchingHidingSpot && canHide == true))//|| (Input.GetMouseButtonDown(0) && mouseOverCover == true))&& touchingHidingSpot && canHide ==true)
         {
             if (!hide)
             {
@@ -234,36 +237,49 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
-
-    }
-    
-   void OnMouseDown()
-    {
-        if (touchingHidingSpot)
+        ///handles click to hide
+        if (Input.GetMouseButtonDown(0) && touchingHidingSpot && canHide == true)
         {
-            if (!hide)
+           
+            RaycastHit2D[] hits;
+            hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), 100);
+            for (int i = 0; i < hits.Length;i++)
             {
-                //sprite.sortingOrder = hidingOrder;
-                sprite.color = new Color(1f, 1f, 1f, 0f);
-                hide = true;
-                //cover.GetComponent<Animator>().SetBool("Hidden", true);
-            }
-            else
-            {
-                sprite.color = initialColor;
-                //sprite.sortingOrder = sortingOrder;
-                //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
-                hide = false;
-                //cover.GetComponent<Animator>().SetBool("Hidden", false);
-                //snaps player to center of hiding object, after hiding. 
-                transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
-                if (slowMo) //Disables slowmotion speed upon hiding
+                
+                RaycastHit2D hit = hits[i];
+                if (hit.collider.tag == "Cover")
                 {
-                    slowMo = false;
+                    coverScript = hit.collider.GetComponent<CoverAnimation>();
+                    if(coverScript.playerContact)
+                    {
+                        if (!hide)
+                        {
+                            //sprite.sortingOrder = hidingOrder;
+                            sprite.color = new Color(1f, 1f, 1f, 0f);
+
+                            hide = true;
+                        }
+                        else
+                        {
+                            sprite.color = initialColor;
+                            //sprite.sortingOrder = sortingOrder;
+                            //transform.position = new Vector3(wallL.transform.position.x + 4, transform.position.y, transform.position.z);
+                            hide = false;
+                            //snaps player to center of hiding object, after hiding. 
+                            transform.position = new Vector3(cover.transform.position.x, transform.position.y, transform.position.z);
+                            if (slowMo) //Disables slowmotion speed upon hiding
+                            {
+                                slowMo = false;
+                            }
+                        }
+                    }
                 }
+                  
             }
         }
+
     }
+   
     
     void Move(float h)
     {
