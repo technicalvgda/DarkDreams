@@ -5,6 +5,7 @@ using System.Collections;
 public class ChasingMonster : MonoBehaviour
 {
     AudioSource sfx;
+    AudioHandlerScript audioHandler;
     // The monster patrols at speedNormal speed and shifts to speedChasing
     // when it spots the player
     public float speedNormal;
@@ -56,9 +57,10 @@ public class ChasingMonster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-         sfx = this.GetComponent<AudioSource>();
+        audioHandler = GameObject.FindGameObjectWithTag("AudioHandler").GetComponent<AudioHandlerScript>();
+        sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting
-        sfx.volume = PlayerPrefs.GetFloat("SFX");
+        sfx.volume = audioHandler.sfxVolume;//PlayerPrefs.GetFloat("SFX");
         speedNormal = speedNormalDefault;
         speedChasing = speedChasingDefault;
        //transform.GetComponent<Collider2D>().attachedRigidbody.AddForce(0, 0);

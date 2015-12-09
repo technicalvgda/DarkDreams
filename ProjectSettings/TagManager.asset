@@ -19,6 +19,7 @@ TagManager:
   - Fake
   - Lock
   - Fake1
+  - AudioHandler
   layers:
   - Default
   - TransparentFX

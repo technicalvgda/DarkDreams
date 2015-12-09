@@ -6,6 +6,7 @@ public class Hunter : MonoBehaviour
 {
 
    AudioSource sfx;
+    AudioHandlerScript audioHandler;
    public Animator anim;
    // public AudioClip[] hunterClips;
 
@@ -79,10 +80,11 @@ public class Hunter : MonoBehaviour
 
     void Start()
     {
+        audioHandler = GameObject.FindGameObjectWithTag("AudioHandler").GetComponent<AudioHandlerScript>();
         //speed = defaultSpeed;
         sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting
-        sfx.volume = PlayerPrefs.GetFloat("SFX"); 
+        sfx.volume = audioHandler.sfxVolume;//PlayerPrefs.GetFloat("SFX"); 
         if (player.transform.position.x < gameObject.transform.position.x)
         {
             FlipEnemy();

@@ -5,6 +5,7 @@ using System.Collections;
 public class PatrollingMonster : MonoBehaviour
 {
     AudioSource sfx;
+    AudioHandlerScript audioHandler;
     private bool facingRight = true;
     public float speed = 8;
     public float patrolDistance = 48;
@@ -18,9 +19,10 @@ public class PatrollingMonster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        audioHandler = GameObject.FindGameObjectWithTag("AudioHandler").GetComponent<AudioHandlerScript>();
         sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting
-        sfx.volume = PlayerPrefs.GetFloat("SFX");
+        sfx.volume = audioHandler.sfxVolume;//PlayerPrefs.GetFloat("SFX");
         //Grab the spawner and get its script component
         //obj = GameObject.Find("PatrollingEnemySpawner").GetComponent<PatrollingMonsterSpawner> ();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();

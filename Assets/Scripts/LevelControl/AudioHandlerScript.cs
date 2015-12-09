@@ -4,7 +4,7 @@ using System.Collections;
 public class AudioHandlerScript : MonoBehaviour {
 
     public AudioSource music, sfx, voice;
-    float musicVolume, sfxVolume, voiceVolume;
+    public float musicVolume, sfxVolume, voiceVolume;
 
     public AudioClip[] musicClips;
     public AudioClip[] soundClips;

@@ -9369,6 +9369,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 113124, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
+      propertyPath: m_TagString
+      value: AudioHandler
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42c4655a7a1da6644bc03117912e9d98, type: 2}
   m_IsPrefabParent: 0

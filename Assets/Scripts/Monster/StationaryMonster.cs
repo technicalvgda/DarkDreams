@@ -5,6 +5,7 @@ using System.Collections;
 public class StationaryMonster : MonoBehaviour
 {
     AudioSource sfx;
+    AudioHandlerScript audioHandler;
     //tests whether enemy is looking for you
     public bool enemyActive = false;
     //tests whether enemy has seen you
@@ -25,9 +26,10 @@ public class StationaryMonster : MonoBehaviour
 
     void Start()
     {
+        audioHandler = GameObject.FindGameObjectWithTag("AudioHandler").GetComponent<AudioHandlerScript>();
         sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting
-        sfx.volume = PlayerPrefs.GetFloat("SFX");
+        sfx.volume = audioHandler.sfxVolume;//PlayerPrefs.GetFloat("SFX");
         anim = GetComponent<Animator>();
         //set player to the object with tag "Player"
         player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
