@@ -5,6 +5,7 @@ public class CreditsScript : MonoBehaviour
 {
 
     AudioHandlerScript audioHandler;
+    public GameObject creditStopper;
     float timer =136;
     public float speed = 5;
     void Start()
@@ -18,10 +19,11 @@ public class CreditsScript : MonoBehaviour
     }
     void Update()
     {
-        
-        //this.transform.Translate(Vector3.up * Time.deltaTime * speed);
-        transform.Translate(new Vector3(0, Time.deltaTime * speed, 0));
-       
+        if (creditStopper.transform.position.y < 0)
+        {
+            //this.transform.Translate(Vector3.up * Time.deltaTime * speed);
+            transform.Translate(new Vector3(0, Time.deltaTime * speed, 0));
+        }
     }
 
     IEnumerator JumpToStart()
