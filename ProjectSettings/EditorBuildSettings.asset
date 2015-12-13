@@ -20,8 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending Level.unity
   - enabled: 1
-    path: Assets/Scenes/Options Menu.unity
-  - enabled: 1
     path: Assets/Scenes/EndCreditsScene.unity
   - enabled: 1
     path: Assets/Scenes/Nightmare.unity
