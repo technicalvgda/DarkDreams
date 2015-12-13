@@ -243,6 +243,8 @@ public class ChasingMonster : MonoBehaviour
             //player.chasingMonsterScript = this;
             // Stop the monster; it will not be able to return to the normal speed.
             speedNormal = speedChasing = 0;
+            player.SetInvisible();
+            anim.SetBool("Kill", true);
             StartCoroutine("StartMovement");
 
             //If monster is facing left and the player is behind the monster OR monster is facing
@@ -270,7 +272,13 @@ public class ChasingMonster : MonoBehaviour
         yield return new WaitForSeconds(2);
         speedNormal = speedNormalDefault;
         speedChasing = speedChasingDefault;
+        anim.SetBool("Kill", false);
         yield return null;
+    }
+    public void KillPlayer()
+    {
+        player.isAlive = false;
+
     }
 
 }

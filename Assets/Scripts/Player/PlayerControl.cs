@@ -320,10 +320,17 @@ public class PlayerControl : MonoBehaviour
         //if player colliders with an enemy and is not hidden
         if (col.gameObject.tag == "PatrolEnemy" && hide == false)
         {
-            //player is dead
-            isAlive = false;
-            //prevent player from moving
-            normalSpeed = 0f;
+            if (col.gameObject.name == "ChasingEnemy")
+            {
+                normalSpeed = 0f;
+            }
+            else
+            {
+                //player is dead
+                isAlive = false;
+                //prevent player from moving
+                normalSpeed = 0f;
+            }
         }
        
         //level warp
