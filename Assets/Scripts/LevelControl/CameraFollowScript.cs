@@ -48,14 +48,17 @@ public class CameraFollowScript : MonoBehaviour
         Vector3 startingPos = transform.position;
         Vector3 endPos = new Vector3(target.position.x, target.position.y + doorOffset, transform.position.z);
         float distance = Vector3.Distance(startingPos, endPos);
+     
         while (transform.position != endPos)//t < 1f)
         {
             t += Time.deltaTime * (Time.timeScale / distance*50);
             transform.position = Vector3.Lerp(startingPos, endPos, t);
-            if(transform.position.x < endPos.x + 0.5 && transform.position.x > endPos.x - 0.5)
+            
+            if(transform.position.y < endPos.y + 0.5 && transform.position.y > endPos.y - 0.5)
             {
                 break;
             }
+            
             yield return 0;
         }
         playerScript.normalSpeed = playerScript.defaultSpeed;

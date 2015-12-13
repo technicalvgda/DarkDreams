@@ -20,7 +20,7 @@ public class TeleportDoors : MonoBehaviour
     
 	public Transform exit; //creates the "teleport" aspect and the Exit option in Inspector Tab.
     Vector2 clickPosition;
-
+    Vector3 offset = new Vector3(0, -2, 0);
     //reference to camera
     CameraFollowScript cameraScript;
     float clickOffsetY = 5;
@@ -173,7 +173,7 @@ public class TeleportDoors : MonoBehaviour
                     {
                         used = true;
                     }
-                    col.transform.position = exit.transform.position; //line that teleports player
+                    col.transform.position = exit.transform.position + offset ; //line that teleports player
                     player.hide = false;
                 }
             }
@@ -188,7 +188,7 @@ public class TeleportDoors : MonoBehaviour
                 {
                     used = true;
                 }
-                col.transform.position = exit.transform.position; //line that teleports player
+                col.transform.position = exit.transform.position + offset; //line that teleports player
                 player.hide = false;
             }
         }
