@@ -102,10 +102,10 @@ public class TeleportDoors : MonoBehaviour
         clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;  
         ///click can is on door
-        if (col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || 
+        if ((col.tag == "Player" && ((Input.GetKeyDown(KeyCode.Space)) || 
            ((yNegPosition<clickPosition.y && clickPosition.y<yPosPosition)&& 
             (xNegPosition<clickPosition.x && clickPosition.x<xPosPosition)&&
-            Input.GetMouseButtonDown(0))))
+            Input.GetMouseButtonDown(0))))&&col.GetComponent<PlayerControl>().canHide)
         {    
 /*			if(TutorialDoorCheck.islocked == false){
 				cameraScript.follow = false;
