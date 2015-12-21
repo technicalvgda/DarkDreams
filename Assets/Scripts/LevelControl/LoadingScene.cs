@@ -12,6 +12,11 @@ public class LoadingScene : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        //unload old resources
+        Resources.UnloadUnusedAssets();
+        //force heap collection
+        System.GC.Collect();
+        //load new scene
         StartCoroutine(LoadLevel("Tutorial Stage"));
         Invoke("ActivateScene", 14f);
     }
