@@ -34,14 +34,11 @@ public class TeleportDoors : MonoBehaviour
 
     Animator anim;
     // Use this for initialization
-    void Awake()
+   
+    void Start()
     {
         clickPosition = new Vector2(0f, 0f);
         cameraScript = Camera.main.GetComponent<CameraFollowScript>();
-    }
-    void Start()
-    {
-
         anim = GetComponent<Animator>();
         anim.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();

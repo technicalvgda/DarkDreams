@@ -30,14 +30,10 @@ public class CeilingMonster : MonoBehaviour
 
     float lineCastDistance = 18.5f; // length of the line cast
 
-    void Awake()
-    {
-        //spottedCue = GameObject.Find("SpottedIndicator");
-        myTransform = transform;
-    }
 
     void Start()
     {
+        myTransform = transform;
         anim = this.GetComponent<Animator>();
         playerObj = GameObject.FindWithTag("Player");
         player = playerObj.GetComponent<PlayerControl>();

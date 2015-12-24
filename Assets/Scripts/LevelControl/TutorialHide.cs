@@ -8,7 +8,8 @@ public class TutorialHide : MonoBehaviour {
 	FadingDarkness handler;
 	PlayerControl player;
 	PatrollingMonster monster;
-	void Start () {
+	void Start ()
+    {
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 		fake = GameObject.FindWithTag ("Fake");
 		//darkness = GameObject.Find("FadingDarknessCanvasTut");
@@ -16,11 +17,14 @@ public class TutorialHide : MonoBehaviour {
 		//handler.enabled = false;
 	}
 	// Update is called once per frame
-	void OnTriggerStay2D(Collider2D col){
-	if(col.gameObject.tag == "Player" && player.hide == true){
+	void OnTriggerStay2D(Collider2D col)
+    {
+
+        if (col.gameObject.tag == "Player" && player.hide == true)
+        {
 				Destroy (fake);
 			//handler.enabled = true;
 			
-	}
-}
+	    }
+    }
 }

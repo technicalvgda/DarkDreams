@@ -12,7 +12,7 @@ public class AudioHandlerScript : MonoBehaviour {
 
     // Use this for initialization
 
-    void Awake()
+    void Start()
     {
         ////Initialize variables for playerprefs (if they dont exist)
         //if (!PlayerPrefs.HasKey("Brightness"))

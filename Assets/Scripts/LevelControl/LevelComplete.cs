@@ -42,7 +42,7 @@ public class LevelComplete : MonoBehaviour
     float wallMargin;
     const float wallOffset = 51;
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         clickPosition = new Vector2(0f, 0f);
     }

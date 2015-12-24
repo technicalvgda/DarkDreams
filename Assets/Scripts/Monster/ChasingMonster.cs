@@ -47,16 +47,10 @@ public class ChasingMonster : MonoBehaviour
     //GameObject spottedCue;
    
 
-    void Awake()
-    {
-        
-        anim = GetComponent<Animator>();
-        //spottedCue = GameObject.Find("SpottedIndicator");
-    }
-
     // Use this for initialization
     void Start()
     {
+        anim = GetComponent<Animator>();
         audioHandler = GameObject.FindGameObjectWithTag("AudioHandler").GetComponent<AudioHandlerScript>();
         sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting

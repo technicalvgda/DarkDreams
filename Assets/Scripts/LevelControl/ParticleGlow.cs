@@ -8,14 +8,11 @@ public class ParticleGlow : MonoBehaviour {
     Transform playerPos;
     int playerOffset = 15;
 
-    void Awake()
-    {
-        particle = GetComponent<ParticleSystem>();
-    }
 
     // Use this for initialization
     void Start()
     {
+        particle = GetComponent<ParticleSystem>();
         player = GameObject.Find("Player");
         playerPos = player.GetComponent<Transform>();
         particle = this.GetComponent<ParticleSystem>();

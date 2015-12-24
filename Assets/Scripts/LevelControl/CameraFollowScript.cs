@@ -12,7 +12,7 @@ public class CameraFollowScript : MonoBehaviour
     public bool follow = true;
     public float yOffset = 7;
     public float doorOffset = 4;
-    void Awake()//on start up
+    void Start()//on start up
     {
         //finds the gameobject with the player tag and stores its transform component
 

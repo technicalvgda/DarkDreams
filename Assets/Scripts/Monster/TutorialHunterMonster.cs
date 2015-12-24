@@ -13,15 +13,12 @@ public class TutorialHunterMonster : MonoBehaviour {
 	private Transform myTransform;
 	
 	
-	void Awake()
-	{
-		myTransform = transform;
-	}
 	
 	// Use this for initialization
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+        myTransform = transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	void FixedUpdate()

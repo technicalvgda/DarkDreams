@@ -9,16 +9,14 @@ public class ItemGeneration : MonoBehaviour {
 	//The length and height of each room.
 	private float l,h;
 	
-	void Awake() {
-
-		//Get the length and height of the room.
-		l = gameObject.GetComponent<RandomMapGeneration>().lengthOfRoom;
-		h = gameObject.GetComponent<RandomMapGeneration>().heightOfRoom;
-		
-	}
+	
 	// Assume size of an item is not more than 1/3 in length and 1/3 in height of the size of a room.
-	void Start () {
-		Stack<Transform> roomList = gameObject.GetComponent<RandomMapGeneration>().roomsWithItem;
+	void Start ()
+    {
+        //Get the length and height of the room.
+        l = gameObject.GetComponent<RandomMapGeneration>().lengthOfRoom;
+        h = gameObject.GetComponent<RandomMapGeneration>().heightOfRoom;
+        Stack<Transform> roomList = gameObject.GetComponent<RandomMapGeneration>().roomsWithItem;
 		int numberOfRooms = roomList.Count;
 		for (int i = 0; i < numberOfRooms; i++ ) {		
 			Vector3 roomPosition = new Vector3(roomList.Peek().transform.position.x, roomList.Peek().transform.position.y,

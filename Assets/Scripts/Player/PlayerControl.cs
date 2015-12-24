@@ -86,9 +86,11 @@ public class PlayerControl : MonoBehaviour
     int stageLevel;
     int hunterInactiveDuration;
 
+   
     // Use this for initialization
-    void Awake()
+    void Start() //what happens as soon as player is created
     {
+
         normalSpeed = defaultSpeed;
         clickPosition = new Vector2(0f, 0f);
         screenWidth = new Vector2((float)Screen.width, 0f);
@@ -99,10 +101,7 @@ public class PlayerControl : MonoBehaviour
         sprintSpeed = normalSpeed * 2;
         wallR = GameObject.Find("RightWall");
         wallL = GameObject.Find("LeftWall");
-    }
-    // Use this for initialization
-    void Start() //what happens as soon as player is created
-    {
+        /////
         anim = this.GetComponent<Animator>();
         anim.SetBool("FacingRight", facingRight);
         initialColor = sprite.color;

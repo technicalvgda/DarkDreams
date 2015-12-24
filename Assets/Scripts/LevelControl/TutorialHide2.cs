@@ -6,17 +6,13 @@ public class TutorialHide2 : MonoBehaviour {
 	PlayerControl player;
 	public GameObject monster;
     bool destroyWall = false;
-	void Start () {
+	void Start ()
+    {
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 		fake1 = GameObject.FindWithTag ("Fake1");
 
 	}
-	
-	// Update is called once per frame
-	
-	void Update () {
-		
-	}
+
 	
 	
 	void OnTriggerStay2D(Collider2D col){

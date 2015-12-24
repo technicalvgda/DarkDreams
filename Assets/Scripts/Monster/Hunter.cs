@@ -56,7 +56,9 @@ public class Hunter : MonoBehaviour
 
 	//public Vector3 originalPosition;
 
-    void Awake()
+   
+
+    void Start()
     {
         //spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
         anim = this.GetComponent<Animator>();
@@ -70,16 +72,13 @@ public class Hunter : MonoBehaviour
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
 
-		// Initialize player distance
-		playerDistance = new Vector2(0f, 0f); 
-        
-		//retry restarts movement
-		//speed = 5.0f;
+        // Initialize player distance
+        playerDistance = new Vector2(0f, 0f);
 
-    }
+        //retry restarts movement
+        //speed = 5.0f;
 
-    void Start()
-    {
+
         audioHandler = GameObject.FindGameObjectWithTag("AudioHandler").GetComponent<AudioHandlerScript>();
         //speed = defaultSpeed;
         sfx = this.GetComponent<AudioSource>();

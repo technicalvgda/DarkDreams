@@ -22,18 +22,18 @@ public class FadingDarkness : MonoBehaviour
 
 
     float waitTime = 0.1f;///0.0001f
-
+/*
     void Awake()
+    {
+        
+    }
+*/
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerPos = player.GetComponent<Transform>();
         playerScript = player.GetComponent<PlayerControl>();
         canvasGroup = GetComponent<CanvasGroup>();
-    }
-
-    void Start()
-    {
-        
         // sets the CanvasGroup alpha to 0
         canvasGroup.alpha = 0;
         // sets the fadeSpeed to 10f

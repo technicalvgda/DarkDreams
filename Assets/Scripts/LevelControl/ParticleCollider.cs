@@ -5,14 +5,12 @@ public class ParticleCollider : MonoBehaviour {
 
     ParticleSystem particle;
 
-    void Awake()
-    {
-        particle = GetComponent<ParticleSystem>();
-    }
     
 	// Use this for initialization
-	void Start () {
-		particle.emissionRate = 0;
+	void Start ()
+    {
+        particle = GetComponent<ParticleSystem>();
+        particle.emissionRate = 0;
 		particle.startLifetime = 0;
 	}
 	

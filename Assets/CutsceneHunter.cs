@@ -57,6 +57,12 @@ public class CutsceneHunter : MonoBehaviour
 
     void Awake()
     {
+      
+
+    }
+
+    void Start()
+    {
         //spottedCue = GameObject.Find("SpottedIndicator");  // BUGGED NULL REFERENCE
         anim = this.GetComponent<Animator>();
         leftEndPath = GameObject.Find("LeftWall").transform.position.x;
@@ -74,11 +80,7 @@ public class CutsceneHunter : MonoBehaviour
 
         //retry restarts movement
         //speed = 5.0f;
-
-    }
-
-    void Start()
-    {
+        ///////////////////
         //speed = defaultSpeed;
         sfx = this.GetComponent<AudioSource>();
         //set volume to player's setting
