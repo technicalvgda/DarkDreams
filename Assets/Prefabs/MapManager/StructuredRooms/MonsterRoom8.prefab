@@ -66,6 +66,7 @@ GameObject:
   - 4: {fileID: 483238}
   - 198: {fileID: 19855268}
   - 199: {fileID: 19901532}
+  - 114: {fileID: 11492964}
   m_Layer: 0
   m_Name: FogLeftBack
   m_TagString: Untagged
@@ -484,7 +485,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 211.33432, y: -33.315239, z: 0}
+  m_LocalPosition: {x: 443.247253, y: 57.4308014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 493678}
@@ -967,6 +968,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11492964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5958673397795249a18669188245107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger: 0
 --- !u!198 &19834034
 ParticleSystem:
   m_ObjectHideFlags: 1
