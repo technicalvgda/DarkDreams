@@ -100,7 +100,7 @@ PlayerSettings:
   apiCompatibilityLevel: 2
   stripEngineCode: 1
   iPhoneStrippingLevel: 3
-  iPhoneScriptCallOptimization: 1
+  iPhoneScriptCallOptimization: 0
   iPhoneBuildNumber: 0
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
@@ -468,7 +468,7 @@ PlayerSettings:
   WebPlayer::ScriptingBackend: 0
   iOS::Architecture: 0
   iOS::EnableIncrementalBuildSupportForIl2cpp: 0
-  iOS::ScriptingBackend: 0
+  iOS::ScriptingBackend: 1
   boolPropertyNames:
   - WebGL::analyzeBuildSize
   - WebGL::dataCaching

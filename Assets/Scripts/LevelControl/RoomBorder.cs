@@ -19,7 +19,7 @@ public class RoomBorder : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         
-        if (col.gameObject.name == "ChasingEnemy")
+        if (col.gameObject.name.Contains("ChasingEnemy"))
         {
             chase = col.GetComponent<ChasingMonster>();
             chase.FlipEnemy();

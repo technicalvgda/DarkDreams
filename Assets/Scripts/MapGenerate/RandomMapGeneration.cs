@@ -27,8 +27,8 @@ public class RandomMapGeneration : MonoBehaviour
 	public int heightOfRoom = 27;
 
 	//List of doorRoom and RegularRoom
-	public Transform[] doorRoom;
-	public Transform[] regRoom;
+	Transform[] doorRoom;
+	Transform[] regRoom;
 	public Transform[] extraRoom;
 
 	//roomsWithItem to support ItemGeneration
@@ -54,13 +54,19 @@ public class RandomMapGeneration : MonoBehaviour
 		initializeRooms();
 		instantiateRooms();
 		setLinkedDoorPrefab();
+        regRoom = null;
+        doorRoom = null;
+        Resources.UnloadUnusedAssets();
 	}
 	
 	//shuffle door and reg room.
 	void initializeRooms()
 	{
-		//shuffle doorRooms
-		for (int i = 0; i < doorRoom.Length; i++)
+    
+        regRoom = Resources.LoadAll<Transform>("MonsterRooms");
+        doorRoom = Resources.LoadAll<Transform>("DoorRooms");
+        //shuffle doorRooms
+        for (int i = 0; i < doorRoom.Length; i++)
 		{
 			int idx = Random.Range(i, doorRoom.Length);
 			//swap elements
