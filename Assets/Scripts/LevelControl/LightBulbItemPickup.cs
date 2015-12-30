@@ -5,7 +5,7 @@ public class LightBulbItemPickup : MonoBehaviour
 {
 
     AudioHandlerScript audioHandler;
-    public int dialogueToPlay;
+    public string dialogueToPlay;
     public int itemAdd; // creates counter that can be passed to player control; add amount in inspector
                         //public GameObject canvas;
     public bool flash = false;
@@ -56,7 +56,7 @@ public class LightBulbItemPickup : MonoBehaviour
                     playerScript.AddPoints(itemAdd); //will add the amount in player script
                     Destroy(gameObject); //destroys the object
                     flash = true;
-                    if (dialogueToPlay != -1)
+                    if (dialogueToPlay != null)
                     {
                         audioHandler.PlayVoice(dialogueToPlay);
                     }

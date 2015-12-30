@@ -3,7 +3,7 @@
 public class ItemText : MonoBehaviour
 {
     AudioHandlerScript audioHandler;
-    public int dialogueToPlay;
+    public string dialogueToPlay;
     PlayerControl player;
     private GameObject itemTextPanel;
     Vector2 clickPosition;

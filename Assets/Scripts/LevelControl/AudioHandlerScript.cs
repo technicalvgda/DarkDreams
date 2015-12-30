@@ -8,7 +8,7 @@ public class AudioHandlerScript : MonoBehaviour {
 
     public AudioClip[] musicClips;
     public AudioClip[] soundClips;
-    public AudioClip[] voiceClips;
+   
 
     // Use this for initialization
 
@@ -63,13 +63,14 @@ public class AudioHandlerScript : MonoBehaviour {
         sfx.Play();
 
     }
-    public void PlayVoice(int i)
+    public void PlayVoice(string voiceClip)
     {
+        Resources.UnloadUnusedAssets();
         if (voice.isPlaying)
         {
             voice.Stop();
         }
-        voice.clip = voiceClips[i];
+        voice.clip = Resources.Load("VoiceAudio/"+voiceClip) as AudioClip;
         voice.Play();
 
     }

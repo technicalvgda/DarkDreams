@@ -28,6 +28,7 @@ public class SceneFade : MonoBehaviour
     public string levelToLoad = "";
     void Start()
     {
+        Resources.UnloadUnusedAssets();
         Debug.Log("Start()");
         //blackTexture.rectTransform.localScale = new Vector2(Screen.width, Screen.height);
         StartCoroutine(Timer());

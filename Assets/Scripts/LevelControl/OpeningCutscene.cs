@@ -59,7 +59,7 @@ public class OpeningCutscene : MonoBehaviour
         if (Application.loadedLevelName == "Tutorial Stage")
         {
             yield return new WaitForSeconds(1.5f);
-            audioHandler.PlayVoice(15);
+            audioHandler.PlayVoice("dialogue_goodnight_1");
             yield return new WaitForSeconds(3f);
         }
         else
@@ -72,7 +72,7 @@ public class OpeningCutscene : MonoBehaviour
             }
             else
             {
-                audioHandler.PlayVoice(16);
+                audioHandler.PlayVoice("dialogue_goodnightwhisper_1");
             }
             yield return new WaitForSeconds(3f);
         }

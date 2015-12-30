@@ -51,6 +51,7 @@ public class RandomMapGeneration : MonoBehaviour
 	// Use this for initialization
 	void Awake()
 	{
+        Resources.UnloadUnusedAssets();
 		initializeRooms();
 		instantiateRooms();
 		setLinkedDoorPrefab();

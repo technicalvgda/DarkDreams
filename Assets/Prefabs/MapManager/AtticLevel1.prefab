@@ -987,7 +987,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 198.959991, y: 64.8916016, z: 0}
+  m_LocalPosition: {x: 216.50592, y: -23.0818882, z: 0}
   m_LocalScale: {x: 1.64864397, y: 1, z: 1}
   m_Children:
   - {fileID: 475660}
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 3
+  dialogueToPlay: dialogue_Bear
 --- !u!114 &11409378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1717,7 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 1
+  dialogueToPlay: dialogue_BaseballGlove
 --- !u!114 &11421396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 2
+  dialogueToPlay: dialogue_Marbles
 --- !u!114 &11445634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 4
+  dialogueToPlay: dialogue_BaseballCards
 --- !u!114 &11467272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: dialogue_ActionDoll
 --- !u!114 &11485176
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -143,7 +143,7 @@ public class BeatGameScript : MonoBehaviour
         hunterEnemy.GetComponent<CutsceneHunter>().StopSpeed();
         hunterEnemy.GetComponent<CutsceneHunter>().anim.SetBool("End", true);
         yield return new WaitForSeconds(1f);
-        audioHandler.PlayVoice(18);
+        audioHandler.PlayVoice(null);
         yield return new WaitForSeconds(2f);
         hunterEnemy.SetActive(false);
       

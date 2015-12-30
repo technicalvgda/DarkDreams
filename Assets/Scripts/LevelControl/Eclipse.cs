@@ -38,7 +38,7 @@ public class Eclipse : MonoBehaviour {
             if ((Application.loadedLevelName == "Ending Level"|| Application.loadedLevelName == "Nightmare") && goodnight == false)
             {
                 goodnight = true;
-                audioHandler.PlayVoice(17);
+                audioHandler.PlayVoice("dialogue_goodnightwhisper_4");
                 player.normalSpeed = player.defaultSpeed;
             }
         }

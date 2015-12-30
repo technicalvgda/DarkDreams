@@ -32,7 +32,7 @@ public static void AddPoints (int itemAdd){
 public class ItemPickup : MonoBehaviour {
 
     AudioHandlerScript audioHandler;
-    public int dialogueToPlay;
+    public string dialogueToPlay;
 	public int itemAdd; // creates counter that can be passed to player control; add amount in inspector
 	//public GameObject canvas;
 	public bool flash = false;
@@ -93,7 +93,7 @@ public class ItemPickup : MonoBehaviour {
                     pause.busy = true;
                     flash = true;
                     textActive = true;
-                    if (dialogueToPlay != -1)
+                    if (dialogueToPlay != null)
                     {
                         audioHandler.PlayVoice(dialogueToPlay);
                     }

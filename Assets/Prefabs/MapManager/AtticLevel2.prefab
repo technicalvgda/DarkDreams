@@ -1631,7 +1631,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 218.710999, y: 40.0617676, z: 0}
+  m_LocalPosition: {x: 208.418793, y: -29.7330608, z: 0}
   m_LocalScale: {x: 1.64864397, y: 1, z: 1}
   m_Children:
   - {fileID: 486026}
@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 1
+  dialogueToPlay: dialogue_BaseballGlove
 --- !u!114 &11406352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2523,7 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 7
+  dialogueToPlay: dialogue_Slinky
 --- !u!114 &11421184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 4
+  dialogueToPlay: dialogue_BaseballCards
 --- !u!114 &11426348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2847,7 +2847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 3
+  dialogueToPlay: dialogue_Bear
 --- !u!114 &11443596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 2
+  dialogueToPlay: dialogue_Marbles
 --- !u!114 &11449060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3192,7 +3192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 8
+  dialogueToPlay: dialogue_Popguns
 --- !u!114 &11463874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3301,7 +3301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 9
+  dialogueToPlay: dialogue_WalkieTalkie
 --- !u!114 &11469584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3489,7 +3489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 0
+  dialogueToPlay: dialogue_ActionDoll
 --- !u!114 &11483772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3538,7 +3538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 5
+  dialogueToPlay: dialogue_RubberDuck
 --- !u!114 &11491540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3577,7 +3577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004b9ec11289b4e43a9b8278113e032d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueToPlay: 6
+  dialogueToPlay: dialogue_Snowglobe
 --- !u!114 &11496422
 MonoBehaviour:
   m_ObjectHideFlags: 1
