@@ -49,7 +49,7 @@ TextureImporter:
   textureType: 5
   buildTargetSettings:
   - buildTarget: iPhone
-    maxTextureSize: 512
+    maxTextureSize: 1024
     textureFormat: 30
     compressionQuality: 50
     allowsAlphaSplitting: 0
