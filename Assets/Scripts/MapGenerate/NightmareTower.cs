@@ -14,8 +14,8 @@ public class NightmareTower : MonoBehaviour {
 	public int heightOfRoom = 27;
 	
 	//List of doorRoom and otherRoom
-	public Transform[] doorRoom;
-	public Transform[] otherRoom;
+	Transform[] doorRoom;
+	Transform[] otherRoom;
 
 
 	
@@ -41,7 +41,11 @@ public class NightmareTower : MonoBehaviour {
 	private GameObject doorToBeTriggered;
 
 	void Awake() {
-		if (doorRoom.Length < ROOMS_PER_FLOOR) {
+        //unload any assets not being used
+        Resources.UnloadUnusedAssets();
+        //initialize door room array
+        doorRoom = Resources.LoadAll<Transform>("DoorRooms");
+        if (doorRoom.Length < ROOMS_PER_FLOOR) {
 			Debug.Log("Please make sure there are at least 4 door rooms");
 			return;
 		}
@@ -96,7 +100,9 @@ public class NightmareTower : MonoBehaviour {
 
 	//Spawn the rooms at the beginning
 	void instantiateRoomsAtStart() {
-		generateEven ();
+        
+       
+        generateEven ();
 		generateOdd ();
 		foreach (GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
 			//Remove the script of the first rooms 2 for even floor 1 for odd floor
@@ -290,8 +296,10 @@ public class NightmareTower : MonoBehaviour {
 	}
 	
 	void initializeRooms()
-	{    
-		randomizeRooms ();	
+	{
+        //initialize monster room array
+        otherRoom = Resources.LoadAll<Transform>("MonsterRooms");
+        randomizeRooms ();	
 		//r to keep track of the room used
 		int r = 0;
 		//set door room to be the first room on each floor
