@@ -40,9 +40,18 @@ public class NightmareTower : MonoBehaviour {
 	//Door triggered
 	private GameObject doorToBeTriggered;
 
+    //score tracker
+    public GameObject ScoreText;
+    HighScore ScoreScript;
+
 	void Awake() {
         //unload any assets not being used
         Resources.UnloadUnusedAssets();
+
+        //initialize reference to score
+        ScoreScript = ScoreText.GetComponent<HighScore>();
+  
+
         //initialize door room array
         doorRoom = Resources.LoadAll<Transform>("DoorRooms");
         if (doorRoom.Length < ROOMS_PER_FLOOR) {
@@ -56,18 +65,21 @@ public class NightmareTower : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		instantiateRoomsAtStart();
+        
+        instantiateRoomsAtStart();
 		//Invoke repeat to generate hallway if needed
 		InvokeRepeating ("generate", ROOMS_PER_FLOOR-1, ROOMS_PER_FLOOR-1);        
 	}
 
 	// Update is called once per frame
 	void Update () {
-		//use this to set the door to be triggered
-		if (doorToBeTriggered != null) {
+        
+        //use this to set the door to be triggered
+        if (doorToBeTriggered != null) {
 			if (doorToBeTriggered.GetComponent<TeleportDoors> ().used) {
-				//Able to generate once the player enters a room
-				canGenerate = true;
+                //Able to generate once the player enters a room
+                ScoreScript.currentScore += 1;
+                canGenerate = true;
 				generated = true;
 				doorToBeTriggered.GetComponent<TeleportDoors> ().used = false;
 			}
@@ -320,7 +332,9 @@ public class NightmareTower : MonoBehaviour {
 	}
 	void destroyHallway() {
 		if (generated) {
-			if(hallToRemoveE.Count != 0 && level % 2 == 1) {
+            //increase score by one
+            ScoreScript.currentScore += 1;
+            if (hallToRemoveE.Count != 0 && level % 2 == 1) {
 				for (int i = 0; i < ROOMS_PER_FLOOR;i++) {
 					Destroy(hallToRemoveE.Dequeue().transform.gameObject);
 				}
