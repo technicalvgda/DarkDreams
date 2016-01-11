@@ -23,8 +23,8 @@ public class FogParticleScript : MonoBehaviour
     {
        
         // If this object is not on the same elevation as the player, do nothing
-        if (this.transform.position.y < playerPos.position.y - 10 ||
-            this.transform.position.y > playerPos.position.y + 10)
+        if (this.transform.position.y < (playerPos.position.y - 10) ||
+            this.transform.position.y > (playerPos.position.y + 10))
         {
             fog.Stop();
             fog.Clear();

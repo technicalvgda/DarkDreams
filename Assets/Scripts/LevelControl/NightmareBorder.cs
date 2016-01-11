@@ -5,6 +5,7 @@ public class NightmareBorder : MonoBehaviour {
 
     Vector3 wallPos;
     GameObject player;
+    float yOffset = 10f;
     // Use this for initialization
     void Start ()
     {
@@ -15,7 +16,7 @@ public class NightmareBorder : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        wallPos.y = player.transform.position.y;
+        wallPos.y = player.transform.position.y+ yOffset;
         transform.position = wallPos;
 	}
 }
