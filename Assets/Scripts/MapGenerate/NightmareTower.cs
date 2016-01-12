@@ -332,8 +332,7 @@ public class NightmareTower : MonoBehaviour {
 	}
 	void destroyHallway() {
 		if (generated) {
-            //increase score by one
-            ScoreScript.currentScore += 1;
+        
             if (hallToRemoveE.Count != 0 && level % 2 == 1) {
 				for (int i = 0; i < ROOMS_PER_FLOOR;i++) {
 					Destroy(hallToRemoveE.Dequeue().transform.gameObject);

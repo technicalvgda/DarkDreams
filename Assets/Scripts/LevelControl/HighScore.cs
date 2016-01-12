@@ -7,6 +7,7 @@ public class HighScore : MonoBehaviour {
     int highScore = 0;
     public int currentScore = 1;
     Text scoreText;
+    public Text currentText;
 	// Use this for initialization
 	void Start ()
     {
@@ -25,7 +26,7 @@ public class HighScore : MonoBehaviour {
 	void Update ()
     {
         //if the players score on this run is higher than the high score
-        
+        currentText.text = currentScore.ToString();
         if(currentScore > highScore)
         {
             //set high score to the players current score
