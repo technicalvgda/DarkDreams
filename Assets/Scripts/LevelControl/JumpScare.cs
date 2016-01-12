@@ -34,6 +34,6 @@ public class JumpScare : MonoBehaviour {
     }
     void JumpSound()
     {
-        audioHandler.PlaySound(soundNum);
+        sfx.Play();
     }
 }
