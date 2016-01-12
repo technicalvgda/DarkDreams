@@ -86,7 +86,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.VGDA.Parasomnia
-  bundleVersion: 1.6
+  bundleVersion: 1.7
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
