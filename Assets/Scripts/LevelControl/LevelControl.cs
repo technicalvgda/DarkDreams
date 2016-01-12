@@ -102,78 +102,85 @@ public class LevelControl : MonoBehaviour
     {
         if (gameOverMusicPlaying == true)
         {
-            gameOver = false;
-            gameOverMusicPlaying = false;
-            audioHandler.StopMusic();
-            // Set player position to initial position in basement
-            if (Application.loadedLevelName == "Tutorial Stage")
+            if (Application.loadedLevelName == "Nightmare")
             {
-                if (playerScript.killedByHunter==true)
+                Application.LoadLevel("Nightmare");
+            }
+            else
+            {
+                gameOver = false;
+                gameOverMusicPlaying = false;
+                audioHandler.StopMusic();
+                // Set player position to initial position in basement
+                if (Application.loadedLevelName == "Tutorial Stage")
                 {
+                    if (playerScript.killedByHunter == true)
+                    {
 
 
+                    }
+                    else
+                    {
+                        initialPlayerPos = new Vector3(-111, -78, player.transform.position.z);
+                    }
                 }
-                else
+
+                player.transform.position = initialPlayerPos;
+
+                // Set GameOver and fadetoblack overlay to false
+                gameOverPanel.SetActive(false);
+                overlay.SetActive(false);
+
+                // Set player to alive and enable movement
+                playerScript.isAlive = true;
+                playerScript.enabled = true;
+                playerScript.hide = false;
+                playerScript.canHide = true;
+                playerScript.normalSpeed = playerScript.defaultSpeed;
+                player.GetComponent<SpriteRenderer>().color = playerScript.initialColor;
+                playerScript.StopCoroutine("SpawnHunterMonster");
+                // Resume time
+                Time.timeScale = 1f;
+                //resumes hunter speed and resets position
+                if (openCutscene != null)
                 {
-                    initialPlayerPos = new Vector3(-111, -78, player.transform.position.z);
+                    openCutscene.EndCutscene();
+                    openCutscene.hunterEnemy.SetActive(true);
+                    StartCoroutine("DespawnBasementHunter");
+                    playerScript.hunterScript = openCutscene.hunterEnemy.GetComponent<Hunter>();
                 }
+                if (endCutscene != null)
+                {
+                    endCutscene.EndCutscene();
+                    endCutscene.activated = false;
+                    endCutscene.hunterEnemy.SetActive(true);
+                    StartCoroutine("DespawnBasementHunter");
+                    playerScript.hunterScript = endCutscene.hunterEnemy.GetComponent<Hunter>();
+                }
+                if (playerScript.hunterScript != null)
+                {
+                    playerScript.hunterScript.isCaught = false;
+                    playerScript.hunterScript.killPlayer = false;
+                    playerScript.hunterScript.anim.SetBool("Kill", false);
+                    playerScript.hunterScript.StopSpeed();//playerScript.hunterScript.defaultSpeed;
+                    playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
+                    playerScript.hunterScript.transform.rotation = playerScript.hunterScript.originalRotation;
+                }
+                //resumes chasing monster speed
+                if (playerScript.chasingMonsterScript != null)
+                {
+                    playerScript.chasingMonsterScript.speedNormal = 2.0f;
+                    playerScript.chasingMonsterScript.speedChasing = 4.0f;
+                }
+                playerScript.killedByHunter = false;
+                //play intro music
+                /*
+                audioHandler.LoopMusic(false);
+                audioHandler.PlayMusic(3);
+                */
+                //play level music
+                StartCoroutine("levelMusic");
             }
-           
-            player.transform.position = initialPlayerPos;
-
-            // Set GameOver and fadetoblack overlay to false
-            gameOverPanel.SetActive(false);
-            overlay.SetActive(false);
-
-            // Set player to alive and enable movement
-            playerScript.isAlive = true;
-            playerScript.enabled = true;
-            playerScript.hide = false;
-            playerScript.canHide = true;
-            playerScript.normalSpeed = playerScript.defaultSpeed;
-            player.GetComponent<SpriteRenderer>().color = playerScript.initialColor;
-            playerScript.StopCoroutine("SpawnHunterMonster");
-            // Resume time
-            Time.timeScale = 1f;
-            //resumes hunter speed and resets position
-            if (openCutscene != null)
-            {
-                openCutscene.EndCutscene();
-                openCutscene.hunterEnemy.SetActive(true);
-                StartCoroutine("DespawnBasementHunter");
-                playerScript.hunterScript = openCutscene.hunterEnemy.GetComponent<Hunter>();
-            }
-            if (endCutscene != null)
-            {
-                endCutscene.EndCutscene();
-                endCutscene.activated = false;
-                endCutscene.hunterEnemy.SetActive(true);
-                StartCoroutine("DespawnBasementHunter");
-                playerScript.hunterScript = endCutscene.hunterEnemy.GetComponent<Hunter>();
-            }
-            if (playerScript.hunterScript != null)
-            {
-                playerScript.hunterScript.isCaught = false;
-                playerScript.hunterScript.killPlayer = false;
-                playerScript.hunterScript.anim.SetBool("Kill", false);
-                playerScript.hunterScript.StopSpeed();//playerScript.hunterScript.defaultSpeed;
-                playerScript.hunterScript.transform.position = playerScript.hunterScript.originalPosition;
-                playerScript.hunterScript.transform.rotation = playerScript.hunterScript.originalRotation;
-            }
-            //resumes chasing monster speed
-            if (playerScript.chasingMonsterScript != null)
-            {
-                playerScript.chasingMonsterScript.speedNormal = 2.0f;
-                playerScript.chasingMonsterScript.speedChasing = 4.0f;
-            }
-            playerScript.killedByHunter = false;
-            //play intro music
-            /*
-            audioHandler.LoopMusic(false);
-            audioHandler.PlayMusic(3);
-            */
-            //play level music
-            StartCoroutine("levelMusic");
         }
     }
 
