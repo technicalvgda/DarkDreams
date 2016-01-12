@@ -99,8 +99,8 @@ public class BeatGameScript : MonoBehaviour
 		//Needed so the player won't be able to spam the space bar to glitch the cutscene
 		if (cutsceneActivated == false) 
 		{
-			if (Input.GetKeyDown(KeyCode.Space) || ((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
-			                                        (xNegPosition < clickPosition.x && clickPosition.x < xPosPosition) && Input.GetMouseButtonDown(0)))
+          
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
 			{
 				if (other.GetComponent<PlayerControl>() == null)
 				{

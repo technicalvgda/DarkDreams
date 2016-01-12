@@ -7,6 +7,7 @@ public class CutsceneHunter : MonoBehaviour
 
     AudioSource sfx;
     public Animator anim;
+    public AudioClip endClip;
     // public AudioClip[] hunterClips;
 
     public bool facingRight = true;
@@ -182,6 +183,11 @@ public class CutsceneHunter : MonoBehaviour
     {
         sfx.Play();
 
+    }
+    public void PlayEnd()
+    {
+        sfx.clip = endClip;
+        sfx.Play();
     }
 
 

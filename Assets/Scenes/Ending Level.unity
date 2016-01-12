@@ -7231,7 +7231,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 479466, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -53.5
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 479466, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7255,7 +7255,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 479466, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130052, guid: 8134e6b645ead364fb6137b662041d6d, type: 2}
       propertyPath: m_Name
@@ -7294,6 +7294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  endClip: {fileID: 8300000, guid: d6d124be1f481c745ac0347cf34ef2cb, type: 3}
   facingRight: 1
   isCaught: 0
   movement: 0
