@@ -115,4 +115,8 @@ public class FadingDarkness : MonoBehaviour
         }
         //Debug.Log ("Random #: " + alphaValue); //confirms and prints value of the random generated number. WARNING! This will print A LOT of values. This is removable.
     }
+     public void ResetDarkness()
+    {
+        canvasGroup.alpha = 0;
+    }
 }

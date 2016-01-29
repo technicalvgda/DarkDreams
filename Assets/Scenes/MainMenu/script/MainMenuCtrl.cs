@@ -117,6 +117,7 @@ public class MainMenuCtrl : MonoBehaviour
     public void DialogStandby() { StartCoroutine(_DialogStandby()); }
     public void NewGame() { StartCoroutine(_FadeToScene(9)); }//make this 2 for tutorial
     public void NightmareTower() { StartCoroutine(_FadeToScene(8)); }
+    public void Credits() { StartCoroutine(_FadeToScene(7)); }
     public void Quit() { Application.Quit(); }
 
     // Note:

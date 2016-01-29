@@ -111,6 +111,12 @@ public class LevelControl : MonoBehaviour
                 gameOver = false;
                 gameOverMusicPlaying = false;
                 audioHandler.StopMusic();
+                //reset room darkness on retry
+                FadingDarkness[] darknessCanvases = GameObject.FindObjectsOfType<FadingDarkness>() ;
+                foreach(FadingDarkness dark in darknessCanvases)
+                {
+                    dark.ResetDarkness();
+                }
                 // Set player position to initial position in basement
                 if (Application.loadedLevelName == "Tutorial Stage")
                 {

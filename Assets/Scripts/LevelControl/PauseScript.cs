@@ -72,7 +72,7 @@ public class PauseScript : MonoBehaviour {
     {
         // Resumes time and loads first scene in hierarchy
         Time.timeScale = 1f;
-        Application.LoadLevel(0);
+        Application.LoadLevel(1);
     }
 
 	IEnumerator _UnpauseTransition() {
