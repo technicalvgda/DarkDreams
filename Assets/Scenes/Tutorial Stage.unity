@@ -182,8 +182,9 @@ Transform:
   - {fileID: 1386708429}
   - {fileID: 1749547598}
   - {fileID: 1723932346}
+  - {fileID: 1035241698}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!212 &52934836
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1628,6 +1629,10 @@ Prefab:
       propertyPath: m_Name
       value: TutorialAtticDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 119360, guid: 13296ada1d84e314bac575d742e1aae6, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13296ada1d84e314bac575d742e1aae6, type: 2}
   m_IsPrefabParent: 0
@@ -2525,15 +2530,15 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 52934835}
     m_Modifications:
     - target: {fileID: 463436, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 93
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 463436, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -75.0999985
+      value: -7.0999985
       objectReference: {fileID: 0}
     - target: {fileID: 463436, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2557,7 +2562,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463436, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11484764, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
       propertyPath: exit
@@ -2566,6 +2571,10 @@ Prefab:
     - target: {fileID: 192370, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
       propertyPath: m_Name
       value: Door2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 192370, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
@@ -6157,7 +6166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!4 &642117209 stripped
 Transform:
   m_PrefabParentObject: {fileID: 478794, guid: 7f3d2c41f405a09439f10e1c520cb11e, type: 2}
@@ -7524,7 +7533,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
 --- !u!1 &929327686
 GameObject:
   m_ObjectHideFlags: 0
@@ -9300,7 +9309,7 @@ Transform:
   - {fileID: 806886011}
   - {fileID: 863972944}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!212 &976438149
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14437,7 +14446,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
 --- !u!1 &1925204802
 GameObject:
   m_ObjectHideFlags: 0
@@ -14540,6 +14549,10 @@ Prefab:
       propertyPath: exit
       value: 
       objectReference: {fileID: 1882226773}
+    - target: {fileID: 192370, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7de486edde8b3bf468410ec155f758cd, type: 2}
   m_IsPrefabParent: 0
@@ -14586,6 +14599,10 @@ Prefab:
       propertyPath: exit
       value: 
       objectReference: {fileID: 1620119261}
+    - target: {fileID: 119888, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0804b84ea4ce69d4197330f914f2710f, type: 2}
   m_IsPrefabParent: 0
@@ -16350,7 +16367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1001 &2056369784
 Prefab:
   m_ObjectHideFlags: 0
@@ -16659,7 +16676,7 @@ Transform:
   - {fileID: 1130348025}
   - {fileID: 865270142}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &2119097570
 GameObject:
   m_ObjectHideFlags: 0

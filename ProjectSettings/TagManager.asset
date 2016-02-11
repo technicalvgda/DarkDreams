@@ -20,6 +20,7 @@ TagManager:
   - Lock
   - Fake1
   - AudioHandler
+  - Door
   layers:
   - Default
   - TransparentFX
