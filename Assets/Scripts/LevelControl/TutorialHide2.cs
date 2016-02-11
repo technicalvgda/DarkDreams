@@ -9,20 +9,26 @@ public class TutorialHide2 : MonoBehaviour {
 	void Start ()
     {
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-		fake1 = GameObject.FindWithTag ("Fake1");
+		//fake1 = GameObject.FindWithTag ("Fake1");
 
 	}
 
 	
 	
-	void OnTriggerStay2D(Collider2D col){
-		if(col.gameObject.tag == "Player" && player.hide == true){
+	void OnTriggerStay2D(Collider2D col)
+    {
+        
+        if (col.gameObject.tag == "Player" && player.hide == true)
+        {
+            Debug.Log("Monster coming");
             monster.SetActive(true);
+            /*
             if (destroyWall == false)
             {
                 destroyWall = true;
                 StartCoroutine("DestroyFake");
             }
+            */
 			
 			
 		}
