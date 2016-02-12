@@ -42,6 +42,8 @@ public class BeatGameScript : MonoBehaviour
 	//CameraFollowScript cameraScript;
 	float clickOffsetY = 1;
 	float clickOffsetX = 1;
+
+    bool playerContact = false;
 	// Use this for initialization
 	void Start () 
 	{
@@ -82,35 +84,61 @@ public class BeatGameScript : MonoBehaviour
 			silhouette.transform.position = silhouetteMonsterOffset;
 		}
         */
-	}
+        //Needed so the player won't be able to spam the space bar to glitch the cutscene
+        if (cutsceneActivated == false)
+        {
 
-	void OnTriggerStay2D(Collider2D other)
-	{
-		
-		float xNegPosition = transform.position.x - clickOffsetX;
-		float xPosPosition = transform.position.x + clickOffsetX;
-		float yPosPosition = transform.position.y + clickOffsetY;
-		float yNegPosition = transform.position.y - clickOffsetY;
-		
-		///get position of click
-		clickPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-		clickPosition.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+            if (playerContact == true && Input.GetKeyDown(KeyCode.Space))
+            {
+                if (player.GetComponent<PlayerControl>() == null)
+                {
+                    return;
+                }
+                StartCoroutine(_BeatGame());
+            }
+            else if (playerContact == true && Input.GetMouseButtonDown(0))
+            {
 
-		//Needed so the player won't be able to spam the space bar to glitch the cutscene
-		if (cutsceneActivated == false) 
-		{
-          
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-			{
-				if (other.GetComponent<PlayerControl>() == null)
-				{
-					return;
-				}
-				StartCoroutine(_BeatGame ());
-			}
-		}
+                RaycastHit2D[] hits;
+                hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), 100);
+                for (int i = 0; i < hits.Length; i++)
+                {
 
-	}
+                    RaycastHit2D hit = hits[i];
+                    if (hit.collider.tag == "EndObject")
+                    {
+                        if (player.GetComponent<PlayerControl>() == null)
+                        {
+                            return;
+                        }
+                        StartCoroutine(_BeatGame());
+                    }
+
+                }
+            }
+        }
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+
+        if (col.tag == "Player")
+        {
+            playerContact = true;
+
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.tag == "Player")
+        {
+            //Debug.Log("Player not touching");
+            playerContact = false;
+
+        }
+    }
+   
 	//The cutscene
 	IEnumerator _BeatGame()
 	{
