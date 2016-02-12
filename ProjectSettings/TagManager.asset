@@ -21,6 +21,7 @@ TagManager:
   - Fake1
   - AudioHandler
   - Door
+  - Bed
   layers:
   - Default
   - TransparentFX

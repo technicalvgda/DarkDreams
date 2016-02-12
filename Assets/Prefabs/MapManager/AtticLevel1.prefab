@@ -270,7 +270,7 @@ GameObject:
   - 61: {fileID: 6103160}
   m_Layer: 0
   m_Name: bed_1
-  m_TagString: Untagged
+  m_TagString: Bed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

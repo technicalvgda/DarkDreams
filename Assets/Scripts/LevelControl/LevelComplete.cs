@@ -38,6 +38,7 @@ public class LevelComplete : MonoBehaviour
     PauseScript pause;
     GameObject lightbulb;
 
+    bool playerContact = false;
     public GameObject wall;
     float wallMargin;
     const float wallOffset = 51;
@@ -45,6 +46,35 @@ public class LevelComplete : MonoBehaviour
     void Start()
     {
         clickPosition = new Vector2(0f, 0f);
+    }
+    void Update()
+    {
+        //Checks to see if the cutscene has been activated yet to prevent multiple instances of the cutscene
+        if (cutsceneActivated == false)
+        {
+            if (playerContact == true && ((Input.GetKeyDown(KeyCode.Space))))
+            {
+                Debug.Log("Level completed");
+                EndingCutscene();
+            }
+            else if (playerContact == true && Input.GetMouseButtonDown(0))
+            {
+
+                RaycastHit2D[] hits;
+                hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), 100);
+                for (int i = 0; i < hits.Length; i++)
+                {
+
+                    RaycastHit2D hit = hits[i];
+                    if (hit.collider.tag == "Bed")
+                    {
+                        Debug.Log("Level completed");
+                        EndingCutscene();
+                    }
+
+                }
+            }
+        }
     }
     void OnTriggerStay2D(Collider2D col)
     {
@@ -58,18 +88,28 @@ public class LevelComplete : MonoBehaviour
 		clickPosition.x = Camera.main.ScreenToWorldPoint (Input.mousePosition).x;
 		clickPosition.y = Camera.main.ScreenToWorldPoint (Input.mousePosition).y;
 
-		//Checks to see if the cutscene has been activated yet to prevent multiple instances of the cutscene
-		if (cutsceneActivated == false) 
-		{
-			if (col.tag == "Player" && ((Input.GetKeyDown (KeyCode.Space)) ||
-				((yNegPosition < clickPosition.y && clickPosition.y < yPosPosition) &&
-				(xNegPosition < clickPosition.x && clickPosition.x < xPosPosition) &&
-				Input.GetMouseButtonDown (0)))) {
-				Debug.Log ("Level completed");
-				EndingCutscene ();
-			}
-		}
+		
 	}
+    void OnTriggerEnter2D(Collider2D col)
+    {
+
+        if (col.tag == "Player")
+        {
+            playerContact = true;
+
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.tag == "Player")
+        {
+            //Debug.Log("Player not touching");
+            playerContact = false;
+
+        }
+    }
 
     void EndingCutscene()
     {
