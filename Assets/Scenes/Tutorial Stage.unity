@@ -6166,7 +6166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
 --- !u!4 &642117209 stripped
 Transform:
   m_PrefabParentObject: {fileID: 478794, guid: 7f3d2c41f405a09439f10e1c520cb11e, type: 2}
@@ -6896,7 +6896,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6925,6 +6925,18 @@ Prefab:
     - target: {fileID: 432756, guid: c0af72616afd76647a62314789eddcb0, type: 2}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237836, guid: c0af72616afd76647a62314789eddcb0, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237836, guid: c0af72616afd76647a62314789eddcb0, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237836, guid: c0af72616afd76647a62314789eddcb0, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0af72616afd76647a62314789eddcb0, type: 2}
