@@ -22,6 +22,7 @@ public class ItemText : MonoBehaviour
         itemTextPanel.SetActive(false);
         clickPosition = new Vector2(0f, 0f);
         // cameraScript = Camera.main.GetComponent<CameraFollowScript>();
+        GetComponent<BoxCollider2D>().size = new Vector3(.5f, .2f, 0);
     }
 
     void Update()
